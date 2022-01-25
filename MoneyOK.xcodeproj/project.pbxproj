@@ -1,0 +1,789 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		052312DA279AD718003CFB9E /* MoneyOK_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052312D9279AD718003CFB9E /* MoneyOK_iOSApp.swift */; };
+		052312DC279AD718003CFB9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052312DB279AD718003CFB9E /* ContentView.swift */; };
+		052312DE279AD719003CFB9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052312DD279AD719003CFB9E /* Assets.xcassets */; };
+		052312E1279AD719003CFB9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052312E0279AD719003CFB9E /* Preview Assets.xcassets */; };
+		052312EC279AD732003CFB9E /* MoneyOK_macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052312EB279AD732003CFB9E /* MoneyOK_macOSApp.swift */; };
+		052312EE279AD732003CFB9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052312ED279AD732003CFB9E /* ContentView.swift */; };
+		052312F0279AD733003CFB9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052312EF279AD733003CFB9E /* Assets.xcassets */; };
+		052312F3279AD733003CFB9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052312F2279AD733003CFB9E /* Preview Assets.xcassets */; };
+		052312FD279AD7AE003CFB9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052312FC279AD7AE003CFB9E /* Preview Assets.xcassets */; };
+		052312FE279AD7AE003CFB9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052312FC279AD7AE003CFB9E /* Preview Assets.xcassets */; };
+		05231300279AE05D003CFB9E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052312FF279AE05D003CFB9E /* SettingsView.swift */; };
+		05231303279AE2F1003CFB9E /* AccountsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231302279AE2F0003CFB9E /* AccountsListView.swift */; };
+		05231304279AE2F1003CFB9E /* AccountsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231302279AE2F0003CFB9E /* AccountsListView.swift */; };
+		05231306279AE3A3003CFB9E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231305279AE3A3003CFB9E /* SidebarView.swift */; };
+		05231307279AE3A3003CFB9E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231305279AE3A3003CFB9E /* SidebarView.swift */; };
+		05231309279AEEBB003CFB9E /* SideBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231308279AEEBB003CFB9E /* SideBarContent.swift */; };
+		0523130A279AEEBC003CFB9E /* SideBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231308279AEEBB003CFB9E /* SideBarContent.swift */; };
+		0523130C279B0882003CFB9E /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountView.swift */; };
+		0523130D279B0882003CFB9E /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountView.swift */; };
+		0523130F279B109E003CFB9E /* NewAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130E279B109E003CFB9E /* NewAccountView.swift */; };
+		054F0381279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
+		054F0382279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
+		054F0384279EE91900F7271A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F0383279EE91900F7271A /* PersistenceController.swift */; };
+		054F0385279EE91900F7271A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F0383279EE91900F7271A /* PersistenceController.swift */; };
+		054F03AD27A005D100F7271A /* ColorSwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03AC27A005D100F7271A /* ColorSwatchView.swift */; };
+		054F03AE27A005D100F7271A /* ColorSwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03AC27A005D100F7271A /* ColorSwatchView.swift */; };
+		054F03B627A012A600F7271A /* SFSymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03B327A012A600F7271A /* SFSymbolsPicker.swift */; };
+		054F03B727A012A600F7271A /* SFSymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03B327A012A600F7271A /* SFSymbolsPicker.swift */; };
+		054F03B827A012A600F7271A /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03B427A012A600F7271A /* Symbols.swift */; };
+		054F03B927A012A600F7271A /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03B427A012A600F7271A /* Symbols.swift */; };
+		054F03BA27A012A600F7271A /* UsageExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03B527A012A600F7271A /* UsageExample.swift */; };
+		054F03BB27A012A600F7271A /* UsageExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03B527A012A600F7271A /* UsageExample.swift */; };
+		054F03BD27A023D100F7271A /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03BC27A023D100F7271A /* KeyboardListener.swift */; };
+		054F03BE27A023D100F7271A /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03BC27A023D100F7271A /* KeyboardListener.swift */; };
+		054F03C727A0283800F7271A /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03BF27A0283800F7271A /* Transaction+CoreDataClass.swift */; };
+		054F03C827A0283800F7271A /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03BF27A0283800F7271A /* Transaction+CoreDataClass.swift */; };
+		054F03C927A0283800F7271A /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C027A0283800F7271A /* Transaction+CoreDataProperties.swift */; };
+		054F03CA27A0283800F7271A /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C027A0283800F7271A /* Transaction+CoreDataProperties.swift */; };
+		054F03CB27A0283800F7271A /* Account+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C127A0283800F7271A /* Account+CoreDataClass.swift */; };
+		054F03CC27A0283800F7271A /* Account+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C127A0283800F7271A /* Account+CoreDataClass.swift */; };
+		054F03CD27A0283800F7271A /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C227A0283800F7271A /* Account+CoreDataProperties.swift */; };
+		054F03CE27A0283800F7271A /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C227A0283800F7271A /* Account+CoreDataProperties.swift */; };
+		054F03CF27A0283800F7271A /* CategoryCosts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C327A0283800F7271A /* CategoryCosts+CoreDataClass.swift */; };
+		054F03D027A0283800F7271A /* CategoryCosts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C327A0283800F7271A /* CategoryCosts+CoreDataClass.swift */; };
+		054F03D127A0283800F7271A /* CategoryCosts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C427A0283800F7271A /* CategoryCosts+CoreDataProperties.swift */; };
+		054F03D227A0283800F7271A /* CategoryCosts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C427A0283800F7271A /* CategoryCosts+CoreDataProperties.swift */; };
+		054F03D327A0283800F7271A /* CategoryIncome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C527A0283800F7271A /* CategoryIncome+CoreDataClass.swift */; };
+		054F03D427A0283800F7271A /* CategoryIncome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C527A0283800F7271A /* CategoryIncome+CoreDataClass.swift */; };
+		054F03D527A0283800F7271A /* CategoryIncome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift */; };
+		054F03D627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift */; };
+		054F03D827A0290A00F7271A /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03D727A0290A00F7271A /* TransactionListView.swift */; };
+		054F03D927A0290A00F7271A /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03D727A0290A00F7271A /* TransactionListView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		052312D6279AD718003CFB9E /* MoneyOK-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoneyOK-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		052312D9279AD718003CFB9E /* MoneyOK_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyOK_iOSApp.swift; sourceTree = "<group>"; };
+		052312DB279AD718003CFB9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		052312DD279AD719003CFB9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		052312E0279AD719003CFB9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		052312E9279AD732003CFB9E /* MoneyOK-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoneyOK-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		052312EB279AD732003CFB9E /* MoneyOK_macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyOK_macOSApp.swift; sourceTree = "<group>"; };
+		052312ED279AD732003CFB9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		052312EF279AD733003CFB9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		052312F2279AD733003CFB9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		052312F4279AD733003CFB9E /* MoneyOK_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoneyOK_macOS.entitlements; sourceTree = "<group>"; };
+		052312FC279AD7AE003CFB9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		052312FF279AE05D003CFB9E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		05231302279AE2F0003CFB9E /* AccountsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListView.swift; sourceTree = "<group>"; };
+		05231305279AE3A3003CFB9E /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		05231308279AEEBB003CFB9E /* SideBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarContent.swift; sourceTree = "<group>"; };
+		0523130B279B0881003CFB9E /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		0523130E279B109E003CFB9E /* NewAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountView.swift; sourceTree = "<group>"; };
+		054F0380279EDBC500F7271A /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		054F0383279EE91900F7271A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		054F03AC27A005D100F7271A /* ColorSwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchView.swift; sourceTree = "<group>"; };
+		054F03B327A012A600F7271A /* SFSymbolsPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFSymbolsPicker.swift; sourceTree = "<group>"; };
+		054F03B427A012A600F7271A /* Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		054F03B527A012A600F7271A /* UsageExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageExample.swift; sourceTree = "<group>"; };
+		054F03BC27A023D100F7271A /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
+		054F03BF27A0283800F7271A /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		054F03C027A0283800F7271A /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		054F03C127A0283800F7271A /* Account+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataClass.swift"; sourceTree = "<group>"; };
+		054F03C227A0283800F7271A /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		054F03C327A0283800F7271A /* CategoryCosts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataClass.swift"; sourceTree = "<group>"; };
+		054F03C427A0283800F7271A /* CategoryCosts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		054F03C527A0283800F7271A /* CategoryIncome+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryIncome+CoreDataClass.swift"; sourceTree = "<group>"; };
+		054F03C627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryIncome+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		054F03D727A0290A00F7271A /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		052312D3279AD718003CFB9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		052312E6279AD732003CFB9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		052312CB279AD6E7003CFB9E = {
+			isa = PBXGroup;
+			children = (
+				054F03BF27A0283800F7271A /* Transaction+CoreDataClass.swift */,
+				054F03C027A0283800F7271A /* Transaction+CoreDataProperties.swift */,
+				054F03C127A0283800F7271A /* Account+CoreDataClass.swift */,
+				054F03C227A0283800F7271A /* Account+CoreDataProperties.swift */,
+				054F03C327A0283800F7271A /* CategoryCosts+CoreDataClass.swift */,
+				054F03C427A0283800F7271A /* CategoryCosts+CoreDataProperties.swift */,
+				054F03C527A0283800F7271A /* CategoryIncome+CoreDataClass.swift */,
+				054F03C627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift */,
+				052312F8279AD73E003CFB9E /* Shared */,
+				052312D8279AD718003CFB9E /* MoneyOK-iOS */,
+				052312EA279AD732003CFB9E /* MoneyOK-macOS */,
+				052312D7279AD718003CFB9E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		052312D7279AD718003CFB9E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				052312D6279AD718003CFB9E /* MoneyOK-iOS.app */,
+				052312E9279AD732003CFB9E /* MoneyOK-macOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		052312D8279AD718003CFB9E /* MoneyOK-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				054F0392279F3B6700F7271A /* View */,
+				052312D9279AD718003CFB9E /* MoneyOK_iOSApp.swift */,
+				052312DD279AD719003CFB9E /* Assets.xcassets */,
+				052312DF279AD719003CFB9E /* Preview Content */,
+				054F03BC27A023D100F7271A /* KeyboardListener.swift */,
+			);
+			path = "MoneyOK-iOS";
+			sourceTree = "<group>";
+		};
+		052312DF279AD719003CFB9E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				052312E0279AD719003CFB9E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		052312EA279AD732003CFB9E /* MoneyOK-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				052312EB279AD732003CFB9E /* MoneyOK_macOSApp.swift */,
+				052312ED279AD732003CFB9E /* ContentView.swift */,
+				052312EF279AD733003CFB9E /* Assets.xcassets */,
+				052312F4279AD733003CFB9E /* MoneyOK_macOS.entitlements */,
+				052312F1279AD733003CFB9E /* Preview Content */,
+			);
+			path = "MoneyOK-macOS";
+			sourceTree = "<group>";
+		};
+		052312F1279AD733003CFB9E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				052312F2279AD733003CFB9E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		052312F8279AD73E003CFB9E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				054F03B227A0125E00F7271A /* SFSymbolsPicker */,
+				054F0383279EE91900F7271A /* PersistenceController.swift */,
+				052312FA279AD770003CFB9E /* Models */,
+				052312F9279AD765003CFB9E /* Views */,
+				052312FB279AD785003CFB9E /* Preview Content */,
+				054F037F279EDBC500F7271A /* Database.xcdatamodeld */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		052312F9279AD765003CFB9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				05231308279AEEBB003CFB9E /* SideBarContent.swift */,
+				05231305279AE3A3003CFB9E /* SidebarView.swift */,
+				05231302279AE2F0003CFB9E /* AccountsListView.swift */,
+				0523130B279B0881003CFB9E /* AccountView.swift */,
+				054F03AC27A005D100F7271A /* ColorSwatchView.swift */,
+				054F03D727A0290A00F7271A /* TransactionListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		052312FA279AD770003CFB9E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		052312FB279AD785003CFB9E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				052312FC279AD7AE003CFB9E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		054F0392279F3B6700F7271A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				052312DB279AD718003CFB9E /* ContentView.swift */,
+				0523130E279B109E003CFB9E /* NewAccountView.swift */,
+				052312FF279AE05D003CFB9E /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		054F03B227A0125E00F7271A /* SFSymbolsPicker */ = {
+			isa = PBXGroup;
+			children = (
+				054F03B327A012A600F7271A /* SFSymbolsPicker.swift */,
+				054F03B427A012A600F7271A /* Symbols.swift */,
+				054F03B527A012A600F7271A /* UsageExample.swift */,
+			);
+			path = SFSymbolsPicker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		052312D5279AD718003CFB9E /* MoneyOK-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 052312E2279AD719003CFB9E /* Build configuration list for PBXNativeTarget "MoneyOK-iOS" */;
+			buildPhases = (
+				052312D2279AD718003CFB9E /* Sources */,
+				052312D3279AD718003CFB9E /* Frameworks */,
+				052312D4279AD718003CFB9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MoneyOK-iOS";
+			packageProductDependencies = (
+			);
+			productName = "MoneyOK-iOS";
+			productReference = 052312D6279AD718003CFB9E /* MoneyOK-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		052312E8279AD732003CFB9E /* MoneyOK-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 052312F5279AD733003CFB9E /* Build configuration list for PBXNativeTarget "MoneyOK-macOS" */;
+			buildPhases = (
+				052312E5279AD732003CFB9E /* Sources */,
+				052312E6279AD732003CFB9E /* Frameworks */,
+				052312E7279AD732003CFB9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MoneyOK-macOS";
+			productName = "MoneyOK-macOS";
+			productReference = 052312E9279AD732003CFB9E /* MoneyOK-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		052312CC279AD6E7003CFB9E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					052312D5279AD718003CFB9E = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					052312E8279AD732003CFB9E = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 052312CF279AD6E7003CFB9E /* Build configuration list for PBXProject "MoneyOK" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 052312CB279AD6E7003CFB9E;
+			packageReferences = (
+			);
+			productRefGroup = 052312D7279AD718003CFB9E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				052312D5279AD718003CFB9E /* MoneyOK-iOS */,
+				052312E8279AD732003CFB9E /* MoneyOK-macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		052312D4279AD718003CFB9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				052312E1279AD719003CFB9E /* Preview Assets.xcassets in Resources */,
+				052312FD279AD7AE003CFB9E /* Preview Assets.xcassets in Resources */,
+				052312DE279AD719003CFB9E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		052312E7279AD732003CFB9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				052312F3279AD733003CFB9E /* Preview Assets.xcassets in Resources */,
+				052312FE279AD7AE003CFB9E /* Preview Assets.xcassets in Resources */,
+				052312F0279AD733003CFB9E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		052312D2279AD718003CFB9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05231303279AE2F1003CFB9E /* AccountsListView.swift in Sources */,
+				0523130F279B109E003CFB9E /* NewAccountView.swift in Sources */,
+				054F03BA27A012A600F7271A /* UsageExample.swift in Sources */,
+				05231300279AE05D003CFB9E /* SettingsView.swift in Sources */,
+				054F03D327A0283800F7271A /* CategoryIncome+CoreDataClass.swift in Sources */,
+				054F03C727A0283800F7271A /* Transaction+CoreDataClass.swift in Sources */,
+				054F03B827A012A600F7271A /* Symbols.swift in Sources */,
+				054F03CF27A0283800F7271A /* CategoryCosts+CoreDataClass.swift in Sources */,
+				054F03C927A0283800F7271A /* Transaction+CoreDataProperties.swift in Sources */,
+				054F03CB27A0283800F7271A /* Account+CoreDataClass.swift in Sources */,
+				05231309279AEEBB003CFB9E /* SideBarContent.swift in Sources */,
+				054F03BD27A023D100F7271A /* KeyboardListener.swift in Sources */,
+				054F03D527A0283800F7271A /* CategoryIncome+CoreDataProperties.swift in Sources */,
+				054F0381279EDBC500F7271A /* Database.xcdatamodeld in Sources */,
+				05231306279AE3A3003CFB9E /* SidebarView.swift in Sources */,
+				0523130C279B0882003CFB9E /* AccountView.swift in Sources */,
+				052312DC279AD718003CFB9E /* ContentView.swift in Sources */,
+				054F03D827A0290A00F7271A /* TransactionListView.swift in Sources */,
+				052312DA279AD718003CFB9E /* MoneyOK_iOSApp.swift in Sources */,
+				054F03CD27A0283800F7271A /* Account+CoreDataProperties.swift in Sources */,
+				054F03D127A0283800F7271A /* CategoryCosts+CoreDataProperties.swift in Sources */,
+				054F03B627A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
+				054F03AD27A005D100F7271A /* ColorSwatchView.swift in Sources */,
+				054F0384279EE91900F7271A /* PersistenceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		052312E5279AD732003CFB9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				054F03B727A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
+				05231304279AE2F1003CFB9E /* AccountsListView.swift in Sources */,
+				054F03D427A0283800F7271A /* CategoryIncome+CoreDataClass.swift in Sources */,
+				054F03D027A0283800F7271A /* CategoryCosts+CoreDataClass.swift in Sources */,
+				0523130A279AEEBC003CFB9E /* SideBarContent.swift in Sources */,
+				054F03AE27A005D100F7271A /* ColorSwatchView.swift in Sources */,
+				054F03B927A012A600F7271A /* Symbols.swift in Sources */,
+				054F03CA27A0283800F7271A /* Transaction+CoreDataProperties.swift in Sources */,
+				054F0382279EDBC500F7271A /* Database.xcdatamodeld in Sources */,
+				054F03CC27A0283800F7271A /* Account+CoreDataClass.swift in Sources */,
+				054F03D227A0283800F7271A /* CategoryCosts+CoreDataProperties.swift in Sources */,
+				05231307279AE3A3003CFB9E /* SidebarView.swift in Sources */,
+				054F03D627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift in Sources */,
+				054F03BB27A012A600F7271A /* UsageExample.swift in Sources */,
+				054F03CE27A0283800F7271A /* Account+CoreDataProperties.swift in Sources */,
+				0523130D279B0882003CFB9E /* AccountView.swift in Sources */,
+				052312EE279AD732003CFB9E /* ContentView.swift in Sources */,
+				054F03C827A0283800F7271A /* Transaction+CoreDataClass.swift in Sources */,
+				052312EC279AD732003CFB9E /* MoneyOK_macOSApp.swift in Sources */,
+				054F03D927A0290A00F7271A /* TransactionListView.swift in Sources */,
+				054F03BE27A023D100F7271A /* KeyboardListener.swift in Sources */,
+				054F0385279EE91900F7271A /* PersistenceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		052312D0279AD6E7003CFB9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		052312D1279AD6E7003CFB9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		052312E3279AD719003CFB9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyOK-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = U6LJ73DDJU;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sherstyuk.MoneyOK-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		052312E4279AD719003CFB9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyOK-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = U6LJ73DDJU;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sherstyuk.MoneyOK-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		052312F6279AD733003CFB9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "MoneyOK-macOS/MoneyOK_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyOK-macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = U6LJ73DDJU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sherstyuk.MoneyOK-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		052312F7279AD733003CFB9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "MoneyOK-macOS/MoneyOK_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyOK-macOS/Preview Content\"";
+				DEVELOPMENT_TEAM = U6LJ73DDJU;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sherstyuk.MoneyOK-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		052312CF279AD6E7003CFB9E /* Build configuration list for PBXProject "MoneyOK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				052312D0279AD6E7003CFB9E /* Debug */,
+				052312D1279AD6E7003CFB9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		052312E2279AD719003CFB9E /* Build configuration list for PBXNativeTarget "MoneyOK-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				052312E3279AD719003CFB9E /* Debug */,
+				052312E4279AD719003CFB9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		052312F5279AD733003CFB9E /* Build configuration list for PBXNativeTarget "MoneyOK-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				052312F6279AD733003CFB9E /* Debug */,
+				052312F7279AD733003CFB9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		054F037F279EDBC500F7271A /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				054F0380279EDBC500F7271A /* Database.xcdatamodel */,
+			);
+			currentVersion = 054F0380279EDBC500F7271A /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 052312CC279AD6E7003CFB9E /* Project object */;
+}
