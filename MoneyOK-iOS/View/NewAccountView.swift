@@ -41,7 +41,9 @@ struct NewAccountView: View {
                         ZStack {
                             Circle()
                                 .fill(Color(selectionColor))
-                                .frame(width: 90, height: 90).padding()
+                                .frame(width: 90, height: 90)
+                                .shadow(radius: 10)
+                                .padding()
                             
                             Image(systemName: selectionIcon)
                                 .font(Font.largeTitle)

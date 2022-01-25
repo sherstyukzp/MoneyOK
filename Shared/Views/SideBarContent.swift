@@ -16,12 +16,7 @@ struct SideBarContent: View {
         
         AccountsListView()
             .listStyle(SidebarListStyle())
-            
-            
-        
-        
-        
-        
+          
         
     }
 }

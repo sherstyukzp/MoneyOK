@@ -12,9 +12,12 @@ struct AccountsListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
+        entity: Account.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \Account.nameAccount, ascending: true)],
         animation: .default)
     private var accounts: FetchedResults<Account>
+    
+    @State private var showingUpdateAccount = false
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -31,14 +34,28 @@ struct AccountsListView: View {
                         
                         AccountView(colorAccount: account.colorAccount!, iconAccount: account.iconAccount!, nameAccount: account.nameAccount! , balance: account.balanceAccount)
                     }
-                    
-                    
+                    .contextMenu {
+                        Button {
+                            self.showingUpdateAccount.toggle()
+                        } label: {
+                            Label("Edit", systemImage: "highlighter")
+                        }
+                        Button {
+                            
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
+                    .sheet(isPresented: $showingUpdateAccount) {
+                        UpdateAccountView(account: account).environment(\.managedObjectContext, self.viewContext)
+                    }
                     
                 }.onDelete(perform: deleteAccount)
                 
             }
         }
     }
+    
     
     
     private func deleteAccount(offsets: IndexSet) {
