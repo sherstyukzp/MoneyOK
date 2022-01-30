@@ -75,14 +75,21 @@ struct AccountCallView: View {
             NewAccountView(showAdd: $isEdit)
         }
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
-            Button {
-                accountListVM.isFavorite(account: accountListItem, context: viewContext)
-            } label: {
-                Label("Favorite", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
-            }.tint(.green)
+            if accountListItem.isArchive == false {
+                Button {
+                    accountListVM.isFavorite(account: accountListItem, context: viewContext)
+                } label: {
+                    Label("Favorite", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
+                }.tint(.green)
+            }
+            
             
             Button {
                 accountListVM.isArchive(account: accountListItem, context: viewContext)
+                if accountListItem.isFavorite == true {
+                    accountListVM.isFavorite(account: accountListItem, context: viewContext)
+                }
+                
             } label: {
                 Label("Archive", systemImage: accountListItem.isArchive ? "archivebox.fill" : "archivebox")
             }.tint(.gray)
