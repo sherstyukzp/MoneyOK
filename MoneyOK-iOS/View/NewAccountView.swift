@@ -14,15 +14,15 @@ struct NewAccountView: View {
     
     @Binding var showAdd: Bool
     
-    @State private var startBalance: Double = 0.0
-    @State private var noteAccount: String = ""
     @State private var isPresentedIcon: Bool = true
     
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
-    //    var disableForm: Bool {
-    //        nameAccount == ""
-    //    }
+        var disableForm: Bool {
+            accountListVM.nameAccountSave.isEmpty ||
+            accountListVM.iconAccountSave.isEmpty ||
+            accountListVM.colorAccountSave.isEmpty
+        }
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -37,15 +37,15 @@ struct NewAccountView: View {
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(Color(accountListVM.colorAccountSave))
+                                .fill(Color(accountListVM.colorAccountSave.isEmpty ? "swatch_articblue" : accountListVM.colorAccountSave))
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 10)
                                 .padding()
-                            // TODO: Добавить иконку
-                            Image(systemName: accountListVM.iconAccountSave)
+                            Image(systemName: accountListVM.iconAccountSave.isEmpty ? "creditcard.fill" : accountListVM.iconAccountSave)
                                 .font(Font.largeTitle)
                                 .foregroundColor(Color.white)
                         }
+                        
                         
                         TextField("Name account", text: $accountListVM.nameAccountSave)
                             .padding()
@@ -55,7 +55,7 @@ struct NewAccountView: View {
                     }
                 }
                 Section(header: Text("Color")) {
-                    // TODO: Добавить цвет
+                    
                     ColorSwatchView(selection: $accountListVM.colorAccountSave)
                 }
                 Section(header: Text("Icon")) {
@@ -80,15 +80,10 @@ struct NewAccountView: View {
                     self.showAdd.toggle()
                 }) {
                     Text(accountListVM.accountListItem == nil ? "Save" : "Update")
-                }//.disabled(disableForm)
+                }.disabled(disableForm)
                 )
-            
-            
         }
-        
     }
-    
-    
 }
 
 struct NewAccountView_Previews: PreviewProvider {

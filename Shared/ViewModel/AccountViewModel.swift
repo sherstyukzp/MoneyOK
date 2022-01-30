@@ -11,8 +11,8 @@ import CoreData
 class AccountViewModel: ObservableObject {
     
     @Published var nameAccountSave = ""
-    @Published var iconAccountSave = ""
-    @Published var colorAccountSave = ""
+    @Published var iconAccountSave = "creditcard.fill"
+    @Published var colorAccountSave = "swatch_articblue"
     @Published var noteAccountSave = ""
     @Published var balanceAccountSave = 0.0
 

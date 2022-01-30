@@ -28,9 +28,11 @@ struct AccountsListView: View {
     var body: some View {
         
         List {
-            Section("Favorite") {
-                ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { item in
-                    AccountCallView(accountListItem: item)
+            if !(fetchedAccountList.filter{$0.isFavorite == true}).isEmpty {
+                Section("Favorite") {
+                    ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { item in
+                        AccountCallView(accountListItem: item)
+                    }
                 }
             }
             
@@ -39,12 +41,14 @@ struct AccountsListView: View {
                     AccountCallView(accountListItem: item)
                 }
             }
-            
-            Section("Archive") {
-                ForEach(fetchedAccountList.filter{$0.isArchive == true}) { item in
-                    AccountCallView(accountListItem: item)
+            if !(fetchedAccountList.filter{$0.isArchive == true}).isEmpty {
+                Section("Archive") {
+                    ForEach(fetchedAccountList.filter{$0.isArchive == true}) { item in
+                        AccountCallView(accountListItem: item)
+                    }
                 }
             }
+            
             
         }.sheet(isPresented: $addAccountView) {
             NewAccountView(showAdd: $addAccountView)

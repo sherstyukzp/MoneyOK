@@ -20,7 +20,7 @@ struct AccountCallView: View {
         HStack {
             ZStack {
                 Circle()
-                    .fill(Color(accountListItem.colorAccount ?? "swatch_asparagus" ))
+                    .fill(Color(accountListItem.colorAccount ?? "swatch_asparagus"))
                     .frame(width: 32, height: 32)
                 Image(systemName: accountListItem.iconAccount ?? "plus" )
                     .foregroundColor(Color.white)
@@ -35,13 +35,20 @@ struct AccountCallView: View {
             
         }
         .contextMenu {
-            Button {
-                accountListVM.isFavorite(account: accountListItem, context: viewContext)
-            } label: {
-                Label("Favorite", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
+            if accountListItem.isArchive == false {
+                Button {
+                    accountListVM.isFavorite(account: accountListItem, context: viewContext)
+                } label: {
+                    Label("Favorite", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
+                }
             }
+            
             Button {
                 accountListVM.nameAccountSave = accountListItem.nameAccount!
+                accountListVM.iconAccountSave = accountListItem.iconAccount!
+                accountListVM.colorAccountSave = accountListItem.colorAccount!
+                accountListVM.balanceAccountSave = accountListItem.balanceAccount
+                accountListVM.noteAccountSave = accountListItem.noteAccount!
                 accountListVM.accountListItem = accountListItem
                 self.isEdit.toggle()
             } label: {
@@ -50,6 +57,10 @@ struct AccountCallView: View {
             
             Button {
                 accountListVM.isArchive(account: accountListItem, context: viewContext)
+                if accountListItem.isFavorite == true {
+                    accountListVM.isFavorite(account: accountListItem, context: viewContext)
+                }
+                
             } label: {
                 Label("Archive", systemImage: accountListItem.isArchive ? "archivebox.fill" : "archivebox")
             }
@@ -86,6 +97,10 @@ struct AccountCallView: View {
             
             Button {
                 accountListVM.nameAccountSave = accountListItem.nameAccount!
+                accountListVM.iconAccountSave = accountListItem.iconAccount!
+                accountListVM.colorAccountSave = accountListItem.colorAccount!
+                accountListVM.balanceAccountSave = accountListItem.balanceAccount
+                accountListVM.noteAccountSave = accountListItem.noteAccount!
                 accountListVM.accountListItem = accountListItem
                 self.isEdit.toggle()
             } label: {
