@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SideBarContent: View {
     
-    @State var isProfileExpanded = true
-    
     var body: some View {
         // Это будет главный экран
         

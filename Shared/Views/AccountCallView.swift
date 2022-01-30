@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct AccountCallView: View {
-    //    @State var colorAccount: String
-    //    @State var iconAccount: String
-    //    @State var nameAccount: String
-    //    @State var balance: Double
     
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var accountListVM: AccountViewModel
@@ -45,7 +41,7 @@ struct AccountCallView: View {
                 Label("Favorite", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
             }
             Button {
-                accountListVM.accountListTitle = accountListItem.nameAccount!
+                accountListVM.nameAccountSave = accountListItem.nameAccount!
                 accountListVM.accountListItem = accountListItem
                 self.isEdit.toggle()
             } label: {
@@ -89,7 +85,7 @@ struct AccountCallView: View {
             }
             
             Button {
-                accountListVM.accountListTitle = accountListItem.nameAccount!
+                accountListVM.nameAccountSave = accountListItem.nameAccount!
                 accountListVM.accountListItem = accountListItem
                 self.isEdit.toggle()
             } label: {

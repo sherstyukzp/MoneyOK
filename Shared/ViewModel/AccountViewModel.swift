@@ -10,8 +10,12 @@ import CoreData
 
 class AccountViewModel: ObservableObject {
     
-    @Published var accountListTitle = ""
-    // тут ещё данные аккаунта
+    @Published var nameAccountSave = ""
+    @Published var iconAccountSave = ""
+    @Published var colorAccountSave = ""
+    @Published var noteAccountSave = ""
+    @Published var balanceAccountSave = 0.0
+
     @Published var accountListItem: AccountEntity!
     
     func createTask(context: NSManagedObjectContext) {
@@ -19,15 +23,28 @@ class AccountViewModel: ObservableObject {
         if accountListItem == nil {
             let account = AccountEntity(context: context)
             account.idAccount = UUID()
-            account.nameAccount = accountListTitle
+            account.nameAccount = nameAccountSave
+            account.iconAccount = iconAccountSave
+            account.colorAccount = colorAccountSave
+            account.noteAccount = noteAccountSave
+            account.balanceAccount = balanceAccountSave
             account.dateOfCreation = Date()
-            // TODO: Добавить остальные данные
+            
         } else {
-            accountListItem.nameAccount = accountListTitle
+            accountListItem.nameAccount = nameAccountSave
+            accountListItem.iconAccount = iconAccountSave
+            accountListItem.colorAccount = colorAccountSave
+            accountListItem.noteAccount = noteAccountSave
+            accountListItem.balanceAccount = balanceAccountSave
         }
         
         save(context: context)
-        accountListTitle = ""
+        nameAccountSave = ""
+        iconAccountSave = ""
+        colorAccountSave = ""
+        noteAccountSave = ""
+        balanceAccountSave = 0.0
+        
     }
     
     

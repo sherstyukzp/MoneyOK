@@ -48,38 +48,11 @@ struct AccountsListView: View {
             
         }.sheet(isPresented: $addAccountView) {
             NewAccountView(showAdd: $addAccountView)
-      }
+        }
         
-//        List {
-//            Section(header: Text("Accounts")) {
-//                ForEach(self.accounts, id:\.self) { (account: Account) in
-//                    NavigationLink(destination: TransactionListView(account: account).environment(\.managedObjectContext, self.viewContext)) {
-//
-//                        AccountCallView(colorAccount: account.colorAccount!, iconAccount: account.iconAccount!, nameAccount: account.nameAccount! , balance: account.balanceAccount)
-//                    }
-//                    .contextMenu {
-//                        Button {
-//                            self.showingUpdateAccount.toggle()
-//                        } label: {
-//                            Label("Edit", systemImage: "highlighter")
-//                        }
-//                        Button {
-//
-//                        } label: {
-//                            Label("Delete", systemImage: "trash")
-//                        }
-//                    }
-//
-//
-//                }.onDelete(perform: deleteAccount)
-//
-//            }
-//        }.onAppear(perform: {
-//        })
-            
     }
     
-
+    
 }
 
 

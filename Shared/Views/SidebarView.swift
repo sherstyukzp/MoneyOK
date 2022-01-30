@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SidebarView: View {
     
+    @EnvironmentObject var accountListVM: AccountViewModel
+    
     @State private var showingNewAccount = false
     
     var body: some View {
@@ -31,6 +33,8 @@ struct SidebarView: View {
                         })
                         Spacer()
                         Button(action: {
+                            accountListVM.nameAccountSave = ""
+                            accountListVM.accountListItem = nil
                             self.showingNewAccount.toggle()
                         }, label: {
                             Text("Доб. счёт")
