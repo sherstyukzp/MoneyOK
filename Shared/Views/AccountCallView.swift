@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct AccountCallView: View {
-//    @State var colorAccount: String
-//    @State var iconAccount: String
-//    @State var nameAccount: String
-//    @State var balance: Double
+    //    @State var colorAccount: String
+    //    @State var iconAccount: String
+    //    @State var nameAccount: String
+    //    @State var balance: Double
     
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var accountListVM: AccountViewModel
@@ -38,6 +38,32 @@ struct AccountCallView: View {
             }
             
         }
+        .contextMenu {
+            Button {
+                accountListVM.isFavorite(account: accountListItem, context: viewContext)
+            } label: {
+                Label("Favorite", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
+            }
+            Button {
+                accountListVM.accountListTitle = accountListItem.nameAccount!
+                accountListVM.accountListItem = accountListItem
+                self.isEdit.toggle()
+            } label: {
+                Label("Edit", systemImage: "highlighter")
+            }
+            
+            Button {
+                accountListVM.isArchive(account: accountListItem, context: viewContext)
+            } label: {
+                Label("Archive", systemImage: accountListItem.isArchive ? "archivebox.fill" : "archivebox")
+            }
+            Divider()
+            Button(role: .destructive) {
+                accountListVM.delete(account: accountListItem, context: viewContext)
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+        }
         .sheet(isPresented: $isEdit) {
             NewAccountView(showAdd: $isEdit)
         }
@@ -61,7 +87,7 @@ struct AccountCallView: View {
             } label: {
                 Label("Delete", systemImage: "trash")
             }
-
+            
             Button {
                 accountListVM.accountListTitle = accountListItem.nameAccount!
                 accountListVM.accountListItem = accountListItem
@@ -71,12 +97,13 @@ struct AccountCallView: View {
             }.tint(.yellow)
             
         }
+        
     }
 }
 
 struct AccountCallView_Previews: PreviewProvider {
     static var previews: some View {
         AccountCallView(accountListItem: AccountEntity())
-            
+        
     }
 }
