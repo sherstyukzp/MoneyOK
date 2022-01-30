@@ -6,18 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AccountsListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var accountListVM: AccountViewModel
     
-    @FetchRequest(
-        entity: Account.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Account.nameAccount, ascending: true)],
-        animation: .default)
-    private var accounts: FetchedResults<Account>
+    @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(key: "dateOfCreation", ascending: true)])
+    var fetchedAccountList: FetchedResults<AccountEntity>
     
-    @State private var showingUpdateAccount = false
+    @State private var addAccountView = false
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -25,45 +24,62 @@ struct AccountsListView: View {
         return formatter
     }
     
+    
     var body: some View {
         
         List {
-            Section(header: Text("Accounts")) {
-                ForEach(self.accounts, id:\.self) { (account: Account) in
-                    NavigationLink(destination: TransactionListView(account: account).environment(\.managedObjectContext, self.viewContext)) {
-                        
-                        AccountView(colorAccount: account.colorAccount!, iconAccount: account.iconAccount!, nameAccount: account.nameAccount! , balance: account.balanceAccount)
-                    }
-                    .contextMenu {
-                        Button {
-                            self.showingUpdateAccount.toggle()
-                        } label: {
-                            Label("Edit", systemImage: "highlighter")
-                        }
-                        Button {
-                            
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    }
-                    .sheet(isPresented: $showingUpdateAccount) {
-                        UpdateAccountView(account: account).environment(\.managedObjectContext, self.viewContext)
-                    }
-                    
-                }.onDelete(perform: deleteAccount)
-                
+            Section("Favorite") {
+                ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { item in
+                    AccountCallView(accountListItem: item)
+                }
             }
-        }
+            
+            Section("Accounts") {
+                ForEach(fetchedAccountList.filter{$0.isFavorite == false && $0.isArchive == false}) { item in
+                    AccountCallView(accountListItem: item)
+                }
+            }
+            
+            Section("Archive") {
+                ForEach(fetchedAccountList.filter{$0.isArchive == true}) { item in
+                    AccountCallView(accountListItem: item)
+                }
+            }
+            
+        }.sheet(isPresented: $addAccountView) {
+            NewAccountView(showAdd: $addAccountView)
+      }
+        
+//        List {
+//            Section(header: Text("Accounts")) {
+//                ForEach(self.accounts, id:\.self) { (account: Account) in
+//                    NavigationLink(destination: TransactionListView(account: account).environment(\.managedObjectContext, self.viewContext)) {
+//
+//                        AccountCallView(colorAccount: account.colorAccount!, iconAccount: account.iconAccount!, nameAccount: account.nameAccount! , balance: account.balanceAccount)
+//                    }
+//                    .contextMenu {
+//                        Button {
+//                            self.showingUpdateAccount.toggle()
+//                        } label: {
+//                            Label("Edit", systemImage: "highlighter")
+//                        }
+//                        Button {
+//
+//                        } label: {
+//                            Label("Delete", systemImage: "trash")
+//                        }
+//                    }
+//
+//
+//                }.onDelete(perform: deleteAccount)
+//
+//            }
+//        }.onAppear(perform: {
+//        })
+            
     }
     
-    
-    
-    private func deleteAccount(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { accounts[$0] }.forEach(viewContext.delete)
-            PersistenceController.shared.saveContext()
-        }
-    }
+
 }
 
 

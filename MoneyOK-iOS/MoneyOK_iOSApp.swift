@@ -11,15 +11,16 @@ import SwiftUI
 struct MoneyOK_iOSApp: App {
     
     @Environment(\.scenePhase) var scenePhase
-        
-        let persistenceController = PersistenceController.shared
+    
+    let persistenceController = PersistenceController.shared
+    
+    @StateObject var accountListViewModel = AccountViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.viewContext)
-        }.onChange(of: scenePhase) { _ in
-            persistenceController.saveContext()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(accountListViewModel)
         }
     }
 }

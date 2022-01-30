@@ -24,8 +24,8 @@
 		05231307279AE3A3003CFB9E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231305279AE3A3003CFB9E /* SidebarView.swift */; };
 		05231309279AEEBB003CFB9E /* SideBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231308279AEEBB003CFB9E /* SideBarContent.swift */; };
 		0523130A279AEEBC003CFB9E /* SideBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231308279AEEBB003CFB9E /* SideBarContent.swift */; };
-		0523130C279B0882003CFB9E /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountView.swift */; };
-		0523130D279B0882003CFB9E /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountView.swift */; };
+		0523130C279B0882003CFB9E /* AccountCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountCallView.swift */; };
+		0523130D279B0882003CFB9E /* AccountCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountCallView.swift */; };
 		054F0381279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
 		054F0382279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
 		054F0384279EE91900F7271A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F0383279EE91900F7271A /* PersistenceController.swift */; };
@@ -40,26 +40,25 @@
 		054F03BB27A012A600F7271A /* UsageExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03B527A012A600F7271A /* UsageExample.swift */; };
 		054F03BD27A023D100F7271A /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03BC27A023D100F7271A /* KeyboardListener.swift */; };
 		054F03BE27A023D100F7271A /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03BC27A023D100F7271A /* KeyboardListener.swift */; };
-		054F03C727A0283800F7271A /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03BF27A0283800F7271A /* Transaction+CoreDataClass.swift */; };
-		054F03C827A0283800F7271A /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03BF27A0283800F7271A /* Transaction+CoreDataClass.swift */; };
-		054F03C927A0283800F7271A /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C027A0283800F7271A /* Transaction+CoreDataProperties.swift */; };
-		054F03CA27A0283800F7271A /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C027A0283800F7271A /* Transaction+CoreDataProperties.swift */; };
-		054F03CB27A0283800F7271A /* Account+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C127A0283800F7271A /* Account+CoreDataClass.swift */; };
-		054F03CC27A0283800F7271A /* Account+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C127A0283800F7271A /* Account+CoreDataClass.swift */; };
-		054F03CD27A0283800F7271A /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C227A0283800F7271A /* Account+CoreDataProperties.swift */; };
-		054F03CE27A0283800F7271A /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C227A0283800F7271A /* Account+CoreDataProperties.swift */; };
-		054F03CF27A0283800F7271A /* CategoryCosts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C327A0283800F7271A /* CategoryCosts+CoreDataClass.swift */; };
-		054F03D027A0283800F7271A /* CategoryCosts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C327A0283800F7271A /* CategoryCosts+CoreDataClass.swift */; };
-		054F03D127A0283800F7271A /* CategoryCosts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C427A0283800F7271A /* CategoryCosts+CoreDataProperties.swift */; };
-		054F03D227A0283800F7271A /* CategoryCosts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C427A0283800F7271A /* CategoryCosts+CoreDataProperties.swift */; };
-		054F03D327A0283800F7271A /* CategoryIncome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C527A0283800F7271A /* CategoryIncome+CoreDataClass.swift */; };
-		054F03D427A0283800F7271A /* CategoryIncome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C527A0283800F7271A /* CategoryIncome+CoreDataClass.swift */; };
-		054F03D527A0283800F7271A /* CategoryIncome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift */; };
-		054F03D627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03C627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift */; };
-		054F03D827A0290A00F7271A /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03D727A0290A00F7271A /* TransactionListView.swift */; };
-		054F03D927A0290A00F7271A /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F03D727A0290A00F7271A /* TransactionListView.swift */; };
-		0577CCBE27A03F99001D4724 /* UpdateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0577CCBD27A03F99001D4724 /* UpdateAccountView.swift */; };
 		0577CCC027A04B9D001D4724 /* NewAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0577CCBF27A04B9D001D4724 /* NewAccountView.swift */; };
+		05FC501027A6DD6600708D3C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC500F27A6DD6600708D3C /* AccountViewModel.swift */; };
+		05FC501127A6DD6600708D3C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC500F27A6DD6600708D3C /* AccountViewModel.swift */; };
+		05FC501A27A6E91200708D3C /* AccountEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501227A6E91200708D3C /* AccountEntity+CoreDataClass.swift */; };
+		05FC501B27A6E91200708D3C /* AccountEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501227A6E91200708D3C /* AccountEntity+CoreDataClass.swift */; };
+		05FC501C27A6E91200708D3C /* AccountEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501327A6E91200708D3C /* AccountEntity+CoreDataProperties.swift */; };
+		05FC501D27A6E91200708D3C /* AccountEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501327A6E91200708D3C /* AccountEntity+CoreDataProperties.swift */; };
+		05FC501E27A6E91200708D3C /* CategoryIncome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501427A6E91200708D3C /* CategoryIncome+CoreDataClass.swift */; };
+		05FC501F27A6E91200708D3C /* CategoryIncome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501427A6E91200708D3C /* CategoryIncome+CoreDataClass.swift */; };
+		05FC502027A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501527A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift */; };
+		05FC502127A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501527A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift */; };
+		05FC502227A6E91200708D3C /* CategoryCosts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501627A6E91200708D3C /* CategoryCosts+CoreDataClass.swift */; };
+		05FC502327A6E91200708D3C /* CategoryCosts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501627A6E91200708D3C /* CategoryCosts+CoreDataClass.swift */; };
+		05FC502427A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501727A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift */; };
+		05FC502527A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501727A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift */; };
+		05FC502627A6E91200708D3C /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501827A6E91200708D3C /* Transaction+CoreDataClass.swift */; };
+		05FC502727A6E91200708D3C /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501827A6E91200708D3C /* Transaction+CoreDataClass.swift */; };
+		05FC502827A6E91200708D3C /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501927A6E91200708D3C /* Transaction+CoreDataProperties.swift */; };
+		05FC502927A6E91200708D3C /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501927A6E91200708D3C /* Transaction+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +78,7 @@
 		05231302279AE2F0003CFB9E /* AccountsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListView.swift; sourceTree = "<group>"; };
 		05231305279AE3A3003CFB9E /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		05231308279AEEBB003CFB9E /* SideBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarContent.swift; sourceTree = "<group>"; };
-		0523130B279B0881003CFB9E /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		0523130B279B0881003CFB9E /* AccountCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCallView.swift; sourceTree = "<group>"; };
 		054F0380279EDBC500F7271A /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		054F0383279EE91900F7271A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		054F03AC27A005D100F7271A /* ColorSwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchView.swift; sourceTree = "<group>"; };
@@ -87,17 +86,16 @@
 		054F03B427A012A600F7271A /* Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		054F03B527A012A600F7271A /* UsageExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageExample.swift; sourceTree = "<group>"; };
 		054F03BC27A023D100F7271A /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
-		054F03BF27A0283800F7271A /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
-		054F03C027A0283800F7271A /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		054F03C127A0283800F7271A /* Account+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataClass.swift"; sourceTree = "<group>"; };
-		054F03C227A0283800F7271A /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		054F03C327A0283800F7271A /* CategoryCosts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataClass.swift"; sourceTree = "<group>"; };
-		054F03C427A0283800F7271A /* CategoryCosts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		054F03C527A0283800F7271A /* CategoryIncome+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryIncome+CoreDataClass.swift"; sourceTree = "<group>"; };
-		054F03C627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryIncome+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		054F03D727A0290A00F7271A /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
-		0577CCBD27A03F99001D4724 /* UpdateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountView.swift; sourceTree = "<group>"; };
 		0577CCBF27A04B9D001D4724 /* NewAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAccountView.swift; sourceTree = "<group>"; };
+		05FC500F27A6DD6600708D3C /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		05FC501227A6E91200708D3C /* AccountEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05FC501327A6E91200708D3C /* AccountEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05FC501427A6E91200708D3C /* CategoryIncome+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryIncome+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05FC501527A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryIncome+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05FC501627A6E91200708D3C /* CategoryCosts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05FC501727A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05FC501827A6E91200708D3C /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05FC501927A6E91200708D3C /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,14 +119,14 @@
 		052312CB279AD6E7003CFB9E = {
 			isa = PBXGroup;
 			children = (
-				054F03BF27A0283800F7271A /* Transaction+CoreDataClass.swift */,
-				054F03C027A0283800F7271A /* Transaction+CoreDataProperties.swift */,
-				054F03C127A0283800F7271A /* Account+CoreDataClass.swift */,
-				054F03C227A0283800F7271A /* Account+CoreDataProperties.swift */,
-				054F03C327A0283800F7271A /* CategoryCosts+CoreDataClass.swift */,
-				054F03C427A0283800F7271A /* CategoryCosts+CoreDataProperties.swift */,
-				054F03C527A0283800F7271A /* CategoryIncome+CoreDataClass.swift */,
-				054F03C627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift */,
+				05FC501227A6E91200708D3C /* AccountEntity+CoreDataClass.swift */,
+				05FC501327A6E91200708D3C /* AccountEntity+CoreDataProperties.swift */,
+				05FC501427A6E91200708D3C /* CategoryIncome+CoreDataClass.swift */,
+				05FC501527A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift */,
+				05FC501627A6E91200708D3C /* CategoryCosts+CoreDataClass.swift */,
+				05FC501727A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift */,
+				05FC501827A6E91200708D3C /* Transaction+CoreDataClass.swift */,
+				05FC501927A6E91200708D3C /* Transaction+CoreDataProperties.swift */,
 				052312F8279AD73E003CFB9E /* Shared */,
 				052312D8279AD718003CFB9E /* MoneyOK-iOS */,
 				052312EA279AD732003CFB9E /* MoneyOK-macOS */,
@@ -192,6 +190,7 @@
 				054F0383279EE91900F7271A /* PersistenceController.swift */,
 				052312FA279AD770003CFB9E /* Models */,
 				052312F9279AD765003CFB9E /* Views */,
+				05D9468C27A2C47800C4068E /* ViewModel */,
 				052312FB279AD785003CFB9E /* Preview Content */,
 				054F037F279EDBC500F7271A /* Database.xcdatamodeld */,
 			);
@@ -204,9 +203,8 @@
 				05231308279AEEBB003CFB9E /* SideBarContent.swift */,
 				05231305279AE3A3003CFB9E /* SidebarView.swift */,
 				05231302279AE2F0003CFB9E /* AccountsListView.swift */,
-				0523130B279B0881003CFB9E /* AccountView.swift */,
+				0523130B279B0881003CFB9E /* AccountCallView.swift */,
 				054F03AC27A005D100F7271A /* ColorSwatchView.swift */,
-				054F03D727A0290A00F7271A /* TransactionListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,7 +230,6 @@
 				052312DB279AD718003CFB9E /* ContentView.swift */,
 				052312FF279AE05D003CFB9E /* SettingsView.swift */,
 				0577CCBF27A04B9D001D4724 /* NewAccountView.swift */,
-				0577CCBD27A03F99001D4724 /* UpdateAccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,6 +242,14 @@
 				054F03B527A012A600F7271A /* UsageExample.swift */,
 			);
 			path = SFSymbolsPicker;
+			sourceTree = "<group>";
+		};
+		05D9468C27A2C47800C4068E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				05FC500F27A6DD6600708D3C /* AccountViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,26 +360,25 @@
 			files = (
 				05231303279AE2F1003CFB9E /* AccountsListView.swift in Sources */,
 				054F03BA27A012A600F7271A /* UsageExample.swift in Sources */,
+				05FC501E27A6E91200708D3C /* CategoryIncome+CoreDataClass.swift in Sources */,
 				05231300279AE05D003CFB9E /* SettingsView.swift in Sources */,
-				054F03D327A0283800F7271A /* CategoryIncome+CoreDataClass.swift in Sources */,
-				0577CCBE27A03F99001D4724 /* UpdateAccountView.swift in Sources */,
-				054F03C727A0283800F7271A /* Transaction+CoreDataClass.swift in Sources */,
+				05FC502627A6E91200708D3C /* Transaction+CoreDataClass.swift in Sources */,
+				05FC502827A6E91200708D3C /* Transaction+CoreDataProperties.swift in Sources */,
 				054F03B827A012A600F7271A /* Symbols.swift in Sources */,
-				054F03CF27A0283800F7271A /* CategoryCosts+CoreDataClass.swift in Sources */,
 				0577CCC027A04B9D001D4724 /* NewAccountView.swift in Sources */,
-				054F03C927A0283800F7271A /* Transaction+CoreDataProperties.swift in Sources */,
-				054F03CB27A0283800F7271A /* Account+CoreDataClass.swift in Sources */,
 				05231309279AEEBB003CFB9E /* SideBarContent.swift in Sources */,
 				054F03BD27A023D100F7271A /* KeyboardListener.swift in Sources */,
-				054F03D527A0283800F7271A /* CategoryIncome+CoreDataProperties.swift in Sources */,
 				054F0381279EDBC500F7271A /* Database.xcdatamodeld in Sources */,
 				05231306279AE3A3003CFB9E /* SidebarView.swift in Sources */,
-				0523130C279B0882003CFB9E /* AccountView.swift in Sources */,
+				0523130C279B0882003CFB9E /* AccountCallView.swift in Sources */,
 				052312DC279AD718003CFB9E /* ContentView.swift in Sources */,
-				054F03D827A0290A00F7271A /* TransactionListView.swift in Sources */,
+				05FC502427A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift in Sources */,
+				05FC502227A6E91200708D3C /* CategoryCosts+CoreDataClass.swift in Sources */,
+				05FC502027A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift in Sources */,
 				052312DA279AD718003CFB9E /* MoneyOK_iOSApp.swift in Sources */,
-				054F03CD27A0283800F7271A /* Account+CoreDataProperties.swift in Sources */,
-				054F03D127A0283800F7271A /* CategoryCosts+CoreDataProperties.swift in Sources */,
+				05FC501027A6DD6600708D3C /* AccountViewModel.swift in Sources */,
+				05FC501C27A6E91200708D3C /* AccountEntity+CoreDataProperties.swift in Sources */,
+				05FC501A27A6E91200708D3C /* AccountEntity+CoreDataClass.swift in Sources */,
 				054F03B627A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
 				054F03AD27A005D100F7271A /* ColorSwatchView.swift in Sources */,
 				054F0384279EE91900F7271A /* PersistenceController.swift in Sources */,
@@ -387,25 +391,25 @@
 			files = (
 				054F03B727A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
 				05231304279AE2F1003CFB9E /* AccountsListView.swift in Sources */,
-				054F03D427A0283800F7271A /* CategoryIncome+CoreDataClass.swift in Sources */,
-				054F03D027A0283800F7271A /* CategoryCosts+CoreDataClass.swift in Sources */,
+				05FC502727A6E91200708D3C /* Transaction+CoreDataClass.swift in Sources */,
 				0523130A279AEEBC003CFB9E /* SideBarContent.swift in Sources */,
 				054F03AE27A005D100F7271A /* ColorSwatchView.swift in Sources */,
 				054F03B927A012A600F7271A /* Symbols.swift in Sources */,
-				054F03CA27A0283800F7271A /* Transaction+CoreDataProperties.swift in Sources */,
 				054F0382279EDBC500F7271A /* Database.xcdatamodeld in Sources */,
-				054F03CC27A0283800F7271A /* Account+CoreDataClass.swift in Sources */,
-				054F03D227A0283800F7271A /* CategoryCosts+CoreDataProperties.swift in Sources */,
+				05FC502327A6E91200708D3C /* CategoryCosts+CoreDataClass.swift in Sources */,
+				05FC501D27A6E91200708D3C /* AccountEntity+CoreDataProperties.swift in Sources */,
+				05FC501127A6DD6600708D3C /* AccountViewModel.swift in Sources */,
 				05231307279AE3A3003CFB9E /* SidebarView.swift in Sources */,
-				054F03D627A0283800F7271A /* CategoryIncome+CoreDataProperties.swift in Sources */,
 				054F03BB27A012A600F7271A /* UsageExample.swift in Sources */,
-				054F03CE27A0283800F7271A /* Account+CoreDataProperties.swift in Sources */,
-				0523130D279B0882003CFB9E /* AccountView.swift in Sources */,
+				05FC501F27A6E91200708D3C /* CategoryIncome+CoreDataClass.swift in Sources */,
+				0523130D279B0882003CFB9E /* AccountCallView.swift in Sources */,
 				052312EE279AD732003CFB9E /* ContentView.swift in Sources */,
-				054F03C827A0283800F7271A /* Transaction+CoreDataClass.swift in Sources */,
 				052312EC279AD732003CFB9E /* MoneyOK_macOSApp.swift in Sources */,
-				054F03D927A0290A00F7271A /* TransactionListView.swift in Sources */,
+				05FC502127A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift in Sources */,
+				05FC502527A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift in Sources */,
 				054F03BE27A023D100F7271A /* KeyboardListener.swift in Sources */,
+				05FC502927A6E91200708D3C /* Transaction+CoreDataProperties.swift in Sources */,
+				05FC501B27A6E91200708D3C /* AccountEntity+CoreDataClass.swift in Sources */,
 				054F0385279EE91900F7271A /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

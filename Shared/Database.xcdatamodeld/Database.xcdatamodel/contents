@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Account" representedClassName="Account" syncable="YES">
+    <entity name="AccountEntity" representedClassName="AccountEntity" syncable="YES">
         <attribute name="balanceAccount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="colorAccount" optional="YES" attributeType="String"/>
         <attribute name="dateOfCreation" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="iconAccount" optional="YES" attributeType="String"/>
         <attribute name="idAccount" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isArchive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="nameAccount" optional="YES" attributeType="String"/>
         <attribute name="noteAccount" optional="YES" attributeType="String"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="accounts" inverseEntity="Transaction"/>
@@ -29,14 +31,14 @@
         <attribute name="nameTransaction" optional="YES" attributeType="String"/>
         <attribute name="noteTransaction" optional="YES" attributeType="String"/>
         <attribute name="sumTransaction" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="accounts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="transactions" inverseEntity="Account"/>
+        <relationship name="accounts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountEntity" inverseName="transactions" inverseEntity="AccountEntity"/>
         <relationship name="categoryCosts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryCosts" inverseName="transactionsCosts" inverseEntity="CategoryCosts"/>
         <relationship name="categoryIncome" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryIncome" inverseName="transactionIncome" inverseEntity="CategoryIncome"/>
     </entity>
     <elements>
-        <element name="Account" positionX="-363.5625" positionY="-156.3125" width="128" height="163"/>
-        <element name="Transaction" positionX="-5.05078125" positionY="-188.171875" width="128" height="148"/>
+        <element name="AccountEntity" positionX="-363.5625" positionY="-156.3125" width="128" height="179"/>
         <element name="CategoryCosts" positionX="-187.4296875" positionY="81.5390625" width="128" height="118"/>
         <element name="CategoryIncome" positionX="48.71484375" positionY="93.734375" width="128" height="118"/>
+        <element name="Transaction" positionX="-5.05078125" positionY="-188.171875" width="128" height="148"/>
     </elements>
 </model>

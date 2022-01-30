@@ -39,7 +39,7 @@ struct SidebarView: View {
                 }
             }
             .sheet(isPresented: $showingNewAccount) {
-                        NewAccountView()
+                NewAccountView(showAdd: $showingNewAccount)
                     }
         
             .navigationTitle("MoneyOK")

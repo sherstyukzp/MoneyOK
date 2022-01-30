@@ -9,23 +9,25 @@ import SwiftUI
 
 struct NewAccountView: View {
     
-    @Environment(\.presentationMode) var presentationMode
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) var viewContext
+    @EnvironmentObject var accountListVM: AccountViewModel
     
-    @State private var nameAccount: String = ""
+    @Binding var showAdd: Bool
+    
+//    @State private var nameAccount: String = ""
     @State private var startBalance: Double = 0.0
     @State private var noteAccount: String = ""
-    @State private var dateOfCreation = Date()
-    
+//    @State private var dateOfCreation = Date()
+//
     @State private var selectionColor: String = "swatch_shipcove"
     @State private var selectionIcon: String = "creditcard"
     @State private var isPresentedIcon: Bool = true
     
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
-    var disableForm: Bool {
-        nameAccount == ""
-    }
+//    var disableForm: Bool {
+//        nameAccount == ""
+//    }
     
     let formatter: NumberFormatter = {
             let formatter = NumberFormatter()
@@ -40,17 +42,18 @@ struct NewAccountView: View {
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(Color(selectionColor))
+                            // TODO: Добавить цвет
+                                .fill(Color.blue)
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 10)
                                 .padding()
-                            
-                            Image(systemName: selectionIcon)
+                            // TODO: Добавить иконку
+                            Image(systemName: "plus")
                                 .font(Font.largeTitle)
                                 .foregroundColor(Color.white)
                         }
                         
-                        TextField("Name account", text: $nameAccount)
+                        TextField("Name account", text: $accountListVM.accountListTitle)
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10.0)
@@ -58,6 +61,7 @@ struct NewAccountView: View {
                     }
                 }
                 Section(header: Text("Color")) {
+                    // TODO: Добавить цвет
                     ColorSwatchView(selection: $selectionColor)
                 }
                 Section(header: Text("Icon")) {
@@ -73,16 +77,16 @@ struct NewAccountView: View {
                 
             }.dismissingKeyboard()
                 
-                .navigationTitle("New account")
+                .navigationTitle(accountListVM.accountListItem == nil ? "Add Account" : "Edit Account")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading: Button("Cancel", action: {
-                    self.presentationMode.projectedValue.wrappedValue.dismiss()
+                    self.showAdd.toggle()
                 }), trailing: Button(action: {
-                    addAccount()
-                    self.presentationMode.projectedValue.wrappedValue.dismiss()
+                    accountListVM.createTask(context: viewContext)
+                    self.showAdd.toggle()
                 }) {
                     Text("Save")
-                }.disabled(disableForm)
+                }//.disabled(disableForm)
                 )
                 
             
@@ -90,21 +94,11 @@ struct NewAccountView: View {
         
     }
     
-    private func addAccount() {
-        withAnimation {
-            let newAccount = Account(context: viewContext)
-            newAccount.nameAccount = nameAccount
-            newAccount.dateOfCreation = dateOfCreation
-            newAccount.colorAccount = selectionColor
-            newAccount.iconAccount = selectionIcon
-            newAccount.balanceAccount = startBalance
-            PersistenceController.shared.saveContext()
-        }
-    }
+
 }
 
 struct NewAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        NewAccountView()
+        NewAccountView(showAdd: .constant(false))
     }
 }

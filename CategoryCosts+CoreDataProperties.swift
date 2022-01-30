@@ -2,7 +2,7 @@
 //  CategoryCosts+CoreDataProperties.swift
 //  MoneyOK
 //
-//  Created by Ярослав Шерстюк on 25.01.2022.
+//  Created by Ярослав Шерстюк on 30.01.2022.
 //
 //
 
@@ -16,10 +16,10 @@ extension CategoryCosts {
         return NSFetchRequest<CategoryCosts>(entityName: "CategoryCosts")
     }
 
-    @NSManaged public var nameCategory: String?
     @NSManaged public var colorCategory: String?
     @NSManaged public var iconCategory: String?
     @NSManaged public var idCategoryCosts: UUID?
+    @NSManaged public var nameCategory: String?
     @NSManaged public var transactionsCosts: NSSet?
 
 }

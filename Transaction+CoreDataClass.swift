@@ -2,7 +2,7 @@
 //  Transaction+CoreDataClass.swift
 //  MoneyOK
 //
-//  Created by Ярослав Шерстюк on 25.01.2022.
+//  Created by Ярослав Шерстюк on 30.01.2022.
 //
 //
 
