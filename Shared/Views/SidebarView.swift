@@ -9,46 +9,17 @@ import SwiftUI
 
 struct SidebarView: View {
     
-    @EnvironmentObject var accountListVM: AccountViewModel
-    
-    @State private var showingNewAccount = false
     
     var body: some View {
         
-        #if os(iOS)
-        SideBarContent()
-            .toolbar {
-                // Кнопка Настройки
-                ToolbarItem(placement: .navigation) {
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gearshape")
-                    }
-                }
-//                // Кнопки внизу
-                ToolbarItem(placement: .bottomBar) {
-                    HStack {
-                        Button(action: {}, label: {
-                            Image(systemName: "plus.circle.fill")
-                            Text("Транзакция")
-                        })
-                        Spacer()
-                        Button(action: {
-                            accountListVM.nameAccountSave = ""
-                            accountListVM.accountListItem = nil
-                            self.showingNewAccount.toggle()
-                        }, label: {
-                            Text("Доб. счёт")
-                        })
-                    }
-                }
-            }
-            .sheet(isPresented: $showingNewAccount) {
-                NewAccountView(showAdd: $showingNewAccount)
-                    }
+#if os(iOS)
+        AccountsListView()
+            .listStyle(SidebarListStyle())
         
-            .navigationTitle("MoneyOK")
-        #else
-        SideBarContent()
+            
+#else
+        AccountsListView()
+            .listStyle(SidebarListStyle())
             .toolbar {
                 ToolbarItemGroup {
                     Button(action: toggleSidebar, label: {
@@ -61,17 +32,15 @@ struct SidebarView: View {
                     } label: {
                         Label("New", systemImage: "plus")
                     }
-                        
-                    }
-
+                }
             }
-        #endif
-        }
+#endif
+    }
     
     func toggleSidebar() {
-        #if os(macOS)
+#if os(macOS)
         NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
-        #endif
+#endif
     }
     
 }

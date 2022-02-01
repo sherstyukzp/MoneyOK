@@ -36,11 +36,22 @@ struct AccountCallView: View {
             
         }
         .contextMenu {
+            Button {
+                // TODO: Добавить вызов экрана доходов
+            } label: {
+                Label("Доход", systemImage: "plus.circle")
+            }
+            Button {
+                // TODO: Добавить вызов экрана расходов
+            } label: {
+                Label("Расход", systemImage: "minus.circle")
+            }
+            Divider()
             if accountListItem.isArchive == false {
                 Button {
                     accountListVM.isFavorite(account: accountListItem, context: viewContext)
                 } label: {
-                    Label("Favorite", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
+                    Label("Избранный", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
                 }
             }
             
@@ -53,7 +64,7 @@ struct AccountCallView: View {
                 accountListVM.accountListItem = accountListItem
                 self.isEdit.toggle()
             } label: {
-                Label("Edit", systemImage: "highlighter")
+                Label("Редактировать", systemImage: "highlighter")
             }
             
             Button {
@@ -63,13 +74,13 @@ struct AccountCallView: View {
                 }
                 
             } label: {
-                Label("Archive", systemImage: accountListItem.isArchive ? "archivebox.fill" : "archivebox")
+                Label(accountListItem.isArchive ? "Разархивировать" : "Архивировать", systemImage: accountListItem.isArchive ? "archivebox.fill" : "archivebox")
             }
             Divider()
             Button(role: .destructive) {
                 accountListVM.delete(account: accountListItem, context: viewContext)
             } label: {
-                Label("Delete", systemImage: "trash")
+                Label("Удалить", systemImage: "trash")
             }
         }
         .sheet(isPresented: $isEdit) {
@@ -80,7 +91,7 @@ struct AccountCallView: View {
                 Button {
                     accountListVM.isFavorite(account: accountListItem, context: viewContext)
                 } label: {
-                    Label("Favorite", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
+                    Label("Избранный", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
                 }.tint(.green)
             }
             
@@ -92,7 +103,7 @@ struct AccountCallView: View {
                 }
                 
             } label: {
-                Label("Archive", systemImage: accountListItem.isArchive ? "archivebox.fill" : "archivebox")
+                Label("Архивировать", systemImage: accountListItem.isArchive ? "archivebox.fill" : "archivebox")
             }.tint(.gray)
             
         }
@@ -100,7 +111,7 @@ struct AccountCallView: View {
             Button(role: .destructive) {
                 accountListVM.delete(account: accountListItem, context: viewContext)
             } label: {
-                Label("Delete", systemImage: "trash")
+                Label("Удалить", systemImage: "trash")
             }
             
             Button {
@@ -112,7 +123,7 @@ struct AccountCallView: View {
                 accountListVM.accountListItem = accountListItem
                 self.isEdit.toggle()
             } label: {
-                Label("Edit", systemImage: "pencil")
+                Label("Редактировать", systemImage: "pencil")
             }.tint(.yellow)
             
         }

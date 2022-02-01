@@ -10,9 +10,26 @@ import SwiftUI
 struct ContentView: View {
     
     
+    
     var body: some View {
         NavigationView {
-        SidebarView()
+            VStack {
+                SidebarView()
+                .safeAreaInset(edge: .bottom) {
+                        PanelView()
+                        }
+            }
+            .toolbar {
+                    // Кнопка Настройки
+                    ToolbarItem(placement: .navigation) {
+                        NavigationLink(destination: SettingsView()) {
+                            Image(systemName: "gearshape")
+                        }
+                    }
+            }
+                
+            
+                .navigationTitle("MoneyOK")
         }
     }
 }

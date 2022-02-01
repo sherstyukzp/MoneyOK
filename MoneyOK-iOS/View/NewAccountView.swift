@@ -47,39 +47,39 @@ struct NewAccountView: View {
                         }
                         
                         
-                        TextField("Name account", text: $accountListVM.nameAccountSave)
+                        TextField("Имя счёта", text: $accountListVM.nameAccountSave)
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10.0)
                             .padding(.bottom)
                     }
                 }
-                Section(header: Text("Color")) {
+                Section(header: Text("Цвет")) {
                     
                     ColorSwatchView(selection: $accountListVM.colorAccountSave)
                 }
-                Section(header: Text("Icon")) {
+                Section(header: Text("Иконка")) {
                     SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountListVM.iconAccountSave, category: .commerce, axis: .vertical, haptic: true).frame(height: 300)
                 }
-                Section(header: Text("Start balance"), footer: Text("Enter the initial balance of your account. From this balance the transaction tracking will begin")) {
-                    TextField("Start balance", value: $accountListVM.balanceAccountSave, formatter: formatter)
+                Section(header: Text("Баланс"), footer: Text("Введите начальный баланс вашеего счёта. От этого баланса начнется отслеживание транзакций")) {
+                    TextField("Баланс", value: $accountListVM.balanceAccountSave, formatter: formatter)
                         .keyboardType(.decimalPad)
                 }
-                Section(header: Text("Note")) {
+                Section(header: Text("Заметки")) {
                     TextEditor(text: $accountListVM.noteAccountSave)
                 }
                 
             }.dismissingKeyboard()
             
-                .navigationTitle(accountListVM.accountListItem == nil ? "Add Account" : "Edit Account")
+                .navigationTitle(accountListVM.accountListItem == nil ? "Новый" : "Редактировать")
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(leading: Button("Cancel", action: {
+                .navigationBarItems(leading: Button("Отмена", action: {
                     self.showAdd.toggle()
                 }), trailing: Button(action: {
                     accountListVM.createTask(context: viewContext)
                     self.showAdd.toggle()
                 }) {
-                    Text(accountListVM.accountListItem == nil ? "Save" : "Update")
+                    Text(accountListVM.accountListItem == nil ? "Сохранить" : "Обновить")
                 }.disabled(disableForm)
                 )
         }

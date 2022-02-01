@@ -16,42 +16,30 @@ struct AccountsListView: View {
     @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(key: "dateOfCreation", ascending: true)])
     var fetchedAccountList: FetchedResults<AccountEntity>
     
-    @State private var addAccountView = false
-    
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
-    }
-    
     
     var body: some View {
         
         List {
             if !(fetchedAccountList.filter{$0.isFavorite == true}).isEmpty {
-                Section("Favorite") {
+                Section("Избранные") {
                     ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { item in
                         AccountCallView(accountListItem: item)
                     }
                 }
             }
             
-            Section("Accounts") {
+            Section("Счета") {
                 ForEach(fetchedAccountList.filter{$0.isFavorite == false && $0.isArchive == false}) { item in
                     AccountCallView(accountListItem: item)
                 }
             }
             if !(fetchedAccountList.filter{$0.isArchive == true}).isEmpty {
-                Section("Archive") {
+                Section("Архив") {
                     ForEach(fetchedAccountList.filter{$0.isArchive == true}) { item in
                         AccountCallView(accountListItem: item)
                     }
                 }
             }
-            
-            
-        }.sheet(isPresented: $addAccountView) {
-            NewAccountView(showAdd: $addAccountView)
         }
         
     }

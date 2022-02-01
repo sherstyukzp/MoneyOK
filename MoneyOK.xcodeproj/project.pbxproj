@@ -22,10 +22,10 @@
 		05231304279AE2F1003CFB9E /* AccountsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231302279AE2F0003CFB9E /* AccountsListView.swift */; };
 		05231306279AE3A3003CFB9E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231305279AE3A3003CFB9E /* SidebarView.swift */; };
 		05231307279AE3A3003CFB9E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231305279AE3A3003CFB9E /* SidebarView.swift */; };
-		05231309279AEEBB003CFB9E /* SideBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231308279AEEBB003CFB9E /* SideBarContent.swift */; };
-		0523130A279AEEBC003CFB9E /* SideBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05231308279AEEBB003CFB9E /* SideBarContent.swift */; };
 		0523130C279B0882003CFB9E /* AccountCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountCallView.swift */; };
 		0523130D279B0882003CFB9E /* AccountCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountCallView.swift */; };
+		0534A21927A8216900929BC7 /* NewAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0577CCBF27A04B9D001D4724 /* NewAccountView.swift */; };
+		0534A21B27A8293000929BC7 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0534A21A27A8293000929BC7 /* PanelView.swift */; };
 		054F0381279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
 		054F0382279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
 		054F0384279EE91900F7271A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F0383279EE91900F7271A /* PersistenceController.swift */; };
@@ -59,6 +59,7 @@
 		05FC502727A6E91200708D3C /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501827A6E91200708D3C /* Transaction+CoreDataClass.swift */; };
 		05FC502827A6E91200708D3C /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501927A6E91200708D3C /* Transaction+CoreDataProperties.swift */; };
 		05FC502927A6E91200708D3C /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC501927A6E91200708D3C /* Transaction+CoreDataProperties.swift */; };
+		05FC502B27A8188B00708D3C /* NewTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC502A27A8188B00708D3C /* NewTransactionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,8 +78,8 @@
 		052312FF279AE05D003CFB9E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		05231302279AE2F0003CFB9E /* AccountsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListView.swift; sourceTree = "<group>"; };
 		05231305279AE3A3003CFB9E /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
-		05231308279AEEBB003CFB9E /* SideBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarContent.swift; sourceTree = "<group>"; };
 		0523130B279B0881003CFB9E /* AccountCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCallView.swift; sourceTree = "<group>"; };
+		0534A21A27A8293000929BC7 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		054F0380279EDBC500F7271A /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		054F0383279EE91900F7271A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		054F03AC27A005D100F7271A /* ColorSwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchView.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		05FC501727A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05FC501827A6E91200708D3C /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		05FC501927A6E91200708D3C /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05FC502A27A8188B00708D3C /* NewTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +202,6 @@
 		052312F9279AD765003CFB9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				05231308279AEEBB003CFB9E /* SideBarContent.swift */,
 				05231305279AE3A3003CFB9E /* SidebarView.swift */,
 				05231302279AE2F0003CFB9E /* AccountsListView.swift */,
 				0523130B279B0881003CFB9E /* AccountCallView.swift */,
@@ -230,6 +231,8 @@
 				052312DB279AD718003CFB9E /* ContentView.swift */,
 				052312FF279AE05D003CFB9E /* SettingsView.swift */,
 				0577CCBF27A04B9D001D4724 /* NewAccountView.swift */,
+				05FC502A27A8188B00708D3C /* NewTransactionView.swift */,
+				0534A21A27A8293000929BC7 /* PanelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,10 +369,10 @@
 				05FC502827A6E91200708D3C /* Transaction+CoreDataProperties.swift in Sources */,
 				054F03B827A012A600F7271A /* Symbols.swift in Sources */,
 				0577CCC027A04B9D001D4724 /* NewAccountView.swift in Sources */,
-				05231309279AEEBB003CFB9E /* SideBarContent.swift in Sources */,
 				054F03BD27A023D100F7271A /* KeyboardListener.swift in Sources */,
 				054F0381279EDBC500F7271A /* Database.xcdatamodeld in Sources */,
 				05231306279AE3A3003CFB9E /* SidebarView.swift in Sources */,
+				05FC502B27A8188B00708D3C /* NewTransactionView.swift in Sources */,
 				0523130C279B0882003CFB9E /* AccountCallView.swift in Sources */,
 				052312DC279AD718003CFB9E /* ContentView.swift in Sources */,
 				05FC502427A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift in Sources */,
@@ -377,6 +380,7 @@
 				05FC502027A6E91200708D3C /* CategoryIncome+CoreDataProperties.swift in Sources */,
 				052312DA279AD718003CFB9E /* MoneyOK_iOSApp.swift in Sources */,
 				05FC501027A6DD6600708D3C /* AccountViewModel.swift in Sources */,
+				0534A21B27A8293000929BC7 /* PanelView.swift in Sources */,
 				05FC501C27A6E91200708D3C /* AccountEntity+CoreDataProperties.swift in Sources */,
 				05FC501A27A6E91200708D3C /* AccountEntity+CoreDataClass.swift in Sources */,
 				054F03B627A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
@@ -392,9 +396,9 @@
 				054F03B727A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
 				05231304279AE2F1003CFB9E /* AccountsListView.swift in Sources */,
 				05FC502727A6E91200708D3C /* Transaction+CoreDataClass.swift in Sources */,
-				0523130A279AEEBC003CFB9E /* SideBarContent.swift in Sources */,
 				054F03AE27A005D100F7271A /* ColorSwatchView.swift in Sources */,
 				054F03B927A012A600F7271A /* Symbols.swift in Sources */,
+				0534A21927A8216900929BC7 /* NewAccountView.swift in Sources */,
 				054F0382279EDBC500F7271A /* Database.xcdatamodeld in Sources */,
 				05FC502327A6E91200708D3C /* CategoryCosts+CoreDataClass.swift in Sources */,
 				05FC501D27A6E91200708D3C /* AccountEntity+CoreDataProperties.swift in Sources */,
