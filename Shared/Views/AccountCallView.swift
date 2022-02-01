@@ -20,15 +20,15 @@ struct AccountCallView: View {
         HStack {
             ZStack {
                 Circle()
-                    .fill(Color(accountListItem.isArchive ? "swatch_gunsmoke" : accountListItem.colorAccount!))
+                    .fill(Color((accountListItem.isArchive ? "swatch_gunsmoke" : accountListItem.colorAccount) ?? "swatch_gunsmoke"))
                     .frame(width: 32, height: 32)
-                Image(systemName: accountListItem.iconAccount!)
+                Image(systemName: accountListItem.iconAccount ?? "plus")
                     .foregroundColor(Color.white)
                     .font(Font.footnote)
             }
             
             VStack(alignment: .leading) {
-                Text(accountListItem.nameAccount!)
+                Text(accountListItem.nameAccount ?? "no name")
                     .bold()
                     .foregroundColor(accountListItem.isArchive ? .gray : .primary)
                 Text("Баланс: \(accountListItem.balanceAccount)").font(Font.footnote).foregroundColor(Color.gray)
