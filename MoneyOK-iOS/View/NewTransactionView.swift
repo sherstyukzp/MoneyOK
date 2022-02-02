@@ -19,17 +19,15 @@ struct NewTransactionView: View {
         
         NavigationView {
             
-            VStack {
+            
+            List {
                 Picker(selection: $typeTrancaction, label: Text("Системы координат")) {
                     ForEach(types, id: \.rawValue) {
                         Text($0.rawValue).tag(Optional<TypeTrancaction>.some($0))
                     }
                 }.pickerStyle(SegmentedPickerStyle())
-                // Сумма
-                VStack(alignment: .leading) {
-                    Text("Сумма")
-                        .font(.system(size: 28, weight: .bold))
-                    
+                
+                Section("Сумма") {
                     HStack(alignment: .center) {
                         if typeTrancaction == .costs {
                             Image(systemName: "minus.circle.fill")
@@ -49,51 +47,54 @@ struct NewTransactionView: View {
                         }
                         
                         TextField("0", text: $sumTransaction)
-                            .padding()
-                            .background(Color(UIColor.secondarySystemBackground))
-                            .cornerRadius(10.0)
+                            .font(Font.system(size: 32, weight: .bold))
                     }
                 }
                 
-                VStack(alignment: .leading) {
-                    Text("Счёт")
-                        .font(.system(size: 28, weight: .bold))
-                    
+                Section("Счёт") {
                     NavigationLink(destination: AccountsListShowView()) {
-
+                        //
                         VStack {
-                                Text("Счёт")
-                                    .bold()
-                                    .foregroundColor(Color.gray)
-                                
-                                Text("Нажмите чтобы выбрать")
+                            Text("Счёт")
+                                .bold()
+                                .foregroundColor(Color.gray)
+                            
+                            Text("Нажмите чтобы выбрать")
                                 .font(Font.footnote)
                                 .foregroundColor(Color.gray)
-                            }
+                        }
                         .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color(UIColor.secondarySystemBackground))
-                            .cornerRadius(10.0)
-
                     }
                     
-                    VStack {
+                }
+                
+                Section("Категория") {
+                    NavigationLink(destination: AccountsListShowView()) {
+                        VStack {
                             Text("Категория")
                                 .bold()
                                 .foregroundColor(Color.gray)
                             
                             Text("Нажмите чтобы выбрать")
-                            .font(Font.footnote)
-                            .foregroundColor(Color.gray)
+                                .font(Font.footnote)
+                                .foregroundColor(Color.gray)
                         }
-                    .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color(UIColor.secondarySystemBackground))
-                        .cornerRadius(10.0)
+                        .frame(maxWidth: .infinity)
+                        
+                    }
+                    
                 }
                 
-                
-                
+                Section("Дополнительно") {
+                    Text("Время:")
+                    Text("Заметки")
+                }
+            
+            }
+            
+
+            .safeAreaInset(edge: .bottom) {
+                HStack {
                 Button {
                     print("Session is cancelled")
                 } label: {
@@ -102,16 +103,31 @@ struct NewTransactionView: View {
                         Text("Добавить").bold()
                     }
                     .frame(width: 250, height: 40)
-                    
-                    
+                
                 }.buttonStyle(.borderedProminent)
-                
-                
-                
-                Spacer()
-            }.padding()
+                  
+                }
+                .padding(6)
+                .frame(maxWidth: .infinity)
+                .background(Color(UIColor.secondarySystemBackground))
+                    
+            }
+            
+            
             
                 .navigationTitle("Новая транзакция")
+                .toolbar{
+                    ToolbarItem (placement: .navigationBarTrailing) {
+                        
+                        Button() {
+                            self.showAddTransaction.toggle()
+                        } label: {
+                            Image(systemName: "xmark.circle.fill").foregroundColor(Color.gray)
+                        }
+
+                        
+                    }
+                }
         }
         
     }

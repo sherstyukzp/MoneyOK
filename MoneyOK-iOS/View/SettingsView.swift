@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         Form {
-            NavigationLink(destination: AccountsListView()) {
+            NavigationLink(destination: AccountsListShowView()) {
                 Text("Счета")
             }
         }

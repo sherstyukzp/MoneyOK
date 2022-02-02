@@ -63,7 +63,7 @@ struct ContentView: View {
                 }
             .toolbar {
                     // Кнопка Настройки
-                    ToolbarItem(placement: .navigation) {
+                ToolbarItem(placement: .navigationBarLeading) {
                         NavigationLink(destination: SettingsView()) {
                             Image(systemName: "gearshape")
                         }

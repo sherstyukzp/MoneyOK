@@ -23,7 +23,7 @@ struct AccountsListShowView: View {
                 AccountCallView(accountListItem: item)
             }
         }
-        .navigationTitle("Выберите счёт")
+        .navigationTitle("Счета")
         
     }
 }
