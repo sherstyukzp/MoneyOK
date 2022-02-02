@@ -26,6 +26,8 @@
 		0523130D279B0882003CFB9E /* AccountCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523130B279B0881003CFB9E /* AccountCallView.swift */; };
 		0534A21927A8216900929BC7 /* NewAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0577CCBF27A04B9D001D4724 /* NewAccountView.swift */; };
 		0534A21B27A8293000929BC7 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0534A21A27A8293000929BC7 /* PanelView.swift */; };
+		0534A21F27AABB9100929BC7 /* AccountsListShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */; };
+		0534A22027AABB9100929BC7 /* AccountsListShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */; };
 		054F0381279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
 		054F0382279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
 		054F0384279EE91900F7271A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F0383279EE91900F7271A /* PersistenceController.swift */; };
@@ -80,6 +82,7 @@
 		05231305279AE3A3003CFB9E /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		0523130B279B0881003CFB9E /* AccountCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCallView.swift; sourceTree = "<group>"; };
 		0534A21A27A8293000929BC7 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListShowView.swift; sourceTree = "<group>"; };
 		054F0380279EDBC500F7271A /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		054F0383279EE91900F7271A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		054F03AC27A005D100F7271A /* ColorSwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchView.swift; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 				05231302279AE2F0003CFB9E /* AccountsListView.swift */,
 				0523130B279B0881003CFB9E /* AccountCallView.swift */,
 				054F03AC27A005D100F7271A /* ColorSwatchView.swift */,
+				0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -374,6 +378,7 @@
 				05231306279AE3A3003CFB9E /* SidebarView.swift in Sources */,
 				05FC502B27A8188B00708D3C /* NewTransactionView.swift in Sources */,
 				0523130C279B0882003CFB9E /* AccountCallView.swift in Sources */,
+				0534A21F27AABB9100929BC7 /* AccountsListShowView.swift in Sources */,
 				052312DC279AD718003CFB9E /* ContentView.swift in Sources */,
 				05FC502427A6E91200708D3C /* CategoryCosts+CoreDataProperties.swift in Sources */,
 				05FC502227A6E91200708D3C /* CategoryCosts+CoreDataClass.swift in Sources */,
@@ -396,6 +401,7 @@
 				054F03B727A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
 				05231304279AE2F1003CFB9E /* AccountsListView.swift in Sources */,
 				05FC502727A6E91200708D3C /* Transaction+CoreDataClass.swift in Sources */,
+				0534A22027AABB9100929BC7 /* AccountsListShowView.swift in Sources */,
 				054F03AE27A005D100F7271A /* ColorSwatchView.swift in Sources */,
 				054F03B927A012A600F7271A /* Symbols.swift in Sources */,
 				0534A21927A8216900929BC7 /* NewAccountView.swift in Sources */,

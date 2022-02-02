@@ -12,6 +12,7 @@ struct PanelView: View {
     @EnvironmentObject var accountListVM: AccountViewModel
     
     @State private var showingNewAccount = false
+    @State private var showingNewTransaction = false
     
     var body: some View {
         
@@ -29,7 +30,7 @@ struct PanelView: View {
             }.padding(.horizontal)
             Spacer()
             Button {
-                // TODO: Добавить вызов экрана доходов
+                self.showingNewTransaction.toggle()
             } label: {
                 Image(systemName: "plus")
                     .padding()
@@ -45,22 +46,16 @@ struct PanelView: View {
             }
             .contextMenu {
                     Button {
-                        // TODO: Добавить вызов экрана доходов
+                        self.showingNewTransaction.toggle()
                     } label: {
-                        Label("Доход", systemImage: "plus.circle")
+                        Label("Новая транзакция", systemImage: "plus.circle")
                     }
-                    Button {
-                        // TODO: Добавить вызов экрана расходов
-                    } label: {
-                        Label("Расход", systemImage: "minus.circle")
-                    }
-                    Divider()
                     Button {
                         accountListVM.nameAccountSave = ""
                         accountListVM.accountListItem = nil
                         self.showingNewAccount.toggle()
                     } label: {
-                        Label("Новый счёт", systemImage: "minus.circle")
+                        Label("Новый счёт", systemImage: "plus.circle")
                     }
                     
                 }
@@ -71,6 +66,9 @@ struct PanelView: View {
         
         .sheet(isPresented: $showingNewAccount) {
                 NewAccountView(showAdd: $showingNewAccount)
+            }
+        .sheet(isPresented: $showingNewTransaction) {
+                NewTransactionView(showAddTransaction: $showingNewTransaction)
             }
     
     }
