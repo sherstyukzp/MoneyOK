@@ -15,11 +15,29 @@ struct AccountsListView: View {
     
     @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(key: "dateOfCreation", ascending: true)])
     var fetchedAccountList: FetchedResults<AccountEntity>
+
+    @ObservedObject var accountListItem: AccountEntity
     
+    @State private var isEdit = false
     
     var body: some View {
         
         List {
+            Section {
+                ForEach(fetchedAccountList, id:\.self) { (item: AccountEntity) in
+                    
+                    NavigationLink(destination:
+                                    TransactionListView(area: item).environment(\.managedObjectContext, self.viewContext))
+                    {
+                        AccountCallView(accountListItem: item)
+                    }
+                    
+                    .swipeActions() {
+                        }
+                
+                }
+                
+            }
             if !(fetchedAccountList.filter{$0.isFavorite == true}).isEmpty {
                 Section("Избранные") {
                     ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { item in
@@ -40,7 +58,10 @@ struct AccountsListView: View {
                     }
                 }
             }
+
+            
         }
+
         
     }
     
@@ -52,6 +73,6 @@ struct AccountsListView: View {
 
 struct AccountsListView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsListView()
+        AccountsListView(accountListItem: AccountEntity())
     }
 }

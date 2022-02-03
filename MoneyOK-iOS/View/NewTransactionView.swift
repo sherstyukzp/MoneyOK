@@ -9,12 +9,18 @@ import SwiftUI
 
 struct NewTransactionView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) private var dismiss
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)]) private var accounts: FetchedResults<AccountEntity>
+    
+    @State private var selectedAccount = AccountEntity()
+    
     let types = Array(TypeTrancaction.allCases)
     @State var typeTrancaction: TypeTrancaction? = .costs
     @State var sumTransaction: String = ""
     @State var noteTransaction: String = ""
     @State var dateTransaction: Date = Date()
-    
     
     @Binding var showAddTransaction: Bool
     @State private var personImage = UIImage()
@@ -53,6 +59,16 @@ struct NewTransactionView: View {
                         
                         TextField("0", text: $sumTransaction)
                             .font(Font.system(size: 32, weight: .bold))
+                    }
+                }
+                
+                Section("Счёт") {
+                    Picker("Выбрать счёт", selection: $selectedAccount){
+                        ForEach(accounts, id: \.self) {
+                            Text($0.nameAccount ?? "")
+                            
+                                .navigationBarTitle("Выберите счёт")
+                        }
                     }
                 }
                 
@@ -115,6 +131,7 @@ struct NewTransactionView: View {
                 }
             
             }
+            .dismissingKeyboard()
             .sheet(isPresented: $imagePicker){
                 ImagePickerView(selectedImage: $personImage)
             }
@@ -148,7 +165,7 @@ struct NewTransactionView: View {
             
             
                 .navigationTitle("Новая транзакция")
-                .toolbar{
+                .toolbar {
                     ToolbarItem (placement: .navigationBarTrailing) {
                         
                         Button() {

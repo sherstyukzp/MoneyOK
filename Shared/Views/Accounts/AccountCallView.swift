@@ -86,6 +86,7 @@ struct AccountCallView: View {
         .sheet(isPresented: $showingNewTransaction) {
                 NewTransactionView(showAddTransaction: $showingNewTransaction)
             }
+        // Свайп влево
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             if accountListItem.isArchive == false {
                 Button {
@@ -107,6 +108,7 @@ struct AccountCallView: View {
             }.tint(.gray)
             
         }
+        // Свайп вправо
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             Button(role: .destructive) {
                 accountListVM.delete(account: accountListItem, context: viewContext)

@@ -28,6 +28,9 @@
 		0534A21B27A8293000929BC7 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0534A21A27A8293000929BC7 /* PanelView.swift */; };
 		0534A21F27AABB9100929BC7 /* AccountsListShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */; };
 		0534A22027AABB9100929BC7 /* AccountsListShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */; };
+		0549FA1B27AC1C2A0086506A /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549FA1A27AC1C2A0086506A /* TransactionListView.swift */; };
+		0549FA1D27AC1CA30086506A /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549FA1C27AC1CA30086506A /* TransactionViewModel.swift */; };
+		0549FA1E27AC1CA30086506A /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0549FA1C27AC1CA30086506A /* TransactionViewModel.swift */; };
 		054F0381279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
 		054F0382279EDBC500F7271A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 054F037F279EDBC500F7271A /* Database.xcdatamodeld */; };
 		054F0384279EE91900F7271A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054F0383279EE91900F7271A /* PersistenceController.swift */; };
@@ -84,6 +87,8 @@
 		0523130B279B0881003CFB9E /* AccountCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCallView.swift; sourceTree = "<group>"; };
 		0534A21A27A8293000929BC7 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListShowView.swift; sourceTree = "<group>"; };
+		0549FA1A27AC1C2A0086506A /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		0549FA1C27AC1CA30086506A /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		054F0380279EDBC500F7271A /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		054F0383279EE91900F7271A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		054F03AC27A005D100F7271A /* ColorSwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchView.swift; sourceTree = "<group>"; };
@@ -153,7 +158,7 @@
 		052312D8279AD718003CFB9E /* MoneyOK-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0590BC2B27AC0D0900DB75E7 /* ImagePicker.swift */,
+				0549FA1427AC1AEC0086506A /* Representable */,
 				054F0392279F3B6700F7271A /* View */,
 				052312D9279AD718003CFB9E /* MoneyOK_iOSApp.swift */,
 				052312DD279AD719003CFB9E /* Assets.xcassets */,
@@ -208,11 +213,11 @@
 		052312F9279AD765003CFB9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0549FA1327AC1A7B0086506A /* Accounts */,
+				0549FA1927AC1C000086506A /* Transactions */,
+				0549FA1227AC1A5F0086506A /* Settings */,
 				05231305279AE3A3003CFB9E /* SidebarView.swift */,
-				05231302279AE2F0003CFB9E /* AccountsListView.swift */,
-				0523130B279B0881003CFB9E /* AccountCallView.swift */,
 				054F03AC27A005D100F7271A /* ColorSwatchView.swift */,
-				0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,14 +237,71 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		0549FA1227AC1A5F0086506A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0549FA1327AC1A7B0086506A /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				05231302279AE2F0003CFB9E /* AccountsListView.swift */,
+				0523130B279B0881003CFB9E /* AccountCallView.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		0549FA1427AC1AEC0086506A /* Representable */ = {
+			isa = PBXGroup;
+			children = (
+				0590BC2B27AC0D0900DB75E7 /* ImagePicker.swift */,
+			);
+			path = Representable;
+			sourceTree = "<group>";
+		};
+		0549FA1527AC1AFF0086506A /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				0534A21A27A8293000929BC7 /* PanelView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		0549FA1627AC1B0C0086506A /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				0577CCBF27A04B9D001D4724 /* NewAccountView.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		0549FA1727AC1B1F0086506A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				052312FF279AE05D003CFB9E /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0549FA1927AC1C000086506A /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				0549FA1A27AC1C2A0086506A /* TransactionListView.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
 		054F0392279F3B6700F7271A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				052312DB279AD718003CFB9E /* ContentView.swift */,
-				052312FF279AE05D003CFB9E /* SettingsView.swift */,
-				0577CCBF27A04B9D001D4724 /* NewAccountView.swift */,
+				0549FA1627AC1B0C0086506A /* Accounts */,
+				0549FA1727AC1B1F0086506A /* Settings */,
+				0549FA1527AC1AFF0086506A /* Custom */,
 				05FC502A27A8188B00708D3C /* NewTransactionView.swift */,
-				0534A21A27A8293000929BC7 /* PanelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -258,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				05FC500F27A6DD6600708D3C /* AccountViewModel.swift */,
+				0549FA1C27AC1CA30086506A /* TransactionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -370,9 +433,11 @@
 			files = (
 				05231303279AE2F1003CFB9E /* AccountsListView.swift in Sources */,
 				0590BC1B27AC06B200DB75E7 /* CategoryCosts+CoreDataClass.swift in Sources */,
+				0549FA1D27AC1CA30086506A /* TransactionViewModel.swift in Sources */,
 				0590BC2327AC06B200DB75E7 /* AccountEntity+CoreDataClass.swift in Sources */,
 				0590BC2C27AC0D0A00DB75E7 /* ImagePicker.swift in Sources */,
 				054F03BA27A012A600F7271A /* UsageExample.swift in Sources */,
+				0549FA1B27AC1C2A0086506A /* TransactionListView.swift in Sources */,
 				05231300279AE05D003CFB9E /* SettingsView.swift in Sources */,
 				054F03B827A012A600F7271A /* Symbols.swift in Sources */,
 				0590BC2527AC06B200DB75E7 /* AccountEntity+CoreDataProperties.swift in Sources */,
@@ -425,6 +490,7 @@
 				0590BC2627AC06B200DB75E7 /* AccountEntity+CoreDataProperties.swift in Sources */,
 				0590BC1E27AC06B200DB75E7 /* CategoryCosts+CoreDataProperties.swift in Sources */,
 				054F0385279EE91900F7271A /* PersistenceController.swift in Sources */,
+				0549FA1E27AC1CA30086506A /* TransactionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
