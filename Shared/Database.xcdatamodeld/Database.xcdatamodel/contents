@@ -10,7 +10,7 @@
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="nameAccount" optional="YES" attributeType="String"/>
         <attribute name="noteAccount" optional="YES" attributeType="String"/>
-        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="accounts" inverseEntity="Transaction"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="accounts" inverseEntity="Transaction"/>
     </entity>
     <entity name="CategoryCosts" representedClassName="CategoryCosts" syncable="YES">
         <attribute name="colorCategory" optional="YES" attributeType="String"/>
@@ -28,6 +28,7 @@
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES">
         <attribute name="idTransaction" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageTransaction" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="nameTransaction" optional="YES" attributeType="String"/>
         <attribute name="noteTransaction" optional="YES" attributeType="String"/>
         <attribute name="sumTransaction" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -36,9 +37,9 @@
         <relationship name="categoryIncome" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryIncome" inverseName="transactionIncome" inverseEntity="CategoryIncome"/>
     </entity>
     <elements>
-        <element name="AccountEntity" positionX="-363.5625" positionY="-156.3125" width="128" height="179"/>
-        <element name="CategoryCosts" positionX="-187.4296875" positionY="81.5390625" width="128" height="118"/>
-        <element name="CategoryIncome" positionX="48.71484375" positionY="93.734375" width="128" height="118"/>
-        <element name="Transaction" positionX="-5.05078125" positionY="-188.171875" width="128" height="148"/>
+        <element name="AccountEntity" positionX="-566.6875" positionY="-281.8515625" width="128" height="179"/>
+        <element name="CategoryCosts" positionX="-92.36328125" positionY="-166.90625" width="128" height="118"/>
+        <element name="CategoryIncome" positionX="-86.3515625" positionY="-2.0859375" width="128" height="118"/>
+        <element name="Transaction" positionX="-329.171875" positionY="-196.76171875" width="128" height="149"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  AccountEntity+CoreDataProperties.swift
 //  MoneyOK
 //
-//  Created by Ярослав Шерстюк on 30.01.2022.
+//  Created by Ярослав Шерстюк on 03.02.2022.
 //
 //
 
@@ -21,10 +21,10 @@ extension AccountEntity {
     @NSManaged public var dateOfCreation: Date?
     @NSManaged public var iconAccount: String?
     @NSManaged public var idAccount: UUID?
-    @NSManaged public var nameAccount: String?
-    @NSManaged public var noteAccount: String?
     @NSManaged public var isArchive: Bool
     @NSManaged public var isFavorite: Bool
+    @NSManaged public var nameAccount: String?
+    @NSManaged public var noteAccount: String?
     @NSManaged public var transactions: NSSet?
 
 }

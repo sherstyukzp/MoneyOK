@@ -15,6 +15,7 @@ struct AccountCallView: View {
     @ObservedObject var accountListItem: AccountEntity
     
     @State private var isEdit = false
+    @State private var showingNewTransaction = false
     
     var body: some View {
         HStack {
@@ -37,15 +38,11 @@ struct AccountCallView: View {
         }
         .contextMenu {
             Button {
-                // TODO: Добавить вызов экрана доходов
+                self.showingNewTransaction.toggle()
             } label: {
-                Label("Доход", systemImage: "plus.circle")
+                Label("Новая транзакция", systemImage: "plus.circle")
             }
-            Button {
-                // TODO: Добавить вызов экрана расходов
-            } label: {
-                Label("Расход", systemImage: "minus.circle")
-            }
+            
             Divider()
             if accountListItem.isArchive == false {
                 Button {
@@ -86,6 +83,9 @@ struct AccountCallView: View {
         .sheet(isPresented: $isEdit) {
             NewAccountView(showAdd: $isEdit)
         }
+        .sheet(isPresented: $showingNewTransaction) {
+                NewTransactionView(showAddTransaction: $showingNewTransaction)
+            }
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             if accountListItem.isArchive == false {
                 Button {

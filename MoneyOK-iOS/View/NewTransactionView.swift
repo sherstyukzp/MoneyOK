@@ -122,7 +122,7 @@ struct NewTransactionView: View {
                         Button() {
                             self.showAddTransaction.toggle()
                         } label: {
-                            Image(systemName: "xmark.circle.fill").foregroundColor(Color.gray)
+                            Image(systemName: "xmark.circle.fill")
                         }
 
                         
