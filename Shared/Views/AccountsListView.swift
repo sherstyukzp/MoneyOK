@@ -28,7 +28,7 @@ struct AccountsListView: View {
                 }
             }
             
-            Section("Счета") {
+            Section(fetchedAccountList.count <= 1 ? "Счёт" : "Счета") {
                 ForEach(fetchedAccountList.filter{$0.isFavorite == false && $0.isArchive == false}) { item in
                     AccountCallView(accountListItem: item)
                 }

@@ -12,8 +12,13 @@ struct NewTransactionView: View {
     let types = Array(TypeTrancaction.allCases)
     @State var typeTrancaction: TypeTrancaction? = .costs
     @State var sumTransaction: String = ""
+    @State var noteTransaction: String = ""
+    @State var dateTransaction: Date = Date()
+    
     
     @Binding var showAddTransaction: Bool
+    @State private var personImage = UIImage()
+    @State private var imagePicker = false
     
     var body: some View {
         
@@ -86,10 +91,32 @@ struct NewTransactionView: View {
                 }
                 
                 Section("Дополнительно") {
-                    Text("Время:")
-                    Text("Заметки")
+                     
+                    VStack {
+                        DatePicker("Время", selection:$dateTransaction).id(2)
+                            .environment(\.locale, Locale.init(identifier: "ru"))
+                    }
+                    HStack {
+                        Text("Заметки")
+                        TextEditor(text: $noteTransaction)
+                    }
+                    
+                    Button {
+                        self.imagePicker.toggle()
+                    } label: {
+                        Text("Фото")
+                    }
+                    
+//                    Image(uiImage: UIImage(data: personImage)!)
+//                        .resizable()
+//                        .clipShape(Circle())
+//                        .frame(width: 60, height: 60)
+
                 }
             
+            }
+            .sheet(isPresented: $imagePicker){
+                ImagePickerView(selectedImage: $personImage)
             }
             
 
@@ -102,9 +129,14 @@ struct NewTransactionView: View {
                         Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
                         Text("Добавить").bold()
                     }
-                    .frame(width: 250, height: 40)
+                    .frame(width: 300, height: 40)
+                    
                 
                 }.buttonStyle(.borderedProminent)
+//                        .shadow(color: Color.black.opacity(0.2),
+//                                radius: 2,
+//                                x: 2,
+//                                y: 2)
                   
                 }
                 .padding(6)

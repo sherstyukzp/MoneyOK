@@ -39,10 +39,10 @@ struct PanelView: View {
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.white)
                     .padding(.horizontal)
-                    .shadow(color: Color.black.opacity(0.2),
-                            radius: 2,
-                            x: 2,
-                            y: 2)
+//                    .shadow(color: Color.black.opacity(0.2),
+//                            radius: 2,
+//                            x: 2,
+//                            y: 2)
             }
             .contextMenu {
                     Button {
