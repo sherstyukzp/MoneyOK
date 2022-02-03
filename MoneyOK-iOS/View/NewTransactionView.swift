@@ -26,11 +26,15 @@ struct NewTransactionView: View {
     @State private var personImage = UIImage()
     @State private var imagePicker = false
     
+    
+    // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
+        var disableForm: Bool {
+            sumTransaction.isEmpty
+        }
+    
     var body: some View {
         
         NavigationView {
-            
-            
             List {
                 Picker(selection: $typeTrancaction, label: Text("Системы координат")) {
                     ForEach(types, id: \.rawValue) {
@@ -122,7 +126,7 @@ struct NewTransactionView: View {
                     } label: {
                         Text("Фото")
                     }
-                    
+                    // TODO: Добавить отображение мини фото
 //                    Image(uiImage: UIImage(data: personImage)!)
 //                        .resizable()
 //                        .clipShape(Circle())
@@ -150,15 +154,12 @@ struct NewTransactionView: View {
                     
                 
                 }.buttonStyle(.borderedProminent)
-//                        .shadow(color: Color.black.opacity(0.2),
-//                                radius: 2,
-//                                x: 2,
-//                                y: 2)
                   
                 }
                 .padding(6)
                 .frame(maxWidth: .infinity)
                 .background(Color(UIColor.secondarySystemBackground))
+                .disabled(disableForm)
                     
             }
             

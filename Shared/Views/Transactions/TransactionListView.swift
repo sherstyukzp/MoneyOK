@@ -11,51 +11,81 @@ struct TransactionListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @ObservedObject var area: AccountEntity
+    @ObservedObject var accountListItem: AccountEntity
+    @EnvironmentObject var accountListVM: AccountViewModel
     
     @State private var showingNewTransaction = false
+    @State private var isEdit = false
     
     var body: some View {
         List {
             Text("Hello, SwiftUI!")
         }
+        
+        
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text(accountListItem.nameAccount ?? "")
+                        .font(.headline)
+                        .foregroundColor(Color(accountListItem.colorAccount ?? ""))
+                    Text("\(accountListItem.balanceAccount)").font(.subheadline)
+                }
+            }
             
-            
-            .navigationBarTitleDisplayMode(.large)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        VStack {
-                            Text(area.nameAccount!)
-                                .font(.headline)
-                                .foregroundColor(Color(area.colorAccount!))
-                            Text("\(area.balanceAccount)").font(.subheadline)
-                        }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    Button {
+                        accountListVM.nameAccountSave = accountListItem.nameAccount!
+                        accountListVM.iconAccountSave = accountListItem.iconAccount!
+                        accountListVM.colorAccountSave = accountListItem.colorAccount!
+                        accountListVM.balanceAccountSave = accountListItem.balanceAccount
+                        accountListVM.noteAccountSave = accountListItem.noteAccount!
+                        accountListVM.accountListItem = accountListItem
+                        self.isEdit.toggle()
+                    } label: {
+                        Label("Редактировать", systemImage: "highlighter")
                     }
                     
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        Button(action: {
-                                self.showingNewTransaction.toggle()
-                            }) {
-                                Image(systemName: "plus.circle.fill")
-                                    .imageScale(.medium)
-                                    .font(.title)
-                                    .foregroundColor(Color(area.colorAccount!))
-                                Text("Транзакция").bold()
-                                    .foregroundColor(Color(area.colorAccount!))
-                            }
-                        Spacer()
-                        }
-                }
-        
-                .sheet(isPresented: $showingNewTransaction) {
-                        NewTransactionView(showAddTransaction: $showingNewTransaction)
+                    Divider()
+                    Button(role: .destructive) {
+                        accountListVM.delete(account: accountListItem, context: viewContext)
+                    } label: {
+                        Label("Удалить", systemImage: "trash")
                     }
+                }
+            label: {
+                Label("Menu", systemImage: "ellipsis.circle")
+            }
+            }
+            
+            ToolbarItemGroup(placement: .bottomBar) {
+                Button(action: {
+                    self.showingNewTransaction.toggle()
+                }) {
+                    Image(systemName: "plus.circle.fill")
+                        .imageScale(.medium)
+                        .font(.title)
+                        .foregroundColor(Color(accountListItem.colorAccount ?? ""))
+                    Text("Транзакция").bold()
+                        .foregroundColor(Color(accountListItem.colorAccount ?? ""))
+                }
+                Spacer()
+            }
+        }
+        .sheet(isPresented: $isEdit) {
+            NewAccountView(showAdd: $isEdit)
+        }
+        .sheet(isPresented: $showingNewTransaction) {
+            NewTransactionView(showAddTransaction: $showingNewTransaction)
+        }
         
     }
 }
 
 struct TransactionListView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListView(area: AccountEntity())
+        TransactionListView(accountListItem: AccountEntity())
     }
 }

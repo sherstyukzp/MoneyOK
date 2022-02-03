@@ -23,38 +23,45 @@ struct AccountsListView: View {
     var body: some View {
         
         List {
-            Section {
-                ForEach(fetchedAccountList, id:\.self) { (item: AccountEntity) in
-                    
+            
+            if !(fetchedAccountList.filter{$0.isFavorite == true}).isEmpty {
+                Section("Избранные") {
+                    ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { (item: AccountEntity) in
+                        NavigationLink(destination:
+                                        TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
+                        {
+                            AccountCallView(accountListItem: item)
+                        }
+                        
+                        .swipeActions() {
+                            }
+                    }
+                }
+            }
+            
+            Section(fetchedAccountList.count <= 1 ? "Счёт" : "Счета") {
+                ForEach(fetchedAccountList.filter{$0.isFavorite == false && $0.isArchive == false}) { (item: AccountEntity) in
                     NavigationLink(destination:
-                                    TransactionListView(area: item).environment(\.managedObjectContext, self.viewContext))
+                                    TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
                     {
                         AccountCallView(accountListItem: item)
                     }
                     
                     .swipeActions() {
                         }
-                
-                }
-                
-            }
-            if !(fetchedAccountList.filter{$0.isFavorite == true}).isEmpty {
-                Section("Избранные") {
-                    ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { item in
-                        AccountCallView(accountListItem: item)
-                    }
-                }
-            }
-            
-            Section(fetchedAccountList.count <= 1 ? "Счёт" : "Счета") {
-                ForEach(fetchedAccountList.filter{$0.isFavorite == false && $0.isArchive == false}) { item in
-                    AccountCallView(accountListItem: item)
                 }
             }
             if !(fetchedAccountList.filter{$0.isArchive == true}).isEmpty {
                 Section("Архив") {
-                    ForEach(fetchedAccountList.filter{$0.isArchive == true}) { item in
-                        AccountCallView(accountListItem: item)
+                    ForEach(fetchedAccountList.filter{$0.isArchive == true}) { (item: AccountEntity) in
+                        NavigationLink(destination:
+                                        TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
+                        {
+                            AccountCallView(accountListItem: item)
+                        }
+                        
+                        .swipeActions() {
+                            }
                     }
                 }
             }
