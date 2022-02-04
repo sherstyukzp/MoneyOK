@@ -10,12 +10,32 @@ import CoreData
 
 class TransactionViewModel: ObservableObject {
     
-    @Published var nameTransactionSave = ""
     @Published var noteTransactionSave = ""
     @Published var sumTransactionSave = 0.0
-    // TODO: Добавить фото
-    @Published var transactionListItem: Transaction!
     
+    // TODO: Добавить фото, категорию
+    @Published var transactionListItem: Transaction!
+    @Published var accountListItem: AccountEntity!
+    
+    func createTransaction(context: NSManagedObjectContext, selectAccount: AccountEntity) {
+        
+        if accountListItem == nil {
+            let transaction = Transaction(context: context)
+            transaction.idTransaction = UUID()
+            transaction.sumTransaction = sumTransactionSave
+            transaction.dateTransaction = Date()
+            
+        } else {
+            transactionListItem.sumTransaction = sumTransactionSave
+            
+            transactionListItem.accounts = selectAccount
+            
+        }
+        
+        save(context: context)
+        sumTransactionSave = 0.0
+        
+    }
     
     
     

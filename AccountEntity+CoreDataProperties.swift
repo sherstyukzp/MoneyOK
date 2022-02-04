@@ -2,12 +2,13 @@
 //  AccountEntity+CoreDataProperties.swift
 //  MoneyOK
 //
-//  Created by Ярослав Шерстюк on 03.02.2022.
+//  Created by Ярослав Шерстюк on 04.02.2022.
 //
 //
 
 import Foundation
 import CoreData
+import SwiftUI
 
 
 extension AccountEntity {
@@ -25,7 +26,15 @@ extension AccountEntity {
     @NSManaged public var isFavorite: Bool
     @NSManaged public var nameAccount: String?
     @NSManaged public var noteAccount: String?
-    @NSManaged public var transactions: NSSet?
+    @NSManaged public var orderIndex: Int64
+    @NSManaged public var transactions: Set<Transaction>?
+    
+    public var transaction: [Transaction]{
+            let setOfTransaction = transactions
+            return setOfTransaction!.sorted{
+                $0.id > $1.id
+            }
+    }
 
 }
 

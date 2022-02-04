@@ -2,7 +2,7 @@
 //  Transaction+CoreDataProperties.swift
 //  MoneyOK
 //
-//  Created by Ярослав Шерстюк on 03.02.2022.
+//  Created by Ярослав Шерстюк on 04.02.2022.
 //
 //
 
@@ -17,10 +17,11 @@ extension Transaction {
     }
 
     @NSManaged public var idTransaction: UUID?
+    @NSManaged public var imageTransaction: Data?
     @NSManaged public var nameTransaction: String?
     @NSManaged public var noteTransaction: String?
     @NSManaged public var sumTransaction: Double
-    @NSManaged public var imageTransaction: Data?
+    @NSManaged public var dateTransaction: Date?
     @NSManaged public var accounts: AccountEntity?
     @NSManaged public var categoryCosts: CategoryCosts?
     @NSManaged public var categoryIncome: CategoryIncome?

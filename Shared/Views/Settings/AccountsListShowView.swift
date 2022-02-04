@@ -20,7 +20,25 @@ struct AccountsListShowView: View {
         
         List {
             ForEach(accountList) { item in
-                AccountCallView(accountListItem: item)
+                HStack {
+                    ZStack {
+                        Circle()
+                            .fill(Color(item.colorAccount!))
+                            .frame(width: 32, height: 32)
+                        Image(systemName: item.iconAccount!)
+                            .foregroundColor(Color.white)
+                            .font(Font.footnote)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text(item.nameAccount!)
+                            .bold()
+                            .foregroundColor(.primary)
+                        Text("Баланс: \(item.balanceAccount)")
+                                    .font(Font.footnote).foregroundColor(Color.gray)
+                    }
+                    
+                }
             }
         }
         .navigationTitle("Счета")

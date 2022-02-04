@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TransactionListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    
     
     @ObservedObject var accountListItem: AccountEntity
     @EnvironmentObject var accountListVM: AccountViewModel
@@ -19,7 +21,11 @@ struct TransactionListView: View {
     
     var body: some View {
         List {
-            Text("Hello, SwiftUI!")
+            ForEach(self.accountListItem.transaction, id: \.self) { item in
+                VStack {
+                    Text ("Transaction: \(item.sumTransaction)")
+                }
+            }
         }
         
         
@@ -78,7 +84,7 @@ struct TransactionListView: View {
             NewAccountView(showAdd: $isEdit)
         }
         .sheet(isPresented: $showingNewTransaction) {
-            NewTransactionView(showAddTransaction: $showingNewTransaction)
+            NewTransactionView(showAddTransaction: $showingNewTransaction, accountSelect: accountListItem)
         }
         
     }

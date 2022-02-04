@@ -68,7 +68,7 @@ struct PanelView: View {
                 NewAccountView(showAdd: $showingNewAccount)
             }
         .sheet(isPresented: $showingNewTransaction) {
-                NewTransactionView(showAddTransaction: $showingNewTransaction)
+            NewTransactionView(showAddTransaction: $showingNewTransaction, accountSelect: AccountEntity())
             }
     
     }

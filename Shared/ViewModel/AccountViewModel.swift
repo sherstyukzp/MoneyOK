@@ -47,6 +47,8 @@ class AccountViewModel: ObservableObject {
         
     }
     
+
+    
     
     func isFavorite(account: AccountEntity, context: NSManagedObjectContext) {
         account.isFavorite.toggle()

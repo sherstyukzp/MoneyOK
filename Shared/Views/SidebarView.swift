@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SidebarView: View {
     
-    
     var body: some View {
         
 #if os(iOS)
@@ -42,6 +41,7 @@ struct SidebarView: View {
         NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
 #endif
     }
+
     
 }
 

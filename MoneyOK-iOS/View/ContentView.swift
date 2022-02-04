@@ -18,6 +18,8 @@ struct ContentView: View {
     
     @State private var showingNewAccount = false
     
+
+    
     var body: some View {
         NavigationView {
             
@@ -50,6 +52,7 @@ struct ContentView: View {
             } else {
             VStack {
                 SidebarView()
+                    
                     .safeAreaInset(edge: .bottom) {
                             PanelView()
                             }
@@ -67,13 +70,20 @@ struct ContentView: View {
                         NavigationLink(destination: SettingsView()) {
                             Image(systemName: "gearshape")
                         }
-                    }
+                    
+                
+                }
+                
             }
+            
                 
             
                 .navigationTitle("MoneyOK")
         }
     }
+    
+   
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

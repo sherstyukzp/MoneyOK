@@ -2,7 +2,7 @@
 //  CategoryIncome+CoreDataClass.swift
 //  MoneyOK
 //
-//  Created by Ярослав Шерстюк on 03.02.2022.
+//  Created by Ярослав Шерстюк on 04.02.2022.
 //
 //
 

@@ -12,6 +12,7 @@ struct NewAccountView: View {
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var accountListVM: AccountViewModel
     
+    
     @Binding var showAdd: Bool
     
     @State private var isPresentedIcon: Bool = true

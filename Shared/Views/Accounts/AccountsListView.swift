@@ -11,11 +11,11 @@ import CoreData
 struct AccountsListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @EnvironmentObject var accountListVM: AccountViewModel
     
     @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(key: "dateOfCreation", ascending: true)])
     var fetchedAccountList: FetchedResults<AccountEntity>
-
+    
+    
     @ObservedObject var accountListItem: AccountEntity
     
     @State private var isEdit = false
@@ -23,7 +23,6 @@ struct AccountsListView: View {
     var body: some View {
         
         List {
-            
             if !(fetchedAccountList.filter{$0.isFavorite == true}).isEmpty {
                 Section("Избранные") {
                     ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { (item: AccountEntity) in
@@ -66,11 +65,15 @@ struct AccountsListView: View {
                 }
             }
 
-            
+                
         }
-
+        
+        
         
     }
+    
+    
+    
     
     
 }

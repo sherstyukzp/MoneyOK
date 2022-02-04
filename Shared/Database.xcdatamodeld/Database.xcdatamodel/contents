@@ -10,6 +10,7 @@
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="nameAccount" optional="YES" attributeType="String"/>
         <attribute name="noteAccount" optional="YES" attributeType="String"/>
+        <attribute name="orderIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="accounts" inverseEntity="Transaction"/>
     </entity>
     <entity name="CategoryCosts" representedClassName="CategoryCosts" syncable="YES">
@@ -27,6 +28,7 @@
         <relationship name="transactionIncome" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="categoryIncome" inverseEntity="Transaction"/>
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES">
+        <attribute name="dateTransaction" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="idTransaction" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="imageTransaction" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="nameTransaction" optional="YES" attributeType="String"/>
@@ -37,9 +39,9 @@
         <relationship name="categoryIncome" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryIncome" inverseName="transactionIncome" inverseEntity="CategoryIncome"/>
     </entity>
     <elements>
-        <element name="AccountEntity" positionX="-566.6875" positionY="-281.8515625" width="128" height="179"/>
+        <element name="AccountEntity" positionX="-566.6875" positionY="-281.8515625" width="128" height="194"/>
         <element name="CategoryCosts" positionX="-92.36328125" positionY="-166.90625" width="128" height="118"/>
         <element name="CategoryIncome" positionX="-86.3515625" positionY="-2.0859375" width="128" height="118"/>
-        <element name="Transaction" positionX="-329.171875" positionY="-196.76171875" width="128" height="149"/>
+        <element name="Transaction" positionX="-329.171875" positionY="-196.76171875" width="128" height="164"/>
     </elements>
 </model>

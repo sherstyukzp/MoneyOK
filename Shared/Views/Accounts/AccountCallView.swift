@@ -17,6 +17,8 @@ struct AccountCallView: View {
     @State private var isEdit = false
     @State private var showingNewTransaction = false
     
+
+    
     var body: some View {
         HStack {
             ZStack {
@@ -36,6 +38,7 @@ struct AccountCallView: View {
             }
             
         }
+        
         .contextMenu {
             Button {
                 self.showingNewTransaction.toggle()
@@ -84,7 +87,7 @@ struct AccountCallView: View {
             NewAccountView(showAdd: $isEdit)
         }
         .sheet(isPresented: $showingNewTransaction) {
-                NewTransactionView(showAddTransaction: $showingNewTransaction)
+            NewTransactionView(showAddTransaction: $showingNewTransaction, accountSelect: accountListItem)
             }
         // Свайп влево
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
@@ -130,7 +133,14 @@ struct AccountCallView: View {
             
         }
         
-    }
+        
+        
+    } 
+    
+    
+    
+    
+    
 }
 
 struct AccountCallView_Previews: PreviewProvider {
