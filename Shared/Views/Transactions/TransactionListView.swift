@@ -22,9 +22,7 @@ struct TransactionListView: View {
     var body: some View {
         List {
             ForEach(self.accountListItem.transaction, id: \.self) { item in
-                VStack {
-                    Text ("Transaction: \(item.sumTransaction)")
-                }
+                TransactionCallView(transaction: item, account: accountListItem)
             }
         }
         

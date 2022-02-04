@@ -31,7 +31,7 @@ extension AccountEntity {
     
     public var transaction: [Transaction]{
             let setOfTransaction = transactions
-            return setOfTransaction!.sorted{
+            return setOfTransaction!.sorted {
                 $0.id > $1.id
             }
     }

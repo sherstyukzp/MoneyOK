@@ -167,8 +167,7 @@ struct NewTransactionView: View {
             .safeAreaInset(edge: .bottom) {
                 HStack {
                 Button {
-                    // TODO: Добавить сохранение транзакции
-                    //transactionListVM.createTransaction(context: viewContext, selectAccount: selectedAccount)
+                    // TODO: Изменить на MVVM
                     addEmployee()
                     self.showAddTransaction.toggle()
                     
@@ -212,7 +211,20 @@ struct NewTransactionView: View {
     private func addEmployee(){
         let newEmployee = Transaction(context: viewContext)
         newEmployee.idTransaction = UUID()
-        newEmployee.sumTransaction = sumTransaction
+        
+        var sumSave = 0.0
+        if typeTrancaction == .costs {
+            sumSave = sumTransaction * -1
+        }
+        if typeTrancaction == .income {
+            sumSave = sumTransaction
+        }
+        if typeTrancaction == .transfer {
+            // TODO: Добавить алгоритм перевода
+            sumSave = sumTransaction
+        }
+        
+        newEmployee.sumTransaction = sumSave
         newEmployee.accounts = selectedAccount
         do{
             try viewContext.save()
