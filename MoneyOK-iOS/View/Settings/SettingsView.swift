@@ -13,6 +13,10 @@ struct SettingsView: View {
             NavigationLink(destination: AccountsListShowView()) {
                 Text("Счета")
             }
+            
+            NavigationLink(destination: CategoryListView()) {
+                Text("Категории")
+            }
         }
         
             .navigationTitle("Настройки")

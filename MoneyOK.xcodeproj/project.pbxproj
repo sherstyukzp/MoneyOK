@@ -65,6 +65,12 @@
 		05E6B54727AD5BFC00AB6A9D /* CategoryCosts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B53727AD5BFC00AB6A9D /* CategoryCosts+CoreDataProperties.swift */; };
 		05E6B54927AD636000AB6A9D /* TransactionCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54827AD636000AB6A9D /* TransactionCallView.swift */; };
 		05E6B54A27AD636000AB6A9D /* TransactionCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54827AD636000AB6A9D /* TransactionCallView.swift */; };
+		05E6B54C27AEE69800AB6A9D /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54B27AEE69800AB6A9D /* CategoryListView.swift */; };
+		05E6B54D27AEE69800AB6A9D /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54B27AEE69800AB6A9D /* CategoryListView.swift */; };
+		05E6B54F27AEE6B600AB6A9D /* NewCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */; };
+		05E6B55027AEE6B600AB6A9D /* NewCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */; };
+		05E6B55327AEE81600AB6A9D /* CategoryCostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B55227AEE81600AB6A9D /* CategoryCostsViewModel.swift */; };
+		05E6B55427AEE81600AB6A9D /* CategoryCostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B55227AEE81600AB6A9D /* CategoryCostsViewModel.swift */; };
 		05FC501027A6DD6600708D3C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC500F27A6DD6600708D3C /* AccountViewModel.swift */; };
 		05FC501127A6DD6600708D3C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC500F27A6DD6600708D3C /* AccountViewModel.swift */; };
 		05FC502B27A8188B00708D3C /* NewTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FC502A27A8188B00708D3C /* NewTransactionView.swift */; };
@@ -109,6 +115,9 @@
 		05E6B53627AD5BFC00AB6A9D /* CategoryCosts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataClass.swift"; sourceTree = "<group>"; };
 		05E6B53727AD5BFC00AB6A9D /* CategoryCosts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCosts+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05E6B54827AD636000AB6A9D /* TransactionCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCallView.swift; sourceTree = "<group>"; };
+		05E6B54B27AEE69800AB6A9D /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
+		05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryView.swift; sourceTree = "<group>"; };
+		05E6B55227AEE81600AB6A9D /* CategoryCostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCostsViewModel.swift; sourceTree = "<group>"; };
 		05FC500F27A6DD6600708D3C /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		05FC502A27A8188B00708D3C /* NewTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,6 +230,7 @@
 				0549FA1227AC1A5F0086506A /* Settings */,
 				05231305279AE3A3003CFB9E /* SidebarView.swift */,
 				054F03AC27A005D100F7271A /* ColorSwatchView.swift */,
+				05E6B55127AEE6BE00AB6A9D /* Category */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,7 +253,6 @@
 		0549FA1227AC1A5F0086506A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -251,6 +260,7 @@
 		0549FA1327AC1A7B0086506A /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */,
 				05231302279AE2F0003CFB9E /* AccountsListView.swift */,
 				0523130B279B0881003CFB9E /* AccountCallView.swift */,
 			);
@@ -325,8 +335,18 @@
 			children = (
 				05FC500F27A6DD6600708D3C /* AccountViewModel.swift */,
 				0549FA1C27AC1CA30086506A /* TransactionViewModel.swift */,
+				05E6B55227AEE81600AB6A9D /* CategoryCostsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		05E6B55127AEE6BE00AB6A9D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */,
+				05E6B54B27AEE69800AB6A9D /* CategoryListView.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,12 +472,15 @@
 				05231306279AE3A3003CFB9E /* SidebarView.swift in Sources */,
 				05FC502B27A8188B00708D3C /* NewTransactionView.swift in Sources */,
 				0523130C279B0882003CFB9E /* AccountCallView.swift in Sources */,
+				05E6B54C27AEE69800AB6A9D /* CategoryListView.swift in Sources */,
 				05E6B54627AD5BFC00AB6A9D /* CategoryCosts+CoreDataProperties.swift in Sources */,
+				05E6B54F27AEE6B600AB6A9D /* NewCategoryView.swift in Sources */,
 				0534A21F27AABB9100929BC7 /* AccountsListShowView.swift in Sources */,
 				05E6B54427AD5BFC00AB6A9D /* CategoryCosts+CoreDataClass.swift in Sources */,
 				05E6B54227AD5BFC00AB6A9D /* AccountEntity+CoreDataProperties.swift in Sources */,
 				052312DC279AD718003CFB9E /* ContentView.swift in Sources */,
 				052312DA279AD718003CFB9E /* MoneyOK_iOSApp.swift in Sources */,
+				05E6B55327AEE81600AB6A9D /* CategoryCostsViewModel.swift in Sources */,
 				05FC501027A6DD6600708D3C /* AccountViewModel.swift in Sources */,
 				0534A21B27A8293000929BC7 /* PanelView.swift in Sources */,
 				054F03B627A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
@@ -472,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05E6B55427AEE81600AB6A9D /* CategoryCostsViewModel.swift in Sources */,
 				05E6B54327AD5BFC00AB6A9D /* AccountEntity+CoreDataProperties.swift in Sources */,
 				054F03B727A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
 				05231304279AE2F1003CFB9E /* AccountsListView.swift in Sources */,
@@ -490,6 +514,7 @@
 				05E6B54727AD5BFC00AB6A9D /* CategoryCosts+CoreDataProperties.swift in Sources */,
 				054F03BB27A012A600F7271A /* UsageExample.swift in Sources */,
 				0523130D279B0882003CFB9E /* AccountCallView.swift in Sources */,
+				05E6B54D27AEE69800AB6A9D /* CategoryListView.swift in Sources */,
 				052312EE279AD732003CFB9E /* ContentView.swift in Sources */,
 				052312EC279AD732003CFB9E /* MoneyOK_macOSApp.swift in Sources */,
 				05E6B54527AD5BFC00AB6A9D /* CategoryCosts+CoreDataClass.swift in Sources */,
@@ -497,6 +522,7 @@
 				054F03BE27A023D100F7271A /* KeyboardListener.swift in Sources */,
 				054F0385279EE91900F7271A /* PersistenceController.swift in Sources */,
 				0549FA1E27AC1CA30086506A /* TransactionViewModel.swift in Sources */,
+				05E6B55027AEE6B600AB6A9D /* NewCategoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
