@@ -12,7 +12,7 @@ struct SidebarView: View {
     var body: some View {
         
 #if os(iOS)
-        AccountsListView(accountListItem: AccountEntity())
+        AccountsListView(accountListItem: AccountEntity(), categoryListItem: CategoryEntity())
             .listStyle(SidebarListStyle())
         
             

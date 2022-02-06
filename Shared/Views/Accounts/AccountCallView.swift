@@ -84,7 +84,7 @@ struct AccountCallView: View {
             }
         }
         .sheet(isPresented: $isEdit) {
-            NewAccountView(showAdd: $isEdit)
+            NewAccountView(showAddAccount: $isEdit)
         }
         .sheet(isPresented: $showingNewTransaction) {
             NewTransactionView(showAddTransaction: $showingNewTransaction, accountSelect: accountListItem)

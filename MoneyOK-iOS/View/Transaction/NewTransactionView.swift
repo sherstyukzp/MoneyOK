@@ -16,7 +16,10 @@ struct NewTransactionView: View {
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)]) private var accounts: FetchedResults<AccountEntity>
     
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)]) private var categoriesCosts: FetchedResults<CategoryEntity>
+    
     @State private var selectedAccount = AccountEntity()
+    @State private var selectedCategoryCosts = CategoryEntity()
     
     let types = Array(TypeTrancaction.allCases)
     @State var typeTrancaction: TypeTrancaction? = .costs
@@ -91,9 +94,9 @@ struct NewTransactionView: View {
                 }
                 
                 Section("Категория") {
-                    Picker("Выбрать категорию", selection: $selectedAccount){
-                        ForEach(accounts, id: \.self) {
-                            Text($0.nameAccount ?? "")
+                    Picker("Выбрать категорию", selection: $selectedCategoryCosts){
+                        ForEach(categoriesCosts, id: \.self) {
+                            Text($0.nameCategory ?? "")
 
                                 .navigationBarTitle("Выберите категорию")
                         }
@@ -209,7 +212,7 @@ struct NewTransactionView: View {
     }
     
     private func addEmployee(){
-        let newEmployee = Transaction(context: viewContext)
+        let newEmployee = TransactionEntity(context: viewContext)
         newEmployee.idTransaction = UUID()
         
         var sumSave = 0.0
@@ -225,7 +228,7 @@ struct NewTransactionView: View {
         }
         
         newEmployee.sumTransaction = sumSave
-        newEmployee.accounts = selectedAccount
+        newEmployee.transactionsToAccounts = selectedAccount
         do{
             try viewContext.save()
         }

@@ -41,6 +41,8 @@ struct ContentView: View {
                         .padding(.horizontal, 30.0)
                     Button {
                         accountListVM.nameAccountSave = ""
+                        accountListVM.balanceAccountSave = 0.0
+                        accountListVM.noteAccountSave = ""
                         accountListVM.accountListItem = nil
                         self.showingNewAccount.toggle()
                         
@@ -62,7 +64,7 @@ struct ContentView: View {
             }
             
             .sheet(isPresented: $showingNewAccount) {
-                    NewAccountView(showAdd: $showingNewAccount)
+                    NewAccountView(showAddAccount: $showingNewAccount)
                 }
             .toolbar {
                     // Кнопка Настройки

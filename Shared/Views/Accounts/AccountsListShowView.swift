@@ -12,7 +12,6 @@ struct AccountsListShowView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    
     @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(key: "dateOfCreation", ascending: true)])
     var accountList: FetchedResults<AccountEntity>
     

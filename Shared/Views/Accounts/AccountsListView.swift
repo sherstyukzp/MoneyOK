@@ -18,6 +18,8 @@ struct AccountsListView: View {
     
     @ObservedObject var accountListItem: AccountEntity
     
+    @ObservedObject var categoryListItem: CategoryEntity
+    
     @State private var isEdit = false
     
     var body: some View {
@@ -27,7 +29,7 @@ struct AccountsListView: View {
                 Section("Избранные") {
                     ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { (item: AccountEntity) in
                         NavigationLink(destination:
-                                        TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
+                                        TransactionListView(accountListItem: item, categoryListItem: categoryListItem).environment(\.managedObjectContext, self.viewContext))
                         {
                             AccountCallView(accountListItem: item)
                         }
@@ -41,7 +43,7 @@ struct AccountsListView: View {
             Section(fetchedAccountList.count <= 1 ? "Счёт" : "Счета") {
                 ForEach(fetchedAccountList.filter{$0.isFavorite == false && $0.isArchive == false}) { (item: AccountEntity) in
                     NavigationLink(destination:
-                                    TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
+                                    TransactionListView(accountListItem: item, categoryListItem: categoryListItem).environment(\.managedObjectContext, self.viewContext))
                     {
                         AccountCallView(accountListItem: item)
                     }
@@ -54,7 +56,7 @@ struct AccountsListView: View {
                 Section("Архив") {
                     ForEach(fetchedAccountList.filter{$0.isArchive == true}) { (item: AccountEntity) in
                         NavigationLink(destination:
-                                        TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
+                                        TransactionListView(accountListItem: item, categoryListItem: categoryListItem).environment(\.managedObjectContext, self.viewContext))
                         {
                             AccountCallView(accountListItem: item)
                         }
@@ -83,6 +85,6 @@ struct AccountsListView: View {
 
 struct AccountsListView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsListView(accountListItem: AccountEntity())
+        AccountsListView(accountListItem: AccountEntity(), categoryListItem: CategoryEntity())
     }
 }

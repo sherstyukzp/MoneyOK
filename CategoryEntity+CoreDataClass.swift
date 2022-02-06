@@ -1,5 +1,5 @@
 //
-//  AccountEntity+CoreDataClass.swift
+//  CategoryEntity+CoreDataClass.swift
 //  MoneyOK
 //
 //  Created by Ярослав Шерстюк on 06.02.2022.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(AccountEntity)
-public class AccountEntity: NSManagedObject {
+@objc(CategoryEntity)
+public class CategoryEntity: NSManagedObject {
 
 }

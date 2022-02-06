@@ -10,18 +10,18 @@ import SwiftUI
 struct NewCategoryView: View {
     
     @Environment(\.managedObjectContext) var viewContext
-    @EnvironmentObject var categoryCostsListVM: CategoryCostsViewModel
+    
+    @EnvironmentObject var categoryListVM: CategoryCostsViewModel
     
     @Binding var showAddCategory: Bool
     @State private var isPresentedIcon: Bool = true
     
-
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
         var disableForm: Bool {
-            categoryCostsListVM.nameCategoryCostsSave.isEmpty ||
-            categoryCostsListVM.iconCategoryCostsSave.isEmpty ||
-            categoryCostsListVM.colorCategoryCostsSave.isEmpty
+            categoryListVM.nameCategoryCostsSave.isEmpty ||
+            categoryListVM.iconCategoryCostsSave.isEmpty ||
+            categoryListVM.colorCategoryCostsSave.isEmpty
         }
     
     
@@ -32,17 +32,17 @@ struct NewCategoryView: View {
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(Color(categoryCostsListVM.colorCategoryCostsSave.isEmpty ? "swatch_articblue" : categoryCostsListVM.colorCategoryCostsSave))
+                                .fill(Color(categoryListVM.colorCategoryCostsSave.isEmpty ? "swatch_articblue" : categoryListVM.colorCategoryCostsSave))
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 10)
                                 .padding()
-                            Image(systemName: categoryCostsListVM.iconCategoryCostsSave.isEmpty ? "creditcard.fill" : categoryCostsListVM.iconCategoryCostsSave)
+                            Image(systemName: categoryListVM.iconCategoryCostsSave.isEmpty ? "creditcard.fill" : categoryListVM.iconCategoryCostsSave)
                                 .font(Font.largeTitle)
                                 .foregroundColor(Color.white)
                         }
                         
                         
-                        TextField("Имя категории", text: $categoryCostsListVM.nameCategoryCostsSave)
+                        TextField("Имя категории", text: $categoryListVM.nameCategoryCostsSave)
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10.0)
@@ -51,24 +51,24 @@ struct NewCategoryView: View {
                 }
                 Section(header: Text("Цвет")) {
                     
-                    ColorSwatchView(selection: $categoryCostsListVM.colorCategoryCostsSave)
+                    ColorSwatchView(selection: $categoryListVM.colorCategoryCostsSave)
                 }
                 Section(header: Text("Иконка")) {
-                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $categoryCostsListVM.iconCategoryCostsSave, category: .people, axis: .vertical, haptic: true).frame(height: 300)
+                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $categoryListVM.iconCategoryCostsSave, category: .people, axis: .vertical, haptic: true).frame(height: 300)
                 }
                 
                 
             }.dismissingKeyboard()
             
-                .navigationTitle(categoryCostsListVM.categoryCostsListItem == nil ? "Новая" : "Редактировать")
+                .navigationTitle(categoryListVM.categoryListItem == nil ? "Новая" : "Редактировать")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading: Button("Отмена", action: {
                     self.showAddCategory.toggle()
                 }), trailing: Button(action: {
-                    categoryCostsListVM.createCategoryCosts(context: viewContext)
+                    categoryListVM.createCategoryCosts(context: viewContext)
                     self.showAddCategory.toggle()
                 }) {
-                    Text(categoryCostsListVM.categoryCostsListItem == nil ? "Сохранить" : "Обновить")
+                    Text(categoryListVM.categoryListItem == nil ? "Сохранить" : "Обновить")
                 }.disabled(disableForm)
                 )
         }

@@ -10,10 +10,10 @@ import SwiftUI
 struct NewAccountView: View {
     
     @Environment(\.managedObjectContext) var viewContext
+    
     @EnvironmentObject var accountListVM: AccountViewModel
     
-    
-    @Binding var showAdd: Bool
+    @Binding var showAddAccount: Bool
     
     @State private var isPresentedIcon: Bool = true
     
@@ -75,10 +75,10 @@ struct NewAccountView: View {
                 .navigationTitle(accountListVM.accountListItem == nil ? "Новый" : "Редактировать")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading: Button("Отмена", action: {
-                    self.showAdd.toggle()
+                    self.showAddAccount.toggle()
                 }), trailing: Button(action: {
                     accountListVM.createTask(context: viewContext)
-                    self.showAdd.toggle()
+                    self.showAddAccount.toggle()
                 }) {
                     Text(accountListVM.accountListItem == nil ? "Сохранить" : "Обновить")
                 }.disabled(disableForm)
@@ -89,6 +89,6 @@ struct NewAccountView: View {
 
 struct NewAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        NewAccountView(showAdd: .constant(false))
+        NewAccountView(showAddAccount: .constant(false))
     }
 }

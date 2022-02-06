@@ -2,13 +2,12 @@
 //  AccountEntity+CoreDataProperties.swift
 //  MoneyOK
 //
-//  Created by Ярослав Шерстюк on 04.02.2022.
+//  Created by Ярослав Шерстюк on 06.02.2022.
 //
 //
 
 import Foundation
 import CoreData
-import SwiftUI
 
 
 extension AccountEntity {
@@ -27,10 +26,10 @@ extension AccountEntity {
     @NSManaged public var nameAccount: String?
     @NSManaged public var noteAccount: String?
     @NSManaged public var orderIndex: Int64
-    @NSManaged public var transactions: Set<Transaction>?
+    @NSManaged public var accountsToTransactions: Set<TransactionEntity>?
     
-    public var transaction: [Transaction]{
-            let setOfTransaction = transactions
+    public var transaction: [TransactionEntity]{
+            let setOfTransaction = accountsToTransactions
             return setOfTransaction!.sorted {
                 $0.id > $1.id
             }
@@ -38,20 +37,20 @@ extension AccountEntity {
 
 }
 
-// MARK: Generated accessors for transactions
+// MARK: Generated accessors for accountsToTransactions
 extension AccountEntity {
 
-    @objc(addTransactionsObject:)
-    @NSManaged public func addToTransactions(_ value: Transaction)
+    @objc(addAccountsToTransactionsObject:)
+    @NSManaged public func addToAccountsToTransactions(_ value: TransactionEntity)
 
-    @objc(removeTransactionsObject:)
-    @NSManaged public func removeFromTransactions(_ value: Transaction)
+    @objc(removeAccountsToTransactionsObject:)
+    @NSManaged public func removeFromAccountsToTransactions(_ value: TransactionEntity)
 
-    @objc(addTransactions:)
-    @NSManaged public func addToTransactions(_ values: NSSet)
+    @objc(addAccountsToTransactions:)
+    @NSManaged public func addToAccountsToTransactions(_ values: NSSet)
 
-    @objc(removeTransactions:)
-    @NSManaged public func removeFromTransactions(_ values: NSSet)
+    @objc(removeAccountsToTransactions:)
+    @NSManaged public func removeFromAccountsToTransactions(_ values: NSSet)
 
 }
 

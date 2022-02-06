@@ -15,21 +15,21 @@ class CategoryCostsViewModel: ObservableObject {
     @Published var colorCategoryCostsSave = "swatch_articblue"
 
 
-    @Published var categoryCostsListItem: CategoryCosts!
+    @Published var categoryListItem: CategoryEntity!
     
     func createCategoryCosts(context: NSManagedObjectContext) {
         
-        if categoryCostsListItem == nil {
-            let account = CategoryCosts(context: context)
-            account.idCategoryCosts = UUID()
+        if categoryListItem == nil {
+            let account = CategoryEntity(context: context)
+            account.idCategory = UUID()
             account.nameCategory = nameCategoryCostsSave
             account.iconCategory = iconCategoryCostsSave
             account.colorCategory = colorCategoryCostsSave
             
         } else {
-            categoryCostsListItem.nameCategory = nameCategoryCostsSave
-            categoryCostsListItem.iconCategory = iconCategoryCostsSave
-            categoryCostsListItem.colorCategory = colorCategoryCostsSave
+            categoryListItem.nameCategory = nameCategoryCostsSave
+            categoryListItem.iconCategory = iconCategoryCostsSave
+            categoryListItem.colorCategory = colorCategoryCostsSave
         }
         
         save(context: context)
@@ -40,11 +40,11 @@ class CategoryCostsViewModel: ObservableObject {
     }
     
     
-    func editList(category: CategoryCosts){
-        categoryCostsListItem = category
+    func editList(category: CategoryEntity){
+        categoryListItem = category
     }
     
-    func delete(category: CategoryCosts, context: NSManagedObjectContext) {
+    func delete(category: CategoryEntity, context: NSManagedObjectContext) {
         context.delete(category)
         save(context: context)
     }
