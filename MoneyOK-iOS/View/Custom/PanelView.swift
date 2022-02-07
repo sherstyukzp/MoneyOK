@@ -66,7 +66,7 @@ struct PanelView: View {
         .background(Color(UIColor.secondarySystemBackground))
         
         .sheet(isPresented: $showingNewAccount) {
-                NewAccountView(showAddAccount: $showingNewAccount)
+                NewAccountView(isAddAccount: $showingNewAccount)
             }
         .sheet(isPresented: $showingNewTransaction) {
             NewTransactionView(showAddTransaction: $showingNewTransaction)

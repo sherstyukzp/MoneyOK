@@ -10,12 +10,12 @@ import SwiftUI
 struct AccountCallView: View {
     
     @Environment(\.managedObjectContext) var viewContext
-    @EnvironmentObject var accountListVM: AccountViewModel
+    @EnvironmentObject var accountVM: AccountViewModel
     
     @ObservedObject var accountListItem: AccountEntity
     
-    @State private var isEdit = false
-    @State private var showingNewTransaction = false
+    @State private var isEditAccount = false
+    @State private var isNewTransaction = false
     
 
     
@@ -41,7 +41,7 @@ struct AccountCallView: View {
         
         .contextMenu {
             Button {
-                self.showingNewTransaction.toggle()
+                self.isNewTransaction.toggle()
             } label: {
                 Label("Новая транзакция", systemImage: "plus.circle")
             }
@@ -49,28 +49,28 @@ struct AccountCallView: View {
             Divider()
             if accountListItem.isArchive == false {
                 Button {
-                    accountListVM.isFavorite(account: accountListItem, context: viewContext)
+                    accountVM.isFavorite(account: accountListItem, context: viewContext)
                 } label: {
                     Label("Избранный", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
                 }
             }
             
             Button {
-                accountListVM.nameAccountSave = accountListItem.nameAccount!
-                accountListVM.iconAccountSave = accountListItem.iconAccount!
-                accountListVM.colorAccountSave = accountListItem.colorAccount!
-                accountListVM.balanceAccountSave = accountListItem.balanceAccount
-                accountListVM.noteAccountSave = accountListItem.noteAccount!
-                accountListVM.accountListItem = accountListItem
-                self.isEdit.toggle()
+                accountVM.nameAccountSave = accountListItem.nameAccount!
+                accountVM.iconAccountSave = accountListItem.iconAccount!
+                accountVM.colorAccountSave = accountListItem.colorAccount!
+                accountVM.balanceAccountSave = accountListItem.balanceAccount
+                accountVM.noteAccountSave = accountListItem.noteAccount!
+                accountVM.accountListItem = accountListItem
+                self.isEditAccount.toggle()
             } label: {
                 Label("Редактировать", systemImage: "highlighter")
             }
             
             Button {
-                accountListVM.isArchive(account: accountListItem, context: viewContext)
+                accountVM.isArchive(account: accountListItem, context: viewContext)
                 if accountListItem.isFavorite == true {
-                    accountListVM.isFavorite(account: accountListItem, context: viewContext)
+                    accountVM.isFavorite(account: accountListItem, context: viewContext)
                 }
                 
             } label: {
@@ -78,22 +78,22 @@ struct AccountCallView: View {
             }
             Divider()
             Button(role: .destructive) {
-                accountListVM.delete(account: accountListItem, context: viewContext)
+                accountVM.delete(account: accountListItem, context: viewContext)
             } label: {
                 Label("Удалить", systemImage: "trash")
             }
         }
-        .sheet(isPresented: $isEdit) {
-            NewAccountView(showAddAccount: $isEdit)
+        .sheet(isPresented: $isEditAccount) {
+            NewAccountView(isAddAccount: $isEditAccount)
         }
-        .sheet(isPresented: $showingNewTransaction) {
-            NewTransactionView(showAddTransaction: $showingNewTransaction)
+        .sheet(isPresented: $isNewTransaction) {
+            NewTransactionView(showAddTransaction: $isNewTransaction)
             }
         // Свайп влево
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             if accountListItem.isArchive == false {
                 Button {
-                    accountListVM.isFavorite(account: accountListItem, context: viewContext)
+                    accountVM.isFavorite(account: accountListItem, context: viewContext)
                 } label: {
                     Label("Избранный", systemImage: accountListItem.isFavorite ? "heart.slash" : "heart")
                 }.tint(.green)
@@ -101,9 +101,9 @@ struct AccountCallView: View {
             
             
             Button {
-                accountListVM.isArchive(account: accountListItem, context: viewContext)
+                accountVM.isArchive(account: accountListItem, context: viewContext)
                 if accountListItem.isFavorite == true {
-                    accountListVM.isFavorite(account: accountListItem, context: viewContext)
+                    accountVM.isFavorite(account: accountListItem, context: viewContext)
                 }
                 
             } label: {
@@ -114,19 +114,19 @@ struct AccountCallView: View {
         // Свайп вправо
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             Button(role: .destructive) {
-                accountListVM.delete(account: accountListItem, context: viewContext)
+                accountVM.delete(account: accountListItem, context: viewContext)
             } label: {
                 Label("Удалить", systemImage: "trash")
             }
             
             Button {
-                accountListVM.nameAccountSave = accountListItem.nameAccount!
-                accountListVM.iconAccountSave = accountListItem.iconAccount!
-                accountListVM.colorAccountSave = accountListItem.colorAccount!
-                accountListVM.balanceAccountSave = accountListItem.balanceAccount
-                accountListVM.noteAccountSave = accountListItem.noteAccount!
-                accountListVM.accountListItem = accountListItem
-                self.isEdit.toggle()
+                accountVM.nameAccountSave = accountListItem.nameAccount!
+                accountVM.iconAccountSave = accountListItem.iconAccount!
+                accountVM.colorAccountSave = accountListItem.colorAccount!
+                accountVM.balanceAccountSave = accountListItem.balanceAccount
+                accountVM.noteAccountSave = accountListItem.noteAccount!
+                accountVM.accountListItem = accountListItem
+                self.isEditAccount.toggle()
             } label: {
                 Label("Редактировать", systemImage: "pencil")
             }.tint(.yellow)

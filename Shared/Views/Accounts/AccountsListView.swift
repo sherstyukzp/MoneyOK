@@ -12,26 +12,26 @@ struct AccountsListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(key: "dateOfCreation", ascending: true)])
-    var fetchedAccountList: FetchedResults<AccountEntity>
+    @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.dateOfCreation, ascending: true)])
+    var fetchAccounts: FetchedResults<AccountEntity>
     
     
     @ObservedObject var accountListItem: AccountEntity
     
-    @ObservedObject var categoryListItem: CategoryEntity
+    //@ObservedObject var categoryListItem: CategoryEntity
     
     @State private var isEdit = false
     
     var body: some View {
         
         List {
-            if !(fetchedAccountList.filter{$0.isFavorite == true}).isEmpty {
+            if !(fetchAccounts.filter{$0.isFavorite == true}).isEmpty {
                 Section("Избранные") {
-                    ForEach(fetchedAccountList.filter{$0.isFavorite == true && $0.isArchive == false}) { (item: AccountEntity) in
+                    ForEach(fetchAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { (account: AccountEntity) in
                         NavigationLink(destination:
-                                        TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
+                                        TransactionListView(accountListItem: account).environment(\.managedObjectContext, self.viewContext))
                         {
-                            AccountCallView(accountListItem: item)
+                            AccountCallView(accountListItem: account)
                         }
                         
                         .swipeActions() {
@@ -40,25 +40,25 @@ struct AccountsListView: View {
                 }
             }
             
-            Section(fetchedAccountList.count <= 1 ? "Счёт" : "Счета") {
-                ForEach(fetchedAccountList.filter{$0.isFavorite == false && $0.isArchive == false}) { (item: AccountEntity) in
+            Section(fetchAccounts.count <= 1 ? "Счёт" : "Счета") {
+                ForEach(fetchAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { (account: AccountEntity) in
                     NavigationLink(destination:
-                                    TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
+                                    TransactionListView(accountListItem: account).environment(\.managedObjectContext, self.viewContext))
                     {
-                        AccountCallView(accountListItem: item)
+                        AccountCallView(accountListItem: account)
                     }
                     
                     .swipeActions() {
                         }
                 }
             }
-            if !(fetchedAccountList.filter{$0.isArchive == true}).isEmpty {
+            if !(fetchAccounts.filter{$0.isArchive == true}).isEmpty {
                 Section("Архив") {
-                    ForEach(fetchedAccountList.filter{$0.isArchive == true}) { (item: AccountEntity) in
+                    ForEach(fetchAccounts.filter{$0.isArchive == true}) { (account: AccountEntity) in
                         NavigationLink(destination:
-                                        TransactionListView(accountListItem: item).environment(\.managedObjectContext, self.viewContext))
+                                        TransactionListView(accountListItem: account).environment(\.managedObjectContext, self.viewContext))
                         {
-                            AccountCallView(accountListItem: item)
+                            AccountCallView(accountListItem: account)
                         }
                         
                         .swipeActions() {
@@ -85,6 +85,6 @@ struct AccountsListView: View {
 
 struct AccountsListView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsListView(accountListItem: AccountEntity(), categoryListItem: CategoryEntity())
+        AccountsListView(accountListItem: AccountEntity())
     }
 }

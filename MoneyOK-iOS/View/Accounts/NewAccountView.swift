@@ -11,18 +11,18 @@ struct NewAccountView: View {
     
     @Environment(\.managedObjectContext) var viewContext
     
-    @EnvironmentObject var accountListVM: AccountViewModel
+    @EnvironmentObject var accountVM: AccountViewModel
     
-    @Binding var showAddAccount: Bool
+    @Binding var isAddAccount: Bool
     
     @State private var isPresentedIcon: Bool = true
     
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
         var disableForm: Bool {
-            accountListVM.nameAccountSave.isEmpty ||
-            accountListVM.iconAccountSave.isEmpty ||
-            accountListVM.colorAccountSave.isEmpty
+            accountVM.nameAccountSave.isEmpty ||
+            accountVM.iconAccountSave.isEmpty ||
+            accountVM.colorAccountSave.isEmpty
         }
     
     let formatter: NumberFormatter = {
@@ -38,17 +38,17 @@ struct NewAccountView: View {
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(Color(accountListVM.colorAccountSave.isEmpty ? "swatch_articblue" : accountListVM.colorAccountSave))
+                                .fill(Color(accountVM.colorAccountSave.isEmpty ? "swatch_articblue" : accountVM.colorAccountSave))
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 10)
                                 .padding()
-                            Image(systemName: accountListVM.iconAccountSave.isEmpty ? "creditcard.fill" : accountListVM.iconAccountSave)
+                            Image(systemName: accountVM.iconAccountSave.isEmpty ? "creditcard.fill" : accountVM.iconAccountSave)
                                 .font(Font.largeTitle)
                                 .foregroundColor(Color.white)
                         }
                         
                         
-                        TextField("Имя счёта", text: $accountListVM.nameAccountSave)
+                        TextField("Имя счёта", text: $accountVM.nameAccountSave)
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10.0)
@@ -57,30 +57,30 @@ struct NewAccountView: View {
                 }
                 Section(header: Text("Цвет")) {
                     
-                    ColorSwatchView(selection: $accountListVM.colorAccountSave)
+                    ColorSwatchView(selection: $accountVM.colorAccountSave)
                 }
                 Section(header: Text("Иконка")) {
-                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountListVM.iconAccountSave, category: .commerce, axis: .vertical, haptic: true).frame(height: 300)
+                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountVM.iconAccountSave, category: .commerce, axis: .vertical, haptic: true).frame(height: 300)
                 }
                 Section(header: Text("Баланс"), footer: Text("Введите начальный баланс вашеего счёта. От этого баланса начнется отслеживание транзакций")) {
-                    TextField("Баланс", value: $accountListVM.balanceAccountSave, formatter: formatter)
+                    TextField("Баланс", value: $accountVM.balanceAccountSave, formatter: formatter)
                         .keyboardType(.decimalPad)
                 }
                 Section(header: Text("Заметки")) {
-                    TextEditor(text: $accountListVM.noteAccountSave)
+                    TextEditor(text: $accountVM.noteAccountSave)
                 }
                 
             }.dismissingKeyboard()
             
-                .navigationTitle(accountListVM.accountListItem == nil ? "Новый" : "Редактировать")
+                .navigationTitle(accountVM.accountListItem == nil ? "Новый" : "Редактировать")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading: Button("Отмена", action: {
-                    self.showAddAccount.toggle()
+                    self.isAddAccount.toggle()
                 }), trailing: Button(action: {
-                    accountListVM.createTask(context: viewContext)
-                    self.showAddAccount.toggle()
+                    accountVM.createTask(context: viewContext)
+                    self.isAddAccount.toggle()
                 }) {
-                    Text(accountListVM.accountListItem == nil ? "Сохранить" : "Обновить")
+                    Text(accountVM.accountListItem == nil ? "Сохранить" : "Обновить")
                 }.disabled(disableForm)
                 )
         }
@@ -89,6 +89,6 @@ struct NewAccountView: View {
 
 struct NewAccountView_Previews: PreviewProvider {
     static var previews: some View {
-        NewAccountView(showAddAccount: .constant(false))
+        NewAccountView(isAddAccount: .constant(false))
     }
 }

@@ -60,7 +60,7 @@ struct ContentView: View {
             }
             
             .sheet(isPresented: $showingNewAccount) {
-                NewAccountView(showAddAccount: $showingNewAccount)
+                NewAccountView(isAddAccount: $showingNewAccount)
             }
             .toolbar {
                 // Кнопка Настройки

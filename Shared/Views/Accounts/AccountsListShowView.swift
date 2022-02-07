@@ -12,28 +12,28 @@ struct AccountsListShowView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(key: "dateOfCreation", ascending: true)])
-    var accountList: FetchedResults<AccountEntity>
+    @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.dateOfCreation, ascending: true)])
+    var fetchAccounts: FetchedResults<AccountEntity>
     
     var body: some View {
         
         List {
-            ForEach(accountList) { item in
+            ForEach(fetchAccounts) { account in
                 HStack {
                     ZStack {
                         Circle()
-                            .fill(Color(item.colorAccount!))
+                            .fill(Color(account.colorAccount!))
                             .frame(width: 32, height: 32)
-                        Image(systemName: item.iconAccount!)
+                        Image(systemName: account.iconAccount!)
                             .foregroundColor(Color.white)
                             .font(Font.footnote)
                     }
                     
                     VStack(alignment: .leading) {
-                        Text(item.nameAccount!)
+                        Text(account.nameAccount!)
                             .bold()
                             .foregroundColor(.primary)
-                        Text("Баланс: \(item.balanceAccount)")
+                        Text("Баланс: \(account.balanceAccount)")
                                     .font(Font.footnote).foregroundColor(Color.gray)
                     }
                     

@@ -12,6 +12,8 @@ struct NewTransactionView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     
+    @EnvironmentObject var accountVM: AccountViewModel
+    
     @EnvironmentObject var transactionListVM: TransactionViewModel
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)]) private var accounts: FetchedResults<AccountEntity>
@@ -32,7 +34,6 @@ struct NewTransactionView: View {
     @State private var imagePicker = false
     
     //@ObservedObject var accountSelect: AccountEntity
-    
     
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
@@ -56,6 +57,7 @@ struct NewTransactionView: View {
                     }
                 }.pickerStyle(SegmentedPickerStyle())
                 
+                Text(accountVM.accountListItem == nil ? "Нет" : "Есть")
                 Section("Сумма") {
                     HStack(alignment: .center) {
                         if typeTrancaction == .costs {
