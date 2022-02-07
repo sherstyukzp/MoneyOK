@@ -52,9 +52,8 @@
 		05E6B54C27AEE69800AB6A9D /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54B27AEE69800AB6A9D /* CategoryListView.swift */; };
 		05E6B54D27AEE69800AB6A9D /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54B27AEE69800AB6A9D /* CategoryListView.swift */; };
 		05E6B54F27AEE6B600AB6A9D /* NewCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */; };
-		05E6B55027AEE6B600AB6A9D /* NewCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */; };
-		05E6B55327AEE81600AB6A9D /* CategoryCostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B55227AEE81600AB6A9D /* CategoryCostsViewModel.swift */; };
-		05E6B55427AEE81600AB6A9D /* CategoryCostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B55227AEE81600AB6A9D /* CategoryCostsViewModel.swift */; };
+		05E6B55327AEE81600AB6A9D /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B55227AEE81600AB6A9D /* CategoryViewModel.swift */; };
+		05E6B55427AEE81600AB6A9D /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B55227AEE81600AB6A9D /* CategoryViewModel.swift */; };
 		05E6B56E27AFFEAA00AB6A9D /* TransactionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B56827AFFEAA00AB6A9D /* TransactionEntity+CoreDataClass.swift */; };
 		05E6B56F27AFFEAA00AB6A9D /* TransactionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B56827AFFEAA00AB6A9D /* TransactionEntity+CoreDataClass.swift */; };
 		05E6B57027AFFEAA00AB6A9D /* TransactionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E6B56927AFFEAA00AB6A9D /* TransactionEntity+CoreDataProperties.swift */; };
@@ -105,7 +104,7 @@
 		05E6B54827AD636000AB6A9D /* TransactionCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCallView.swift; sourceTree = "<group>"; };
 		05E6B54B27AEE69800AB6A9D /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryView.swift; sourceTree = "<group>"; };
-		05E6B55227AEE81600AB6A9D /* CategoryCostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCostsViewModel.swift; sourceTree = "<group>"; };
+		05E6B55227AEE81600AB6A9D /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		05E6B56827AFFEAA00AB6A9D /* TransactionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		05E6B56927AFFEAA00AB6A9D /* TransactionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05E6B56A27AFFEAA00AB6A9D /* CategoryEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -304,8 +303,9 @@
 			isa = PBXGroup;
 			children = (
 				052312DB279AD718003CFB9E /* ContentView.swift */,
-				05E6B55527AEF35C00AB6A9D /* Transaction */,
 				0549FA1627AC1B0C0086506A /* Accounts */,
+				057BADD227B1A47B00127DA3 /* Category */,
+				05E6B55527AEF35C00AB6A9D /* Transaction */,
 				0549FA1727AC1B1F0086506A /* Settings */,
 				0549FA1527AC1AFF0086506A /* Custom */,
 			);
@@ -322,12 +322,20 @@
 			path = SFSymbolsPicker;
 			sourceTree = "<group>";
 		};
+		057BADD227B1A47B00127DA3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		05D9468C27A2C47800C4068E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				05FC500F27A6DD6600708D3C /* AccountViewModel.swift */,
 				0549FA1C27AC1CA30086506A /* TransactionViewModel.swift */,
-				05E6B55227AEE81600AB6A9D /* CategoryCostsViewModel.swift */,
+				05E6B55227AEE81600AB6A9D /* CategoryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -335,7 +343,6 @@
 		05E6B55127AEE6BE00AB6A9D /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				05E6B54E27AEE6B600AB6A9D /* NewCategoryView.swift */,
 				05E6B54B27AEE69800AB6A9D /* CategoryListView.swift */,
 			);
 			path = Category;
@@ -477,7 +484,7 @@
 				052312DC279AD718003CFB9E /* ContentView.swift in Sources */,
 				052312DA279AD718003CFB9E /* MoneyOK_iOSApp.swift in Sources */,
 				05E6B57827AFFEAA00AB6A9D /* AccountEntity+CoreDataProperties.swift in Sources */,
-				05E6B55327AEE81600AB6A9D /* CategoryCostsViewModel.swift in Sources */,
+				05E6B55327AEE81600AB6A9D /* CategoryViewModel.swift in Sources */,
 				05FC501027A6DD6600708D3C /* AccountViewModel.swift in Sources */,
 				0534A21B27A8293000929BC7 /* PanelView.swift in Sources */,
 				054F03B627A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
@@ -495,7 +502,7 @@
 			files = (
 				05E6B57527AFFEAA00AB6A9D /* CategoryEntity+CoreDataProperties.swift in Sources */,
 				05E6B57327AFFEAA00AB6A9D /* CategoryEntity+CoreDataClass.swift in Sources */,
-				05E6B55427AEE81600AB6A9D /* CategoryCostsViewModel.swift in Sources */,
+				05E6B55427AEE81600AB6A9D /* CategoryViewModel.swift in Sources */,
 				05E6B57127AFFEAA00AB6A9D /* TransactionEntity+CoreDataProperties.swift in Sources */,
 				05E6B56F27AFFEAA00AB6A9D /* TransactionEntity+CoreDataClass.swift in Sources */,
 				054F03B727A012A600F7271A /* SFSymbolsPicker.swift in Sources */,
@@ -518,7 +525,6 @@
 				054F03BE27A023D100F7271A /* KeyboardListener.swift in Sources */,
 				054F0385279EE91900F7271A /* PersistenceController.swift in Sources */,
 				0549FA1E27AC1CA30086506A /* TransactionViewModel.swift in Sources */,
-				05E6B55027AEE6B600AB6A9D /* NewCategoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

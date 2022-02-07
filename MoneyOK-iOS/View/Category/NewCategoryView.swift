@@ -11,17 +11,18 @@ struct NewCategoryView: View {
     
     @Environment(\.managedObjectContext) var viewContext
     
-    @EnvironmentObject var categoryListVM: CategoryCostsViewModel
+    @EnvironmentObject var categoryListVM: CategoryViewModel
     
     @Binding var showAddCategory: Bool
+    
     @State private var isPresentedIcon: Bool = true
     
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
         var disableForm: Bool {
-            categoryListVM.nameCategoryCostsSave.isEmpty ||
-            categoryListVM.iconCategoryCostsSave.isEmpty ||
-            categoryListVM.colorCategoryCostsSave.isEmpty
+            categoryListVM.nameCategorySave.isEmpty ||
+            categoryListVM.iconCategorySave.isEmpty ||
+            categoryListVM.colorCategorySave.isEmpty
         }
     
     
@@ -32,17 +33,17 @@ struct NewCategoryView: View {
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(Color(categoryListVM.colorCategoryCostsSave.isEmpty ? "swatch_articblue" : categoryListVM.colorCategoryCostsSave))
+                                .fill(Color(categoryListVM.colorCategorySave.isEmpty ? "swatch_articblue" : categoryListVM.colorCategorySave))
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 10)
                                 .padding()
-                            Image(systemName: categoryListVM.iconCategoryCostsSave.isEmpty ? "creditcard.fill" : categoryListVM.iconCategoryCostsSave)
+                            Image(systemName: categoryListVM.iconCategorySave.isEmpty ? "creditcard.fill" : categoryListVM.iconCategorySave)
                                 .font(Font.largeTitle)
                                 .foregroundColor(Color.white)
                         }
                         
                         
-                        TextField("Имя категории", text: $categoryListVM.nameCategoryCostsSave)
+                        TextField("Имя категории", text: $categoryListVM.nameCategorySave)
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10.0)
@@ -51,10 +52,10 @@ struct NewCategoryView: View {
                 }
                 Section(header: Text("Цвет")) {
                     
-                    ColorSwatchView(selection: $categoryListVM.colorCategoryCostsSave)
+                    ColorSwatchView(selection: $categoryListVM.colorCategorySave)
                 }
                 Section(header: Text("Иконка")) {
-                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $categoryListVM.iconCategoryCostsSave, category: .people, axis: .vertical, haptic: true).frame(height: 300)
+                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $categoryListVM.iconCategorySave, category: .people, axis: .vertical, haptic: true).frame(height: 300)
                 }
                 
                 

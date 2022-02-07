@@ -15,12 +15,12 @@ struct CategoryListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(entity: CategoryEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)])
-    var cotegoryList: FetchedResults<CategoryEntity>
+    var fetchCotegory: FetchedResults<CategoryEntity>
     
     
     var body: some View {
         List {
-            ForEach(cotegoryList) { item in
+            ForEach(fetchCotegory) { item in
                 HStack {
                     ZStack {
                         Circle()
