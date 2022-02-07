@@ -15,7 +15,7 @@ struct TransactionCallView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Категория: \(category.nameCategory ?? "")").font(.title2)
+            Text("Категория: " + category.nameCategory!).font(.title2)
             Text("Sum : \(transaction.sumTransaction)").font(.title2)
                 .foregroundColor(Color(transaction.sumTransaction < 0 ? .red : .blue))
         }

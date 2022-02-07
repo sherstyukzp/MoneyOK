@@ -15,7 +15,6 @@ struct TransactionListView: View {
     
     @ObservedObject var accountListItem: AccountEntity
     @ObservedObject var categoryListItem: CategoryEntity
-    
     @EnvironmentObject var accountListVM: AccountViewModel
     
     @State private var showingNewTransaction = false
@@ -84,7 +83,7 @@ struct TransactionListView: View {
             NewAccountView(showAddAccount: $isEdit)
         }
         .sheet(isPresented: $showingNewTransaction) {
-            NewTransactionView(showAddTransaction: $showingNewTransaction)
+            NewTransactionView(showAddTransaction: $showingNewTransaction, accountSelect: accountListItem)
         }
         
     }
