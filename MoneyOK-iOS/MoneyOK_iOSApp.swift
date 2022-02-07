@@ -15,6 +15,7 @@ struct MoneyOK_iOSApp: App {
     let persistenceController = PersistenceController.shared
     
     @StateObject var accountListViewModel = AccountViewModel()
+    @StateObject var transactionListViewModel = TransactionViewModel()
     @StateObject var categoryListViewModel = CategoryCostsViewModel()
     
     var body: some Scene {
@@ -22,6 +23,7 @@ struct MoneyOK_iOSApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(accountListViewModel)
+                .environmentObject(transactionListViewModel)
                 .environmentObject(categoryListViewModel)
         }
     }

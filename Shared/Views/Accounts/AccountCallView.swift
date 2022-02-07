@@ -87,7 +87,7 @@ struct AccountCallView: View {
             NewAccountView(showAddAccount: $isEdit)
         }
         .sheet(isPresented: $showingNewTransaction) {
-            NewTransactionView(showAddTransaction: $showingNewTransaction, accountSelect: accountListItem)
+            NewTransactionView(showAddTransaction: $showingNewTransaction)
             }
         // Свайп влево
         .swipeActions(edge: .leading, allowsFullSwipe: true) {

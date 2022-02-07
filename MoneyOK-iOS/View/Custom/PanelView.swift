@@ -22,9 +22,10 @@ struct PanelView: View {
                 Text("Остаток")
                     .font(.callout)
                     .foregroundColor(Color.gray)
+                // TODO: Добавить отображение суммы всех счетов
                 HStack {
                     Text("123456").bold()
-                    Text("$").bold()
+                    Text("$").bold() // Сделать валюту по умолчанию
                         
                 }.font(Font.largeTitle)
             }.padding(.horizontal)
@@ -68,7 +69,7 @@ struct PanelView: View {
                 NewAccountView(showAddAccount: $showingNewAccount)
             }
         .sheet(isPresented: $showingNewTransaction) {
-            NewTransactionView(showAddTransaction: $showingNewTransaction, accountSelect: AccountEntity())
+            NewTransactionView(showAddTransaction: $showingNewTransaction)
             }
     
     }

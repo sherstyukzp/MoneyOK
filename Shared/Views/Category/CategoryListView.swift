@@ -42,7 +42,6 @@ struct CategoryListView: View {
         }
         
         .toolbar {
-            
             ToolbarItemGroup(placement: .bottomBar) {
                 Button(action: {
                     self.showingNewCategory.toggle()
