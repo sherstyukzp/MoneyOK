@@ -16,10 +16,10 @@ struct NewTransactionView: View {
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)]) private var accounts: FetchedResults<AccountEntity>
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)]) private var categoriesCosts: FetchedResults<CategoryEntity>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)]) private var categories: FetchedResults<CategoryEntity>
     
-    @State private var selectedAccount = AccountEntity()
-    @State private var selectedCategoryCosts = CategoryEntity()
+    @State private var selectedAccount: AccountEntity = AccountEntity()
+    @State private var selectedCategory: CategoryEntity = CategoryEntity()
     
     let types = Array(TypeTrancaction.allCases)
     @State var typeTrancaction: TypeTrancaction? = .costs
@@ -31,7 +31,7 @@ struct NewTransactionView: View {
     @State private var personImage = UIImage()
     @State private var imagePicker = false
     
-    @ObservedObject var accountSelect: AccountEntity
+    //@ObservedObject var accountSelect: AccountEntity
     
     
     
@@ -94,8 +94,8 @@ struct NewTransactionView: View {
                 }
                 
                 Section("Категория") {
-                    Picker("Выбрать категорию", selection: $selectedCategoryCosts){
-                        ForEach(categoriesCosts, id: \.self) {
+                    Picker("Выбрать категорию", selection: $selectedCategory){
+                        ForEach(categories, id: \.self) {
                             Text($0.nameCategory ?? "")
 
                                 .navigationBarTitle("Выберите категорию")
@@ -229,6 +229,7 @@ struct NewTransactionView: View {
         
         newEmployee.sumTransaction = sumSave
         newEmployee.transactionsToAccounts = selectedAccount
+        newEmployee.transactionToCategory = selectedCategory
         do{
             try viewContext.save()
         }
@@ -248,6 +249,6 @@ enum TypeTrancaction: String, CaseIterable {
 
 struct NewTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTransactionView(showAddTransaction: .constant(false), accountSelect: AccountEntity())
+        NewTransactionView(showAddTransaction: .constant(false))
     }
 }
