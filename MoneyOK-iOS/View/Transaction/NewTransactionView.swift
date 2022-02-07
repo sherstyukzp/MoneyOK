@@ -16,10 +16,10 @@ struct NewTransactionView: View {
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)]) private var accounts: FetchedResults<AccountEntity>
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)]) private var categories: FetchedResults<CategoryEntity>
+//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)]) private var categories: FetchedResults<CategoryEntity>
     
     @State private var selectedAccount: AccountEntity = AccountEntity()
-    @State private var selectedCategory: CategoryEntity = CategoryEntity()
+    //@State private var selectedCategory: CategoryEntity = CategoryEntity()
     
     let types = Array(TypeTrancaction.allCases)
     @State var typeTrancaction: TypeTrancaction? = .costs
@@ -93,48 +93,19 @@ struct NewTransactionView: View {
                     }
                 }
                 
-                Section("Категория") {
-                    Picker("Выбрать категорию", selection: $selectedCategory){
-                        ForEach(categories, id: \.self) {
-                            Text($0.nameCategory ?? "")
-
-                                .navigationBarTitle("Выберите категорию")
-                        }
-                    }
-                }
-                
-//                Section("Счёт") {
-//                    NavigationLink(destination: AccountsListShowView()) {
-//                        VStack {
-//                            Text("Счёт")
-//                                .bold()
-//                                .foregroundColor(Color.gray)
-//
-//                            Text("Нажмите чтобы выбрать")
-//                                .font(Font.footnote)
-//                                .foregroundColor(Color.gray)
-//                        }
-//                        .frame(maxWidth: .infinity)
-//                    }
-//
-//                }
-                
 //                Section("Категория") {
-//                    NavigationLink(destination: AccountsListShowView()) {
-//                        VStack {
-//                            Text("Категория")
-//                                .bold()
-//                                .foregroundColor(Color.gray)
+//                    Picker("Выбрать категорию", selection: $selectedCategory){
+//                        ForEach(categories, id: \.self) {
+//                            Text($0.nameCategory ?? "")
 //
-//                            Text("Нажмите чтобы выбрать")
-//                                .font(Font.footnote)
-//                                .foregroundColor(Color.gray)
+//                                .navigationBarTitle("Выберите категорию")
 //                        }
-//                        .frame(maxWidth: .infinity)
-//
 //                    }
-//
 //                }
+                
+
+                
+
                 
                 Section("Дополнительно") {
                      
@@ -229,7 +200,7 @@ struct NewTransactionView: View {
         
         newEmployee.sumTransaction = sumSave
         newEmployee.transactionsToAccounts = selectedAccount
-        newEmployee.transactionToCategory = selectedCategory
+        //newEmployee.transactionToCategory = selectedCategory
         do{
             try viewContext.save()
         }

@@ -16,7 +16,7 @@ struct MoneyOK_iOSApp: App {
     
     @StateObject var accountListViewModel = AccountViewModel()
     @StateObject var transactionListViewModel = TransactionViewModel()
-    @StateObject var categoryListViewModel = CategoryCostsViewModel()
+    //@StateObject var categoryListViewModel = CategoryCostsViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -24,7 +24,7 @@ struct MoneyOK_iOSApp: App {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(accountListViewModel)
                 .environmentObject(transactionListViewModel)
-                .environmentObject(categoryListViewModel)
+                //.environmentObject(categoryListViewModel)
         }
     }
 }

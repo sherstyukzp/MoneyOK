@@ -14,7 +14,7 @@ struct TransactionListView: View {
     
     
     @ObservedObject var accountListItem: AccountEntity
-    @ObservedObject var categoryListItem: CategoryEntity
+    //@ObservedObject var categoryListItem: CategoryEntity
     
     @EnvironmentObject var accountListVM: AccountViewModel
     
@@ -24,7 +24,7 @@ struct TransactionListView: View {
     var body: some View {
         List {
             ForEach(self.accountListItem.transaction, id: \.self) { item in
-                TransactionCallView(transaction: item, account: accountListItem, category: categoryListItem)
+                TransactionCallView(transaction: item, account: accountListItem)
             }
         }
         
@@ -92,6 +92,6 @@ struct TransactionListView: View {
 
 struct TransactionListView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListView(accountListItem: AccountEntity(), categoryListItem: CategoryEntity())
+        TransactionListView(accountListItem: AccountEntity())
     }
 }
