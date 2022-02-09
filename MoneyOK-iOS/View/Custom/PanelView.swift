@@ -11,6 +11,7 @@ struct PanelView: View {
     
     @EnvironmentObject var accountListVM: AccountViewModel
     
+    
     @State private var showingNewAccount = false
     @State private var showingNewTransaction = false
     

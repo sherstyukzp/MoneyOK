@@ -16,7 +16,7 @@ struct ContentView: View {
     
     @EnvironmentObject var accountListVM: AccountViewModel
     
-    @State private var showingNewAccount = false
+    @State private var showingNewAccount = false // Вызов окна нового счёта
     
     
     var body: some View {
@@ -50,6 +50,7 @@ struct ContentView: View {
                         }
                     }
                 } else {
+                    // Если есть счета отображается список счетов
                     VStack {
                         SidebarView()
                             .safeAreaInset(edge: .bottom) {
@@ -58,12 +59,12 @@ struct ContentView: View {
                     }
                 }
             }
-            
+            // Вызов окна нового счёта
             .sheet(isPresented: $showingNewAccount) {
                 NewAccountView(isAddAccount: $showingNewAccount)
             }
             .toolbar {
-                // Кнопка Настройки
+                // Кнопка Настройки в NavigationView
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gearshape")
@@ -71,7 +72,7 @@ struct ContentView: View {
                 }
             }
             
-            .navigationTitle("MoneyOK")
+            .navigationTitle("Мои счета")
         }
     }
     

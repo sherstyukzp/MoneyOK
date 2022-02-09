@@ -14,7 +14,6 @@ struct TransactionListView: View {
     
     
     @ObservedObject var accountListItem: AccountEntity
-    //@ObservedObject var categoryListItem: CategoryEntity
     
     @EnvironmentObject var accountListVM: AccountViewModel
     
@@ -22,11 +21,35 @@ struct TransactionListView: View {
     @State private var isEdit = false
     
     var body: some View {
-        List {
-            ForEach(self.accountListItem.transaction, id: \.self) { item in
-                TransactionCallView(transaction: item, account: accountListItem)
+        
+        VStack {
+            if accountListItem.transaction.count == 0 {
+                // Если нет счетов отображается пустой экран
+                VStack {
+                    Image(systemName: "tray.2.fill")
+                        .font(.system(size: 80))
+                        .foregroundColor(.gray)
+                    Text("Нет транзакций!")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding()
+                    Text("Для добавление новой транзакци нажмите на плюс.")
+                        .font(.subheadline)
+                        .foregroundColor(Color.gray)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 30.0)
+                    
+                }
+            } else {
+                List {
+                    ForEach(self.accountListItem.transaction, id: \.self) { item in
+                        TransactionCallView(transactionListItem: item, account: accountListItem)
+                    }
+                }
             }
         }
+        
+        
         
         
         .navigationBarTitleDisplayMode(.large)

@@ -14,13 +14,7 @@ struct AccountsListView: View {
     
     @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.dateOfCreation, ascending: true)])
     var fetchAccounts: FetchedResults<AccountEntity>
-    
-    
-    @ObservedObject var accountListItem: AccountEntity
-    
-    //@ObservedObject var categoryListItem: CategoryEntity
-    
-    @State private var isEdit = false
+
     
     var body: some View {
         
@@ -85,6 +79,6 @@ struct AccountsListView: View {
 
 struct AccountsListView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsListView(accountListItem: AccountEntity())
+        AccountsListView()
     }
 }

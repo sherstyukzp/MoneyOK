@@ -12,11 +12,13 @@ struct SidebarView: View {
     var body: some View {
         
 #if os(iOS)
-        AccountsListView(accountListItem: AccountEntity())
+        // если устройство iPhone
+        AccountsListView()
             .listStyle(SidebarListStyle())
         
             
 #else
+        // Есле устройство Mac & iPad
         AccountsListView()
             .listStyle(SidebarListStyle())
             .toolbar {

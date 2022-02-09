@@ -251,8 +251,8 @@
 		0549FA1327AC1A7B0086506A /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */,
 				05231302279AE2F0003CFB9E /* AccountsListView.swift */,
+				0534A21E27AABB9100929BC7 /* AccountsListShowView.swift */,
 				0523130B279B0881003CFB9E /* AccountCallView.swift */,
 			);
 			path = Accounts;
@@ -304,8 +304,8 @@
 			children = (
 				052312DB279AD718003CFB9E /* ContentView.swift */,
 				0549FA1627AC1B0C0086506A /* Accounts */,
-				057BADD227B1A47B00127DA3 /* Category */,
 				05E6B55527AEF35C00AB6A9D /* Transaction */,
+				057BADD227B1A47B00127DA3 /* Category */,
 				0549FA1727AC1B1F0086506A /* Settings */,
 				0549FA1527AC1AFF0086506A /* Custom */,
 			);

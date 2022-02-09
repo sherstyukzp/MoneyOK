@@ -15,11 +15,11 @@ class TransactionViewModel: ObservableObject {
     
     // TODO: Добавить фото, категорию
     @Published var transactionListItem: TransactionEntity!
-    @Published var accountListItem: AccountEntity!
+    //@Published var accountListItem: AccountEntity!
     
     func createTransaction(context: NSManagedObjectContext, selectAccount: AccountEntity) {
         
-        if accountListItem == nil {
+        if transactionListItem == nil {
             let transaction = TransactionEntity(context: context)
             transaction.idTransaction = UUID()
             transaction.sumTransaction = sumTransactionSave

@@ -14,10 +14,9 @@ struct AccountCallView: View {
     
     @ObservedObject var accountListItem: AccountEntity
     
-    @State private var isEditAccount = false
-    @State private var isNewTransaction = false
+    @State private var isEditAccount = false // Вызов редактирования счёта
+    @State private var isNewTransaction = false // Вызов новой транзакции
     
-
     
     var body: some View {
         HStack {
@@ -36,10 +35,10 @@ struct AccountCallView: View {
                     .foregroundColor(accountListItem.isArchive ? .gray : .primary)
                 Text("Баланс: \(accountListItem.balanceAccount)").font(Font.footnote).foregroundColor(Color.gray)
             }
-            
         }
         
         .contextMenu {
+            // Вызов новой транзакции через кантексное меню счёта
             Button {
                 self.isNewTransaction.toggle()
             } label: {

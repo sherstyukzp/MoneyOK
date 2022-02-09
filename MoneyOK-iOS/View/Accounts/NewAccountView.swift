@@ -47,7 +47,6 @@ struct NewAccountView: View {
                                 .foregroundColor(Color.white)
                         }
                         
-                        
                         TextField("Имя счёта", text: $accountVM.nameAccountSave)
                             .padding()
                             .background(Color.gray.opacity(0.2))
@@ -56,7 +55,6 @@ struct NewAccountView: View {
                     }
                 }
                 Section(header: Text("Цвет")) {
-                    
                     ColorSwatchView(selection: $accountVM.colorAccountSave)
                 }
                 Section(header: Text("Иконка")) {

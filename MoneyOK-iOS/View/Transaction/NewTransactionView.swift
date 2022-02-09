@@ -13,33 +13,28 @@ struct NewTransactionView: View {
     @Environment(\.dismiss) private var dismiss
     
     @EnvironmentObject var accountVM: AccountViewModel
-    
     @EnvironmentObject var transactionListVM: TransactionViewModel
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)]) private var accounts: FetchedResults<AccountEntity>
-    
-//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)]) private var categories: FetchedResults<CategoryEntity>
+
     
     @State private var selectedAccount: AccountEntity = AccountEntity()
-    //@State private var selectedCategory: CategoryEntity = CategoryEntity()
     
     let types = Array(TypeTrancaction.allCases)
     @State var typeTrancaction: TypeTrancaction? = .costs
     @State var sumTransaction: Double = 0
     @State var noteTransaction: String = ""
     @State var dateTransaction: Date = Date()
-    
-    @Binding var showAddTransaction: Bool
     @State private var personImage = UIImage()
     @State private var imagePicker = false
     
-    //@ObservedObject var accountSelect: AccountEntity
+    @Binding var showAddTransaction: Bool
     
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
-//        var disableForm: Bool {
-//            sumTransaction.isEmpty
-//        }
+        var disableForm: Bool {
+            sumTransaction == 0.0
+        }
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -57,7 +52,7 @@ struct NewTransactionView: View {
                     }
                 }.pickerStyle(SegmentedPickerStyle())
                 
-                Text(accountVM.accountListItem == nil ? "Нет" : "Есть")
+                //Text(selectedAccount.transaction == nil ? "Нет" : "Есть") //
                 Section("Сумма") {
                     HStack(alignment: .center) {
                         if typeTrancaction == .costs {
@@ -82,8 +77,6 @@ struct NewTransactionView: View {
                             .keyboardType(.decimalPad)
                     }
                 }
-                
-               
                 
                 Section("Счёт") {
                     Picker("Выбрать счёт", selection: $selectedAccount){
@@ -144,7 +137,7 @@ struct NewTransactionView: View {
                 HStack {
                 Button {
                     // TODO: Изменить на MVVM
-                    addEmployee()
+                    addTransaction()
                     self.showAddTransaction.toggle()
                     
                     print("Session is cancelled")
@@ -162,7 +155,7 @@ struct NewTransactionView: View {
                 .padding(6)
                 .frame(maxWidth: .infinity)
                 .background(Color(UIColor.secondarySystemBackground))
-                //.disabled(disableForm)
+                .disabled(disableForm)
                     
             }
             
@@ -184,7 +177,8 @@ struct NewTransactionView: View {
         
     }
     
-    private func addEmployee(){
+    // функция добавления новой транзакции
+    private func addTransaction() {
         let newEmployee = TransactionEntity(context: viewContext)
         newEmployee.idTransaction = UUID()
         
@@ -202,7 +196,6 @@ struct NewTransactionView: View {
         
         newEmployee.sumTransaction = sumSave
         newEmployee.transactionsToAccounts = selectedAccount
-        //newEmployee.transactionToCategory = selectedCategory
         do{
             try viewContext.save()
         }
