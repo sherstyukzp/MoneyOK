@@ -28,55 +28,60 @@ struct PanelView: View {
     }
     
     var body: some View {
-        HStack(alignment: .center) {
-            VStack(alignment: .leading) {
-                Text("Остаток")
-                    .font(.callout)
-                    .foregroundColor(Color.gray)
-                // TODO: Добавить отображение суммы всех счетов
-                HStack {
-                    Text("\(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))").bold()
-                    //Text("$").bold() // Сделать валюту по умолчанию
-                    
-                }.font(Font.largeTitle)
-            }.padding(.horizontal)
-            Spacer()
-            Button {
-                self.isNewTransaction.toggle()
-            } label: {
-                Image(systemName: "plus")
-                    .padding()
-                    .background(Color.blue)
-                    .clipShape(Circle())
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundColor(.white)
-                    .padding(.horizontal)
-            }
-            .contextMenu {
+        
+            HStack(alignment: .center) {
+                VStack(alignment: .leading) {
+                    Text("Остаток")
+                        .font(.callout)
+                        .foregroundColor(Color.gray)
+                    // TODO: Добавить отображение суммы всех счетов
+                    HStack {
+                        Text("\(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))").bold()
+                        //Text("$").bold() // Сделать валюту по умолчанию
+                        
+                    }.font(Font.largeTitle)
+                }.padding(.horizontal)
+                Spacer()
                 Button {
                     self.isNewTransaction.toggle()
                 } label: {
-                    Label("Новая транзакция", systemImage: "plus.circle")
+                    Image(systemName: "plus")
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(Circle())
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
                 }
-                Button {
-                    accountListVM.nameAccountSave = ""
-                    accountListVM.accountItem = nil
-                    self.isNewAccount.toggle()
-                } label: {
-                    Label("Новый счёт", systemImage: "plus.circle")
+                .contextMenu {
+                    Button {
+                        self.isNewTransaction.toggle()
+                    } label: {
+                        Label("Новая транзакция", systemImage: "plus.circle")
+                    }
+                    Button {
+                        accountListVM.nameAccountSave = ""
+                        accountListVM.accountItem = nil
+                        self.isNewAccount.toggle()
+                    } label: {
+                        Label("Новый счёт", systemImage: "plus.circle")
+                    }
                 }
             }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(5)
-        .background(Color(UIColor.secondarySystemBackground))
+            
+            .frame(maxWidth: .infinity)
+            .padding(5)
+            .background(Color(UIColor.secondarySystemBackground))
+            
         
-        .sheet(isPresented: $isNewAccount) {
-            AccountNewView(isNewAccount: $isNewAccount)
-        }
-        .sheet(isPresented: $isNewTransaction) {
-            TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
-        }
+        
+            .sheet(isPresented: $isNewAccount) {
+                AccountNewView(isNewAccount: $isNewAccount)
+            }
+            .sheet(isPresented: $isNewTransaction) {
+                TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
+            }
+        
         
     }
 }

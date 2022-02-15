@@ -56,10 +56,12 @@ struct AccountsView: View {
                         }.buttonStyle(.borderedProminent)
                             .padding()
                     }
-                } else {
-                    AccountsListView().safeAreaInset(edge: .bottom) {
-                        PanelView()
-                    }
+                }
+                else {
+                    AccountsListView()
+                        .safeAreaInset(edge: .bottom) {
+                            PanelView()
+                        }
                 }
             }
             
@@ -76,19 +78,19 @@ struct AccountsView: View {
             }
             
             .sheet(isPresented: $isNewAccount) {
-                    AccountNewView(isNewAccount: $isNewAccount)
-                }
-            
-            .sheet(isPresented: $isNewTransaction) {
-                    TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
-                }
+                AccountNewView(isNewAccount: $isNewAccount)
             }
             
+            .sheet(isPresented: $isNewTransaction) {
+                TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
+            }
         }
+        
     }
-    
-    struct AccountsView_Previews: PreviewProvider {
-        static var previews: some View {
-            AccountsView(accountItem: AccountEntity())
-        }
+}
+
+struct AccountsView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountsView(accountItem: AccountEntity())
     }
+}

@@ -25,7 +25,7 @@ struct AccountsListView: View {
                         {
                             AccountCallView(accountItem: account)
                         }
-                        .isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
+                        //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
                         .swipeActions() {
                         }
                     }
@@ -39,7 +39,7 @@ struct AccountsListView: View {
                     {
                         AccountCallView(accountItem: account)
                     }
-                    .isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
+                    //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
                     .swipeActions() {
                     }
                 }
@@ -52,7 +52,7 @@ struct AccountsListView: View {
                         {
                             AccountCallView(accountItem: account)
                         }
-                        .isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
+                        //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
                         .swipeActions() {
                         }
                     }

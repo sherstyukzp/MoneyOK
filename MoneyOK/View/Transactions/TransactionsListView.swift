@@ -22,7 +22,7 @@ struct TransactionsListView: View {
                                 TransactionDetailView(transactionItem: item))
                 {
                     TransactionCallView(transactionItem: item)
-                }
+                }//.isDetailLink(true) // Исправляет баг с tabbar в списке транзакций
                 .swipeActions() {
                 }
                 
