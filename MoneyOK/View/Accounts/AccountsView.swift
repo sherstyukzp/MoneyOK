@@ -10,9 +10,9 @@ import SwiftUI
 struct AccountsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    
     @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)])
     private var fetchedAccount: FetchedResults<AccountEntity>
-    
     
     @FetchRequest(entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.sumTransaction, ascending: true)])
     private var fetchedTransaction: FetchedResults<TransactionEntity>

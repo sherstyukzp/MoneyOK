@@ -20,13 +20,29 @@ struct TransactionAllListView: View {
     
     var body: some View {
         VStack {
-            List {
-                ForEach(fetchedTransaction) { transaction in
-                    TransactionCallView(transactionItem: transaction)
+            if fetchedTransaction.isEmpty {
+                Image(systemName: "tray.2.fill")
+                    .font(.system(size: 80))
+                    .foregroundColor(.gray)
+                Text("Нет транзакций!")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .padding()
+                Text("Для добавление новой транзакции выберите счёт и создайте транзакцию.")
+                    .font(.subheadline)
+                    .foregroundColor(Color.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 30.0)
+            } else {
+                List {
+                    ForEach(fetchedTransaction) { transaction in
+                        TransactionCallView(transactionItem: transaction)
+                    }
                 }
+                Text("Всего \(fetchedTransaction.count) транзакций")
+                Text("На сумму \(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
             }
-            Text("Всего \(fetchedTransaction.count) транзакций")
-            Text("На сумму \(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
+            
         }
         
         .navigationTitle("Все транзакции")

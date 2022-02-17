@@ -9,11 +9,35 @@ import SwiftUI
 
 struct CategotyView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)])
+    private var fetchedCategory:FetchedResults<CategoryEntity>
+    
     @State private var isNewCategory = false
-
     
     var body: some View {
-        CategoryListView()
+        
+        VStack {
+            if fetchedCategory.isEmpty {
+                Image(systemName: "tray.2.fill")
+                    .font(.system(size: 80))
+                    .foregroundColor(.gray)
+                Text("Нет категорий!")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .padding()
+                Text("Для добавление новой категории нажмите на кнопку ''Новая категория''.")
+                    .font(.subheadline)
+                    .foregroundColor(Color.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 30.0)
+            } else {
+                CategoryListView()
+            }
+            
+        }
+        
             
                 .navigationTitle("Категории")
                 .toolbar {

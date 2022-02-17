@@ -20,7 +20,27 @@ struct TransactionsView: View {
     
     var body: some View {
         
+        VStack {
+            
+        
+        if accountItem.transaction.isEmpty {
+            Image(systemName: "tray.2.fill")
+                .font(.system(size: 80))
+                .foregroundColor(.gray)
+            Text("Нет транзакций!")
+                .font(.title3)
+                .fontWeight(.bold)
+                .padding()
+            Text("Для добавление новой транзакции нажмите на кнопку ''Новая транзакция''.")
+                .font(.subheadline)
+                .foregroundColor(Color.gray)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 30.0)
+        } else {
             TransactionsListView(accountItem: accountItem)
+        }
+        
+        }
             
                 .toolbar {
                     // Отображение название счёта и остаток по счёту
