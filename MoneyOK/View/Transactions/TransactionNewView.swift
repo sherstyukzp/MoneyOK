@@ -92,7 +92,7 @@ struct TransactionNewView: View {
                 Section("Дополнительно") {
                      
                     VStack {
-                        DatePicker("Время", selection: $transactionVM.dateTransactionSave).id(2)
+                        DatePicker("Время", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: .date)
                             .environment(\.locale, Locale.init(identifier: "ru"))
                     }
                     HStack {
@@ -139,6 +139,7 @@ struct TransactionNewView: View {
                 .disabled(disableForm)
                     
             }
+            .dismissingKeyboard()
             
             .navigationTitle("Новая транзакция")
             .toolbar {

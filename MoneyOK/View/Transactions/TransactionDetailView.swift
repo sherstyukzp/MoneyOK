@@ -33,7 +33,8 @@ struct TransactionDetailView: View {
             Section {
                 Text ("Счёт: \(transactionItem.transactionToAccount?.nameAccount ?? "")")
                 Text ("Категория: \(transactionItem.transactionToCategory?.nameCategory ?? "")")
-                Text ("Дата: \(transactionItem.dateTransaction ?? Date())")
+                Text ("Дата: \(transactionItem.dateTransaction ?? Date() , style: .date)")
+
             }
             Section {
                 Text ("Заметки: \(transactionItem.noteTransaction ?? "")")

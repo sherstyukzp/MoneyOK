@@ -59,7 +59,7 @@ struct AccountNewView: View {
                 
                 if accountVM.accountItem != nil {
                     Section(header: Text("Дата создания")) {
-                        Text(accountVM.dateOfCreationSave.formatted(.dateTime.month().day().hour().minute().second()))
+                        Text(accountVM.dateOfCreationSave, style: .date)
                     }
                 }
                 
