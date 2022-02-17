@@ -17,13 +17,18 @@ struct AccountCallView: View {
     @State private var isEditAccount = false // Вызов редактирования счёта
     @State private var isNewTransaction = false // Вызов новой транзакции
     
+    // Alert
+    @State var showAlert: Bool = false
+    @State var alertTitle: String = "Удаление счёта"
+    @State var alertMessage: String = "Вы действительно хотите удалить счёт?"
+    
     // Сумма всех транзакций выбраного счёта
     var sumTransaction: Double {
         accountItem.transaction.reduce(0) { $0 + $1.sumTransaction }
-        }
+    }
     
     var body: some View {
-
+        
         HStack {
             ZStack {
                 Circle()
@@ -82,12 +87,11 @@ struct AccountCallView: View {
             }
             Divider()
             Button(role: .destructive) {
-                accountVM.delete(account: accountItem, context: viewContext)
+                showAlert.toggle()
             } label: {
                 Label("Удалить", systemImage: "trash")
             }
         }
-
         // Свайп влево
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             if accountItem.isArchive == false {
@@ -113,7 +117,7 @@ struct AccountCallView: View {
         // Свайп вправо
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             Button(role: .destructive) {
-                accountVM.delete(account: accountItem, context: viewContext)
+                showAlert.toggle()
             } label: {
                 Label("Удалить", systemImage: "trash")
             }
@@ -136,9 +140,23 @@ struct AccountCallView: View {
         }
         .sheet(isPresented: $isNewTransaction) {
             TransactionNewView(accountItem: accountItem, isNewTransaction: $isNewTransaction, nowAccount: false)
-            }
+        }
+        .alert(isPresented: $showAlert) {
+            getAlert()
+        }
         
+        
+    }
     
+    // MARK: Alert
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle),
+                     message: Text(alertMessage),
+                     primaryButton: .destructive(Text("Да"),
+                                                 action: {
+            accountVM.delete(account: accountItem, context: viewContext)
+        }),
+                     secondaryButton: .cancel())
     }
     
 }
