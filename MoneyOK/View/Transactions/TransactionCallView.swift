@@ -14,6 +14,11 @@ struct TransactionCallView: View {
     @EnvironmentObject var transactionVM: TransactionViewModel
     @ObservedObject var transactionItem: TransactionEntity
     
+    // Alert
+    @State var showAlert: Bool = false
+    @State var alertTitle: String = "Удаление транзакции"
+    @State var alertMessage: String = "Вы действительно хотите удалить транзакцию?"
+    
     var body: some View {
         
         HStack {
@@ -36,7 +41,6 @@ struct TransactionCallView: View {
                         .foregroundColor(Color.gray)
                 }
                 
-                
             }
             Spacer()
             Text("\(transactionItem.sumTransaction, format: .currency(code: "UAH"))")
@@ -45,14 +49,28 @@ struct TransactionCallView: View {
             
         }
         
-        
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             Button(role: .destructive) {
-                transactionVM.delete(transaction: transactionItem, context: viewContext)
+                showAlert.toggle()
             } label: {
                 Label("Delete", systemImage: "trash")
             }
         }
+        
+        .alert(isPresented: $showAlert) {
+            getAlert()
+        }
+    }
+    
+    // MARK: Alert
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle),
+                     message: Text(alertMessage),
+                     primaryButton: .destructive(Text("Да"),
+                                                 action: {
+            transactionVM.delete(transaction: transactionItem, context: viewContext)
+        }),
+                     secondaryButton: .cancel())
     }
 }
 

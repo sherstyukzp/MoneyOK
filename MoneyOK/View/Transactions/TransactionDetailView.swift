@@ -15,6 +15,10 @@ struct TransactionDetailView: View {
     
     @ObservedObject var transactionItem: TransactionEntity
     
+    // Alert
+    @State var showAlert: Bool = false
+    @State var alertTitle: String = "Удаление транзакции"
+    @State var alertMessage: String = "Вы действительно хотите удалить транзакцию?"
     
     var body: some View {
         HStack {
@@ -29,7 +33,7 @@ struct TransactionDetailView: View {
             Section {
                 Text ("Счёт: \(transactionItem.transactionToAccount?.nameAccount ?? "")")
                 Text ("Категория: \(transactionItem.transactionToCategory?.nameCategory ?? "")")
-                Text ("Дата: \(transactionItem.dateTransaction!.formatted(.dateTime.month().day().hour().minute().second()))")
+                Text ("Дата: \(transactionItem.dateTransaction ?? Date())")
             }
             Section {
                 Text ("Заметки: \(transactionItem.noteTransaction ?? "")")
@@ -38,15 +42,32 @@ struct TransactionDetailView: View {
             
             Section {
                 Button(role: .destructive) {
-                    transactionVM.delete(transaction: transactionItem, context: viewContext)
-                    presentationMode.wrappedValue.dismiss() // Закрытие окна, вернуться в список транзакций
+                    showAlert.toggle()
+                    
+                    
                 } label: {
                     Text("Удалить")
                 }
             }
         }
         
-        .navigationBarTitle((transactionItem.transactionToCategory?.nameCategory)!, displayMode: .inline)
+        .alert(isPresented: $showAlert) {
+            getAlert()
+        }
+        
+        .navigationBarTitle((transactionItem.transactionToCategory?.nameCategory) ?? "", displayMode: .inline)
+    }
+    
+    // MARK: Alert
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle),
+                     message: Text(alertMessage),
+                     primaryButton: .destructive(Text("Да"),
+                                                 action: {
+            transactionVM.delete(transaction: transactionItem, context: viewContext)
+            presentationMode.wrappedValue.dismiss() // Закрытие окна, вернуться в список транзакций
+        }),
+                     secondaryButton: .cancel())
     }
 }
 
