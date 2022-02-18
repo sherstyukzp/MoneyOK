@@ -15,6 +15,7 @@ struct TransactionsView: View {
     @EnvironmentObject var accountVM: AccountViewModel
     
     @State private var isNewTransaction = false
+    @State private var isEditAccount = false // Вызов редактирования счёта
     
     // Alert
     @State var showAlert: Bool = false
@@ -55,9 +56,14 @@ struct TransactionsView: View {
             ToolbarItem(placement: .primaryAction) {
                                 Menu {
                                     Button(action: {
-                                        
+                                        accountVM.nameAccountSave = accountItem.nameAccount!
+                                        accountVM.iconAccountSave = accountItem.iconAccount!
+                                        accountVM.colorAccountSave = accountItem.colorAccount!
+                                        accountVM.noteAccountSave = accountItem.noteAccount!
+                                        accountVM.accountItem = accountItem
+                                        self.isEditAccount.toggle()
                                     }) {
-                                        Label("Create a file", systemImage: "doc")
+                                        Label("Редактировать", systemImage: "pencil")
                                     }
                                     Divider()
 
@@ -99,6 +105,10 @@ struct TransactionsView: View {
         
         .sheet(isPresented: $isNewTransaction) {
             TransactionNewView(accountItem: accountItem, isNewTransaction: $isNewTransaction, nowAccount: true)
+        }
+        
+        .sheet(isPresented: $isEditAccount) {
+            AccountNewView(isNewAccount: $isEditAccount)
         }
         
         .alert(isPresented: $showAlert) {
