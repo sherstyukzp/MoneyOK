@@ -10,8 +10,10 @@ import SwiftUI
 struct CategoryCallView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var categoryVM: CategoryViewModel
     @ObservedObject var categoryItem: CategoryEntity
     
+    @State private var isEditCategory = false // Вызов редактирования категории
     
     var body: some View {
         HStack {
@@ -34,6 +36,24 @@ struct CategoryCallView: View {
             Text("\(categoryItem.categoryToTransaction?.count ?? 0)")
                 .font(.footnote)
             
+        }
+        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+            
+            Button {
+                categoryVM.nameCategorySave = categoryItem.nameCategory!
+                categoryVM.iconCategorySave = categoryItem.iconCategory!
+                categoryVM.colorCategorySave = categoryItem.colorCategory!
+                
+                categoryVM.categoryItem = categoryItem
+                self.isEditCategory.toggle()
+            } label: {
+                Label("Редактировать", systemImage: "pencil")
+            }.tint(.yellow)
+            
+        }
+        
+        .sheet(isPresented: $isEditCategory) {
+            CategoryNewView(isNewCategory: $isEditCategory)
         }
         
     }

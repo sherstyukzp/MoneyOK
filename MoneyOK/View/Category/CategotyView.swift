@@ -14,6 +14,8 @@ struct CategotyView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)])
     private var fetchedCategory:FetchedResults<CategoryEntity>
     
+    @EnvironmentObject var categoryVM: CategoryViewModel
+    
     @State private var isNewCategory = false
     
     var body: some View {
@@ -43,6 +45,8 @@ struct CategotyView: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
                         Button(action: {
+                            categoryVM.nameCategorySave = ""
+                            categoryVM.categoryItem = nil
                             self.isNewCategory.toggle()
                         }) {
                             Image(systemName: "plus.circle.fill")

@@ -35,8 +35,8 @@ class CategoryViewModel: ObservableObject {
         
         save(context: context)
         nameCategorySave = ""
-        iconCategorySave = "creditcard.fill"
-        colorCategorySave = "swatch_articblue"
+        iconCategorySave = ""
+        colorCategorySave = ""
     }
     
     func editCategory(category: CategoryEntity){

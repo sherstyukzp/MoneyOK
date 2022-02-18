@@ -58,16 +58,15 @@ struct CategoryNewView: View {
                 
             }.dismissingKeyboard()
             
-            .navigationTitle("Новая категория")
+            .navigationTitle(categoryVM.categoryItem == nil ? "Новая категория" : "Редактировать")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
                         categoryVM.createCategory(context: viewContext)
                         self.isNewCategory.toggle()
                     }) {
-                        Text("Сохранить").bold()
-                            .foregroundColor(Color.blue)
-                    }
+                        Text(categoryVM.categoryItem == nil ? "Сохранить" : "Обновить").bold()
+                    }.disabled(disableForm)
                 }
                 
                 ToolbarItemGroup(placement: .navigationBarLeading) {
