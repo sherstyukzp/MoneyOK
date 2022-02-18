@@ -39,7 +39,7 @@ struct PanelView: View {
                         Text("\(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))").bold()
                         //Text("$").bold() // Сделать валюту по умолчанию
                         
-                    }.font(Font.largeTitle)
+                    }.font(Font.title)
                 }.padding(.horizontal)
                 Spacer()
                 Button {

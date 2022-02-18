@@ -9,9 +9,18 @@ import SwiftUI
 
 struct TransactionsView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @ObservedObject var accountItem: AccountEntity
+    @EnvironmentObject var accountVM: AccountViewModel
     
     @State private var isNewTransaction = false
+    
+    // Alert
+    @State var showAlert: Bool = false
+    @State var alertTitle: String = "Удаление счёта"
+    @State var alertMessage: String = "Вы действительно хотите удалить счёт?"
+    
     
     // Сумма всех транзакций выбраного счёта
     var sumTransactionForAccount: Double {
@@ -43,6 +52,25 @@ struct TransactionsView: View {
         }
         
         .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                                Menu {
+                                    Button(action: {
+                                        
+                                    }) {
+                                        Label("Create a file", systemImage: "doc")
+                                    }
+                                    Divider()
+
+                                    Button(role: .destructive) {
+                                        showAlert.toggle()
+                                    } label: {
+                                        Label("Удалить", systemImage: "trash")
+                                    }
+                                }
+                                label: {
+                                    Label("Menu", systemImage: "ellipsis.circle")
+                                }
+                            }
             // Отображение название счёта и остаток по счёту
             ToolbarItem(placement: .principal) {
                 VStack {
@@ -73,7 +101,22 @@ struct TransactionsView: View {
             TransactionNewView(accountItem: accountItem, isNewTransaction: $isNewTransaction, nowAccount: true)
         }
         
+        .alert(isPresented: $showAlert) {
+            getAlert()
+        }
         
+        
+    }
+    
+    // MARK: Alert
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle),
+                     message: Text(alertMessage),
+                     primaryButton: .destructive(Text("Да"),
+                                                 action: {
+            accountVM.delete(account: accountItem, context: viewContext)
+        }),
+                     secondaryButton: .cancel())
     }
 }
 
