@@ -31,8 +31,6 @@ struct TransactionsView: View {
     var body: some View {
         
         VStack {
-            
-            
             if accountItem.transaction.isEmpty {
                 Image(systemName: "tray.2.fill")
                     .font(.system(size: 80))

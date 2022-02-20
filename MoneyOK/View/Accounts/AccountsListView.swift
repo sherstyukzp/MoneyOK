@@ -12,8 +12,13 @@ struct AccountsListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)])
+    @FetchRequest(sortDescriptors:
+                    [
+                        SortDescriptor(\AccountEntity.nameAccount, order: .reverse)
+                    ])
     private var fetchedAccounts: FetchedResults<AccountEntity>
+    
+    @State private var query = ""
     
     var body: some View {
         List {
@@ -26,8 +31,7 @@ struct AccountsListView: View {
                             AccountCallView(accountItem: account)
                         }
                         //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
-                        .swipeActions() {
-                        }
+                        .swipeActions() {}
                     }
                 }
             }
@@ -40,8 +44,7 @@ struct AccountsListView: View {
                         AccountCallView(accountItem: account)
                     }
                     //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
-                    .swipeActions() {
-                    }
+                    .swipeActions() {}
                 }
             }
             if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
@@ -53,14 +56,24 @@ struct AccountsListView: View {
                             AccountCallView(accountItem: account)
                         }
                         //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
-                        .swipeActions() {
-                        }
+                        .swipeActions() {}
                     }
                 }
             }
         }
+        .searchable(text: $query, prompt: "Поиск счёта")
+            .onChange(of: query) { newValue in
+                fetchedAccounts.nsPredicate = searchPredicate(query: newValue)
+            }
         
     }
+    
+    
+    private func searchPredicate(query: String) -> NSPredicate? {
+        if query.isEmpty { return nil }
+        return NSPredicate(format: "%K BEGINSWITH[cd] %@",
+                           #keyPath(AccountEntity.nameAccount), query)
+      }
     
     
     

@@ -14,8 +14,6 @@ struct AccountsView: View {
     @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)])
     private var fetchedAccount: FetchedResults<AccountEntity>
     
-    @FetchRequest(entity: TransactionEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.sumTransaction, ascending: true)])
-    private var fetchedTransaction: FetchedResults<TransactionEntity>
     
     @ObservedObject var accountItem: AccountEntity
     @EnvironmentObject var accountVM: AccountViewModel
