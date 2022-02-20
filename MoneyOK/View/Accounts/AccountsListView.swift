@@ -18,26 +18,20 @@ struct AccountsListView: View {
                     ])
     private var fetchedAccounts: FetchedResults<AccountEntity>
     
-    //
-    @FetchRequest(entity: TransactionEntity.entity(),
-                  sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.transactionToCategory?.nameCategory, ascending: true)])
+    @FetchRequest(sortDescriptors:
+                    [
+                        SortDescriptor(\TransactionEntity.transactionToCategory?.nameCategory, order: .reverse)
+                    ])
+    
     private var fetchedTransaction: FetchedResults<TransactionEntity>
     
-    //
     
-    @SectionedFetchRequest(
-        sectionIdentifier: \TransactionEntity.dateTransaction!,
-        sortDescriptors: [SortDescriptor(\TransactionEntity.dateTransaction, order: .reverse)])
-    
-    private var transactions: SectionedFetchResults<Date, TransactionEntity>
-    
-    
-    @State private var query = ""
+    @State private var searchText = ""
     
     var body: some View {
         
         List {
-            if query.isEmpty {
+            if searchText.isEmpty {
                 if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
                     Section("Избранные") {
                         ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { (account: AccountEntity) in
@@ -87,10 +81,9 @@ struct AccountsListView: View {
                     .swipeActions() {}
                 }
             }
-            
         }
-        .searchable(text: $query, placement: .sidebar)
-        .onChange(of: query) { newValue in
+        .searchable(text: $searchText, placement: .sidebar)
+        .onChange(of: searchText) { newValue in
             fetchedTransaction.nsPredicate = searchPredicate(query: newValue)
         }
         
