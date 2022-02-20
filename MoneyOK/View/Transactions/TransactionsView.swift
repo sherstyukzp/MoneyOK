@@ -53,8 +53,10 @@ struct TransactionsView: View {
         }
         
         .toolbar {
+            // Меню по работе с счётом
             ToolbarItem(placement: .primaryAction) {
                                 Menu {
+                                    // Редактирование счёта из меню
                                     Button(action: {
                                         accountVM.nameAccountSave = accountItem.nameAccount!
                                         accountVM.iconAccountSave = accountItem.iconAccount!
@@ -66,12 +68,15 @@ struct TransactionsView: View {
                                         Label("Редактировать", systemImage: "pencil")
                                     }
                                     Divider()
-
+                                    // Удаление счёта из меню
                                     Button(role: .destructive) {
                                         showAlert.toggle()
                                     } label: {
                                         Label("Удалить", systemImage: "trash")
                                     }
+                                    // TODO: Добавить сортировку транзакций
+                                    // TODO: Добавить експорт всех транзакций счёта
+                                    // TODO: Добавить поделиться счётом
                                 }
                                 label: {
                                     Label("Menu", systemImage: "ellipsis.circle")

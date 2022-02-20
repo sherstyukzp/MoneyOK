@@ -13,11 +13,11 @@ struct TransactionsListView: View {
     
     @ObservedObject var accountItem: AccountEntity
     
-    
     var body: some View {
+        
         List {
             ForEach(self.accountItem.transaction, id: \.self) { item in
-                
+
                 NavigationLink(destination:
                                 TransactionDetailView(transactionItem: item))
                 {
@@ -25,9 +25,10 @@ struct TransactionsListView: View {
                 }//.isDetailLink(true) // Исправляет баг с tabbar в списке транзакций
                 .swipeActions() {
                 }
-                
+
             }
         }
+
     }
 }
 
