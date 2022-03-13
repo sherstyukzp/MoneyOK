@@ -47,7 +47,7 @@ struct CategoryCallView: View {
                 categoryVM.categoryItem = categoryItem
                 self.isEditCategory.toggle()
             } label: {
-                Label("Редактировать", systemImage: "pencil")
+                Label("Edit", systemImage: "pencil")
             }.tint(.yellow)
             
         }

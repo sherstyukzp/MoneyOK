@@ -19,9 +19,8 @@ struct TransactionNewView: View {
     @Binding var isNewTransaction: Bool
     @State var nowAccount: Bool
     
-    @State private var selectedAccount: AccountEntity = AccountEntity()
-    @State private var selectedCategory: CategoryEntity = CategoryEntity()
-    
+    @State private var selectedAccount: AccountEntity?
+    @State private var selectedCategory: CategoryEntity?
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)],animation:.default)
     private var fetchedAccount: FetchedResults<AccountEntity>
@@ -37,13 +36,14 @@ struct TransactionNewView: View {
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
         var disableForm: Bool {
-            transactionVM.sumTransactionSave == 0.0
+            transactionVM.sumTransactionSave == 0.0 ||
+            selectedCategory == nil
         }
     
     var body: some View {
         NavigationView {
             Form {
-                Picker(selection: $typeTransactionNew, label: Text("Категории транзакций")) {
+                Picker(selection: $typeTransactionNew, label: Text("Transaction categories")) {
                     ForEach(types, id: \.rawValue) {
                         Text($0.rawValue).tag(Optional<TypeTransactionNew>.some($0))
                     }
@@ -76,34 +76,34 @@ struct TransactionNewView: View {
                 
                 // MARK: Выбор счетов
                 if nowAccount == false {
-                    Picker("Выбрать счёт", selection: $selectedAccount){
-                        ForEach(fetchedAccount, id:\.self) {
-                            Text($0.nameAccount ?? "")
+                    Picker("Select an account", selection: $selectedAccount){
+                        ForEach(fetchedAccount, id: \.self){ (account: AccountEntity) in
+                            Text(account.nameAccount!).tag(account as AccountEntity?)
                         }
                     }
                 }
                 // MARK: Выбор категории
-                Picker("Выбрать категорию", selection: $selectedCategory){
-                    ForEach(fetchedCategory, id:\.self) {
-                        Text($0.nameCategory ?? "")
+                Picker("Select a category", selection: $selectedCategory){
+                    ForEach(fetchedCategory, id: \.self){ (category: CategoryEntity) in
+                        Text(category.nameCategory!).tag(category as CategoryEntity?)
                     }
                 }
                 
-                Section("Дополнительно") {
+                Section("Advanced") {
                      
                     VStack {
-                        DatePicker("Время", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: .date)
+                        DatePicker("Time", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: .date)
                             .environment(\.locale, Locale.init(identifier: "ru"))
                     }
                     HStack {
-                        Text("Заметки")
+                        Text("Note")
                         TextEditor(text: $transactionVM.noteTransactionSave)
                     }
                     
                     Button {
                         self.imagePicker.toggle()
                     } label: {
-                        Text("Фото")
+                        Text("Image")
                     }
                     // TODO: Добавить отображение мини фото
 //                    Image(uiImage: UIImage(data: personImage)!)
@@ -118,14 +118,14 @@ struct TransactionNewView: View {
                 HStack {
                 Button {
                     // MARK: Сохранение трензакции
-                    transactionVM.createTransaction(context: viewContext, selectedAccount: nowAccount ? accountItem : selectedAccount, selectedCategory: selectedCategory, typeTransactionNew: typeTransactionNew!)
+                    transactionVM.createTransaction(context: viewContext, selectedAccount: (nowAccount ? accountItem : selectedAccount)!, selectedCategory: selectedCategory!, typeTransactionNew: typeTransactionNew!)
                     self.isNewTransaction.toggle()
                     
                     print("Session is cancelled")
                 } label: {
                     HStack {
                         Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
-                        Text("Добавить").bold()
+                        Text("Add").bold()
                     }
                     .frame(width: 300, height: 40)
                     
@@ -141,7 +141,7 @@ struct TransactionNewView: View {
             }
             .dismissingKeyboard()
             
-            .navigationTitle("Новая транзакция")
+            .navigationTitle("New transaction")
             .toolbar {
                 ToolbarItem (placement: .navigationBarTrailing) {
                     Button() {
@@ -162,9 +162,9 @@ struct TransactionNewView: View {
 // MARK: - Типы транзакции
 enum TypeTransactionNew: String, CaseIterable {
     
-    case costs = "Расход"
-    case income = "Доход"
-    case transfer = "Перевод"
+    case costs = "Expense"
+    case income = "Income"
+    case transfer = "Translation"
 }
 
 struct TransactionNewView_Previews: PreviewProvider {

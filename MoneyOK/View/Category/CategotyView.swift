@@ -25,11 +25,11 @@ struct CategotyView: View {
                 Image(systemName: "tray.2.fill")
                     .font(.system(size: 80))
                     .foregroundColor(.gray)
-                Text("Нет категорий!")
+                Text("No category!")
                     .font(.title3)
                     .fontWeight(.bold)
                     .padding()
-                Text("Для добавление новой категории нажмите на кнопку ''Новая категория''.")
+                Text("To add a new category, click on the '' New Category '' button.")
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.center)
@@ -41,7 +41,7 @@ struct CategotyView: View {
         }
         
             
-                .navigationTitle("Категории")
+                .navigationTitle("Categories")
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
                         Button(action: {
@@ -53,7 +53,7 @@ struct CategotyView: View {
                                 .imageScale(.medium)
                                 .font(.title)
                                 .foregroundColor(Color.blue)
-                            Text("Новая категория").bold()
+                            Text("New category").bold()
                                 .foregroundColor(Color.blue)
                         }
                         Spacer()
@@ -62,9 +62,6 @@ struct CategotyView: View {
                 .sheet(isPresented: $isNewCategory) {
                     CategoryNewView(isNewCategory: $isNewCategory)
                 }
-                
-        
-
     }
 }
 

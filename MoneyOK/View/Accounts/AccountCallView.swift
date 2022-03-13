@@ -43,7 +43,7 @@ struct AccountCallView: View {
                 Text(accountItem.nameAccount ?? "no name")
                     .bold()
                     .foregroundColor(accountItem.isArchive ? .gray : .primary)
-                Text("Баланс: \(sumTransaction, format: .currency(code: "UAH"))")
+                Text("Balance: \(sumTransaction, format: .currency(code: "USD"))")
                     .font(Font.footnote)
                     .foregroundColor(Color.gray)
             }
@@ -53,7 +53,7 @@ struct AccountCallView: View {
             Button {
                 self.isNewTransaction.toggle()
             } label: {
-                Label("Новая транзакция", systemImage: "plus.circle")
+                Label("New transaction", systemImage: "plus.circle")
             }
             
             Divider()
@@ -61,7 +61,7 @@ struct AccountCallView: View {
                 Button {
                     accountVM.isFavorite(account: accountItem, context: viewContext)
                 } label: {
-                    Label("Избранный", systemImage: accountItem.isFavorite ? "heart.slash" : "heart")
+                    Label("Favorite", systemImage: accountItem.isFavorite ? "heart.slash" : "heart")
                 }
             }
             
@@ -73,7 +73,7 @@ struct AccountCallView: View {
                 accountVM.accountItem = accountItem
                 self.isEditAccount.toggle()
             } label: {
-                Label("Редактировать", systemImage: "highlighter")
+                Label("Edit", systemImage: "highlighter")
             }
             
             Button {
@@ -83,13 +83,13 @@ struct AccountCallView: View {
                 }
                 
             } label: {
-                Label(accountItem.isArchive ? "Разархивировать" : "Архивировать", systemImage: accountItem.isArchive ? "archivebox.fill" : "archivebox")
+                Label(accountItem.isArchive ? "Unarchive" : "Archive", systemImage: accountItem.isArchive ? "archivebox.fill" : "archivebox")
             }
             Divider()
             Button(role: .destructive) {
                 showAlert.toggle()
             } label: {
-                Label("Удалить", systemImage: "trash")
+                Label("Delete", systemImage: "trash")
             }
         }
         // Свайп влево
@@ -98,7 +98,7 @@ struct AccountCallView: View {
                 Button {
                     accountVM.isFavorite(account: accountItem, context: viewContext)
                 } label: {
-                    Label("Избранный", systemImage: accountItem.isFavorite ? "heart.slash" : "heart")
+                    Label("Favorite", systemImage: accountItem.isFavorite ? "heart.slash" : "heart")
                 }.tint(.green)
             }
             
@@ -110,7 +110,7 @@ struct AccountCallView: View {
                 }
                 
             } label: {
-                Label("Архивировать", systemImage: accountItem.isArchive ? "archivebox.fill" : "archivebox")
+                Label("Archive", systemImage: accountItem.isArchive ? "archivebox.fill" : "archivebox")
             }.tint(.gray)
             
         }
@@ -119,7 +119,7 @@ struct AccountCallView: View {
             Button(role: .destructive) {
                 showAlert.toggle()
             } label: {
-                Label("Удалить", systemImage: "trash")
+                Label("Delete", systemImage: "trash")
             }
             
             Button {
@@ -130,7 +130,7 @@ struct AccountCallView: View {
                 accountVM.accountItem = accountItem
                 self.isEditAccount.toggle()
             } label: {
-                Label("Редактировать", systemImage: "pencil")
+                Label("Edit", systemImage: "pencil")
             }.tint(.yellow)
             
         }
@@ -152,7 +152,7 @@ struct AccountCallView: View {
     func getAlert() -> Alert {
         return Alert(title: Text(alertTitle),
                      message: Text(alertMessage),
-                     primaryButton: .destructive(Text("Да"),
+                     primaryButton: .destructive(Text("Yes"),
                                                  action: {
             accountVM.delete(account: accountItem, context: viewContext)
         }),

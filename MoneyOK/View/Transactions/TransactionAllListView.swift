@@ -38,11 +38,11 @@ struct TransactionAllListView: View {
                 Image(systemName: "tray.2.fill")
                     .font(.system(size: 80))
                     .foregroundColor(.gray)
-                Text("Нет транзакций!")
+                Text("No transactions!")
                     .font(.title3)
                     .fontWeight(.bold)
                     .padding()
-                Text("Для добавление новой транзакции выберите счёт и создайте транзакцию.")
+                Text("To add a new transaction, select the account and create a transaction.")
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.center)
@@ -66,13 +66,13 @@ struct TransactionAllListView: View {
                 
 
                 
-                Text("Всего \(fetchedTransaction.count) транзакций")
-                Text("На сумму \(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
+                Text("Total \(fetchedTransaction.count) transactions")
+                Text("In total \(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
            }
             
         }
         
-        .navigationTitle("Все транзакции")
+        .navigationTitle("All Transactions")
     }
 }
 

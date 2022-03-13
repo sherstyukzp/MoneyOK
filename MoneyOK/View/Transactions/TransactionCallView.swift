@@ -16,8 +16,8 @@ struct TransactionCallView: View {
     
     // Alert
     @State var showAlert: Bool = false
-    @State var alertTitle: String = "Удаление транзакции"
-    @State var alertMessage: String = "Вы действительно хотите удалить транзакцию?"
+    @State var alertTitle: String = "Deleting a transaction"
+    @State var alertMessage: String = "Are you sure you want to delete the transaction?"
     
     var body: some View {
         
@@ -43,7 +43,7 @@ struct TransactionCallView: View {
                 
             }
             Spacer()
-            Text("\(transactionItem.sumTransaction, format: .currency(code: "UAH"))")
+            Text("\(transactionItem.sumTransaction, format: .currency(code: "USD"))")
                 .bold()
                 .foregroundColor(Color (transactionItem.sumTransaction < 0 ? .red : .green))
             
@@ -66,7 +66,7 @@ struct TransactionCallView: View {
     func getAlert() -> Alert {
         return Alert(title: Text(alertTitle),
                      message: Text(alertMessage),
-                     primaryButton: .destructive(Text("Да"),
+                     primaryButton: .destructive(Text("Yes"),
                                                  action: {
             transactionVM.delete(transaction: transactionItem, context: viewContext)
         }),

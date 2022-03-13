@@ -33,7 +33,7 @@ struct AccountsListView: View {
         List {
             if searchText.isEmpty {
                 if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
-                    Section("Избранные") {
+                    Section("Favorites") {
                         ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { (account: AccountEntity) in
                             NavigationLink(destination:
                                             TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
@@ -46,7 +46,7 @@ struct AccountsListView: View {
                     }
                 }
                 
-                Section(fetchedAccounts.count <= 1 ? "Счёт" : "Счета") {
+                Section(fetchedAccounts.count <= 1 ? "Account" : "Accounts") {
                     ForEach(fetchedAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { (account: AccountEntity) in
                         NavigationLink(destination:
                                         TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
@@ -58,7 +58,7 @@ struct AccountsListView: View {
                     }
                 }
                 if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
-                    Section("Архив") {
+                    Section("Archive") {
                         ForEach(fetchedAccounts.filter{$0.isArchive == true}) { (account: AccountEntity) in
                             NavigationLink(destination:
                                             TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))

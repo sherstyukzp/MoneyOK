@@ -30,11 +30,11 @@ struct AccountsView: View {
                         Image(systemName: "tray.2.fill")
                             .font(.system(size: 80))
                             .foregroundColor(.gray)
-                        Text("Нет счетов!")
+                        Text("No accounts!")
                             .font(.title3)
                             .fontWeight(.bold)
                             .padding()
-                        Text("Для добавление нового счёта нажмите на кнопку ниже.")
+                        Text("To add a new account, click on the button below.")
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
                             .multilineTextAlignment(.center)
@@ -48,7 +48,7 @@ struct AccountsView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
-                                Text("Новый счёт").bold()
+                                Text("New account").bold()
                             }
                             .frame(width: 200, height: 40)
                         }.buttonStyle(.borderedProminent)
@@ -64,7 +64,7 @@ struct AccountsView: View {
             }
             
             
-            .navigationTitle("Мои счета")
+            .navigationTitle("My account")
             .navigationViewStyle(StackNavigationViewStyle())
             .toolbar {
                 // Кнопка Настройки в NavigationView

@@ -40,32 +40,32 @@ struct CategoryNewView: View {
                         }
                         
                         
-                        TextField("Имя категории", text: $categoryVM.nameCategorySave)
+                        TextField("Category name", text: $categoryVM.nameCategorySave)
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10.0)
                             .padding(.bottom)
                     }
                 }
-                Section(header: Text("Цвет")) {
+                Section(header: Text("Color")) {
                     
                     ColorSwatchView(selection: $categoryVM.colorCategorySave)
                 }
-                Section(header: Text("Иконка")) {
-                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $categoryVM.iconCategorySave, category: .people, axis: .vertical, haptic: true).frame(height: 300)
+                Section(header: Text("Icon")) {
+                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $categoryVM.iconCategorySave, category: .objects, axis: .vertical, haptic: true).frame(height: 300)
                 }
                 
                 
             }.dismissingKeyboard()
             
-            .navigationTitle(categoryVM.categoryItem == nil ? "Новая категория" : "Редактировать")
+            .navigationTitle(categoryVM.categoryItem == nil ? "New category" : "Edit")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
                         categoryVM.createCategory(context: viewContext)
                         self.isNewCategory.toggle()
                     }) {
-                        Text(categoryVM.categoryItem == nil ? "Сохранить" : "Обновить").bold()
+                        Text(categoryVM.categoryItem == nil ? "Save" : "Update").bold()
                     }.disabled(disableForm)
                 }
                 
@@ -73,7 +73,7 @@ struct CategoryNewView: View {
                     Button(action: {
                         self.isNewCategory.toggle()
                     }) {
-                        Text("Отмена").bold()
+                        Text("Cancel").bold()
                             .foregroundColor(Color.blue)
                     }
                 }

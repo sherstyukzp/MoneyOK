@@ -10,18 +10,18 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         Form {
-            NavigationLink("Счета") {
-                AccountsListView().navigationTitle("Счета")
-            }
-            NavigationLink("Категории") {
+//            NavigationLink("Acoount") {
+//                AccountsListView().navigationTitle("Accounts")
+//            }
+            NavigationLink("Category") {
                 CategotyView()
             }
-            NavigationLink("Транзакции") {
+            NavigationLink("Transactions") {
                 TransactionAllListView()
             }
         }
         
-        .navigationTitle("Настройки")
+        .navigationTitle("Settings")
         
         
     }

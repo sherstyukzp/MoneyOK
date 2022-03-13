@@ -31,7 +31,7 @@ struct PanelView: View {
         
             HStack(alignment: .center) {
                 VStack(alignment: .leading) {
-                    Text("Остаток")
+                    Text("Balance")
                         .font(.callout)
                         .foregroundColor(Color.gray)
                     // TODO: Добавить отображение суммы всех счетов
@@ -57,14 +57,14 @@ struct PanelView: View {
                     Button {
                         self.isNewTransaction.toggle()
                     } label: {
-                        Label("Новая транзакция", systemImage: "plus.circle")
+                        Label("New transaction", systemImage: "plus.circle")
                     }
                     Button {
                         accountListVM.nameAccountSave = ""
                         accountListVM.accountItem = nil
                         self.isNewAccount.toggle()
                     } label: {
-                        Label("Новый счёт", systemImage: "plus.circle")
+                        Label("New account", systemImage: "plus.circle")
                     }
                 }
             }

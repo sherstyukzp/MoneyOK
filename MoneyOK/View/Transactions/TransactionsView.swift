@@ -19,8 +19,8 @@ struct TransactionsView: View {
     
     // Alert
     @State var showAlert: Bool = false
-    @State var alertTitle: String = "Удаление счёта"
-    @State var alertMessage: String = "Вы действительно хотите удалить счёт?"
+    @State var alertTitle: String = "Removal account"
+    @State var alertMessage: String = "Are you sure you want to delete the account?"
     
     
     // Сумма всех транзакций выбраного счёта
@@ -35,11 +35,11 @@ struct TransactionsView: View {
                 Image(systemName: "tray.2.fill")
                     .font(.system(size: 80))
                     .foregroundColor(.gray)
-                Text("Нет транзакций!")
+                Text("No transactions!")
                     .font(.title3)
                     .fontWeight(.bold)
                     .padding()
-                Text("Для добавление новой транзакции нажмите на кнопку ''Новая транзакция''.")
+                Text("To add a new transaction, click on the ''New Transaction'' button.")
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.center)
@@ -63,14 +63,14 @@ struct TransactionsView: View {
                                         accountVM.accountItem = accountItem
                                         self.isEditAccount.toggle()
                                     }) {
-                                        Label("Редактировать", systemImage: "pencil")
+                                        Label("Edit", systemImage: "pencil")
                                     }
                                     Divider()
                                     // Удаление счёта из меню
                                     Button(role: .destructive) {
                                         showAlert.toggle()
                                     } label: {
-                                        Label("Удалить", systemImage: "trash")
+                                        Label("Delete", systemImage: "trash")
                                     }
                                     // TODO: Добавить сортировку транзакций
                                     // TODO: Добавить експорт всех транзакций счёта
@@ -86,7 +86,7 @@ struct TransactionsView: View {
                     Text(accountItem.nameAccount ?? "")
                         .font(.headline)
                         .foregroundColor(Color(accountItem.colorAccount ?? ""))
-                    Text("\(sumTransactionForAccount, format: .currency(code: "UAH"))").font(.subheadline)
+                    Text("\(sumTransactionForAccount, format: .currency(code: "USD"))").font(.subheadline)
                 }
             }
             // Кнопка добавления новой транзакции в текущем счёте
@@ -98,7 +98,7 @@ struct TransactionsView: View {
                         .imageScale(.medium)
                         .font(.title)
                         .foregroundColor(Color.blue)
-                    Text("Новая транзакция").bold()
+                    Text("New transaction").bold()
                         .foregroundColor(Color.blue)
                 }
                 
@@ -125,7 +125,7 @@ struct TransactionsView: View {
     func getAlert() -> Alert {
         return Alert(title: Text(alertTitle),
                      message: Text(alertMessage),
-                     primaryButton: .destructive(Text("Да"),
+                     primaryButton: .destructive(Text("Yes"),
                                                  action: {
             accountVM.delete(account: accountItem, context: viewContext)
         }),

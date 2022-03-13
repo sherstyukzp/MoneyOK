@@ -17,28 +17,28 @@ struct TransactionDetailView: View {
     
     // Alert
     @State var showAlert: Bool = false
-    @State var alertTitle: String = "Удаление транзакции"
-    @State var alertMessage: String = "Вы действительно хотите удалить транзакцию?"
+    @State var alertTitle: String = "Removing a transaction"
+    @State var alertMessage: String = "Do you really want to delete a transaction?"
     
     var body: some View {
         HStack {
             Text("\(transactionItem.sumTransaction > 0 ? "+" : "")")
                 
-            Text("\(transactionItem.sumTransaction, format: .currency(code: "UAH"))")
+            Text("\(transactionItem.sumTransaction, format: .currency(code: "USD"))")
                 
         }.foregroundColor(Color(transactionItem.sumTransaction > 0 ? .green : .red))
             .font(.system(size: 48, weight: .bold, design: .default))
         
         Form {
             Section {
-                Text ("Счёт: \(transactionItem.transactionToAccount?.nameAccount ?? "")")
-                Text ("Категория: \(transactionItem.transactionToCategory?.nameCategory ?? "")")
-                Text ("Дата: \(transactionItem.dateTransaction ?? Date() , style: .date)")
+                Text ("Account: \(transactionItem.transactionToAccount?.nameAccount ?? "")")
+                Text ("Category: \(transactionItem.transactionToCategory?.nameCategory ?? "")")
+                Text ("Date: \(transactionItem.dateTransaction ?? Date() , style: .date)")
 
             }
             Section {
-                Text ("Заметки: \(transactionItem.noteTransaction ?? "")")
-                Text ("Фото:") // TODO: Добавить отображение фото транзакции
+                Text ("Note: \(transactionItem.noteTransaction ?? "")")
+                Text ("Image:") // TODO: Добавить отображение фото транзакции
             }
             
             Section {
@@ -47,7 +47,7 @@ struct TransactionDetailView: View {
                     
                     
                 } label: {
-                    Text("Удалить")
+                    Text("Delete")
                 }
             }
         }
@@ -63,7 +63,7 @@ struct TransactionDetailView: View {
     func getAlert() -> Alert {
         return Alert(title: Text(alertTitle),
                      message: Text(alertMessage),
-                     primaryButton: .destructive(Text("Да"),
+                     primaryButton: .destructive(Text("Yes"),
                                                  action: {
             transactionVM.delete(transaction: transactionItem, context: viewContext)
             presentationMode.wrappedValue.dismiss() // Закрытие окна, вернуться в список транзакций

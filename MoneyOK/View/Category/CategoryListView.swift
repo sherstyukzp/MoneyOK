@@ -20,7 +20,7 @@ struct CategoryListView: View {
     var body: some View {
         
         VStack {
-            Picker(selection: $typeTrancaction, label: Text("Категории транзакций")) {
+            Picker(selection: $typeTrancaction, label: Text("Transaction categories")) {
                 ForEach(types, id: \.rawValue) {
                     Text($0.rawValue).tag(Optional<TypeTrancaction>.some($0))
                 }
@@ -43,8 +43,8 @@ struct CategoryListView: View {
 // MARK: - Типы транзакции
 enum TypeTrancaction: String, CaseIterable {
     
-    case costs = "Расход"
-    case income = "Доход"
+    case costs = "Expense"
+    case income = "Income"
 }
 
 struct CategoryListView_Previews: PreviewProvider {
