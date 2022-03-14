@@ -16,6 +16,9 @@ struct CategoryNewView: View {
     
     @State private var isPresentedIcon: Bool = true
     
+    let types = Array(TypeTrancaction.allCases)
+    @State var typeTrancaction: TypeTrancaction? = .costs
+    
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
         var disableForm: Bool {
             categoryVM.nameCategorySave.isEmpty ||
@@ -39,7 +42,6 @@ struct CategoryNewView: View {
                                 .foregroundColor(Color.white)
                         }
                         
-                        
                         TextField("Category name", text: $categoryVM.nameCategorySave)
                             .padding()
                             .background(Color.gray.opacity(0.2))
@@ -47,8 +49,14 @@ struct CategoryNewView: View {
                             .padding(.bottom)
                     }
                 }
+                
+                Picker(selection: $typeTrancaction, label: Text("Transaction categories")) {
+                    ForEach(types, id: \.rawValue) {
+                        Text($0.rawValue).tag(Optional<TypeTrancaction>.some($0))
+                    }
+                }.pickerStyle(SegmentedPickerStyle())
+                
                 Section(header: Text("Color")) {
-                    
                     ColorSwatchView(selection: $categoryVM.colorCategorySave)
                 }
                 Section(header: Text("Icon")) {
@@ -62,6 +70,13 @@ struct CategoryNewView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
+                        if typeTrancaction == .costs {
+                            categoryVM.isExpensesCategorySave = false
+                        }
+                        if typeTrancaction == .income {
+                            categoryVM.isExpensesCategorySave = true
+                        }
+                        
                         categoryVM.createCategory(context: viewContext)
                         self.isNewCategory.toggle()
                     }) {

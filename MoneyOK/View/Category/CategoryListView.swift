@@ -27,10 +27,19 @@ struct CategoryListView: View {
             }.pickerStyle(SegmentedPickerStyle())
             
             List {
-                ForEach(fetchedCategory) { category in
-                    CategoryCallView(categoryItem: category)
-                    
+                if typeTrancaction == .costs {
+                    ForEach(fetchedCategory.filter{$0.isExpenses == false}) { category in
+                        CategoryCallView(categoryItem: category)
+                        
+                    }
                 }
+                if typeTrancaction == .income {
+                    ForEach(fetchedCategory.filter{$0.isExpenses == true}) { category in
+                        CategoryCallView(categoryItem: category)
+                        
+                    }
+                }
+                
             }
         }
         

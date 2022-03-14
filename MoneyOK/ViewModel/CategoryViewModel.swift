@@ -14,6 +14,7 @@ class CategoryViewModel: ObservableObject {
     @Published var nameCategorySave = ""
     @Published var iconCategorySave = "creditcard.fill"
     @Published var colorCategorySave = "swatch_articblue"
+    @Published var isExpensesCategorySave = true
     
     @Published var categoryItem: CategoryEntity!
     
@@ -26,17 +27,20 @@ class CategoryViewModel: ObservableObject {
             category.nameCategory = nameCategorySave
             category.iconCategory = iconCategorySave
             category.colorCategory = colorCategorySave
+            category.isExpenses = isExpensesCategorySave
             
         } else {
             categoryItem.nameCategory = nameCategorySave
             categoryItem.iconCategory = iconCategorySave
             categoryItem.colorCategory = colorCategorySave
+            categoryItem.isExpenses = isExpensesCategorySave
         }
         
         save(context: context)
         nameCategorySave = ""
         iconCategorySave = ""
         colorCategorySave = ""
+        isExpensesCategorySave = true
     }
     
     func editCategory(category: CategoryEntity){

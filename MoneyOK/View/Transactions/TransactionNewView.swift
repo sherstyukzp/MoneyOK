@@ -84,9 +84,18 @@ struct TransactionNewView: View {
                 }
                 // MARK: Выбор категории
                 Picker("Select a category", selection: $selectedCategory){
-                    ForEach(fetchedCategory, id: \.self){ (category: CategoryEntity) in
-                        Text(category.nameCategory!).tag(category as CategoryEntity?)
+                    if typeTransactionNew == .costs {
+                        ForEach(fetchedCategory.filter{$0.isExpenses == false}){ (category: CategoryEntity) in
+                            Text(category.nameCategory!).tag(category as CategoryEntity?)
+                        }
                     }
+                    
+                    if typeTransactionNew == .income {
+                        ForEach(fetchedCategory.filter{$0.isExpenses == true}){ (category: CategoryEntity) in
+                            Text(category.nameCategory!).tag(category as CategoryEntity?)
+                        }
+                    }
+                    
                 }
                 
                 Section("Advanced") {
