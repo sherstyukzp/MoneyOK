@@ -36,7 +36,7 @@ struct PanelView: View {
                         .foregroundColor(Color.gray)
                     // TODO: Добавить отображение суммы всех счетов
                     HStack {
-                        Text("\(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))").bold()
+                        Text("\(sumTransaction, format: .currency(code: "USD"))").bold()
                         //Text("$").bold() // Сделать валюту по умолчанию
                         
                     }.font(Font.title)
@@ -73,8 +73,6 @@ struct PanelView: View {
             .padding(5)
             .background(Color(UIColor.secondarySystemBackground))
             
-        
-        
             .sheet(isPresented: $isNewAccount) {
                 AccountNewView(isNewAccount: $isNewAccount)
             }
