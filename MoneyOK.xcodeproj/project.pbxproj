@@ -41,6 +41,8 @@
 		059CD3C527BBD25B00837AD1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3C427BBD25B00837AD1 /* ImagePicker.swift */; };
 		059CD3C727BBD26C00837AD1 /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3C627BBD26C00837AD1 /* KeyboardListener.swift */; };
 		059CD3C927BBD58200837AD1 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3C827BBD58200837AD1 /* PanelView.swift */; };
+		05C86F4927DF92A00037E5BB /* HeaderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C86F4827DF92A00037E5BB /* HeaderSettingView.swift */; };
+		05C86F4B27DF955A0037E5BB /* SendUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C86F4A27DF955A0037E5BB /* SendUseView.swift */; };
 		05D146C327B6A11100359081 /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D146C227B6A11100359081 /* TransactionDetailView.swift */; };
 		05DCBF1C27B9847700448716 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DCBF1B27B9847700448716 /* CategoryViewModel.swift */; };
 		05DCBF2E27B9ACBA00448716 /* TransactionAllListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */; };
@@ -82,6 +84,8 @@
 		059CD3C427BBD25B00837AD1 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		059CD3C627BBD26C00837AD1 /* KeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
 		059CD3C827BBD58200837AD1 /* PanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		05C86F4827DF92A00037E5BB /* HeaderSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSettingView.swift; sourceTree = "<group>"; };
+		05C86F4A27DF955A0037E5BB /* SendUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendUseView.swift; sourceTree = "<group>"; };
 		05D146C227B6A11100359081 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
 		05DCBF1B27B9847700448716 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAllListView.swift; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				057BAE0027B3DAE400127DA3 /* SettingsView.swift */,
+				05C86F4827DF92A00037E5BB /* HeaderSettingView.swift */,
+				05C86F4A27DF955A0037E5BB /* SendUseView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				057BAE0527B3DB1A00127DA3 /* CategoryNewView.swift in Sources */,
 				059CD3C727BBD26C00837AD1 /* KeyboardListener.swift in Sources */,
 				059CD3B427BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift in Sources */,
+				05C86F4927DF92A00037E5BB /* HeaderSettingView.swift in Sources */,
 				059CD3B527BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift in Sources */,
 				057BAE0B27B3E03E00127DA3 /* CategotyView.swift in Sources */,
 				057BAE1027B3EC5C00127DA3 /* AccountsModel.xcdatamodeld in Sources */,
@@ -333,6 +340,7 @@
 				057BAE1227B3ED5400127DA3 /* PersistenceController.swift in Sources */,
 				059CD3C327BBD23600837AD1 /* ColorSwatchView.swift in Sources */,
 				05D146C327B6A11100359081 /* TransactionDetailView.swift in Sources */,
+				05C86F4B27DF955A0037E5BB /* SendUseView.swift in Sources */,
 				057BADF727B3DA7900127DA3 /* AccountCallView.swift in Sources */,
 				059CD3B727BBC83E00837AD1 /* AccountEntity+CoreDataProperties.swift in Sources */,
 				057BADE227B3D98E00127DA3 /* ContentView.swift in Sources */,
