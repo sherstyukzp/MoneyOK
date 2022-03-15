@@ -18,6 +18,7 @@ struct CategoryNewView: View {
     
     let types = Array(TypeTrancaction.allCases)
     @State var typeTrancaction: TypeTrancaction? = .costs
+
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
         var disableForm: Bool {
@@ -55,6 +56,7 @@ struct CategoryNewView: View {
                         Text($0.rawValue).tag(Optional<TypeTrancaction>.some($0))
                     }
                 }.pickerStyle(SegmentedPickerStyle())
+                
                 
                 Section(header: Text("Color")) {
                     ColorSwatchView(selection: $categoryVM.colorCategorySave)
@@ -96,6 +98,7 @@ struct CategoryNewView: View {
         }
     }
 }
+
 
 struct CategoryNewView_Previews: PreviewProvider {
     static var previews: some View {
