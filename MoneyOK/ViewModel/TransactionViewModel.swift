@@ -29,10 +29,10 @@ class TransactionViewModel: ObservableObject {
             if typeTransactionNew == .income {
                 sumSave = sumTransactionSave
             }
-            if typeTransactionNew == .transfer {
-                // TODO: Добавить алгоритм перевода
-                sumSave = sumTransactionSave
-            }
+//            if typeTransactionNew == .transfer {
+//                // TODO: Добавить алгоритм перевода
+//                sumSave = sumTransactionSave
+//            }
             
             transaction.idTransaction = UUID()
             transaction.sumTransaction = sumSave

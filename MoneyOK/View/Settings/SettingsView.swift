@@ -10,10 +10,10 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         Form {
-            NavigationLink("Category") {
+            NavigationLink("Category Management") {
                 CategotyView()
             }
-            NavigationLink("Transactions") {
+            NavigationLink("Transaction Management") {
                 TransactionAllListView()
             }
             
@@ -27,7 +27,7 @@ struct SettingsView: View {
                     footer: Text("Click on the button and select a convenient way to communicate with us.")) {
                 HStack {
                     NavigationLink(destination: SendUseView()) {
-                        Text("Написать нам")
+                        Text("Write to us")
                     }
                 }
             }

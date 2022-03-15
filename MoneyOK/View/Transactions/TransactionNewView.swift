@@ -49,7 +49,7 @@ struct TransactionNewView: View {
                     }
                 }.pickerStyle(SegmentedPickerStyle())
                 
-                Section("Сумма") {
+                Section("Sum") {
                     HStack(alignment: .center) {
                         if typeTransactionNew == .costs {
                             Image(systemName: "minus.circle.fill")
@@ -62,11 +62,11 @@ struct TransactionNewView: View {
                                 .foregroundColor(Color.green)
                         }
                         
-                        if typeTransactionNew == .transfer {
-                            Image(systemName: "repeat.circle.fill")
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundColor(Color.blue)
-                        }
+//                        if typeTransactionNew == .transfer {
+//                            Image(systemName: "repeat.circle.fill")
+//                                .font(.system(size: 32, weight: .bold))
+//                                .foregroundColor(Color.blue)
+//                        }
                         
                         TextField("", value: $transactionVM.sumTransactionSave, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                             .font(Font.system(size: 32, weight: .bold))
@@ -74,29 +74,34 @@ struct TransactionNewView: View {
                     }
                 }
                 
-                // MARK: Выбор счетов
-                if nowAccount == false {
-                    Picker("Select an account", selection: $selectedAccount){
-                        ForEach(fetchedAccount, id: \.self){ (account: AccountEntity) in
-                            Text(account.nameAccount!).tag(account as AccountEntity?)
+                
+                
+                
+                    // MARK: Выбор счетов
+                    if nowAccount == false {
+                        Picker("Select an account", selection: $selectedAccount){
+                            ForEach(fetchedAccount, id: \.self){ (account: AccountEntity) in
+                                Text(account.nameAccount!).tag(account as AccountEntity?)
+                            }
                         }
                     }
-                }
-                // MARK: Выбор категории
-                Picker("Select a category", selection: $selectedCategory){
-                    if typeTransactionNew == .costs {
-                        ForEach(fetchedCategory.filter{$0.isExpenses == false}){ (category: CategoryEntity) in
-                            Text(category.nameCategory!).tag(category as CategoryEntity?)
+                    // MARK: Выбор категории
+                    Picker("Select a category", selection: $selectedCategory){
+                        if typeTransactionNew == .costs {
+                            ForEach(fetchedCategory.filter{$0.isExpenses == false}){ (category: CategoryEntity) in
+                                Text(category.nameCategory!).tag(category as CategoryEntity?)
+                            }
                         }
-                    }
-                    
-                    if typeTransactionNew == .income {
-                        ForEach(fetchedCategory.filter{$0.isExpenses == true}){ (category: CategoryEntity) in
-                            Text(category.nameCategory!).tag(category as CategoryEntity?)
+                        
+                        if typeTransactionNew == .income {
+                            ForEach(fetchedCategory.filter{$0.isExpenses == true}){ (category: CategoryEntity) in
+                                Text(category.nameCategory!).tag(category as CategoryEntity?)
+                            }
                         }
+                        
                     }
-                    
-                }
+                
+                
                 
                 Section("Advanced") {
                      
@@ -173,7 +178,7 @@ enum TypeTransactionNew: String, CaseIterable {
     
     case costs = "Expense"
     case income = "Income"
-    case transfer = "Translation"
+    //case transfer = "Translation"
 }
 
 struct TransactionNewView_Previews: PreviewProvider {
