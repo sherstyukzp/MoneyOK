@@ -61,7 +61,7 @@ struct TransactionNewView: View {
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundColor(Color.green)
                         }
-                        
+                        // TODO: Добавить перевод
 //                        if typeTransactionNew == .transfer {
 //                            Image(systemName: "repeat.circle.fill")
 //                                .font(.system(size: 32, weight: .bold))
@@ -73,8 +73,6 @@ struct TransactionNewView: View {
                             .keyboardType(.decimalPad)
                     }
                 }
-                
-                
                 
                 
                     // MARK: Выбор счетов
@@ -98,7 +96,6 @@ struct TransactionNewView: View {
                                 Text(category.nameCategory!).tag(category as CategoryEntity?)
                             }
                         }
-                        
                     }
                 
                 

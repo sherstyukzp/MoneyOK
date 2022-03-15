@@ -50,7 +50,7 @@ struct AccountNewView: View {
                     ColorSwatchView(selection: $accountVM.colorAccountSave)
                 }
                 Section(header: Text("Icon")) {
-                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountVM.iconAccountSave, category: .commerce , axis: .vertical, haptic: true).frame(height: 300)
+                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountVM.iconAccountSave, category: .accounts , axis: .vertical, haptic: true).frame(height: 300)
                 }
                 
                 Section(header: Text("Note")) {

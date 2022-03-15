@@ -10,12 +10,15 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         Form {
-            NavigationLink("Category Management") {
-                CategotyView()
+            Section (header: HeaderSettingView(imageIcon: "slider.horizontal.3", text: "Management")) {
+                NavigationLink("Category Management") {
+                    CategotyView()
+                }
+                NavigationLink("Transaction Management") {
+                    TransactionAllListView()
+                }
             }
-            NavigationLink("Transaction Management") {
-                TransactionAllListView()
-            }
+            
             
             Section(header: HeaderSettingView(imageIcon: "rosette", text: "Other applications"),
                     footer: Text("We also have other applications that you have to enjoy")) {

@@ -60,7 +60,7 @@ struct CategoryNewView: View {
                     ColorSwatchView(selection: $categoryVM.colorCategorySave)
                 }
                 Section(header: Text("Icon")) {
-                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $categoryVM.iconCategorySave, category: .objects, axis: .vertical, haptic: true).frame(height: 300)
+                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $categoryVM.iconCategorySave, category: .category, axis: .vertical, haptic: true).frame(height: 300)
                 }
                 
                 

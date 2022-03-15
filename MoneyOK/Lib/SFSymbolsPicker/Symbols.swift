@@ -31,6 +31,9 @@ public enum Category: String, CaseIterable, Identifiable {
     case indices = "Indices"
     case math = "Math"
     
+    case accounts = "Accounts"
+    case category = "Category"
+    
     case none = ""
 }
 
@@ -186,5 +189,18 @@ let symbols : [String: [String]] = [
         "36.circle","36.circle.fill","36.square","36.square.fill","37.circle","37.circle.fill","37.square","37.square.fill","38.circle","38.circle.fill","38.square","38.square.fill","39.circle","39.circle.fill","39.square","39.square.fill","40.circle","40.circle.fill","40.square","40.square.fill",
         "41.circle","41.circle.fill","41.square","41.square.fill","42.circle","42.circle.fill","42.square","42.square.fill","43.circle","43.circle.fill","43.square","43.square.fill","44.circle","44.circle.fill","44.square","44.square.fill","45.circle","45.circle.fill","45.square","45.square.fill",
         "46.circle","46.circle.fill","46.square","46.square.fill","47.circle","47.circle.fill","47.square","47.square.fill","48.circle","48.circle.fill","48.square","48.square.fill","49.circle","49.circle.fill","49.square","49.square.fill","50.circle","50.circle.fill","50.square","50.square.fill"
+    ],
+    
+    "Accounts": [
+        "banknote", "banknote.fill", "creditcard", "creditcard.fill", "creditcard.circle", "creditcard.circle.fill", "creditcard.and.123", "creditcard.trianglebadge.exclamationmark", "giftcard", "giftcard.fill", "briefcase", "briefcase.fill", "briefcase.circle", "briefcase.circle.fill", "case", "case.fill", "latch.2.case", "latch.2.case.fill", "cross.case", "cross.case.fill", "suitcase", "suitcase.fill", "house", "house.fill", "house.circle", "house.circle.fill",
+        
+        "dollarsign.circle", "dollarsign.circle.fill" ,"centsign.circle", "centsign.circle.fill" , "yensign.circle", "yensign.circle.fill", "sterlingsign.circle", "sterlingsign.circle.fill", "francsign.circle", "francsign.circle.fill", "florinsign.circle", "florinsign.circle.fill", "turkishlirasign.circle", "turkishlirasign.circle.fill", "rublesign.circle", "rublesign.circle.fill", "eurosign.circle", "eurosign.circle.fill", "dongsign.circle", "dongsign.circle.fill", "indianrupeesign.circle", "indianrupeesign.circle.fill", "tengesign.circle", "tengesign.circle.fill", "pesetasign.circle", "pesetasign.circle.fill", "pesosign.circle", "pesosign.circle.fill", "kipsign.circle", "kipsign.circle.fill", "wonsign.circle", "wonsign.circle.fill", "lirasign.circle", "lirasign.circle.fill", "australsign.circle", "australsign.circle.fill", "hryvniasign.circle", "hryvniasign.circle.fill", "nairasign.circle", "nairasign.circle.fill", "guaranisign.circle", "guaranisign.circle.fill", "coloncurrencysign.circle", "coloncurrencysign.circle.fill", "cedisign.circle", "cedisign.circle.fill", "cruzeirosign.circle", "cruzeirosign.circle.fill", "tugriksign.circle", "tugriksign.circle.fill", "millsign.circle", "millsign.circle.fill", "shekelsign.circle", "shekelsign.circle.fill", "manatsign.circle", "manatsign.circle.fill", "rupeesign.circle", "rupeesign.circle.fill", "bahtsign.circle", "bahtsign.circle.fill", "larisign.circle", "larisign.circle.fill", "bitcoinsign.circle", "bitcoinsign.circle.fill", "brazilianrealsign.circle"
+        
+        
+    ],
+    
+    "Category": [
+        "phone", "phone.fill", "phone.circle", "phone.circle.fill", "graduationcap", "graduationcap.fill", "graduationcap.circle", "graduationcap.circle.fill", "gauge", "speedometer", "barometer", "dice", "dice.fill", "pianokeys", "pianokeys.inverse", "hammer", "hammer.fill", "wrench.and.screwdriver", "wrench.and.screwdriver.fill", "stethoscope", "stethoscope.circle", "stethoscope.circle.fill", "briefcase", "briefcase.fill", "cross.case", "cross.case.fill", "theatermasks", "theatermasks.fill", "theatermasks.circle", "theatermasks.circle.fill", "building.2", "building.2.fill", "building.2.crop.circle", "building.2.crop.circle.fill", "fuelpump", "fuelpump.fill", "fuelpump.circle", "fuelpump.circle.fill", "bed.double", "bed.double.fill", "bed.double.circle", "bed.double.circle.fill", "cross.vial", "cross.vial.fill", "film", "film.fill", "film.circle", "film.circle.fill", "comb", "comb.fill", "shippingbox", "shippingbox.fill", "shippingbox.circle", "shippingbox.circle.fill", "gamecontroller", "gamecontroller.fill", "paintpalette", "paintpalette.fill", "cup.and.saucer", "cup.and.saucer.fill", "takeoutbag.and.cup.and.straw", "takeoutbag.and.cup.and.straw.fill", "fork.knife", "fork.knife.circle", "fork.knife.circle.fill", "simcard", "simcard.fill", "simcard.2", "simcard.2.fill", "gift", "gift.fill", "gift.circle", "gift.circle.fill", "studentdesk", "appletv", "appletv.fill", "gamecontroller", "gamecontroller.fill", "house", "house.fill", "wifi", "wifi.circle", "wifi.circle.fill", "airplane", "airplane.circle", "airplane.circle.fill", "car", "car.fill", "car.circle", "car.circle.fill", "bus", "bus.fill", "tram", "tram.fill", "ferry", "ferry.fill", "car.ferry", "car.ferry.fill", "bicycle", "bicycle.circle", "bicycle.circle.fill", "scooter", "fuelpump", "fuelpump.fill", "fuelpump.circle", "fuelpump.circle.fill", "rectangle.inset.filled.and.person.filled", "tshirt", "tshirt.fill", "brain.head.profile", "brain", "figure.roll", "hare", "hare.fill", "tortoise", "tortoise.fill", "pawprint", "pawprint.fill", "pawprint.circle", "pawprint.circle.fill", "ant", "ant.fill", "scissors", "scissors.circle", "scissors.circle.fill", "bandage.fill", "bag", "bag.fill", "bag.circle", "bag.circle.fill", "cart", "cart.fill", "cart.circle", "cart.circle.fill", "giftcard", "giftcard.fill", "pills", "pills.fill", "pills.circle", "pills.circle.fill", "cross", "cross.fill", "cross.circle", "cross.circle.fill"
     ]
+    
 ]
