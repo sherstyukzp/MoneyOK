@@ -7,12 +7,14 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class TransactionViewModel: ObservableObject {
     
     @Published var sumTransactionSave: Double = 0.0
     @Published var noteTransactionSave: String = ""
     @Published var dateTransactionSave: Date = Date()
+    @Published var imageTransactionSave: UIImage = UIImage()
     
     @Published var transactionItem: TransactionEntity!
     
@@ -38,6 +40,7 @@ class TransactionViewModel: ObservableObject {
             transaction.sumTransaction = sumSave
             transaction.noteTransaction = noteTransactionSave
             transaction.dateTransaction = dateTransactionSave
+            transaction.imageTransaction = imageTransactionSave.pngData()
             transaction.transactionToAccount = selectedAccount
             transaction.transactionToCategory = selectedCategory
             
@@ -45,6 +48,7 @@ class TransactionViewModel: ObservableObject {
             transactionItem.sumTransaction = sumTransactionSave
             transactionItem.noteTransaction = noteTransactionSave
             transactionItem.dateTransaction = dateTransactionSave
+            transactionItem.imageTransaction = imageTransactionSave.pngData()
             transactionItem.transactionToAccount = selectedAccount
             transactionItem.transactionToCategory = selectedCategory
         }

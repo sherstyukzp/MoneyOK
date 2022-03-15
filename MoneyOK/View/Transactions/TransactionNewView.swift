@@ -112,16 +112,28 @@ struct TransactionNewView: View {
                     }
                     
                     Button {
-                        self.imagePicker.toggle()
+                        if personImage.pngData() == nil {
+                            self.imagePicker.toggle()
+                        }
+                        else {
+                            personImage = UIImage()
+                        }
+                        
                     } label: {
-                        Text("Image")
+                        HStack {
+                            if personImage.pngData() == nil {
+                                Text("Add image")
+                            } else {
+                                Text("Remove image")
+                                    .foregroundColor(Color.red)
+                            }
+                            
+                            Spacer()
+                            Image(uiImage: personImage)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                        }
                     }
-                    // TODO: Добавить отображение мини фото
-//                    Image(uiImage: UIImage(data: personImage)!)
-//                        .resizable()
-//                        .clipShape(Circle())
-//                        .frame(width: 60, height: 60)
-
                 }
             }
             
@@ -129,6 +141,7 @@ struct TransactionNewView: View {
                 HStack {
                 Button {
                     // MARK: Сохранение трензакции
+                    transactionVM.imageTransactionSave = personImage
                     transactionVM.createTransaction(context: viewContext, selectedAccount: (nowAccount ? accountItem : selectedAccount)!, selectedCategory: selectedCategory!, typeTransactionNew: typeTransactionNew!)
                     self.isNewTransaction.toggle()
                     

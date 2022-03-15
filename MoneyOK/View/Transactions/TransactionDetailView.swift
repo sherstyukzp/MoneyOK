@@ -36,10 +36,21 @@ struct TransactionDetailView: View {
                 Text ("Date: \(transactionItem.dateTransaction ?? Date() , style: .date)")
 
             }
-            Section {
-                Text ("Note: \(transactionItem.noteTransaction ?? "")")
-                Text ("Image:") // TODO: Добавить отображение фото транзакции
+            Section(header: Text("Note")) {
+                Text(transactionItem.noteTransaction == nil ? transactionItem.noteTransaction! : "Not note")
+               
             }
+            Section(header: Text("Image")) {
+                if transactionItem.imageTransaction != nil {
+                    Image(uiImage: UIImage(data: transactionItem.imageTransaction!)!)
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                } else {
+                    Text("Not image")
+                }
+            }
+            
+            
             
             Section {
                 Button(role: .destructive) {
