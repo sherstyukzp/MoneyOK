@@ -24,7 +24,9 @@ struct CategoryListView: View {
                 ForEach(types, id: \.rawValue) {
                     Text($0.rawValue).tag(Optional<TypeTrancaction>.some($0))
                 }
-            }.pickerStyle(SegmentedPickerStyle())
+            }
+            .padding(.horizontal)
+            .pickerStyle(SegmentedPickerStyle())
             
             List {
                 if typeTrancaction == .costs {
