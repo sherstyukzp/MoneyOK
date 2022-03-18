@@ -18,7 +18,7 @@ extension TransactionEntity {
             // This sets up the RelativeDateTimeFormatter
             let rdf = RelativeDateTimeFormatter()
             // This gives the verbose response that you are looking for.
-            rdf.unitsStyle = .spellOut
+            rdf.unitsStyle = .full
             // This gives the relative time in names like today".
             rdf.dateTimeStyle = .named
 
