@@ -22,6 +22,7 @@ struct TransactionsView: View {
     @State var alertTitle: String = "Removal account"
     @State var alertMessage: String = "Are you sure you want to delete the account?"
     
+    @State private var isShareSheetShowing = false
     
     // Сумма всех транзакций выбраного счёта
     var sumTransactionForAccount: Double {
@@ -54,6 +55,12 @@ struct TransactionsView: View {
             // Меню по работе с счётом
             ToolbarItem(placement: .primaryAction) {
                                 Menu {
+                                    // Экспорт транзакций
+                                    Button{
+                                        shareButton()
+                                    } label: {
+                                        Label("Export CSV", systemImage: "square.and.arrow.up")
+                                    }
                                     // Редактирование счёта из меню
                                     Button(action: {
                                         accountVM.nameAccountSave = accountItem.nameAccount!
@@ -72,8 +79,9 @@ struct TransactionsView: View {
                                     } label: {
                                         Label("Delete", systemImage: "trash")
                                     }
+                                    
                                     // TODO: Добавить сортировку транзакций
-                                    // TODO: Добавить експорт всех транзакций счёта
+                                    
                                     // TODO: Добавить поделиться счётом
                                 }
                                 label: {
@@ -130,6 +138,33 @@ struct TransactionsView: View {
             accountVM.delete(account: accountItem, context: viewContext)
         }),
                      secondaryButton: .cancel())
+    }
+    
+    func shareButton() {
+        let fileName = accountItem.nameAccount! + ".csv"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        var csvText = "Date,Category,Sun,Note\n"
+
+        for transaction in accountItem.transaction {
+            csvText += "\(transaction.dateTransaction ?? Date()),\(transaction.transactionToCategory?.nameCategory ?? ""),\(transaction.sumTransaction),\(transaction.noteTransaction ?? "not note")\n"
+        }
+
+        do {
+            try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print("Failed to create file")
+            print("\(error)")
+        }
+        print(path ?? "not found")
+
+        var filesToShare = [Any]()
+        filesToShare.append(path!)
+
+        let av = UIActivityViewController(activityItems: filesToShare, applicationActivities: nil)
+
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+
+        isShareSheetShowing.toggle()
     }
 }
 

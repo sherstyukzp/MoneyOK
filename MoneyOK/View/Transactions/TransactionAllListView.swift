@@ -21,10 +21,10 @@ extension TransactionEntity {
             rdf.unitsStyle = .full
             // This gives the relative time in names like today".
             rdf.dateTimeStyle = .named
-
+            
             // If you are happy with Apple's choices. uncomment the line below
             // and remove everything else.
-  //        return rdf.localizedString(for: timestamp, relativeTo: Date())
+            //        return rdf.localizedString(for: timestamp, relativeTo: Date())
             
             // You could also intercept Apple's labels for you own
             switch rdf.localizedString(for: timestamp, relativeTo: Date()) {
@@ -49,7 +49,7 @@ struct TransactionAllListView: View {
     @FetchRequest(entity: TransactionEntity.entity(),
                   sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.dateTransaction, ascending: true)])
     private var fetchedTransaction: FetchedResults<TransactionEntity>
-
+    
     @FetchRequest(sortDescriptors: [
         SortDescriptor(\TransactionEntity.dateTransaction, order: .reverse)
     ]) var books: FetchedResults<TransactionEntity>
@@ -61,14 +61,14 @@ struct TransactionAllListView: View {
         animation: .default)
     
     private var transactions: SectionedFetchResults<String, TransactionEntity>
-
-
+    
+    @State private var isShareSheetShowing = false
     //
     // Складывает все транзакции
     var sumTransaction: Double {
         fetchedTransaction.reduce(0) { $0 + $1.sumTransaction }
     }
-
+    
     
     var body: some View {
         VStack {
@@ -99,20 +99,63 @@ struct TransactionAllListView: View {
                                 }
                             }
                         }
-
+                        
                     }
                 }.listStyle(SidebarListStyle())
                 
-
-                
                 Text("Total \(fetchedTransaction.count) transactions")
                 Text("In total \(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
-           }
+            }
+            
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Menu {
+                    // Экспорт транзакций
+                    Button{
+                        shareButton()
+                    } label: {
+                        Label("Export CSV", systemImage: "square.and.arrow.up")
+                    }
+                }
+            label: {
+                Label("Menu", systemImage: "ellipsis.circle")
+            }
+                
+            }
             
         }
         
         .navigationTitle("All Transactions")
     }
+    
+    func shareButton() {
+        let fileName = "MoneyOK.csv"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        var csvText = "Date,Account,Category,Sun,Note\n"
+        
+        for transaction in fetchedTransaction {
+            csvText += "\(transaction.dateTransaction ?? Date()),\(transaction.transactionToAccount?.nameAccount ?? ""),\(transaction.transactionToCategory?.nameCategory ?? ""),\(transaction.sumTransaction),\(transaction.noteTransaction ?? "not note")\n"
+        }
+        
+        do {
+            try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print("Failed to create file")
+            print("\(error)")
+        }
+        print(path ?? "not found")
+        
+        var filesToShare = [Any]()
+        filesToShare.append(path!)
+        
+        let av = UIActivityViewController(activityItems: filesToShare, applicationActivities: nil)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+        
+        isShareSheetShowing.toggle()
+    }
+    
 }
 
 struct TransactionAllListView_Previews: PreviewProvider {
