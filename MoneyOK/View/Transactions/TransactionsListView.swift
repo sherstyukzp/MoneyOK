@@ -15,7 +15,7 @@ struct TransactionsListView: View {
     
     var body: some View {
         List {
-            ForEach(self.accountItem.transaction, id: \.self) { item in
+            ForEach(self.accountItem.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }) , id: \.self) { item in
                 NavigationLink(destination:
                                 TransactionDetailView(transactionItem: item))
                 {

@@ -23,6 +23,7 @@ struct TransactionsView: View {
     @State var alertMessage: String = "Are you sure you want to delete the account?"
     
     @State private var isShareSheetShowing = false
+    @State private var isStatistics = false
     
     // Сумма всех транзакций выбраного счёта
     var sumTransactionForAccount: Double {
@@ -55,6 +56,12 @@ struct TransactionsView: View {
             // Меню по работе с счётом
             ToolbarItem(placement: .primaryAction) {
                                 Menu {
+                                    // Статистика
+                                    Button{
+                                        self.isStatistics.toggle()
+                                    } label: {
+                                        Label("Statistics", systemImage: "chart.xyaxis.line")
+                                    }
                                     // Экспорт транзакций
                                     Button{
                                         shareButton()
@@ -120,6 +127,9 @@ struct TransactionsView: View {
         
         .sheet(isPresented: $isEditAccount) {
             AccountNewView(isNewAccount: $isEditAccount)
+        }
+        .sheet(isPresented: $isStatistics) {
+            StatisticsTransactionsView(accountItem: accountItem, isStatistics: $isStatistics)
         }
         
         .alert(isPresented: $showAlert) {

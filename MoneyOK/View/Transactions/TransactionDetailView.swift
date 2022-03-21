@@ -20,6 +20,9 @@ struct TransactionDetailView: View {
     @State var alertTitle: String = "Removing a transaction"
     @State var alertMessage: String = "Do you really want to delete a transaction?"
     
+    @State private var zoomed = false
+    @Namespace private var smooth
+    
     var body: some View {
         HStack {
             Text("\(transactionItem.sumTransaction > 0 ? "+" : "")")
@@ -45,9 +48,12 @@ struct TransactionDetailView: View {
                     Image(uiImage: UIImage(data: transactionItem.imageTransaction!)!)
                         .resizable()
                         .frame(width: 60, height: 60)
+                    
                 } else {
                     Text("Not image")
                 }
+            }.onTapGesture {
+                zoomed.toggle()
             }
             
             

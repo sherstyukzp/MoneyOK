@@ -46,13 +46,10 @@ extension TransactionEntity {
 struct TransactionAllListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: TransactionEntity.entity(),
-                  sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.dateTransaction, ascending: true)])
-    private var fetchedTransaction: FetchedResults<TransactionEntity>
     
     @FetchRequest(sortDescriptors: [
         SortDescriptor(\TransactionEntity.dateTransaction, order: .reverse)
-    ]) var books: FetchedResults<TransactionEntity>
+    ]) var fetchedTransaction: FetchedResults<TransactionEntity>
     
     
     @SectionedFetchRequest(

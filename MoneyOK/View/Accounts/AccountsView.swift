@@ -11,7 +11,11 @@ struct AccountsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)])
+//    @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)])
+//    private var fetchedAccount: FetchedResults<AccountEntity>
+    
+    // iOS 15
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.nameAccount, order: .forward)])
     private var fetchedAccount: FetchedResults<AccountEntity>
     
     
@@ -20,6 +24,7 @@ struct AccountsView: View {
     
     @State private var isNewAccount = false
     @State private var isNewTransaction = false
+    @State private var isStatistics = false
     
     var body: some View {
         NavigationView {
@@ -56,6 +61,11 @@ struct AccountsView: View {
                     }
                 }
                 else {
+//                    HStack{
+//                        ExpensesView().padding(.leading)
+//                        ExpensesView().padding(.trailing)
+//                    }
+                    
                     AccountsListView()
                         .safeAreaInset(edge: .bottom) {
                             PanelView()
@@ -73,7 +83,18 @@ struct AccountsView: View {
                         Image(systemName: "gearshape")
                     }
                 }
+                
+                // Кнопка статистика в NavigationView
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        self.isStatistics.toggle()
+                    } label: {
+                        Image(systemName: "chart.xyaxis.line")
+                    }
+
+                }
             }
+            .fullScreenCover(isPresented: $isStatistics, content: StatisticsView.init)
             
             .sheet(isPresented: $isNewAccount) {
                 AccountNewView(isNewAccount: $isNewAccount)
