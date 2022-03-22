@@ -56,18 +56,22 @@ struct TransactionsView: View {
             // Меню по работе с счётом
             ToolbarItem(placement: .primaryAction) {
                                 Menu {
-                                    // Статистика
-                                    Button{
-                                        self.isStatistics.toggle()
-                                    } label: {
-                                        Label("Statistics", systemImage: "chart.xyaxis.line")
+                                    if !accountItem.transaction.isEmpty {
+                                        // Статистика
+                                        Button{
+                                            self.isStatistics.toggle()
+                                        } label: {
+                                            Label("Statistics", systemImage: "chart.xyaxis.line")
+                                        }
+                                        // Экспорт транзакций
+                                        Button{
+                                            shareButton()
+                                        } label: {
+                                            Label("Export CSV", systemImage: "square.and.arrow.up")
+                                        }
+                                        
                                     }
-                                    // Экспорт транзакций
-                                    Button{
-                                        shareButton()
-                                    } label: {
-                                        Label("Export CSV", systemImage: "square.and.arrow.up")
-                                    }
+                                    
                                     // Редактирование счёта из меню
                                     Button(action: {
                                         accountVM.nameAccountSave = accountItem.nameAccount!

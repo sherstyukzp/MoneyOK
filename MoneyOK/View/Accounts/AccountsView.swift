@@ -10,11 +10,7 @@ import SwiftUI
 struct AccountsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    
-//    @FetchRequest(entity: AccountEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)])
-//    private var fetchedAccount: FetchedResults<AccountEntity>
-    
-    // iOS 15
+
     @FetchRequest(sortDescriptors: [SortDescriptor(\.nameAccount, order: .forward)])
     private var fetchedAccount: FetchedResults<AccountEntity>
     
