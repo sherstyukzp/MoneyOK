@@ -15,6 +15,10 @@ struct AccountsView: View {
     private var fetchedAccount: FetchedResults<AccountEntity>
     
     
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\TransactionEntity.dateTransaction, order: .reverse)
+    ]) var fetchedTransaction: FetchedResults<TransactionEntity>
+    
     @ObservedObject var accountItem: AccountEntity
     @EnvironmentObject var accountVM: AccountViewModel
     
@@ -80,15 +84,21 @@ struct AccountsView: View {
                     }
                 }
                 
-                // Кнопка статистика в NavigationView
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        self.isStatistics.toggle()
-                    } label: {
-                        Image(systemName: "chart.xyaxis.line")
-                    }
+                    // Кнопка статистика в NavigationView
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if !fetchedTransaction.isEmpty {
+                        
+                        Button {
+                            self.isStatistics.toggle()
+                        } label: {
+                            Image(systemName: "chart.xyaxis.line")
+                        }
 
-                }
+                        }
+                        
+                    }
+                
+                
             }
             .fullScreenCover(isPresented: $isStatistics, content: StatisticsView.init)
             

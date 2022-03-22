@@ -151,7 +151,13 @@ struct TransactionAllListView: View {
         
         let av = UIActivityViewController(activityItems: filesToShare, applicationActivities: nil)
         
-        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+              if let vc = UIApplication.shared.windows.first?.rootViewController{
+                  av.popoverPresentationController?.sourceView = vc.view
+                 //Setup share activity position on screen on bottom center
+                  av.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height, width: 0, height: 0)
+                  av.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+                 vc.present(av, animated: true, completion: nil)
+              }
         
         isShareSheetShowing.toggle()
     }
