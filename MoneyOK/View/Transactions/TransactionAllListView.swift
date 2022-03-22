@@ -108,12 +108,15 @@ struct TransactionAllListView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
-                    // Экспорт транзакций
-                    Button{
-                        shareButton()
-                    } label: {
-                        Label("Export CSV", systemImage: "square.and.arrow.up")
+                    if !fetchedTransaction.isEmpty {
+                        // Экспорт транзакций
+                        Button{
+                            shareButton()
+                        } label: {
+                            Label("Export CSV", systemImage: "square.and.arrow.up")
+                        }
                     }
+                    
                 }
             label: {
                 Label("Menu", systemImage: "ellipsis.circle")
