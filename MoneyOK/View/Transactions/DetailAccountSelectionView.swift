@@ -18,8 +18,6 @@ struct DetailAccountSelectionView: View {
     var body: some View {
         Form {
             ForEach(fetchedAccount) { item in
-//                AccountCallView(accountItem: item)
-                //==
                 HStack {
                     ZStack {
                         Circle()
@@ -49,7 +47,7 @@ struct DetailAccountSelectionView: View {
                 
             }
         }
-        .navigationTitle("Оберіть символ")
+        .navigationTitle("Select an account")
         
     }
 }

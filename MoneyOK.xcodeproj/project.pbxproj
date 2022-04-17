@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		054BD3E9280C0C6700032FF2 /* DetailAccountSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */; };
+		054BD3EB280C3D0B00032FF2 /* DetailCategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD3EA280C3D0B00032FF2 /* DetailCategorySelectionView.swift */; };
 		056EB66D27E8F60400A4C6DB /* StatisticsTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */; };
 		057BADE027B3D98E00127DA3 /* MoneyOKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */; };
 		057BADE227B3D98E00127DA3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BADE127B3D98E00127DA3 /* ContentView.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccountSelectionView.swift; sourceTree = "<group>"; };
+		054BD3EA280C3D0B00032FF2 /* DetailCategorySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategorySelectionView.swift; sourceTree = "<group>"; };
 		056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTransactionsView.swift; sourceTree = "<group>"; };
 		057BADDC27B3D98E00127DA3 /* MoneyOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyOKApp.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */,
 				056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */,
 				054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */,
+				054BD3EA280C3D0B00032FF2 /* DetailCategorySelectionView.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				057BAE0D27B3E08E00127DA3 /* TransactionsView.swift in Sources */,
 				059CD3B927BBC83E00837AD1 /* CategoryEntity+CoreDataProperties.swift in Sources */,
 				057BADFD27B3DAB900127DA3 /* TransactionsListView.swift in Sources */,
+				054BD3EB280C3D0B00032FF2 /* DetailCategorySelectionView.swift in Sources */,
 				056EB66D27E8F60400A4C6DB /* StatisticsTransactionsView.swift in Sources */,
 				059CD3BE27BBCAD900837AD1 /* Symbols.swift in Sources */,
 				057BAE0127B3DAE400127DA3 /* SettingsView.swift in Sources */,

@@ -13,7 +13,7 @@ struct TransactionNewView: View {
     
     @EnvironmentObject var transactionVM: TransactionViewModel
     @EnvironmentObject var accountVM: AccountViewModel
-    
+    @EnvironmentObject var categoryVM: CategoryViewModel
     @ObservedObject var accountItem: AccountEntity
     
     @Binding var isNewTransaction: Bool
@@ -33,6 +33,9 @@ struct TransactionNewView: View {
     
     @State private var personImage = UIImage()
     @State private var imagePicker = false
+    
+    
+    @State private var isNewCategory = false
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
     var disableForm: Bool {
@@ -75,12 +78,6 @@ struct TransactionNewView: View {
                         .keyboardType(.decimalPad)
                     }
                 }
-                
-                //=======
-                
-                
-                //=======
-                
                 // MARK: Выбор счетов
                 if nowAccount == false {
                     Section(header: Text("Select an account")) {
@@ -108,24 +105,50 @@ struct TransactionNewView: View {
                     }
                 }
                 // MARK: Выбор категории
-                Picker("Select a category", selection: $selectedCategory){
-                    if typeTransactionNew == .costs {
-                        ForEach(fetchedCategory.filter{$0.isExpenses == false}){ (category: CategoryEntity) in
-                            Text(category.nameCategory!).tag(category as CategoryEntity?)
+                Section(header: Text("Select a category")) {
+                    if fetchedCategory.isEmpty {
+                        HStack {
+                            Button {
+                                categoryVM.nameCategorySave = ""
+                                categoryVM.categoryItem = nil
+                                self.isNewCategory.toggle()
+                                
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
+                                    Text("New Category").bold()
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(6)
+                            }.buttonStyle(.borderedProminent)
                         }
-                    }
-                    
-                    if typeTransactionNew == .income {
-                        ForEach(fetchedCategory.filter{$0.isExpenses == true}){ (category: CategoryEntity) in
-                            Text(category.nameCategory!).tag(category as CategoryEntity?)
-                        }
+                        .frame(maxWidth: .infinity)
+                    } else {
+                        NavigationLink(destination: (
+                            DetailCategorySelectionView(selectedItem: $selectedCategory, typeTransaction: $typeTransactionNew)
+                        ), label: {
+                            HStack {
+                                HStack {
+                                    ZStack {
+                                        Circle()
+                                            .fill(Color(selectedCategory?.colorCategory ?? "swatch_gunsmoke"))
+                                            .frame(width: 32, height: 32)
+                                        Image(systemName: selectedCategory?.iconCategory ?? "plus")
+                                            .foregroundColor(Color.white)
+                                            .font(Font.footnote)
+                                    }
+                                    VStack(alignment: .leading) {
+                                        Text(selectedCategory?.nameCategory ?? "Not selected category")
+                                            .bold()
+                                            .foregroundColor(.primary)
+                                    }
+                                }
+                            }
+                        })
                     }
                 }
                 
-                
-                
                 Section("Advanced") {
-                    
                     VStack {
                         DatePicker("Time", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: .date)
                             .environment(\.locale, Locale.init(identifier: "ru"))
@@ -199,9 +222,14 @@ struct TransactionNewView: View {
                     }
                 }
             }
+            
             .sheet(isPresented: $imagePicker){
                 ImagePickerView(selectedImage: $personImage)
             }
+            .sheet(isPresented: $isNewCategory) {
+                CategoryNewView(isNewCategory: $isNewCategory)
+            }
+            
         }
     }
     
