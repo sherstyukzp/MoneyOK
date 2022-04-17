@@ -76,13 +76,35 @@ struct TransactionNewView: View {
                     }
                 }
                 
+                //=======
+                
+                
+                //=======
                 
                 // MARK: Выбор счетов
                 if nowAccount == false {
-                    Picker("Select an account", selection: $selectedAccount){
-                        ForEach(fetchedAccount, id: \.self){ (account: AccountEntity) in
-                            Text(account.nameAccount!).tag(account as AccountEntity?)
-                        }
+                    Section(header: Text("Select an account")) {
+                        NavigationLink(destination: (
+                            DetailAccountSelectionView(selectedItem: $selectedAccount)
+                        ), label: {
+                            HStack {
+                                HStack {
+                                    ZStack {
+                                        Circle()
+                                            .fill(Color(selectedAccount?.colorAccount ?? "swatch_gunsmoke"))
+                                            .frame(width: 32, height: 32)
+                                        Image(systemName: selectedAccount?.iconAccount ?? "plus")
+                                            .foregroundColor(Color.white)
+                                            .font(Font.footnote)
+                                    }
+                                    VStack(alignment: .leading) {
+                                        Text(selectedAccount?.nameAccount ?? "Not selected account")
+                                            .bold()
+                                            .foregroundColor(.primary)
+                                    }
+                                }
+                            }
+                        })
                     }
                 }
                 // MARK: Выбор категории

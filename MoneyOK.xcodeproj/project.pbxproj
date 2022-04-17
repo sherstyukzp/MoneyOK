@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		054BD3E9280C0C6700032FF2 /* DetailAccountSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */; };
 		056EB66D27E8F60400A4C6DB /* StatisticsTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */; };
 		057BADE027B3D98E00127DA3 /* MoneyOKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */; };
 		057BADE227B3D98E00127DA3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BADE127B3D98E00127DA3 /* ContentView.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccountSelectionView.swift; sourceTree = "<group>"; };
 		056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTransactionsView.swift; sourceTree = "<group>"; };
 		057BADDC27B3D98E00127DA3 /* MoneyOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyOKApp.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				05D146C227B6A11100359081 /* TransactionDetailView.swift */,
 				05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */,
 				056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */,
+				054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				057BAE0727B3DB2A00127DA3 /* TransactionNewView.swift in Sources */,
 				057BADFF27B3DACE00127DA3 /* TransactionCallView.swift in Sources */,
 				059CD3BC27BBCAD300837AD1 /* SFSymbolsPicker.swift in Sources */,
+				054BD3E9280C0C6700032FF2 /* DetailAccountSelectionView.swift in Sources */,
 				057BAE1827B3F09800127DA3 /* AccountViewModel.swift in Sources */,
 				05DCBF2E27B9ACBA00448716 /* TransactionAllListView.swift in Sources */,
 				0587A0E927E73AA70033AEC3 /* ExpensesView.swift in Sources */,
