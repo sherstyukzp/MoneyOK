@@ -33,7 +33,6 @@
 		057BAE1A27B45F3B00127DA3 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BAE1927B45F3B00127DA3 /* TransactionViewModel.swift */; };
 		0587A0E927E73AA70033AEC3 /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587A0E827E73AA70033AEC3 /* ExpensesView.swift */; };
 		0587A0EB27E784B10033AEC3 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587A0EA27E784B10033AEC3 /* StatisticsView.swift */; };
-		0587A0FF27E79B0A0033AEC3 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 0587A0FE27E79B0A0033AEC3 /* SwiftUICharts */; };
 		059CD3B427BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3AE27BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift */; };
 		059CD3B527BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3AF27BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift */; };
 		059CD3B627BBC83E00837AD1 /* AccountEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3B027BBC83E00837AD1 /* AccountEntity+CoreDataClass.swift */; };
@@ -107,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0587A0FF27E79B0A0033AEC3 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +276,6 @@
 			);
 			name = MoneyOK;
 			packageProductDependencies = (
-				0587A0FE27E79B0A0033AEC3 /* SwiftUICharts */,
 			);
 			productName = AccountApp;
 			productReference = 057BADDC27B3D98E00127DA3 /* MoneyOK.app */;
@@ -592,14 +589,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0587A0FE27E79B0A0033AEC3 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0587A0FD27E79B0A0033AEC3 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		057BAE0E27B3EC5C00127DA3 /* AccountsModel.xcdatamodeld */ = {

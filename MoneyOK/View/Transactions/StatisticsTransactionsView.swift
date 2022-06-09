@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftUICharts
+
 
 struct StatisticsTransactionsView: View {
     
@@ -32,8 +32,7 @@ struct StatisticsTransactionsView: View {
         NavigationView {
             
             HStack {
-                LineView(data: arrayTransactions, title: "Total", legend: "Costs and income")
-                .padding()
+                Text("Statistics")
                 
                 
             }

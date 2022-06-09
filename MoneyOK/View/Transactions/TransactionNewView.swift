@@ -150,7 +150,7 @@ struct TransactionNewView: View {
                 
                 Section("Advanced") {
                     VStack {
-                        DatePicker("Time", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: .date)
+                        DatePicker("Time", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
                             .environment(\.locale, Locale.init(identifier: "ru"))
                     }
                     HStack {

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftUICharts
+
 
 struct StatisticsView: View {
     
@@ -40,9 +40,7 @@ struct StatisticsView: View {
 //            PieChartView(data: [8,23,54,32], title: "Title", legend: "Legendary", dropShadow: false)
             VStack {
 
-                
-                LineView(data: arrayTransactions, title: "Total", legend: "Costs and income")
-                .padding()
+                Text("Statistics")
                 
                 
                 
