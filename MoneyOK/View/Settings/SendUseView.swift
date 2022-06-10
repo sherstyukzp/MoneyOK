@@ -15,7 +15,9 @@ struct SendUseView: View {
     var body: some View {
         Form {
             Section (header: Text("Select a method"), footer: Text("Choose one of the ways to communicate with us. \n We will be happy to receive a message from you.")) {
+                Link("WhatsApp", destination: URL(string: "https://wa.me/380957411971")!)
                 Link("Twetter", destination: URL(string: "https://twitter.com/MoneyOKApp")!)
+                
             }
             .navigationBarTitle(Text("Write to us"), displayMode: .large)
         }
