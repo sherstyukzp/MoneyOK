@@ -35,13 +35,14 @@ struct NotAccountsView: View {
                     activeSheet = .newAccount
                 } label: {
                     HStack {
-                        Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
-                        Text("New account").bold()
-                    }
+                        Image(systemName: "plus.circle.fill")
+                        Text("New account")
+                    }.font(.system(size: 20, weight: .bold))
                     .frame(width: 200, height: 40)
                 }.buttonStyle(.borderedProminent)
                     .padding()
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
         .toolbar {
             // Кнопка Настройки в NavigationView
@@ -59,8 +60,11 @@ struct NotAccountsView: View {
             case .newAccount:
                 AccountNewView()
             case .settings:
-                
                 SettingsView()
+            case .statistics:
+                Text("statistics")
+            case .transaction:
+                Text("transaction")
             }
         }
     }

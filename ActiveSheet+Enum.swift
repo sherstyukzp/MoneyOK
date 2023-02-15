@@ -10,6 +10,8 @@ import Foundation
 enum ActiveSheet: Int, Identifiable {
     case newAccount
     case settings
+    case statistics
+    case transaction
     
     var id: Int { self.rawValue }
 }

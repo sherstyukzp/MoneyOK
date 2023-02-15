@@ -21,7 +21,9 @@ struct MainView: View {
             }
         }
         else {
-            AccountsListView()
+            NavigationStack {
+                AccountsView()
+            }
         }
         
     }

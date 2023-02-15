@@ -29,8 +29,7 @@ struct AccountsListView: View {
     @State private var searchText = ""
     
     var body: some View {
-        NavigationStack {
-            List {
+        List {
                 if searchText.isEmpty {
                     if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
                         Section("Favorites") {
@@ -75,7 +74,7 @@ struct AccountsListView: View {
                     }
                 }
             }
-        }
+        
         .searchable(text: $searchText, placement: .sidebar)
         .onChange(of: searchText) { newValue in
             fetchedTransaction.nsPredicate = searchPredicate(query: newValue)

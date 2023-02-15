@@ -25,68 +25,77 @@ struct AccountsView: View {
     @State private var isSettings = false
     @State private var isStatistics = false
     
+    @State private var activeSheet: ActiveSheet?
+    
     var body: some View {
         AccountsListView()
-            
-            .navigationTitle("My account")
-        
-        .toolbar {
-            // Кнопка Настройки в NavigationView
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    isSettings.toggle()
-                } label: {
-                    Image(systemName: "gearshape")
-                }
-
-            }
-            // Кнопка статистика в NavigationView
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !fetchedTransaction.isEmpty {
-                    
+            .toolbar {
+                /// Кнопка Настройки в NavigationView
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.isStatistics.toggle()
+                        activeSheet = .settings
                     } label: {
-                        Image(systemName: "chart.xyaxis.line")
+                        Image(systemName: "gearshape")
                     }
                 }
-            }
-            ToolbarItemGroup(placement: .bottomBar) {
-                if !fetchedAccount.isEmpty {
+                /// Кнопка статистика в NavigationView
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if !fetchedTransaction.isEmpty {
+                        Button {
+                            activeSheet = .statistics
+                        } label: {
+                            Image(systemName: "chart.xyaxis.line")
+                        }
+                    }
+                }
+                /// Кнопки створення нового рахунку та транзакції
+                ToolbarItemGroup(placement: .bottomBar) {
                     HStack {
-                        Button {
-                            isNewTransaction.toggle()
-                        } label: {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                Text("Transaction")
-                            }.fontWeight(.bold)
+                            Button {
+                                activeSheet = .transaction
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                    Text("Transaction")
+                                }.fontWeight(.bold)
+                            }
+                            Spacer()
+                            Button {
+                                activeSheet = .newAccount
+                            } label: {
+                                Text("New account")
+                            }
                         }
-                        Spacer()
-                        Button {
-                            isNewAccount.toggle()
-                        } label: {
-                            Text("New account")
-                        }
-                    }
-                    
                 }
             }
-        }
         
-        .fullScreenCover(isPresented: $isStatistics, content: StatisticsView.init)
+            .sheet(item: $activeSheet) { item in
+                switch item {
+                case .newAccount:
+                    AccountNewView()
+                case .settings:
+                    SettingsView()
+                case .statistics:
+                    StatisticsView()
+                case .transaction:
+                    TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
+                }
+                
+            }
         
-        .sheet(isPresented: $isSettings) {
-            SettingsView()
-        }
-        
-        .sheet(isPresented: $isNewAccount) {
-            AccountNewView()
-        }
-        
-        .sheet(isPresented: $isNewTransaction) {
-            TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
-        }
+        //        .fullScreenCover(isPresented: $isStatistics, content: StatisticsView.init)
+        //
+        //        .sheet(isPresented: $isSettings) {
+        //            SettingsView()
+        //        }
+        //
+        //        .sheet(isPresented: $isNewAccount) {
+        //            AccountNewView()
+        //        }
+        //
+        //        .sheet(isPresented: $isNewTransaction) {
+        //            TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
+        //        }
         
         
     }
