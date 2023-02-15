@@ -62,6 +62,7 @@ class AccountViewModel: ObservableObject {
         accountModel.iconAccount = ""
         accountModel.colorAccount = ""
         accountModel.noteAccount = ""
+        accountItem = nil
     }
     
     func save(context: NSManagedObjectContext) {

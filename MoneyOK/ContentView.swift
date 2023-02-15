@@ -32,6 +32,8 @@ struct ContentView: View {
     
     @State private var selectedTransaction: TransactionEntity?
     
+    @State private var activeSheet: ActiveSheet?
+    
     @State private var searchText = ""
     
     // Сумма всех транзакций выбраного счёта
@@ -75,7 +77,64 @@ struct ContentView: View {
                         }
                     }
                 }
+                .listStyle(.insetGrouped)
                 .navigationTitle("Accounts")
+                
+                .toolbar {
+                    /// Кнопка Настройки в NavigationView
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            activeSheet = .settings
+                        } label: {
+                            Image(systemName: "gearshape")
+                        }
+                    }
+                    /// Кнопка статистика в NavigationView
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if !fetchedTransaction.isEmpty {
+                            Button {
+                                activeSheet = .statistics
+                            } label: {
+                                Image(systemName: "chart.xyaxis.line")
+                            }
+                        }
+                    }
+                    /// Кнопки створення нового рахунку та транзакції
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        
+                            if !fetchedAccounts.isEmpty {
+                                Button {
+                                    activeSheet = .transaction
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "plus.circle.fill")
+                                        Text("Transaction")
+                                    }.fontWeight(.bold)
+                                }
+                            }
+                                
+                                Spacer()
+                                Button {
+                                    activeSheet = .newAccount
+                                } label: {
+                                    Text("New account")
+                                }
+                            
+                    }
+                }
+            
+                .sheet(item: $activeSheet) { item in
+                    switch item {
+                    case .newAccount:
+                        AccountNewView()
+                    case .settings:
+                        SettingsView()
+                    case .statistics:
+                        StatisticsView()
+                    case .transaction:
+                        TransactionNewView(accountItem: fetchedAccounts.first!, nowAccount: false)
+                    }
+                }
                 
             } else {
                 NotAccountsView()
@@ -90,6 +149,7 @@ struct ContentView: View {
                         TransactionCallView(transactionItem: transaction)
                     }
                 }
+                .listStyle(.insetGrouped)
                 
                 .toolbar {
                     // Отображение название счёта и остаток по счёту
