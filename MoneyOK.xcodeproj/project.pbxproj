@@ -51,6 +51,8 @@
 		05DCBF1C27B9847700448716 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DCBF1B27B9847700448716 /* CategoryViewModel.swift */; };
 		05DCBF2E27B9ACBA00448716 /* TransactionAllListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */; };
 		05E3A12D299D0DF300BA7FAE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A12C299D0DF300BA7FAE /* AccountModel.swift */; };
+		05E3A12F299D162900BA7FAE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A12E299D162900BA7FAE /* MainView.swift */; };
+		05E3A131299D1D8E00BA7FAE /* ActiveSheet+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +101,8 @@
 		05DCBF1B27B9847700448716 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAllListView.swift; sourceTree = "<group>"; };
 		05E3A12C299D0DF300BA7FAE /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		05E3A12E299D162900BA7FAE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveSheet+Enum.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		057BADD327B3D98E00127DA3 = {
 			isa = PBXGroup;
 			children = (
+				05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */,
 				057BADDE27B3D98E00127DA3 /* MoneyOK */,
 				057BADDD27B3D98E00127DA3 /* Products */,
 			);
@@ -162,6 +167,7 @@
 		057BADEE27B3D99F00127DA3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				05E3A12E299D162900BA7FAE /* MainView.swift */,
 				057BADF027B3D9B900127DA3 /* Accounts */,
 				057BADF227B3D9CE00127DA3 /* Category */,
 				057BADF127B3D9C400127DA3 /* Transactions */,
@@ -351,6 +357,7 @@
 				057BAE1027B3EC5C00127DA3 /* AccountsModel.xcdatamodeld in Sources */,
 				059CD3C027BBCADF00837AD1 /* UsageExample.swift in Sources */,
 				059CD3B627BBC83E00837AD1 /* AccountEntity+CoreDataClass.swift in Sources */,
+				05E3A131299D1D8E00BA7FAE /* ActiveSheet+Enum.swift in Sources */,
 				057BAE0727B3DB2A00127DA3 /* TransactionNewView.swift in Sources */,
 				0570B34528DF7F8100458CF0 /* NotAccountsView.swift in Sources */,
 				057BADFF27B3DACE00127DA3 /* TransactionCallView.swift in Sources */,
@@ -379,6 +386,7 @@
 				057BADE027B3D98E00127DA3 /* MoneyOKApp.swift in Sources */,
 				057BAE0927B3DF4A00127DA3 /* AccountsView.swift in Sources */,
 				05E3A12D299D0DF300BA7FAE /* AccountModel.swift in Sources */,
+				05E3A12F299D162900BA7FAE /* MainView.swift in Sources */,
 				057BADF927B3DA9000127DA3 /* CategoryListView.swift in Sources */,
 				057BAE0327B3DB0600127DA3 /* AccountNewView.swift in Sources */,
 				059CD3B827BBC83E00837AD1 /* CategoryEntity+CoreDataClass.swift in Sources */,

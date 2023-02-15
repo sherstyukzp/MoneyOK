@@ -29,33 +29,23 @@ struct AccountsListView: View {
     @State private var searchText = ""
     
     var body: some View {
-        
-        List {
-            if searchText.isEmpty {
-                if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
-                    Section("Favorites") {
-                        ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { (account: AccountEntity) in
-                            NavigationLink(destination:
-                                            TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
-                            {
-                                AccountCallView(accountItem: account)
-                            }//.isDetailLink(false)
+        NavigationStack {
+            List {
+                if searchText.isEmpty {
+                    if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
+                        Section("Favorites") {
+                            ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { (account: AccountEntity) in
+                                NavigationLink(destination:
+                                                TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
+                                {
+                                    AccountCallView(accountItem: account)
+                                }
+                            }
                         }
                     }
-                }
-                
-                Section(fetchedAccounts.count <= 1 ? "Account" : "Accounts") {
-                    ForEach(fetchedAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { (account: AccountEntity) in
-                        NavigationLink(destination:
-                                        TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
-                        {
-                            AccountCallView(accountItem: account)
-                        }
-                    }
-                }
-                if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
-                    Section("Archive") {
-                        ForEach(fetchedAccounts.filter{$0.isArchive == true}) { (account: AccountEntity) in
+                    
+                    Section(fetchedAccounts.count <= 1 ? "Account" : "Accounts") {
+                        ForEach(fetchedAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { (account: AccountEntity) in
                             NavigationLink(destination:
                                             TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
                             {
@@ -63,14 +53,25 @@ struct AccountsListView: View {
                             }
                         }
                     }
+                    if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
+                        Section("Archive") {
+                            ForEach(fetchedAccounts.filter{$0.isArchive == true}) { (account: AccountEntity) in
+                                NavigationLink(destination:
+                                                TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
+                                {
+                                    AccountCallView(accountItem: account)
+                                }
+                            }
+                        }
+                    }
                 }
-            }
-            else {
-                ForEach(fetchedTransaction, id: \.self) { item in
-                    NavigationLink(destination:
-                                    TransactionDetailView(transactionItem: item))
-                    {
-                        TransactionCallView(transactionItem: item)
+                else {
+                    ForEach(fetchedTransaction, id: \.self) { item in
+                        NavigationLink(destination:
+                                        TransactionDetailView(transactionItem: item))
+                        {
+                            TransactionCallView(transactionItem: item)
+                        }
                     }
                 }
             }

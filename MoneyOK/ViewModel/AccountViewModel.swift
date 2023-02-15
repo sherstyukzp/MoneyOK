@@ -35,10 +35,7 @@ class AccountViewModel: ObservableObject {
         }
         
         save(context: context)
-        accountModel.nameAccount = ""
-        accountModel.iconAccount = ""
-        accountModel.colorAccount = ""
-        accountModel.noteAccount = ""
+        clean()
     }
     
     func isFavorite(account: AccountEntity, context: NSManagedObjectContext) {
@@ -60,6 +57,12 @@ class AccountViewModel: ObservableObject {
         save(context: context)
     }
     
+    func clean() {
+        accountModel.nameAccount = ""
+        accountModel.iconAccount = ""
+        accountModel.colorAccount = ""
+        accountModel.noteAccount = ""
+    }
     
     func save(context: NSManagedObjectContext) {
         do {

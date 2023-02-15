@@ -17,7 +17,7 @@ struct MoneyOKApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AccountsView()
+            MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(accountViewModel)
                 .environmentObject(transactionViewModel)

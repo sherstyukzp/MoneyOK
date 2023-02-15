@@ -12,40 +12,56 @@ struct NotAccountsView: View {
     
     @EnvironmentObject var accountVM: AccountViewModel
     
-    @State private var isNewAccount = false
+    @State private var activeSheet: ActiveSheet?
     
     var body: some View {
         // Если нет счетов отображается пустой экран
-        VStack {
-            Image(systemName: "tray.2.fill")
-                .font(.system(size: 80))
-                .foregroundColor(.gray)
-            Text("No accounts!")
-                .font(.title3)
-                .fontWeight(.bold)
-                .padding()
-            Text("To add a new account, click on the button below.")
-                .font(.subheadline)
-                .foregroundColor(Color.gray)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 30.0)
-            Button {
-                accountVM.accountModel.nameAccount = ""
-                accountVM.accountModel.noteAccount = ""
-                accountVM.accountItem = nil
-                self.isNewAccount.toggle()
-                
-            } label: {
-                HStack {
-                    Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
-                    Text("New account").bold()
-                }
-                .frame(width: 200, height: 40)
-            }.buttonStyle(.borderedProminent)
-                .padding()
+        NavigationView {
+            VStack {
+                Image(systemName: "tray.2.fill")
+                    .font(.system(size: 80))
+                    .foregroundColor(.gray)
+                Text("No accounts!")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .padding()
+                Text("To add a new account, click on the button below.")
+                    .font(.subheadline)
+                    .foregroundColor(Color.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 30.0)
+                Button {
+                    accountVM.accountItem = nil
+                    activeSheet = .newAccount
+                } label: {
+                    HStack {
+                        Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
+                        Text("New account").bold()
+                    }
+                    .frame(width: 200, height: 40)
+                }.buttonStyle(.borderedProminent)
+                    .padding()
+            }
         }
-        .sheet(isPresented: $isNewAccount) {
-            AccountNewView(isNewAccount: $isNewAccount)
+        .toolbar {
+            // Кнопка Настройки в NavigationView
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    activeSheet = .settings
+                } label: {
+                    Image(systemName: "gearshape")
+                }
+            }
+        }
+        
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .newAccount:
+                AccountNewView()
+            case .settings:
+                
+                SettingsView()
+            }
         }
     }
 }

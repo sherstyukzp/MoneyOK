@@ -115,7 +115,7 @@ struct TransactionsView: View {
         }
         
         .sheet(isPresented: $isEditAccount) {
-            AccountNewView(isNewAccount: $isEditAccount)
+            AccountNewView()
         }
         .sheet(isPresented: $isStatistics) {
             StatisticsTransactionsView(accountItem: accountItem, isStatistics: $isStatistics)

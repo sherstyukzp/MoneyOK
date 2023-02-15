@@ -22,27 +22,23 @@ struct AccountsView: View {
     
     @State private var isNewAccount = false
     @State private var isNewTransaction = false
+    @State private var isSettings = false
     @State private var isStatistics = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                if fetchedAccount.isEmpty {
-                    NotAccountsView()
-                }
-                else {
-                    AccountsListView()
-                }
-            }
+        AccountsListView()
             
             .navigationTitle("My account")
-        }
+        
         .toolbar {
             // Кнопка Настройки в NavigationView
             ToolbarItem(placement: .navigationBarLeading) {
-                NavigationLink(destination: SettingsView()) {
+                Button {
+                    isSettings.toggle()
+                } label: {
                     Image(systemName: "gearshape")
                 }
+
             }
             // Кнопка статистика в NavigationView
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -80,8 +76,12 @@ struct AccountsView: View {
         
         .fullScreenCover(isPresented: $isStatistics, content: StatisticsView.init)
         
+        .sheet(isPresented: $isSettings) {
+            SettingsView()
+        }
+        
         .sheet(isPresented: $isNewAccount) {
-            AccountNewView(isNewAccount: $isNewAccount)
+            AccountNewView()
         }
         
         .sheet(isPresented: $isNewTransaction) {

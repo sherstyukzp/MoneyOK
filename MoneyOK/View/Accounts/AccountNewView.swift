@@ -9,10 +9,10 @@ import SwiftUI
 
 struct AccountNewView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @Environment(\.managedObjectContext) var viewContext
     @EnvironmentObject var accountVM: AccountViewModel
-    
-    @Binding var isNewAccount: Bool
     
     @State private var isPresentedIcon: Bool = true
     
@@ -72,7 +72,7 @@ struct AccountNewView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             accountVM.createAccount(context: viewContext)
-                            self.isNewAccount.toggle()
+                            dismiss()
                         }) {
                             Text(accountVM.accountItem == nil ? "Save" : "Update")
                         }.disabled(disableForm)
@@ -80,7 +80,7 @@ struct AccountNewView: View {
                     
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
-                            self.isNewAccount.toggle()
+                            dismiss()
                         }) {
                             Text("Cancel").bold()
                                 .foregroundColor(Color.blue)
@@ -93,6 +93,6 @@ struct AccountNewView: View {
 
 struct AccountNewView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountNewView(isNewAccount: .constant(false))
+        AccountNewView()
     }
 }
