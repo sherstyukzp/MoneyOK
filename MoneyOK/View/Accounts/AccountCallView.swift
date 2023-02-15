@@ -33,16 +33,17 @@ struct AccountCallView: View {
             ZStack {
                 Circle()
                     .fill(Color((accountItem.isArchive ? "swatch_gunsmoke" : accountItem.colorAccount) ?? "swatch_gunsmoke"))
-                    .frame(width: 32, height: 32)
+                    .frame(width: 36, height: 36)
                 Image(systemName: accountItem.iconAccount ?? "plus")
                     .foregroundColor(Color.white)
                     .font(Font.footnote)
             }
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(accountItem.nameAccount ?? "no name")
-                    .bold()
                     .foregroundColor(accountItem.isArchive ? .gray : .primary)
+                    .font(.headline)
+                    .fontWeight(.bold)
                 Text("Balance: \(sumTransaction, format: .currency(code: "USD"))")
                     .font(Font.footnote)
                     .foregroundColor(Color.gray)
@@ -94,52 +95,29 @@ struct AccountCallView: View {
         }
         // Свайп влево
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
-            if accountItem.isArchive == false {
-                Button {
-                    accountVM.isFavorite(account: accountItem, context: viewContext)
-                } label: {
-                    Label("Favorite", systemImage: accountItem.isFavorite ? "heart.slash" : "heart")
-                }.tint(.green)
-            }
-            
             
             Button {
-                accountVM.isArchive(account: accountItem, context: viewContext)
-                if accountItem.isFavorite == true {
-                    accountVM.isFavorite(account: accountItem, context: viewContext)
-                }
-                
+                isNewTransaction.toggle()
             } label: {
-                Label("Archive", systemImage: accountItem.isArchive ? "archivebox.fill" : "archivebox")
-            }.tint(.gray)
-            
+                Image(systemName: "plus.circle.fill")
+            }.tint(.green)
+
         }
         // Свайп вправо
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-            Button(role: .destructive) {
-                showAlert.toggle()
-            } label: {
-                Label("Delete", systemImage: "trash")
-            }
             
             Button {
-                accountVM.nameAccountSave = accountItem.nameAccount!
-                accountVM.iconAccountSave = accountItem.iconAccount!
-                accountVM.colorAccountSave = accountItem.colorAccount!
-                accountVM.noteAccountSave = accountItem.noteAccount!
-                accountVM.accountItem = accountItem
-                self.isEditAccount.toggle()
+                isNewTransaction.toggle()
             } label: {
-                Label("Edit", systemImage: "pencil")
-            }.tint(.yellow)
-            
+                Image(systemName: "minus.circle.fill")
+            }.tint(.red)
         }
         
         .sheet(isPresented: $isEditAccount) {
             AccountNewView(isNewAccount: $isEditAccount)
         }
         .sheet(isPresented: $isNewTransaction) {
-            TransactionNewView(accountItem: accountItem, isNewTransaction: $isNewTransaction, nowAccount: false)
+            TransactionNewView(accountItem: accountItem, isNewTransaction: $isNewTransaction, nowAccount: true)
         }
         .alert(isPresented: $showAlert) {
             getAlert()

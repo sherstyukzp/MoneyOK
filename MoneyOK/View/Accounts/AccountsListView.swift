@@ -39,9 +39,7 @@ struct AccountsListView: View {
                                             TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
                             {
                                 AccountCallView(accountItem: account)
-                            }
-                            //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
-                            .swipeActions() {}
+                            }//.isDetailLink(false)
                         }
                     }
                 }
@@ -53,8 +51,6 @@ struct AccountsListView: View {
                         {
                             AccountCallView(accountItem: account)
                         }
-                        //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
-                        .swipeActions() {}
                     }
                 }
                 if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
@@ -65,8 +61,6 @@ struct AccountsListView: View {
                             {
                                 AccountCallView(accountItem: account)
                             }
-                            //.isDetailLink(false) // Исправляет баг с tabbar в списке транзакций
-                            .swipeActions() {}
                         }
                     }
                 }
@@ -78,7 +72,6 @@ struct AccountsListView: View {
                     {
                         TransactionCallView(transactionItem: item)
                     }
-                    .swipeActions() {}
                 }
             }
         }
@@ -95,7 +88,6 @@ struct AccountsListView: View {
         return NSPredicate(format: "%K BEGINSWITH[cd] %@",
                            #keyPath(TransactionEntity.transactionToCategory.nameCategory), query)
     }
-    
     
     
 }

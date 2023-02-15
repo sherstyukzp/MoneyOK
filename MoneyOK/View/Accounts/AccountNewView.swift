@@ -69,7 +69,7 @@ struct AccountNewView: View {
                 .navigationTitle(accountVM.accountItem == nil ? "New" : "Edit")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             accountVM.createAccount(context: viewContext)
                             self.isNewAccount.toggle()
@@ -78,7 +78,7 @@ struct AccountNewView: View {
                         }.disabled(disableForm)
                     }
                     
-                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
                             self.isNewAccount.toggle()
                         }) {

@@ -10,7 +10,7 @@ import SwiftUI
 struct AccountsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.nameAccount, order: .forward)])
     private var fetchedAccount: FetchedResults<AccountEntity>
     
@@ -19,8 +19,6 @@ struct AccountsView: View {
         SortDescriptor(\TransactionEntity.dateTransaction, order: .reverse)
     ]) var fetchedTransaction: FetchedResults<TransactionEntity>
     
-    @ObservedObject var accountItem: AccountEntity
-    @EnvironmentObject var accountVM: AccountViewModel
     
     @State private var isNewAccount = false
     @State private var isNewTransaction = false
@@ -29,93 +27,73 @@ struct AccountsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if fetchedAccount.count == 0 {
-                    // Если нет счетов отображается пустой экран
-                    VStack {
-                        Image(systemName: "tray.2.fill")
-                            .font(.system(size: 80))
-                            .foregroundColor(.gray)
-                        Text("No accounts!")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .padding()
-                        Text("To add a new account, click on the button below.")
-                            .font(.subheadline)
-                            .foregroundColor(Color.gray)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 30.0)
-                        Button {
-                            accountVM.nameAccountSave = ""
-                            accountVM.noteAccountSave = ""
-                            accountVM.accountItem = nil
-                            self.isNewAccount.toggle()
-                            
-                        } label: {
-                            HStack {
-                                Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
-                                Text("New account").bold()
-                            }
-                            .frame(width: 200, height: 40)
-                        }.buttonStyle(.borderedProminent)
-                            .padding()
-                    }
+                if fetchedAccount.isEmpty {
+                    NotAccountsView()
                 }
                 else {
-//                    HStack{
-//                        ExpensesView().padding(.leading)
-//                        ExpensesView().padding(.trailing)
-//                    }
-                    
                     AccountsListView()
-                        .safeAreaInset(edge: .bottom) {
-                            PanelView()
-                        }
                 }
             }
-            
             
             .navigationTitle("My account")
-            .navigationViewStyle(StackNavigationViewStyle())
-            .toolbar {
-                // Кнопка Настройки в NavigationView
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gearshape")
+        }
+        .toolbar {
+            // Кнопка Настройки в NavigationView
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavigationLink(destination: SettingsView()) {
+                    Image(systemName: "gearshape")
+                }
+            }
+            // Кнопка статистика в NavigationView
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if !fetchedTransaction.isEmpty {
+                    
+                    Button {
+                        self.isStatistics.toggle()
+                    } label: {
+                        Image(systemName: "chart.xyaxis.line")
                     }
                 }
-                
-                    // Кнопка статистика в NavigationView
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        if !fetchedTransaction.isEmpty {
-                        
+            }
+            ToolbarItemGroup(placement: .bottomBar) {
+                if !fetchedAccount.isEmpty {
+                    HStack {
                         Button {
-                            self.isStatistics.toggle()
+                            isNewTransaction.toggle()
                         } label: {
-                            Image(systemName: "chart.xyaxis.line")
+                            HStack {
+                                Image(systemName: "plus.circle.fill")
+                                Text("Transaction")
+                            }.fontWeight(.bold)
                         }
-
+                        Spacer()
+                        Button {
+                            isNewAccount.toggle()
+                        } label: {
+                            Text("New account")
                         }
-                        
                     }
-                
-                
-            }
-            .fullScreenCover(isPresented: $isStatistics, content: StatisticsView.init)
-            
-            .sheet(isPresented: $isNewAccount) {
-                AccountNewView(isNewAccount: $isNewAccount)
-            }
-            
-            .sheet(isPresented: $isNewTransaction) {
-                TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
+                    
+                }
             }
         }
+        
+        .fullScreenCover(isPresented: $isStatistics, content: StatisticsView.init)
+        
+        .sheet(isPresented: $isNewAccount) {
+            AccountNewView(isNewAccount: $isNewAccount)
+        }
+        
+        .sheet(isPresented: $isNewTransaction) {
+            TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
+        }
+        
         
     }
 }
 
 struct AccountsView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsView(accountItem: AccountEntity())
+        AccountsView()
     }
 }

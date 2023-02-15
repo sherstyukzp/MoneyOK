@@ -32,74 +32,60 @@ struct TransactionsView: View {
     }
     
     var body: some View {
-        
-        VStack {
-            if accountItem.transaction.isEmpty {
-                Image(systemName: "tray.2.fill")
-                    .font(.system(size: 80))
-                    .foregroundColor(.gray)
-                Text("No transactions!")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .padding()
-                Text("To add a new transaction, click on the ''New Transaction'' button.")
-                    .font(.subheadline)
-                    .foregroundColor(Color.gray)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 30.0)
-            } else {
-                TransactionsListView(accountItem: accountItem)
+        Group {
+                if accountItem.transaction.isEmpty {
+                    NotTransactionsView()
+                } else {
+                    TransactionsListView(accountItem: accountItem)
+                }
             }
-            
-        }
         
         .toolbar {
             // Меню по работе с счётом
             ToolbarItem(placement: .primaryAction) {
-                                Menu {
-                                    if !accountItem.transaction.isEmpty {
-                                        // Статистика
-                                        Button{
-                                            self.isStatistics.toggle()
-                                        } label: {
-                                            Label("Statistics", systemImage: "chart.xyaxis.line")
-                                        }
-                                        // Экспорт транзакций
-                                        Button{
-                                            shareButton()
-                                        } label: {
-                                            Label("Export CSV", systemImage: "square.and.arrow.up")
-                                        }
-                                        
-                                    }
-                                    
-                                    // Редактирование счёта из меню
-                                    Button(action: {
-                                        accountVM.nameAccountSave = accountItem.nameAccount!
-                                        accountVM.iconAccountSave = accountItem.iconAccount!
-                                        accountVM.colorAccountSave = accountItem.colorAccount!
-                                        accountVM.noteAccountSave = accountItem.noteAccount!
-                                        accountVM.accountItem = accountItem
-                                        self.isEditAccount.toggle()
-                                    }) {
-                                        Label("Edit", systemImage: "pencil")
-                                    }
-                                    Divider()
-                                    // Удаление счёта из меню
-                                    Button(role: .destructive) {
-                                        showAlert.toggle()
-                                    } label: {
-                                        Label("Delete", systemImage: "trash")
-                                    }
-                                    
-                                    // TODO: Добавить сортировку транзакций
-                                    
-                                    // TODO: Добавить поделиться счётом
-                                }
-                                label: {
-                                    Label("Menu", systemImage: "ellipsis.circle")
-                                }
-                            }
+                Menu {
+                    if !accountItem.transaction.isEmpty {
+                        // Статистика
+                        Button{
+                            self.isStatistics.toggle()
+                        } label: {
+                            Label("Statistics", systemImage: "chart.xyaxis.line")
+                        }
+                        // Экспорт транзакций
+                        Button{
+                            shareButton()
+                        } label: {
+                            Label("Export CSV", systemImage: "square.and.arrow.up")
+                        }
+                    }
+                    
+                    // Редактирование счёта из меню
+                    Button(action: {
+                        accountVM.nameAccountSave = accountItem.nameAccount!
+                        accountVM.iconAccountSave = accountItem.iconAccount!
+                        accountVM.colorAccountSave = accountItem.colorAccount!
+                        accountVM.noteAccountSave = accountItem.noteAccount!
+                        accountVM.accountItem = accountItem
+                        self.isEditAccount.toggle()
+                    }) {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    Divider()
+                    // Удаление счёта из меню
+                    Button(role: .destructive) {
+                        showAlert.toggle()
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                    
+                    // TODO: Добавить сортировку транзакций
+                    
+                    // TODO: Добавить поделиться счётом
+                }
+            label: {
+                Label("Menu", systemImage: "ellipsis.circle")
+            }
+            }
             // Отображение название счёта и остаток по счёту
             ToolbarItem(placement: .principal) {
                 VStack {
@@ -110,22 +96,20 @@ struct TransactionsView: View {
                 }
             }
             // Кнопка добавления новой транзакции в текущем счёте
-            ToolbarItemGroup(placement: .bottomBar) {
-                Button(action: {
+            ToolbarItem(placement: .bottomBar) {
+                Button {
                     self.isNewTransaction.toggle()
-                }) {
-                    Image(systemName: "plus.circle.fill")
-                        .imageScale(.medium)
-                        .font(.title)
-                        .foregroundColor(Color.blue)
-                    Text("New transaction").bold()
-                        .foregroundColor(Color.blue)
+                } label: {
+
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                        Text("Transaction")
+                        Spacer()
+                    }.fontWeight(.bold)
                 }
-                
-                Spacer()
             }
         }
-        
+    
         .sheet(isPresented: $isNewTransaction) {
             TransactionNewView(accountItem: accountItem, isNewTransaction: $isNewTransaction, nowAccount: true)
         }

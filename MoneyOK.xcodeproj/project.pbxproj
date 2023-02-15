@@ -10,8 +10,9 @@
 		054BD3E9280C0C6700032FF2 /* DetailAccountSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */; };
 		054BD3EB280C3D0B00032FF2 /* DetailCategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD3EA280C3D0B00032FF2 /* DetailCategorySelectionView.swift */; };
 		056EB66D27E8F60400A4C6DB /* StatisticsTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */; };
+		0570B34528DF7F8100458CF0 /* NotAccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B34428DF7F8100458CF0 /* NotAccountsView.swift */; };
+		0570B34728DF82B800458CF0 /* NotTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570B34628DF82B800458CF0 /* NotTransactionsView.swift */; };
 		057BADE027B3D98E00127DA3 /* MoneyOKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */; };
-		057BADE227B3D98E00127DA3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BADE127B3D98E00127DA3 /* ContentView.swift */; };
 		057BADE427B3D98F00127DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057BADE327B3D98F00127DA3 /* Assets.xcassets */; };
 		057BADE727B3D98F00127DA3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057BADE627B3D98F00127DA3 /* Preview Assets.xcassets */; };
 		057BADF527B3DA5B00127DA3 /* AccountsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BADF427B3DA5A00127DA3 /* AccountsListView.swift */; };
@@ -31,7 +32,6 @@
 		057BAE1227B3ED5400127DA3 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BAE1127B3ED5400127DA3 /* PersistenceController.swift */; };
 		057BAE1827B3F09800127DA3 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BAE1727B3F09800127DA3 /* AccountViewModel.swift */; };
 		057BAE1A27B45F3B00127DA3 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BAE1927B45F3B00127DA3 /* TransactionViewModel.swift */; };
-		0587A0E927E73AA70033AEC3 /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587A0E827E73AA70033AEC3 /* ExpensesView.swift */; };
 		0587A0EB27E784B10033AEC3 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587A0EA27E784B10033AEC3 /* StatisticsView.swift */; };
 		059CD3B427BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3AE27BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift */; };
 		059CD3B527BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3AF27BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift */; };
@@ -45,7 +45,6 @@
 		059CD3C327BBD23600837AD1 /* ColorSwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3C227BBD23600837AD1 /* ColorSwatchView.swift */; };
 		059CD3C527BBD25B00837AD1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3C427BBD25B00837AD1 /* ImagePicker.swift */; };
 		059CD3C727BBD26C00837AD1 /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3C627BBD26C00837AD1 /* KeyboardListener.swift */; };
-		059CD3C927BBD58200837AD1 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059CD3C827BBD58200837AD1 /* PanelView.swift */; };
 		05C86F4927DF92A00037E5BB /* HeaderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C86F4827DF92A00037E5BB /* HeaderSettingView.swift */; };
 		05C86F4B27DF955A0037E5BB /* SendUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C86F4A27DF955A0037E5BB /* SendUseView.swift */; };
 		05D146C327B6A11100359081 /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D146C227B6A11100359081 /* TransactionDetailView.swift */; };
@@ -57,9 +56,10 @@
 		054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccountSelectionView.swift; sourceTree = "<group>"; };
 		054BD3EA280C3D0B00032FF2 /* DetailCategorySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategorySelectionView.swift; sourceTree = "<group>"; };
 		056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTransactionsView.swift; sourceTree = "<group>"; };
+		0570B34428DF7F8100458CF0 /* NotAccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotAccountsView.swift; sourceTree = "<group>"; };
+		0570B34628DF82B800458CF0 /* NotTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTransactionsView.swift; sourceTree = "<group>"; };
 		057BADDC27B3D98E00127DA3 /* MoneyOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyOKApp.swift; sourceTree = "<group>"; };
-		057BADE127B3D98E00127DA3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		057BADE327B3D98F00127DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		057BADE627B3D98F00127DA3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		057BADF427B3DA5A00127DA3 /* AccountsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListView.swift; sourceTree = "<group>"; };
@@ -79,7 +79,6 @@
 		057BAE1127B3ED5400127DA3 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		057BAE1727B3F09800127DA3 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		057BAE1927B45F3B00127DA3 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
-		0587A0E827E73AA70033AEC3 /* ExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesView.swift; sourceTree = "<group>"; };
 		0587A0EA27E784B10033AEC3 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		059CD3AE27BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		059CD3AF27BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -93,7 +92,6 @@
 		059CD3C227BBD23600837AD1 /* ColorSwatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSwatchView.swift; sourceTree = "<group>"; };
 		059CD3C427BBD25B00837AD1 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		059CD3C627BBD26C00837AD1 /* KeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
-		059CD3C827BBD58200837AD1 /* PanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		05C86F4827DF92A00037E5BB /* HeaderSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSettingView.swift; sourceTree = "<group>"; };
 		05C86F4A27DF955A0037E5BB /* SendUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendUseView.swift; sourceTree = "<group>"; };
 		05D146C227B6A11100359081 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
@@ -115,12 +113,6 @@
 		057BADD327B3D98E00127DA3 = {
 			isa = PBXGroup;
 			children = (
-				059CD3AE27BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift */,
-				059CD3AF27BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift */,
-				059CD3B027BBC83E00837AD1 /* AccountEntity+CoreDataClass.swift */,
-				059CD3B127BBC83E00837AD1 /* AccountEntity+CoreDataProperties.swift */,
-				059CD3B227BBC83E00837AD1 /* CategoryEntity+CoreDataClass.swift */,
-				059CD3B327BBC83E00837AD1 /* CategoryEntity+CoreDataProperties.swift */,
 				057BADDE27B3D98E00127DA3 /* MoneyOK */,
 				057BADDD27B3D98E00127DA3 /* Products */,
 			);
@@ -137,6 +129,7 @@
 		057BADDE27B3D98E00127DA3 /* MoneyOK */ = {
 			isa = PBXGroup;
 			children = (
+				05E3A12B299D0D4200BA7FAE /* CoreData */,
 				057BADED27B3D99700127DA3 /* Model */,
 				057BADEE27B3D99F00127DA3 /* View */,
 				057BADEF27B3D9A700127DA3 /* ViewModel */,
@@ -144,8 +137,6 @@
 				057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */,
 				057BADE327B3D98F00127DA3 /* Assets.xcassets */,
 				057BADE527B3D98F00127DA3 /* Preview Content */,
-				057BAE0E27B3EC5C00127DA3 /* AccountsModel.xcdatamodeld */,
-				057BAE1127B3ED5400127DA3 /* PersistenceController.swift */,
 			);
 			path = MoneyOK;
 			sourceTree = "<group>";
@@ -168,7 +159,6 @@
 		057BADEE27B3D99F00127DA3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				057BADE127B3D98E00127DA3 /* ContentView.swift */,
 				057BADF027B3D9B900127DA3 /* Accounts */,
 				057BADF227B3D9CE00127DA3 /* Category */,
 				057BADF127B3D9C400127DA3 /* Transactions */,
@@ -192,11 +182,10 @@
 			isa = PBXGroup;
 			children = (
 				057BAE0827B3DF4A00127DA3 /* AccountsView.swift */,
+				0570B34428DF7F8100458CF0 /* NotAccountsView.swift */,
 				057BADF427B3DA5A00127DA3 /* AccountsListView.swift */,
 				057BADF627B3DA7900127DA3 /* AccountCallView.swift */,
 				057BAE0227B3DB0600127DA3 /* AccountNewView.swift */,
-				059CD3C827BBD58200837AD1 /* PanelView.swift */,
-				0587A0E827E73AA70033AEC3 /* ExpensesView.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -205,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				057BAE0C27B3E08E00127DA3 /* TransactionsView.swift */,
+				0570B34628DF82B800458CF0 /* NotTransactionsView.swift */,
 				057BADFC27B3DAB900127DA3 /* TransactionsListView.swift */,
 				057BADFE27B3DACE00127DA3 /* TransactionCallView.swift */,
 				057BAE0627B3DB2A00127DA3 /* TransactionNewView.swift */,
@@ -259,6 +249,21 @@
 			path = SFSymbolsPicker;
 			sourceTree = "<group>";
 		};
+		05E3A12B299D0D4200BA7FAE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				057BAE1127B3ED5400127DA3 /* PersistenceController.swift */,
+				057BAE0E27B3EC5C00127DA3 /* AccountsModel.xcdatamodeld */,
+				059CD3AE27BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift */,
+				059CD3AF27BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift */,
+				059CD3B027BBC83E00837AD1 /* AccountEntity+CoreDataClass.swift */,
+				059CD3B127BBC83E00837AD1 /* AccountEntity+CoreDataProperties.swift */,
+				059CD3B227BBC83E00837AD1 /* CategoryEntity+CoreDataClass.swift */,
+				059CD3B327BBC83E00837AD1 /* CategoryEntity+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -306,7 +311,6 @@
 			);
 			mainGroup = 057BADD327B3D98E00127DA3;
 			packageReferences = (
-				0587A0FD27E79B0A0033AEC3 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 057BADDD27B3D98E00127DA3 /* Products */;
 			projectDirPath = "";
@@ -345,13 +349,13 @@
 				059CD3C027BBCADF00837AD1 /* UsageExample.swift in Sources */,
 				059CD3B627BBC83E00837AD1 /* AccountEntity+CoreDataClass.swift in Sources */,
 				057BAE0727B3DB2A00127DA3 /* TransactionNewView.swift in Sources */,
+				0570B34528DF7F8100458CF0 /* NotAccountsView.swift in Sources */,
 				057BADFF27B3DACE00127DA3 /* TransactionCallView.swift in Sources */,
 				059CD3BC27BBCAD300837AD1 /* SFSymbolsPicker.swift in Sources */,
+				0570B34728DF82B800458CF0 /* NotTransactionsView.swift in Sources */,
 				054BD3E9280C0C6700032FF2 /* DetailAccountSelectionView.swift in Sources */,
 				057BAE1827B3F09800127DA3 /* AccountViewModel.swift in Sources */,
 				05DCBF2E27B9ACBA00448716 /* TransactionAllListView.swift in Sources */,
-				0587A0E927E73AA70033AEC3 /* ExpensesView.swift in Sources */,
-				059CD3C927BBD58200837AD1 /* PanelView.swift in Sources */,
 				057BAE0D27B3E08E00127DA3 /* TransactionsView.swift in Sources */,
 				059CD3B927BBC83E00837AD1 /* CategoryEntity+CoreDataProperties.swift in Sources */,
 				057BADFD27B3DAB900127DA3 /* TransactionsListView.swift in Sources */,
@@ -367,7 +371,6 @@
 				05C86F4B27DF955A0037E5BB /* SendUseView.swift in Sources */,
 				057BADF727B3DA7900127DA3 /* AccountCallView.swift in Sources */,
 				059CD3B727BBC83E00837AD1 /* AccountEntity+CoreDataProperties.swift in Sources */,
-				057BADE227B3D98E00127DA3 /* ContentView.swift in Sources */,
 				0587A0EB27E784B10033AEC3 /* StatisticsView.swift in Sources */,
 				05DCBF1C27B9847700448716 /* CategoryViewModel.swift in Sources */,
 				057BADE027B3D98E00127DA3 /* MoneyOKApp.swift in Sources */,
@@ -509,11 +512,14 @@
 				DEVELOPMENT_TEAM = U6LJ73DDJU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MoneyOK;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,11 +544,14 @@
 				DEVELOPMENT_TEAM = U6LJ73DDJU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MoneyOK;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,17 +587,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0587A0FD27E79B0A0033AEC3 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCVersionGroup section */
 		057BAE0E27B3EC5C00127DA3 /* AccountsModel.xcdatamodeld */ = {
