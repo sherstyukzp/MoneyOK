@@ -30,8 +30,8 @@ struct NotAccountsView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 30.0)
             Button {
-                accountVM.nameAccountSave = ""
-                accountVM.noteAccountSave = ""
+                accountVM.accountModel.nameAccount = ""
+                accountVM.accountModel.noteAccount = ""
                 accountVM.accountItem = nil
                 self.isNewAccount.toggle()
                 

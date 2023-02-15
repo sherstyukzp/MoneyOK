@@ -50,6 +50,7 @@
 		05D146C327B6A11100359081 /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D146C227B6A11100359081 /* TransactionDetailView.swift */; };
 		05DCBF1C27B9847700448716 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DCBF1B27B9847700448716 /* CategoryViewModel.swift */; };
 		05DCBF2E27B9ACBA00448716 /* TransactionAllListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */; };
+		05E3A12D299D0DF300BA7FAE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A12C299D0DF300BA7FAE /* AccountModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		05D146C227B6A11100359081 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
 		05DCBF1B27B9847700448716 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAllListView.swift; sourceTree = "<group>"; };
+		05E3A12C299D0DF300BA7FAE /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +131,12 @@
 		057BADDE27B3D98E00127DA3 /* MoneyOK */ = {
 			isa = PBXGroup;
 			children = (
+				057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */,
 				05E3A12B299D0D4200BA7FAE /* CoreData */,
 				057BADED27B3D99700127DA3 /* Model */,
 				057BADEE27B3D99F00127DA3 /* View */,
 				057BADEF27B3D9A700127DA3 /* ViewModel */,
 				059CD3BA27BBCAB300837AD1 /* Lib */,
-				057BADDF27B3D98E00127DA3 /* MoneyOKApp.swift */,
 				057BADE327B3D98F00127DA3 /* Assets.xcassets */,
 				057BADE527B3D98F00127DA3 /* Preview Content */,
 			);
@@ -152,6 +154,7 @@
 		057BADED27B3D99700127DA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				05E3A12C299D0DF300BA7FAE /* AccountModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				05DCBF1C27B9847700448716 /* CategoryViewModel.swift in Sources */,
 				057BADE027B3D98E00127DA3 /* MoneyOKApp.swift in Sources */,
 				057BAE0927B3DF4A00127DA3 /* AccountsView.swift in Sources */,
+				05E3A12D299D0DF300BA7FAE /* AccountModel.swift in Sources */,
 				057BADF927B3DA9000127DA3 /* CategoryListView.swift in Sources */,
 				057BAE0327B3DB0600127DA3 /* AccountNewView.swift in Sources */,
 				059CD3B827BBC83E00837AD1 /* CategoryEntity+CoreDataClass.swift in Sources */,

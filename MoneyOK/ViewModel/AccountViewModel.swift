@@ -11,11 +11,7 @@ import CoreData
 
 class AccountViewModel: ObservableObject {
     
-    @Published var nameAccountSave = ""
-    @Published var iconAccountSave = "creditcard.fill"
-    @Published var colorAccountSave = "swatch_articblue"
-    @Published var noteAccountSave = ""
-    @Published var dateOfCreationSave = Date()
+    @Published var accountModel = AccountModel()
     
     @Published var accountItem: AccountEntity!
     
@@ -25,26 +21,24 @@ class AccountViewModel: ObservableObject {
         if accountItem == nil {
             let account = AccountEntity(context: context)
             account.idAccount = UUID()
-            account.nameAccount = nameAccountSave
-            account.iconAccount = iconAccountSave
-            account.colorAccount = colorAccountSave
-            account.noteAccount = noteAccountSave
+            account.nameAccount = accountModel.nameAccount
+            account.iconAccount = accountModel.iconAccount
+            account.colorAccount = accountModel.colorAccount
+            account.noteAccount = accountModel.noteAccount
             account.dateOfCreation = Date()
-            
-            
         } else {
-            accountItem.nameAccount = nameAccountSave
-            accountItem.iconAccount = iconAccountSave
-            accountItem.colorAccount = colorAccountSave
-            accountItem.noteAccount = noteAccountSave
-            
+            accountItem.nameAccount = accountModel.nameAccount
+            accountItem.iconAccount = accountModel.iconAccount
+            accountItem.colorAccount = accountModel.colorAccount
+            accountItem.noteAccount = accountModel.noteAccount
+            accountItem.dateOfCreation = Date()
         }
         
         save(context: context)
-        nameAccountSave = ""
-        iconAccountSave = ""
-        colorAccountSave = ""
-        noteAccountSave = ""
+        accountModel.nameAccount = ""
+        accountModel.iconAccount = ""
+        accountModel.colorAccount = ""
+        accountModel.noteAccount = ""
     }
     
     func isFavorite(account: AccountEntity, context: NSManagedObjectContext) {

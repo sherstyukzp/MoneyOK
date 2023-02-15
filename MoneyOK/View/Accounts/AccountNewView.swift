@@ -18,9 +18,9 @@ struct AccountNewView: View {
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
     var disableForm: Bool {
-        accountVM.nameAccountSave.isEmpty ||
-        accountVM.iconAccountSave.isEmpty ||
-        accountVM.colorAccountSave.isEmpty
+        accountVM.accountModel.nameAccount.isEmpty ||
+        accountVM.accountModel.iconAccount.isEmpty ||
+        accountVM.accountModel.colorAccount.isEmpty
     }
     
     var body: some View {
@@ -30,16 +30,16 @@ struct AccountNewView: View {
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(Color(accountVM.colorAccountSave.isEmpty ? "swatch_articblue" : accountVM.colorAccountSave))
+                                .fill(Color(accountVM.accountModel.colorAccount.isEmpty ? "swatch_articblue" : accountVM.accountModel.colorAccount))
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 10)
                                 .padding()
-                            Image(systemName: accountVM.iconAccountSave.isEmpty ? "creditcard.fill" : accountVM.iconAccountSave)
+                            Image(systemName: accountVM.accountModel.iconAccount.isEmpty ? "creditcard.fill" : accountVM.accountModel.iconAccount)
                                 .font(Font.largeTitle)
                                 .foregroundColor(Color.white)
                         }
                         
-                        TextField("Name account", text: $accountVM.nameAccountSave)
+                        TextField("Name account", text: $accountVM.accountModel.nameAccount)
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10.0)
@@ -47,19 +47,19 @@ struct AccountNewView: View {
                     }
                 }
                 Section(header: Text("Color")) {
-                    ColorSwatchView(selection: $accountVM.colorAccountSave)
+                    ColorSwatchView(selection: $accountVM.accountModel.colorAccount)
                 }
                 Section(header: Text("Icon")) {
-                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountVM.iconAccountSave, category: .accounts , axis: .vertical, haptic: true).frame(height: 300)
+                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountVM.accountModel.iconAccount, category: .accounts , axis: .vertical, haptic: true).frame(height: 300)
                 }
                 
                 Section(header: Text("Note")) {
-                    TextEditor(text: $accountVM.noteAccountSave)
+                    TextEditor(text: $accountVM.accountModel.noteAccount)
                 }
                 
                 if accountVM.accountItem != nil {
                     Section(header: Text("Date of creation")) {
-                        Text(accountVM.dateOfCreationSave, style: .date)
+                        Text(accountVM.accountModel.dateOfCreationSave, style: .date)
                     }
                 }
                 
