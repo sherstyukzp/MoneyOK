@@ -54,8 +54,7 @@ class TransactionViewModel: ObservableObject {
         }
         
         save(context: context)
-        sumTransactionSave = 0.0
-        noteTransactionSave = ""
+        cleane()
     }
     
     
@@ -73,5 +72,10 @@ class TransactionViewModel: ObservableObject {
         }
     }
     
+    func cleane() {
+        sumTransactionSave = 0.0
+        noteTransactionSave = ""
+        transactionItem = nil
+    }
     
 }
