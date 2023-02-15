@@ -19,7 +19,7 @@ class TransactionViewModel: ObservableObject {
     @Published var transactionItem: TransactionEntity!
     
     
-    func createTransaction(context: NSManagedObjectContext, selectedAccount: AccountEntity, selectedCategory: CategoryEntity, typeTransactionNew: TypeTransactionNew) {
+    func createTransaction(context: NSManagedObjectContext, selectedAccount: AccountEntity, selectedCategory: CategoryEntity, typeTransactionNew: TypeTransaction) {
         
         if transactionItem == nil {
             let transaction = TransactionEntity(context: context)

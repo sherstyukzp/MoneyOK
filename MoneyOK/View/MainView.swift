@@ -9,23 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.nameAccount, order: .forward)])
-    private var fetchedAccount: FetchedResults<AccountEntity>
-    
     var body: some View {
-        if fetchedAccount.isEmpty {
-            NavigationStack {
-                NotAccountsView()
-            }
-        }
-        else {
-            NavigationStack {
-                AccountsView()
-            }
-        }
-        
+        AccountsView()
     }
 }
 

@@ -32,21 +32,22 @@ struct TransactionsView: View {
     }
     
     var body: some View {
-        Group {
+        NavigationView {
                 if accountItem.transaction.isEmpty {
                     NotTransactionsView()
                 } else {
                     TransactionsListView(accountItem: accountItem)
                 }
+            
             }
         
         .toolbar {
             // Меню по работе с счётом
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     if !accountItem.transaction.isEmpty {
                         // Статистика
-                        Button{
+                        Button {
                             self.isStatistics.toggle()
                         } label: {
                             Label("Statistics", systemImage: "chart.xyaxis.line")
@@ -68,14 +69,14 @@ struct TransactionsView: View {
                         accountVM.accountItem = accountItem
                         self.isEditAccount.toggle()
                     }) {
-                        Label("Edit", systemImage: "pencil")
+                        Label("Edit Account", systemImage: "pencil")
                     }
                     Divider()
                     // Удаление счёта из меню
                     Button(role: .destructive) {
                         showAlert.toggle()
                     } label: {
-                        Label("Delete", systemImage: "trash")
+                        Label("Delete Account", systemImage: "trash")
                     }
                     
                     // TODO: Добавить сортировку транзакций
@@ -96,22 +97,22 @@ struct TransactionsView: View {
                 }
             }
             // Кнопка добавления новой транзакции в текущем счёте
-            ToolbarItem(placement: .bottomBar) {
-                Button {
-                    self.isNewTransaction.toggle()
-                } label: {
-
-                    HStack {
-                        Image(systemName: "plus.circle.fill")
-                        Text("Transaction")
-                        Spacer()
-                    }.fontWeight(.bold)
-                }
+            ToolbarItemGroup(placement: .bottomBar) {
+                HStack {
+                        Button {
+                            self.isNewTransaction.toggle()
+                        } label: {
+                            HStack {
+                                Image(systemName: "plus.circle.fill")
+                                Text("Transaction")
+                            }.fontWeight(.bold)
+                        }
+                    }
             }
         }
     
         .sheet(isPresented: $isNewTransaction) {
-            TransactionNewView(accountItem: accountItem, isNewTransaction: $isNewTransaction, nowAccount: true)
+            TransactionNewView(accountItem: accountItem, nowAccount: true)
         }
         
         .sheet(isPresented: $isEditAccount) {

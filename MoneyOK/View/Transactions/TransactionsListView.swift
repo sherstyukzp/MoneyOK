@@ -23,6 +23,7 @@ struct TransactionsListView: View {
                 }
             }
         }
+    
     }
     
 

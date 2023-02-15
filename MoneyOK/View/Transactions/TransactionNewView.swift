@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TransactionNewView: View {
     
+    @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     
     @EnvironmentObject var transactionVM: TransactionViewModel
@@ -16,7 +17,6 @@ struct TransactionNewView: View {
     @EnvironmentObject var categoryVM: CategoryViewModel
     @ObservedObject var accountItem: AccountEntity
     
-    @Binding var isNewTransaction: Bool
     @State var nowAccount: Bool
     
     @State private var selectedAccount: AccountEntity?
@@ -28,8 +28,8 @@ struct TransactionNewView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)],animation:.default)
     private var fetchedCategory: FetchedResults<CategoryEntity>
     
-    let types = Array(TypeTransactionNew.allCases)
-    @State var typeTransactionNew: TypeTransactionNew? = .costs
+    let types = Array(TypeTransaction.allCases)
+    @State var typeTransactionNew: TypeTransaction? = .costs
     
     @State private var personImage = UIImage()
     @State private var imagePicker = false
@@ -48,7 +48,7 @@ struct TransactionNewView: View {
             Form {
                 Picker(selection: $typeTransactionNew, label: Text("Transaction categories")) {
                     ForEach(types, id: \.rawValue) {
-                        Text($0.rawValue).tag(Optional<TypeTransactionNew>.some($0))
+                        Text($0.rawValue).tag(Optional<TypeTransaction>.some($0))
                     }
                 }.pickerStyle(SegmentedPickerStyle())
                 
@@ -190,7 +190,7 @@ struct TransactionNewView: View {
                         // MARK: Сохранение трензакции
                         transactionVM.imageTransactionSave = personImage
                         transactionVM.createTransaction(context: viewContext, selectedAccount: (nowAccount ? accountItem : selectedAccount)!, selectedCategory: selectedCategory!, typeTransactionNew: typeTransactionNew!)
-                        self.isNewTransaction.toggle()
+                        dismiss()
                         
                         print("Session is cancelled")
                     } label: {
@@ -216,7 +216,7 @@ struct TransactionNewView: View {
             .toolbar {
                 ToolbarItem (placement: .navigationBarTrailing) {
                     Button() {
-                        self.isNewTransaction.toggle()
+                        dismiss()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                     }
@@ -236,16 +236,10 @@ struct TransactionNewView: View {
     
 }
 
-// MARK: - Типы транзакции
-enum TypeTransactionNew: String, CaseIterable {
-    
-    case costs = "Expense"
-    case income = "Income"
-    //case transfer = "Translation"
-}
+
 
 struct TransactionNewView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionNewView(accountItem: AccountEntity(), isNewTransaction: .constant(false), nowAccount: true)
+        TransactionNewView(accountItem: AccountEntity(), nowAccount: true)
     }
 }

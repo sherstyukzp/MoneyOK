@@ -19,16 +19,20 @@ struct AccountsView: View {
         SortDescriptor(\TransactionEntity.dateTransaction, order: .reverse)
     ]) var fetchedTransaction: FetchedResults<TransactionEntity>
     
-    
-    @State private var isNewAccount = false
-    @State private var isNewTransaction = false
-    @State private var isSettings = false
-    @State private var isStatistics = false
-    
     @State private var activeSheet: ActiveSheet?
+    @State private var isNewTransaction = false
     
     var body: some View {
-        AccountsListView()
+        NavigationStack {
+            if fetchedAccount.isEmpty {
+                NotAccountsView()
+                
+            }
+            else {
+                AccountsListView()
+            }
+        }
+        
             .toolbar {
                 /// Кнопка Настройки в NavigationView
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -50,7 +54,8 @@ struct AccountsView: View {
                 }
                 /// Кнопки створення нового рахунку та транзакції
                 ToolbarItemGroup(placement: .bottomBar) {
-                    HStack {
+                    
+                        if !fetchedAccount.isEmpty {
                             Button {
                                 activeSheet = .transaction
                             } label: {
@@ -59,13 +64,15 @@ struct AccountsView: View {
                                     Text("Transaction")
                                 }.fontWeight(.bold)
                             }
+                        }
+                            
                             Spacer()
                             Button {
                                 activeSheet = .newAccount
                             } label: {
                                 Text("New account")
                             }
-                        }
+                        
                 }
             }
         
@@ -78,26 +85,11 @@ struct AccountsView: View {
                 case .statistics:
                     StatisticsView()
                 case .transaction:
-                    TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
+                    TransactionNewView(accountItem: fetchedAccount.first!, nowAccount: false)
                 }
-                
             }
         
-        //        .fullScreenCover(isPresented: $isStatistics, content: StatisticsView.init)
-        //
-        //        .sheet(isPresented: $isSettings) {
-        //            SettingsView()
-        //        }
-        //
-        //        .sheet(isPresented: $isNewAccount) {
-        //            AccountNewView()
-        //        }
-        //
-        //        .sheet(isPresented: $isNewTransaction) {
-        //            TransactionNewView(accountItem: fetchedAccount.first!, isNewTransaction: $isNewTransaction, nowAccount: false)
-        //        }
-        
-        
+            
     }
 }
 

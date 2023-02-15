@@ -30,21 +30,10 @@ struct AccountsListView: View {
     
     var body: some View {
         List {
-                if searchText.isEmpty {
-                    if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
-                        Section("Favorites") {
-                            ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { (account: AccountEntity) in
-                                NavigationLink(destination:
-                                                TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
-                                {
-                                    AccountCallView(accountItem: account)
-                                }
-                            }
-                        }
-                    }
-                    
-                    Section(fetchedAccounts.count <= 1 ? "Account" : "Accounts") {
-                        ForEach(fetchedAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { (account: AccountEntity) in
+            if searchText.isEmpty {
+                if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
+                    Section("Favorites") {
+                        ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { (account: AccountEntity) in
                             NavigationLink(destination:
                                             TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
                             {
@@ -52,28 +41,46 @@ struct AccountsListView: View {
                             }
                         }
                     }
-                    if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
-                        Section("Archive") {
-                            ForEach(fetchedAccounts.filter{$0.isArchive == true}) { (account: AccountEntity) in
-                                NavigationLink(destination:
-                                                TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
-                                {
-                                    AccountCallView(accountItem: account)
-                                }
+                }
+                
+                Section(fetchedAccounts.count <= 1 ? "Account" : "Accounts") {
+                    ForEach(fetchedAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { (account: AccountEntity) in
+                        NavigationLink(destination:
+                                        TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
+                        {
+                            AccountCallView(accountItem: account)
+                        }
+                    }
+                }
+                if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
+                    Section("Archive") {
+                        ForEach(fetchedAccounts.filter{$0.isArchive == true}) { (account: AccountEntity) in
+                            NavigationLink(destination:
+                                            TransactionsView(accountItem: account).environment(\.managedObjectContext, self.viewContext))
+                            {
+                                AccountCallView(accountItem: account)
                             }
                         }
                     }
                 }
-                else {
-                    ForEach(fetchedTransaction, id: \.self) { item in
-                        NavigationLink(destination:
-                                        TransactionDetailView(transactionItem: item))
-                        {
-                            TransactionCallView(transactionItem: item)
+            }
+            else {
+                if fetchedTransaction.isEmpty {
+                    Text("Not result") // TODO: Зробити прикольне вікно що немає результату
+                } else {
+                    VStack {
+                        Text("Total found: \(fetchedTransaction.count)")
+                        ForEach(fetchedTransaction, id: \.self) { item in
+                            NavigationLink(destination:
+                                            TransactionDetailView(transactionItem: item))
+                            {
+                                TransactionCallView(transactionItem: item)
+                            }
                         }
                     }
                 }
             }
+        }
         
         .searchable(text: $searchText, placement: .sidebar)
         .onChange(of: searchText) { newValue in
@@ -83,6 +90,9 @@ struct AccountsListView: View {
     }
     
     
+    /// Пошук по назві транзакції
+    /// - Parameter query: Запит
+    /// - Returns: Результат пошуку
     private func searchPredicate(query: String) -> NSPredicate? {
         if query.isEmpty { return nil }
         return NSPredicate(format: "%K BEGINSWITH[cd] %@",

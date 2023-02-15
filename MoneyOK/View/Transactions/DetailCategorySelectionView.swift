@@ -14,7 +14,7 @@ struct DetailCategorySelectionView: View {
     private var fetchedCategory: FetchedResults<CategoryEntity>
     
     @Binding var selectedItem: CategoryEntity?
-    @Binding var typeTransaction: TypeTransactionNew?
+    @Binding var typeTransaction: TypeTransaction?
     
     
     var body: some View {
