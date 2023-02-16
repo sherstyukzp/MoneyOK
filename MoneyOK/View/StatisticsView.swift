@@ -49,11 +49,16 @@ struct StatisticsView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                     GroupBox ("Type") {
-                        Chart(data) {
+                        Chart(data) { item in
                             BarMark(
-                                x: .value("Mount", $0.mount),
-                                y: .value("Value", $0.value)
-                            ).foregroundStyle(by: .value("Type", $0.mount))
+                                x: .value("Mount", item.mount),
+                                y: .value("Value", item.value)
+                            ).foregroundStyle(by: .value("Type", item.mount))
+                                .annotation(alignment: .center, spacing: 10) {
+                                    Text("\(item.value, format: .currency(code: "USD"))")
+                                        .fontWeight(.bold)
+                                }
+                                
                             
                         }
                         .chartLegend(.hidden)
@@ -65,15 +70,9 @@ struct StatisticsView: View {
                             x: .value("Amount", item.categoryToTransaction?.count ?? 0),
                             y: .value("Month", item.nameCategory ?? "")
                         ).foregroundStyle(by: .value("Category", item.colorCategory!))
-                            .annotation(position: .overlay, alignment: .leading, spacing: 3) {
-                                Image(systemName: item.iconCategory!)
-                                    .foregroundColor(.white)
-                            }
-                            
-                        
                     }
                     .chartLegend(.hidden)
-                    .frame(height: 250)
+                    .frame(minHeight: 250, maxHeight: 500)
                 }
                 
                 GroupBox ("By category of Income") {
@@ -82,13 +81,10 @@ struct StatisticsView: View {
                             x: .value("Amount", item.categoryToTransaction?.count ?? 0),
                             y: .value("Month", item.nameCategory ?? "")
                         ).foregroundStyle(by: .value("Category", item.colorCategory!))
-                            .annotation(position: .overlay, alignment: .leading, spacing: 3) {
-                                Image(systemName: item.iconCategory!)
-                                    .foregroundColor(.white)
-                            }
+                            
                     }
                     .chartLegend(.hidden)
-                    .frame(height: 250)
+                    .frame(minHeight: 250, maxHeight: .infinity)
                 }
                 
                     
