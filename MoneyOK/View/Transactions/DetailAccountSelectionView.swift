@@ -9,11 +9,12 @@ import SwiftUI
 
 struct DetailAccountSelectionView: View {
     
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) var dismiss
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.nameAccount, order: .forward)])
     private var fetchedAccount: FetchedResults<AccountEntity>
     
-    @Binding var selectedItem: AccountEntity?
+    @EnvironmentObject var accountVM: AccountViewModel
     
     var body: some View {
         Form {
@@ -34,15 +35,11 @@ struct DetailAccountSelectionView: View {
                             .foregroundColor(.primary)
                     }
                     
-                    Spacer()
-                    if self.selectedItem == item {
-                        Image(systemName: "checkmark").foregroundColor(Color.blue)
-                    }
                 }
-                //====
-                    .onTapGesture {
-                        self.selectedItem = item
-                        self.presentationMode.wrappedValue.dismiss()
+                
+                .onTapGesture {
+                        accountVM.accountItem = item
+                        dismiss()
                     }
                 
             }
@@ -52,8 +49,8 @@ struct DetailAccountSelectionView: View {
     }
 }
 
-//struct DetailAccountSelectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailAccountSelectionView(selectedItem: .constant(AccountEntity.finalize()))
-//    }
-//}
+struct DetailAccountSelectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        DetailAccountSelectionView()
+    }
+}

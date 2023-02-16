@@ -10,6 +10,10 @@ import CoreData
 
 struct ContentView: View {
     
+#if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+#endif
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(sortDescriptors:
@@ -101,9 +105,10 @@ struct ContentView: View {
                     }
                     /// Кнопки створення нового рахунку та транзакції
                     ToolbarItemGroup(placement: .bottomBar) {
-                        
+                        if horizontalSizeClass == .compact {
                             if !fetchedAccounts.isEmpty {
                                 Button {
+                                    accountVM.accountItem = nil
                                     activeSheet = .transaction
                                 } label: {
                                     HStack {
@@ -112,17 +117,16 @@ struct ContentView: View {
                                     }.fontWeight(.bold)
                                 }
                             }
-                                
-                                Spacer()
-                                Button {
-                                    activeSheet = .newAccount
-                                } label: {
-                                    Text("New account")
-                                }
-                            
+                        }
+                        Spacer()
+                        Button {
+                            activeSheet = .newAccount
+                        } label: {
+                            Text("New account")
+                        }
                     }
                 }
-            
+                
                 .sheet(item: $activeSheet) { item in
                     switch item {
                     case .newAccount:
@@ -132,7 +136,7 @@ struct ContentView: View {
                     case .statistics:
                         StatisticsView()
                     case .transaction:
-                        TransactionNewView(accountItem: fetchedAccounts.first!, nowAccount: false)
+                        TransactionNewView()
                     }
                 }
                 
@@ -143,23 +147,49 @@ struct ContentView: View {
         } content: {
             
             if (accountVM.accountItem != nil) {
+                Text("\(sumTransactionForAccount, format: .currency(code: "USD"))")
+                    .foregroundColor(Color(accountVM.accountItem.colorAccount ?? "swatch_gunsmoke"))
+                    .font(.system(size: 24, weight: .bold, design: .default))
+                
                 List(accountVM.accountItem.transaction, selection: $transactionVM.transactionItem) { transaction in
                     NavigationLink(value: transaction)
                     {
                         TransactionCallView(transactionItem: transaction)
                     }
                 }
-                .listStyle(.insetGrouped)
-                
+                //.listStyle(.insetGrouped)
+                .navigationBarTitle(accountVM.accountItem.nameAccount ?? "")
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    // Отображение название счёта и остаток по счёту
-                    ToolbarItem(placement: .principal) {
-                        VStack {
-                            Text(accountVM.accountItem.nameAccount ?? "")
-                                .font(.headline)
-                                .foregroundColor(Color(accountVM.accountItem.colorAccount ?? ""))
-                            Text("\(sumTransactionForAccount, format: .currency(code: "USD"))").font(.subheadline)
+                    /// Кнопки створення нового рахунку та транзакції
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        
+                        if !fetchedAccounts.isEmpty {
+                            
+                            Button {
+                                activeSheet = .transaction
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                    Text("Transaction")
+                                }.fontWeight(.bold)
+                                    .foregroundColor(Color(accountVM.accountItem.colorAccount ?? "swatch_gunsmoke"))
+                            }
+                            Spacer()
                         }
+                    }
+                }
+                
+                .sheet(item: $activeSheet) { item in
+                    switch item {
+                    case .newAccount:
+                        AccountNewView()
+                    case .settings:
+                        SettingsView()
+                    case .statistics:
+                        StatisticsView()
+                    case .transaction:
+                        TransactionNewView()
                     }
                 }
             } else {

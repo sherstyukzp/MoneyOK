@@ -11,6 +11,8 @@ struct AccountsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    @EnvironmentObject var accountVM: AccountViewModel
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.nameAccount, order: .forward)])
     private var fetchedAccount: FetchedResults<AccountEntity>
     
@@ -85,7 +87,7 @@ struct AccountsView: View {
                 case .statistics:
                     StatisticsView()
                 case .transaction:
-                    TransactionNewView(accountItem: fetchedAccount.first!, nowAccount: false)
+                    TransactionNewView()
                 }
             }
         

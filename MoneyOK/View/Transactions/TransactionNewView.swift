@@ -15,11 +15,7 @@ struct TransactionNewView: View {
     @EnvironmentObject var transactionVM: TransactionViewModel
     @EnvironmentObject var accountVM: AccountViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
-    @ObservedObject var accountItem: AccountEntity
-    
-    @State var nowAccount: Bool
-    
-    @State private var selectedAccount: AccountEntity?
+
     @State private var selectedCategory: CategoryEntity?
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)],animation:.default)
@@ -79,23 +75,23 @@ struct TransactionNewView: View {
                     }
                 }
                 // MARK: Выбор счетов
-                if nowAccount == false {
+                if accountVM.accountItem == nil {
                     Section(header: Text("Select an account")) {
                         NavigationLink(destination: (
-                            DetailAccountSelectionView(selectedItem: $selectedAccount)
+                            DetailAccountSelectionView()
                         ), label: {
                             HStack {
                                 HStack {
                                     ZStack {
                                         Circle()
-                                            .fill(Color(selectedAccount?.colorAccount ?? "swatch_gunsmoke"))
+                                            .fill(Color(accountVM.accountItem?.colorAccount ?? "swatch_gunsmoke"))
                                             .frame(width: 32, height: 32)
-                                        Image(systemName: selectedAccount?.iconAccount ?? "plus")
+                                        Image(systemName: accountVM.accountItem?.iconAccount ?? "plus")
                                             .foregroundColor(Color.white)
                                             .font(Font.footnote)
                                     }
                                     VStack(alignment: .leading) {
-                                        Text(selectedAccount?.nameAccount ?? "Not selected account")
+                                        Text(accountVM.accountItem?.nameAccount ?? "Not selected account")
                                             .bold()
                                             .foregroundColor(.primary)
                                     }
@@ -189,7 +185,7 @@ struct TransactionNewView: View {
                     Button {
                         // MARK: Сохранение трензакции
                         transactionVM.imageTransactionSave = personImage
-                        transactionVM.createTransaction(context: viewContext, selectedAccount: (nowAccount ? accountItem : selectedAccount)!, selectedCategory: selectedCategory!, typeTransactionNew: typeTransactionNew!)
+                        transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountItem, selectedCategory: selectedCategory!, typeTransactionNew: typeTransactionNew!)
                         dismiss()
                         
                         print("Session is cancelled")
@@ -240,6 +236,6 @@ struct TransactionNewView: View {
 
 struct TransactionNewView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionNewView(accountItem: AccountEntity(), nowAccount: true)
+        TransactionNewView()
     }
 }

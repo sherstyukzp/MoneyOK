@@ -117,7 +117,7 @@ struct AccountCallView: View {
             AccountNewView()
         }
         .sheet(isPresented: $isNewTransaction) {
-            TransactionNewView(accountItem: accountItem, nowAccount: true)
+            TransactionNewView()
         }
         .alert(isPresented: $showAlert) {
             getAlert()
