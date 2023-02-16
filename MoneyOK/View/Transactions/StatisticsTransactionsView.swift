@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
-
+import Charts
 
 struct StatisticsTransactionsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) var dismiss
     
     @ObservedObject var accountItem: AccountEntity
     
-    @Binding var isStatistics: Bool
     
     // Сумма всех транзакций выбраного счёта
     var sumTransactionForAccount: Double {
@@ -31,17 +31,13 @@ struct StatisticsTransactionsView: View {
     var body: some View {
         NavigationView {
             
-            HStack {
-                Text("Statistics")
-                
-                
-            }
+            Text("")
             
                 .navigationTitle(Text("Statistics"))
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         Button(action: {
-                            self.isStatistics.toggle()
+                            dismiss()
                         }) {
                             Text("Cancel").bold()
                                 .foregroundColor(Color.blue)
@@ -54,6 +50,6 @@ struct StatisticsTransactionsView: View {
 
 struct StatisticsTransactionsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatisticsTransactionsView(accountItem: AccountEntity(), isStatistics: .constant(false))
+        StatisticsTransactionsView(accountItem: AccountEntity())
     }
 }

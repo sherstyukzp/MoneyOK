@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import Charts
 
+struct MountPrice: Identifiable {
+    var id = UUID()
+    var mount: String
+    var value: Double
+}
 
 struct StatisticsView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -18,9 +24,8 @@ struct StatisticsView: View {
                   sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.dateTransaction, ascending: true)])
     private var fetchedTransaction: FetchedResults<TransactionEntity>
 
-    @FetchRequest(entity: CategoryEntity.entity(),
-                  sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)])
-    private var fetchedCategory: FetchedResults<CategoryEntity>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)])
+    private var fetchedCategory:FetchedResults<CategoryEntity>
     
     
     // Складывает все транзакции
@@ -35,49 +40,66 @@ struct StatisticsView: View {
     
     
     var body: some View {
+        
+        let data: [MountPrice] = [
+            MountPrice(mount: "Expenses", value: sumTransactionTupe(type: .costs)),
+            MountPrice(mount: "Income", value: sumTransactionTupe(type: .income))
+            ]
+        
         NavigationView {
-            //Text("")
-//            PieChartView(data: [8,23,54,32], title: "Title", legend: "Legendary", dropShadow: false)
-            VStack {
-
-                Text("Statistics")
+            ScrollView(showsIndicators: false) {
+                    GroupBox ("Type") {
+                        Chart(data) {
+                            BarMark(
+                                x: .value("Mount", $0.mount),
+                                y: .value("Value", $0.value)
+                            ).foregroundStyle(by: .value("Type", $0.mount))
+                            
+                        }
+                        .chartLegend(.hidden)
+                        .frame(height: 250)
+                    }
+                GroupBox ("By category of Expenses") {
+                    Chart(fetchedCategory.filter{$0.isExpenses == false}) { item in
+                        BarMark(
+                            x: .value("Amount", item.categoryToTransaction?.count ?? 0),
+                            y: .value("Month", item.nameCategory ?? "")
+                        ).foregroundStyle(by: .value("Category", item.colorCategory!))
+                            .annotation(position: .overlay, alignment: .leading, spacing: 3) {
+                                Image(systemName: item.iconCategory!)
+                                    .foregroundColor(.white)
+                            }
+                            
+                        
+                    }
+                    .chartLegend(.hidden)
+                    .frame(height: 250)
+                }
                 
+                GroupBox ("By category of Income") {
+                    Chart(fetchedCategory.filter{$0.isExpenses == true}) { item in
+                        BarMark(
+                            x: .value("Amount", item.categoryToTransaction?.count ?? 0),
+                            y: .value("Month", item.nameCategory ?? "")
+                        ).foregroundStyle(by: .value("Category", item.colorCategory!))
+                            .annotation(position: .overlay, alignment: .leading, spacing: 3) {
+                                Image(systemName: item.iconCategory!)
+                                    .foregroundColor(.white)
+                            }
+                    }
+                    .chartLegend(.hidden)
+                    .frame(height: 250)
+                }
                 
-                
-//                List {
-//                    ForEach(fetchedCategory.filter{$0.isExpenses == true}) { category in
-//                        HStack {
-//                            ZStack {
-//                                Circle()
-//                                    .fill(Color(category.colorCategory ?? "swatch_articblue"))
-//                                    .frame(width: 32, height: 32)
-//                                Image(systemName: category.iconCategory ?? "creditcard.fill")
-//                                    .foregroundColor(Color.white)
-//                                    .font(Font.footnote)
-//                            }
-//
-//                            VStack(alignment: .leading) {
-//                                Text(category.nameCategory ?? "")
-//                                    .bold()
-//                                    .foregroundColor(.primary)
-//
-//                            }
-//                            Spacer()
-//                            Text("12")
-//                                .font(.footnote)
-//
-//                        }
-//
-//                    }
-//                }
+                    
+            }.padding(.all)
             
-            }
-            //
+            
             .navigationTitle(Text("Statistics"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                     }
@@ -86,6 +108,24 @@ struct StatisticsView: View {
             }
         }
         
+    }
+    
+    /// Розрахунок загальних вітрат або дохіда
+    /// - Parameter type: Тип транзакції (виьрата, дохід)
+    /// - Returns: число
+    func sumTransactionTupe(type: TypeTrancaction) -> Double {
+        
+        var result = 0.0
+        switch type {
+        case .costs:
+            result = abs(fetchedTransaction.filter({$0.transactionToCategory?.isExpenses == false})
+                .reduce(0) { $0 + $1.sumTransaction})
+        case .income:
+            result = fetchedTransaction.filter({$0.transactionToCategory?.isExpenses == true})
+                .reduce(0) { $0 + $1.sumTransaction}
+        }
+        
+        return result
     }
 }
 

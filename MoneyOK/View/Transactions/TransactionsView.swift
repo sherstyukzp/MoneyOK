@@ -119,7 +119,7 @@ struct TransactionsView: View {
             AccountNewView()
         }
         .sheet(isPresented: $isStatistics) {
-            StatisticsTransactionsView(accountItem: accountItem, isStatistics: $isStatistics)
+            StatisticsTransactionsView(accountItem: accountItem)
         }
         
         .alert(isPresented: $showAlert) {

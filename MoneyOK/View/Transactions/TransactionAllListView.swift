@@ -87,13 +87,13 @@ struct TransactionAllListView: View {
                     ForEach(transactions) { section in
                         Section(header: Text(section.id.capitalized)) {
                             ForEach(section) { item in
+                                
                                 NavigationLink(destination:
                                                 TransactionDetailView(transactionItem: item))
                                 {
                                     TransactionCallView(transactionItem: item)
                                 }
-                                .swipeActions() {
-                                }
+                                
                             }
                         }
                         

@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 
+
 struct ContentView: View {
     
 #if os(iOS)
@@ -40,6 +41,16 @@ struct ContentView: View {
     
     @State private var searchText = ""
 
+    //
+    @SectionedFetchRequest(
+        sectionIdentifier: \.sections,
+        sortDescriptors: [SortDescriptor(\TransactionEntity.dateTransaction, order: .reverse)],
+        animation: .default)
+    
+    private var transactions: SectionedFetchResults<String, TransactionEntity>
+    
+    //
+    
     // Сумма всех транзакций выбраного счёта
     var sumTransactionForAccount: Double {
         accountVM.accountItem.transaction.reduce(0) { $0 + $1.sumTransaction }
@@ -152,12 +163,13 @@ struct ContentView: View {
                     .font(.system(size: 24, weight: .bold, design: .default))
                 
                 List(accountVM.accountItem.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
+
                     NavigationLink(value: transaction)
                     {
                         TransactionCallView(transactionItem: transaction)
                     }
                 }
- 
+
                 //.listStyle(.insetGrouped)
                 .navigationBarTitle(accountVM.accountItem.nameAccount ?? "")
                 .navigationBarTitleDisplayMode(.inline)
