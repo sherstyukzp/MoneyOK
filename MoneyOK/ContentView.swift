@@ -24,7 +24,7 @@ struct ContentView: View {
     
     @FetchRequest(sortDescriptors:
                     [
-                        SortDescriptor(\TransactionEntity.transactionToCategory?.nameCategory, order: .reverse)
+                        SortDescriptor(\TransactionEntity.dateTransaction)
                     ])
     
     private var fetchedTransaction: FetchedResults<TransactionEntity>
@@ -39,7 +39,7 @@ struct ContentView: View {
     @State private var activeSheet: ActiveSheet?
     
     @State private var searchText = ""
-    
+
     // Сумма всех транзакций выбраного счёта
     var sumTransactionForAccount: Double {
         accountVM.accountItem.transaction.reduce(0) { $0 + $1.sumTransaction }
@@ -151,12 +151,13 @@ struct ContentView: View {
                     .foregroundColor(Color(accountVM.accountItem.colorAccount ?? "swatch_gunsmoke"))
                     .font(.system(size: 24, weight: .bold, design: .default))
                 
-                List(accountVM.accountItem.transaction, selection: $transactionVM.transactionItem) { transaction in
+                List(accountVM.accountItem.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
                     NavigationLink(value: transaction)
                     {
                         TransactionCallView(transactionItem: transaction)
                     }
                 }
+ 
                 //.listStyle(.insetGrouped)
                 .navigationBarTitle(accountVM.accountItem.nameAccount ?? "")
                 .navigationBarTitleDisplayMode(.inline)

@@ -15,7 +15,7 @@ struct TransactionNewView: View {
     @EnvironmentObject var transactionVM: TransactionViewModel
     @EnvironmentObject var accountVM: AccountViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
-
+    
     @State private var selectedCategory: CategoryEntity?
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)],animation:.default)
@@ -75,31 +75,30 @@ struct TransactionNewView: View {
                     }
                 }
                 // MARK: Выбор счетов
-                if accountVM.accountItem == nil {
-                    Section(header: Text("Select an account")) {
-                        NavigationLink(destination: (
-                            DetailAccountSelectionView()
-                        ), label: {
+                Section(header: Text("Select an account")) {
+                    NavigationLink(destination: (
+                        DetailAccountSelectionView()
+                    ), label: {
+                        HStack {
                             HStack {
-                                HStack {
-                                    ZStack {
-                                        Circle()
-                                            .fill(Color(accountVM.accountItem?.colorAccount ?? "swatch_gunsmoke"))
-                                            .frame(width: 32, height: 32)
-                                        Image(systemName: accountVM.accountItem?.iconAccount ?? "plus")
-                                            .foregroundColor(Color.white)
-                                            .font(Font.footnote)
-                                    }
-                                    VStack(alignment: .leading) {
-                                        Text(accountVM.accountItem?.nameAccount ?? "Not selected account")
-                                            .bold()
-                                            .foregroundColor(.primary)
-                                    }
+                                ZStack {
+                                    Circle()
+                                        .fill(Color(accountVM.accountItem?.colorAccount ?? "swatch_gunsmoke"))
+                                        .frame(width: 32, height: 32)
+                                    Image(systemName: accountVM.accountItem?.iconAccount ?? "plus")
+                                        .foregroundColor(Color.white)
+                                        .font(Font.footnote)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text(accountVM.accountItem?.nameAccount ?? "Not selected account")
+                                        .bold()
+                                        .foregroundColor(.primary)
                                 }
                             }
-                        })
-                    }
+                        }
+                    })
                 }
+                
                 // MARK: Выбор категории
                 Section(header: Text("Select a category")) {
                     if fetchedCategory.isEmpty {
