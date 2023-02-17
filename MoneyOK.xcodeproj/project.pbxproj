@@ -56,6 +56,7 @@
 		05E3A133299D3B9800BA7FAE /* TypeTransaction+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */; };
 		05E3A136299D47E300BA7FAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A135299D47E300BA7FAE /* ContentView.swift */; };
 		05E3A13B299FD15700BA7FAE /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A13A299FD15700BA7FAE /* Date+Extention.swift */; };
+		05E3A14129A0335800BA7FAE /* TypeFilterDate+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A14029A0335800BA7FAE /* TypeFilterDate+Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypeTransaction+Enum.swift"; sourceTree = "<group>"; };
 		05E3A135299D47E300BA7FAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		05E3A13A299FD15700BA7FAE /* Date+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
+		05E3A14029A0335800BA7FAE /* TypeFilterDate+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypeFilterDate+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +287,7 @@
 			children = (
 				05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */,
 				05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */,
+				05E3A14029A0335800BA7FAE /* TypeFilterDate+Extention.swift */,
 				05E3A13A299FD15700BA7FAE /* Date+Extention.swift */,
 			);
 			path = Enum;
@@ -380,6 +383,7 @@
 				05C86F4927DF92A00037E5BB /* HeaderSettingView.swift in Sources */,
 				059CD3B527BBC83E00837AD1 /* TransactionEntity+CoreDataProperties.swift in Sources */,
 				057BAE0B27B3E03E00127DA3 /* CategotyView.swift in Sources */,
+				05E3A14129A0335800BA7FAE /* TypeFilterDate+Extention.swift in Sources */,
 				057BAE1027B3EC5C00127DA3 /* AccountsModel.xcdatamodeld in Sources */,
 				059CD3C027BBCADF00837AD1 /* UsageExample.swift in Sources */,
 				059CD3B627BBC83E00837AD1 /* AccountEntity+CoreDataClass.swift in Sources */,

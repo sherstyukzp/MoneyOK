@@ -29,6 +29,7 @@ struct StatisticsView: View {
     private var fetchedCategory:FetchedResults<CategoryEntity>
     
     @State var selectedType = TypeTrancaction.expenses
+    @State var selectedTypeFilterDate = TypeFilterDate.today
     
     @State private var selectedTypeBool = false
     
@@ -52,13 +53,11 @@ struct StatisticsView: View {
         NavigationView {
             VStack {
                 Form {
-                    Section {
-                        Button {
-                            //
-                        } label: {
-                            Label("ffff", systemImage: "clock")
+                    
+                    Picker(selection: $selectedTypeFilterDate, label: Label("Date", systemImage: "calendar")) {
+                        ForEach(TypeFilterDate.allCases, id:\.self) { value in
+                            Text(value.localizedName).tag(value)
                         }
-                        
                     }
                     
                     Section(header: Text("Total: \(startDate, formatter: formatter) - \(endDate, formatter: formatter)").font(.footnote)) {
