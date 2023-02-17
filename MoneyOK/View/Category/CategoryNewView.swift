@@ -17,7 +17,7 @@ struct CategoryNewView: View {
     @State private var isPresentedIcon: Bool = true
     
     let types = Array(TypeTrancaction.allCases)
-    @State var typeTrancaction: TypeTrancaction? = .costs
+    @State var typeTrancaction: TypeTrancaction? = .expenses
 
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
@@ -72,7 +72,7 @@ struct CategoryNewView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
-                        if typeTrancaction == .costs {
+                        if typeTrancaction == .expenses {
                             categoryVM.isExpensesCategorySave = false
                         }
                         if typeTrancaction == .income {

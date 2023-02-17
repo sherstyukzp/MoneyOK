@@ -24,7 +24,7 @@ struct TransactionNewView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)],animation:.default)
     private var fetchedCategory: FetchedResults<CategoryEntity>
     
-    @State var selectedType = TypeTrancaction.costs
+    @State var selectedType = TypeTrancaction.expenses
     
     @State private var personImage = UIImage()
     @State private var imagePicker = false
@@ -50,7 +50,7 @@ struct TransactionNewView: View {
                 
                 Section("Sum") {
                     HStack(alignment: .center) {
-                        if selectedType == .costs {
+                        if selectedType == .expenses {
                             Image(systemName: "minus.circle.fill")
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundColor(Color.red)
@@ -146,7 +146,7 @@ struct TransactionNewView: View {
                 Section("Advanced") {
                     VStack {
                         DatePicker("Time", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
-                            .environment(\.locale, Locale.init(identifier: "ru"))
+                            .environment(\.locale, Locale.init(identifier: "us"))
                     }
                     HStack {
                         Text("Note")

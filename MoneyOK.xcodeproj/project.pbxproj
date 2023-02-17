@@ -55,6 +55,7 @@
 		05E3A131299D1D8E00BA7FAE /* ActiveSheet+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */; };
 		05E3A133299D3B9800BA7FAE /* TypeTransaction+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */; };
 		05E3A136299D47E300BA7FAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A135299D47E300BA7FAE /* ContentView.swift */; };
+		05E3A13B299FD15700BA7FAE /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A13A299FD15700BA7FAE /* Date+Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveSheet+Enum.swift"; sourceTree = "<group>"; };
 		05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypeTransaction+Enum.swift"; sourceTree = "<group>"; };
 		05E3A135299D47E300BA7FAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		05E3A13A299FD15700BA7FAE /* Date+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +179,7 @@
 				057BADF227B3D9CE00127DA3 /* Category */,
 				057BADF127B3D9C400127DA3 /* Transactions */,
 				057BADF327B3D9D700127DA3 /* Settings */,
-				0587A0EA27E784B10033AEC3 /* StatisticsView.swift */,
+				05E3A139299FCB6A00BA7FAE /* Statistics */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,8 +285,17 @@
 			children = (
 				05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */,
 				05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */,
+				05E3A13A299FD15700BA7FAE /* Date+Extention.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		05E3A139299FCB6A00BA7FAE /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				0587A0EA27E784B10033AEC3 /* StatisticsView.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +374,7 @@
 			files = (
 				057BADFB27B3DAA300127DA3 /* CategoryCallView.swift in Sources */,
 				057BAE0527B3DB1A00127DA3 /* CategoryNewView.swift in Sources */,
+				05E3A13B299FD15700BA7FAE /* Date+Extention.swift in Sources */,
 				059CD3C727BBD26C00837AD1 /* KeyboardListener.swift in Sources */,
 				059CD3B427BBC83E00837AD1 /* TransactionEntity+CoreDataClass.swift in Sources */,
 				05C86F4927DF92A00037E5BB /* HeaderSettingView.swift in Sources */,

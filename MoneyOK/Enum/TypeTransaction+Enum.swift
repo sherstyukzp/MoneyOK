@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - Типы транзакции
 enum TypeTrancaction: String, Equatable, CaseIterable {
     
-    case costs = "Expense"
+    case expenses = "Expense"
     case income = "Income"
     
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }

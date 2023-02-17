@@ -19,7 +19,7 @@ struct DetailCategorySelectionView: View {
     
     var body: some View {
         Form {
-            if typeTransaction == .costs {
+            if typeTransaction == .expenses {
                 ForEach(fetchedCategory.filter{$0.isExpenses == false}){ (category: CategoryEntity) in
                     HStack {
                         ZStack {

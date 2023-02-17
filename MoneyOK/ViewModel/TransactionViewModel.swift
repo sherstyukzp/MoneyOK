@@ -25,7 +25,7 @@ class TransactionViewModel: ObservableObject {
             let transaction = TransactionEntity(context: context)
             
             var sumSave = 0.0
-            if typeTransactionNew == .costs {
+            if typeTransactionNew == .expenses {
                 sumSave = sumTransactionSave * -1
             }
             if typeTransactionNew == .income {

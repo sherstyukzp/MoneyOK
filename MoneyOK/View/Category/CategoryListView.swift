@@ -15,7 +15,7 @@ struct CategoryListView: View {
     private var fetchedCategory:FetchedResults<CategoryEntity>
     
     let types = Array(TypeTrancaction.allCases)
-    @State var typeTrancaction: TypeTrancaction? = .costs
+    @State var typeTrancaction: TypeTrancaction? = .expenses
     
     var body: some View {
         
@@ -29,7 +29,7 @@ struct CategoryListView: View {
             .pickerStyle(SegmentedPickerStyle())
             
             List {
-                if typeTrancaction == .costs {
+                if typeTrancaction == .expenses {
                     ForEach(fetchedCategory.filter{$0.isExpenses == false}) { category in
                         CategoryCallView(categoryItem: category)
                         
