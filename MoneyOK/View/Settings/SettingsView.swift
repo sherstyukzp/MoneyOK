@@ -40,12 +40,15 @@ struct SettingsView: View {
                 }
             }
             .navigationBarTitle(Text("Settings"))
-            .navigationBarItems(trailing: Button(action: {
-                dismiss()
-            }, label: {
-                Image(systemName: "xmark.circle.fill")
-            })
-            )
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
+                }
+            }
         }
     }
 }

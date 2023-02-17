@@ -179,42 +179,28 @@ struct TransactionNewView: View {
                 }
             }
             
-            .safeAreaInset(edge: .bottom) {
-                HStack {
+            .dismissingKeyboard()
+            
+            .navigationTitle("New transaction")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        accountVM.accountItem = nil
+                        dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
+                }
+                
+                ToolbarItem(placement: .confirmationAction) {
                     Button {
                         // MARK: Сохранение трензакции
                         transactionVM.imageTransactionSave = personImage
                         transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountItem, selectedCategory: selectedCategory!, typeTransactionNew: selectedType)
                         dismiss()
-                        
-                        print("Session is cancelled")
                     } label: {
-                        HStack {
-                            Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
-                            Text("Add").bold()
-                        }
-                        .frame(width: 300, height: 40)
-                        
-                        
-                    }.buttonStyle(.borderedProminent)
-                    
-                }
-                .padding(6)
-                .frame(maxWidth: .infinity)
-                .background(Color(UIColor.secondarySystemBackground))
-                .disabled(disableForm)
-                
-            }
-            .dismissingKeyboard()
-            
-            .navigationTitle("New transaction")
-            .toolbar {
-                ToolbarItem (placement: .navigationBarTrailing) {
-                    Button() {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                    }
+                        Text("Save")
+                    }.disabled(disableForm)
                 }
             }
             

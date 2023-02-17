@@ -23,7 +23,7 @@ struct StatisticsView: View {
     @FetchRequest(entity: TransactionEntity.entity(),
                   sortDescriptors: [NSSortDescriptor(keyPath: \TransactionEntity.dateTransaction, ascending: true)])
     private var fetchedTransaction: FetchedResults<TransactionEntity>
-
+    
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)])
     private var fetchedCategory:FetchedResults<CategoryEntity>
     
@@ -45,26 +45,24 @@ struct StatisticsView: View {
         let data: [MountPrice] = [
             MountPrice(mount: "Expenses", value: sumTransactionTupe(type: .costs)),
             MountPrice(mount: "Income", value: sumTransactionTupe(type: .income))
-            ]
+        ]
         
         NavigationView {
             ScrollView(showsIndicators: false) {
-                    GroupBox ("Expenses/Income") {
-                        Chart(data) { item in
-                            BarMark(
-                                x: .value("Mount", item.mount),
-                                y: .value("Value", item.value)
-                            ).foregroundStyle(by: .value("Type", item.mount))
-                                .annotation(alignment: .center, spacing: 10) {
-                                    Text("\(item.value, format: .currency(code: "USD"))")
-                                        .fontWeight(.bold)
-                                }
-                                
-                            
-                        }
-                        .chartLegend(.hidden)
-                        .frame(height: 250)
+                GroupBox ("Expenses/Income") {
+                    Chart(data) { item in
+                        BarMark(
+                            x: .value("Mount", item.mount),
+                            y: .value("Value", item.value)
+                        ).foregroundStyle(by: .value("Type", item.mount))
+                            .annotation(alignment: .center, spacing: 10) {
+                                Text("\(item.value, format: .currency(code: "USD"))")
+                                    .fontWeight(.bold)
+                            }
                     }
+                    .chartLegend(.hidden)
+                    .frame(height: 250)
+                }
                 
                 Picker("", selection: $selectedType) {
                     ForEach(TypeTrancaction.allCases, id:\.self) { value in
@@ -74,26 +72,26 @@ struct StatisticsView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 
                 if selectedType == .costs {
+                    
                     GroupBox ("By category of Expenses") {
-                        Chart(fetchedCategory.filter{$0.isExpenses == false}) { item in
+                        Chart(fetchedTransaction.filter({$0.transactionToCategory?.isExpenses == false})) { item in
                             BarMark(
-                                x: .value("Amount", item.categoryToTransaction?.count ?? 0),
-                                y: .value("Month", item.nameCategory ?? "")
-                            ).foregroundStyle(by: .value("Category", item.colorCategory!))
+                                x: .value("Amount", abs(item.sumTransaction)),
+                                y: .value("Month",  item.transactionToCategory?.nameCategory ?? "")
+                            ).foregroundStyle(by: .value("Category", (item.transactionToCategory?.colorCategory!)!))
                         }
                         .chartLegend(.hidden)
-                        .frame(minHeight: 250, maxHeight: 500)
+                        .frame(minHeight: 250, maxHeight: .infinity)
                     }
                 }
                 
                 if selectedType == .income {
                     GroupBox ("By category of Income") {
-                        Chart(fetchedCategory.filter{$0.isExpenses == true}) { item in
+                        Chart(fetchedTransaction.filter({$0.transactionToCategory?.isExpenses == true})) { item in
                             BarMark(
-                                x: .value("Amount", item.categoryToTransaction?.count ?? 0),
-                                y: .value("Month", item.nameCategory ?? "")
-                            ).foregroundStyle(by: .value("Category", item.colorCategory!))
-                                
+                                x: .value("Amount", abs(item.sumTransaction)),
+                                y: .value("Month",  item.transactionToCategory?.nameCategory ?? "")
+                            ).foregroundStyle(by: .value("Category", (item.transactionToCategory?.colorCategory!)!))
                         }
                         .chartLegend(.hidden)
                         .frame(minHeight: 250, maxHeight: .infinity)
@@ -101,27 +99,25 @@ struct StatisticsView: View {
                 }
                 
                 
-                
-                    
             }.padding(.all)
             
             
-            .navigationTitle(Text("Statistics"))
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
+                .navigationTitle(Text("Statistics"))
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("Cancel")
+                        }
+                        
                     }
-                    
                 }
-            }
         }
         
     }
     
-    /// Розрахунок загальних вітрат або дохіда
+    /// Розрахунок загальних витрат або дохіда
     /// - Parameter type: Тип транзакції (виьрата, дохід)
     /// - Returns: число
     func sumTransactionTupe(type: TypeTrancaction) -> Double {

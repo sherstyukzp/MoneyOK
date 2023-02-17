@@ -35,12 +35,11 @@ struct StatisticsTransactionsView: View {
             
                 .navigationTitle(Text("Statistics"))
                 .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button(action: {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button {
                             dismiss()
-                        }) {
-                            Text("Cancel").bold()
-                                .foregroundColor(Color.blue)
+                        } label: {
+                            Text("Cancel")
                         }
                     }
                 }
