@@ -27,6 +27,7 @@ struct StatisticsView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)])
     private var fetchedCategory:FetchedResults<CategoryEntity>
     
+    @State var selectedType = TypeTrancaction.costs
     
     // Складывает все транзакции
     var sumTransaction: Double {
@@ -48,7 +49,7 @@ struct StatisticsView: View {
         
         NavigationView {
             ScrollView(showsIndicators: false) {
-                    GroupBox ("Type") {
+                    GroupBox ("Expenses/Income") {
                         Chart(data) { item in
                             BarMark(
                                 x: .value("Mount", item.mount),
@@ -64,28 +65,42 @@ struct StatisticsView: View {
                         .chartLegend(.hidden)
                         .frame(height: 250)
                     }
-                GroupBox ("By category of Expenses") {
-                    Chart(fetchedCategory.filter{$0.isExpenses == false}) { item in
-                        BarMark(
-                            x: .value("Amount", item.categoryToTransaction?.count ?? 0),
-                            y: .value("Month", item.nameCategory ?? "")
-                        ).foregroundStyle(by: .value("Category", item.colorCategory!))
+                
+                Picker("", selection: $selectedType) {
+                    ForEach(TypeTrancaction.allCases, id:\.self) { value in
+                        Text(value.localizedName).tag(value)
                     }
-                    .chartLegend(.hidden)
-                    .frame(minHeight: 250, maxHeight: 500)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                
+                if selectedType == .costs {
+                    GroupBox ("By category of Expenses") {
+                        Chart(fetchedCategory.filter{$0.isExpenses == false}) { item in
+                            BarMark(
+                                x: .value("Amount", item.categoryToTransaction?.count ?? 0),
+                                y: .value("Month", item.nameCategory ?? "")
+                            ).foregroundStyle(by: .value("Category", item.colorCategory!))
+                        }
+                        .chartLegend(.hidden)
+                        .frame(minHeight: 250, maxHeight: 500)
+                    }
                 }
                 
-                GroupBox ("By category of Income") {
-                    Chart(fetchedCategory.filter{$0.isExpenses == true}) { item in
-                        BarMark(
-                            x: .value("Amount", item.categoryToTransaction?.count ?? 0),
-                            y: .value("Month", item.nameCategory ?? "")
-                        ).foregroundStyle(by: .value("Category", item.colorCategory!))
-                            
+                if selectedType == .income {
+                    GroupBox ("By category of Income") {
+                        Chart(fetchedCategory.filter{$0.isExpenses == true}) { item in
+                            BarMark(
+                                x: .value("Amount", item.categoryToTransaction?.count ?? 0),
+                                y: .value("Month", item.nameCategory ?? "")
+                            ).foregroundStyle(by: .value("Category", item.colorCategory!))
+                                
+                        }
+                        .chartLegend(.hidden)
+                        .frame(minHeight: 250, maxHeight: .infinity)
                     }
-                    .chartLegend(.hidden)
-                    .frame(minHeight: 250, maxHeight: .infinity)
                 }
+                
+                
                 
                     
             }.padding(.all)

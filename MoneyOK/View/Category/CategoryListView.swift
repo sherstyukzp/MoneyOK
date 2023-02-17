@@ -51,12 +51,7 @@ struct CategoryListView: View {
 }
 
 
-// MARK: - Типы транзакции
-enum TypeTrancaction: String, CaseIterable {
-    
-    case costs = "Expense"
-    case income = "Income"
-}
+
 
 struct CategoryListView_Previews: PreviewProvider {
     static var previews: some View {

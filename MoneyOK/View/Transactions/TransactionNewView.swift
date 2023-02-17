@@ -24,8 +24,7 @@ struct TransactionNewView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CategoryEntity.nameCategory, ascending: true)],animation:.default)
     private var fetchedCategory: FetchedResults<CategoryEntity>
     
-    let types = Array(TypeTransaction.allCases)
-    @State var typeTransactionNew: TypeTransaction? = .costs
+    @State var selectedType = TypeTrancaction.costs
     
     @State private var personImage = UIImage()
     @State private var imagePicker = false
@@ -42,20 +41,21 @@ struct TransactionNewView: View {
     var body: some View {
         NavigationView {
             Form {
-                Picker(selection: $typeTransactionNew, label: Text("Transaction categories")) {
-                    ForEach(types, id: \.rawValue) {
-                        Text($0.rawValue).tag(Optional<TypeTransaction>.some($0))
+                Picker("", selection: $selectedType) {
+                    ForEach(TypeTrancaction.allCases, id:\.self) { value in
+                        Text(value.localizedName).tag(value)
                     }
-                }.pickerStyle(SegmentedPickerStyle())
+                }
+                .pickerStyle(SegmentedPickerStyle())
                 
                 Section("Sum") {
                     HStack(alignment: .center) {
-                        if typeTransactionNew == .costs {
+                        if selectedType == .costs {
                             Image(systemName: "minus.circle.fill")
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundColor(Color.red)
                         }
-                        if typeTransactionNew == .income {
+                        if selectedType == .income {
                             Image(systemName: "plus.circle.fill")
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundColor(Color.green)
@@ -120,7 +120,7 @@ struct TransactionNewView: View {
                         .frame(maxWidth: .infinity)
                     } else {
                         NavigationLink(destination: (
-                            DetailCategorySelectionView(selectedItem: $selectedCategory, typeTransaction: $typeTransactionNew)
+                            DetailCategorySelectionView(selectedItem: $selectedCategory, typeTransaction: $selectedType)
                         ), label: {
                             HStack {
                                 HStack {
@@ -184,7 +184,7 @@ struct TransactionNewView: View {
                     Button {
                         // MARK: Сохранение трензакции
                         transactionVM.imageTransactionSave = personImage
-                        transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountItem, selectedCategory: selectedCategory!, typeTransactionNew: typeTransactionNew!)
+                        transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountItem, selectedCategory: selectedCategory!, typeTransactionNew: selectedType)
                         dismiss()
                         
                         print("Session is cancelled")

@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - Типы транзакции
-enum TypeTransaction: String, CaseIterable {
+enum TypeTrancaction: String, Equatable, CaseIterable {
     
     case costs = "Expense"
     case income = "Income"
-    //case transfer = "Translation"
+    
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
