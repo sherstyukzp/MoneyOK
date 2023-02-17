@@ -25,10 +25,7 @@ struct ColorSwatchView: View {
             "swatch_articblue",
             "swatch_wisteria",
             "swatch_mulberry",
-            "swatch_charm",
-            "swatch_oslogray",
-            "swatch_gunsmoke",
-            "swatch_schooner"
+            "swatch_charm"
         ]
 
         let columns = [

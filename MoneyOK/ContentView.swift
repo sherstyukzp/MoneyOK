@@ -57,43 +57,65 @@ struct ContentView: View {
     }
     
     var body: some View {
+    
         NavigationSplitView(columnVisibility: $columnVisibility) {
+            
             if !fetchedAccounts.isEmpty {
                 
                 List(selection: $accountVM.accountItem) {
                     
-                    if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
-                        Section("Favorites") {
-                            ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { account in
-                                NavigationLink(value: account)
-                                {
-                                    AccountCallView(accountItem: account)
-                                }
-                            }
-                        }
-                    }
+                    // TODO: Додати як в нагадуваннях
                     
-                    Section(fetchedAccounts.count <= 1 ? "Account" : "Accounts") {
-                        ForEach(fetchedAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { account in
-                            NavigationLink(value: account)
-                            {
-                                AccountCallView(accountItem: account)
+                    if searchText.isEmpty {
+                        
+                        if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
+                            Section("Favorites") {
+                                ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { account in
+                                    NavigationLink(value: account)
+                                    {
+                                        AccountCallView(accountItem: account)
+                                    }
+                                }
                             }
                         }
-                    }
-                    if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
-                        Section("Archive") {
-                            ForEach(fetchedAccounts.filter{$0.isArchive == true}) { account in
+                        
+                        Section(fetchedAccounts.count <= 1 ? "Account" : "Accounts") {
+                            ForEach(fetchedAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { account in
                                 NavigationLink(value: account)
                                 {
                                     AccountCallView(accountItem: account)
                                 }
                             }
                         }
-                    }
+                        if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
+                            Section("Archive") {
+                                ForEach(fetchedAccounts.filter{$0.isArchive == true}) { account in
+                                    NavigationLink(value: account)
+                                    {
+                                        AccountCallView(accountItem: account)
+                                    }
+                                }
+                            }
+                        }
+                        
+                    } else {
+                            if fetchedTransaction.isEmpty {
+                                Text("Not result") // TODO: Зробити прикольне вікно що немає результату
+                            } else {
+                                Section("Search results"){
+                                ForEach(fetchedTransaction, id: \.self) { account in
+                                    TransactionCallView(transactionItem: account)
+                                }
+                            }
+                            }
+                        }
                 }
+                .searchable(text: $searchText, placement: .sidebar)
+                .onChange(of: searchText) { newValue in
+                        fetchedTransaction.nsPredicate = searchPredicate(query: newValue)
+                    }
                 .listStyle(.insetGrouped)
-                .navigationTitle("Accounts")
+                //.navigationTitle("Accounts")
                 
                 .toolbar {
                     /// Кнопка Настройки в NavigationView
@@ -162,23 +184,20 @@ struct ContentView: View {
                     .foregroundColor(Color(accountVM.accountItem.colorAccount ?? "swatch_gunsmoke"))
                     .font(.system(size: 24, weight: .bold, design: .default))
                 
-                List(accountVM.accountItem.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
-
-                    NavigationLink(value: transaction)
-                    {
-                        TransactionCallView(transactionItem: transaction)
+                    List(accountVM.accountItem.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
+                        
+                        NavigationLink(value: transaction)
+                        {
+                            TransactionCallView(transactionItem: transaction)
+                        }
                     }
-                }
-
                 //.listStyle(.insetGrouped)
                 .navigationBarTitle(accountVM.accountItem.nameAccount ?? "")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     /// Кнопки створення нового рахунку та транзакції
                     ToolbarItemGroup(placement: .bottomBar) {
-                        
                         if !fetchedAccounts.isEmpty {
-                            
                             Button {
                                 activeSheet = .transaction
                             } label: {
@@ -221,6 +240,14 @@ struct ContentView: View {
         .navigationSplitViewStyle(.balanced)
     }
     
+    
+    /// Пошук по назві транзакції
+    /// - Parameter query: Запит
+    /// - Returns: Результат пошуку
+    private func searchPredicate(query: String) -> NSPredicate? {
+        if query.isEmpty { return nil }
+        return NSPredicate(format: "%K CONTAINS[cd] %@", argumentArray: [#keyPath(TransactionEntity.noteTransaction), query])
+    }
     
 }
 
