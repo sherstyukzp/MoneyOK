@@ -30,22 +30,17 @@ struct StatisticsView: View {
     
     @State var selectedType = TypeTrancaction.expenses
     
-    @State private var selectedTypeBool = true
+    @State private var selectedTypeBool = false
     
     @State private var startDate = Date.today().previous(.monday)
     @State private var endDate = Date.today().next(.sunday, considerToday: true)
     
-    
-//    // Складывает все транзакции
-//    var sumTransaction: Double {
-//        fetchedTransaction.reduce(0) { $0 + $1.sumTransaction }
-//    }
-    
-    
-//    var arrayTransactions: Array<Double> {
-//        fetchedTransaction.compactMap {Double($0.sumTransaction)}
-//    }
-    
+    private var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
+        return formatter
+    }()
+
     
     var body: some View {
         
@@ -66,7 +61,7 @@ struct StatisticsView: View {
                         
                     }
                     
-                    Section("Total") {
+                    Section(header: Text("Total: \(startDate, formatter: formatter) - \(endDate, formatter: formatter)").font(.footnote)) {
                         Chart(data) { item in
                             BarMark(
                                 x: .value("Mount", item.mount),
@@ -112,8 +107,6 @@ struct StatisticsView: View {
                         .chartLegend(.hidden)
                         .frame(minHeight: 250, maxHeight: .infinity)
                     }
-                    
-                    
                 }
             }
             
@@ -234,30 +227,6 @@ struct StatisticsView: View {
         let filterPeriod = NSPredicate(format: "dateTransaction >= %@ AND dateTransaction <= %@", startDate as NSDate, endDate as NSDate)
 
         return filterPeriod
-    }
-    
-//    private func categoryPredicate(type: Bool) -> NSPredicate? {
-//
-//        let filterPeriod = NSPredicate(format: "(transactionToCategory.isExpenses == %d)", type)
-//        return filterPeriod
-//    }
-    
-    private func categoryAndDataPredicate(type: Bool, startDate: Date, endDate: Date) -> NSPredicate? {
-        
-        //
-        let filterType = NSPredicate(format: "(transactionToCategory.isExpenses == %d)", type)
-        
-        let filterPeriod = NSPredicate(format: "dateTransaction >= %@ AND dateTransaction <= %@", startDate as NSDate, endDate as NSDate)
-        
-        let andPredicate = NSCompoundPredicate(type: .and, subpredicates: [filterType, filterPeriod])
-        
-        return andPredicate
-        
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TransactionEntity")
-//        fetchRequest.predicate = andPredicate
-//
-//        return ((try? viewContext.count(for: fetchRequest)) ?? 0)
-        
     }
     
 }
