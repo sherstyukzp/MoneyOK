@@ -15,9 +15,8 @@ enum TypeFilterDate: String, Equatable, CaseIterable {
     case exactDate = "Exact date" // Конкретна дата
     case toTheDate = "To the date" // До дати
     case aftertheDate = "After the date" // Після дати
-    case theSpecifiedRange = "The specified range" // Зазаначений діапазон
+    case rangeDate = "Range" // Зазаначений діапазон
     
-     
     
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }

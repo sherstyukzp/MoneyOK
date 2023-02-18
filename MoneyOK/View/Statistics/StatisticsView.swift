@@ -54,11 +54,11 @@ struct StatisticsView: View {
             VStack {
                 Form {
                     
-                    Picker(selection: $selectedTypeFilterDate, label: Label("Date", systemImage: "calendar")) {
-                        ForEach(TypeFilterDate.allCases, id:\.self) { value in
-                            Text(value.localizedName).tag(value)
-                        }
-                    }
+//                    Picker(selection: $selectedTypeFilterDate, label: Label("Date", systemImage: "calendar")) {
+//                        ForEach(TypeFilterDate.allCases, id:\.self) { value in
+//                            Text(value.localizedName).tag(value)
+//                        }
+//                    }
                     
                     Section(header: Text("Total: \(startDate, formatter: formatter) - \(endDate, formatter: formatter)").font(.footnote)) {
                         Chart(data) { item in
