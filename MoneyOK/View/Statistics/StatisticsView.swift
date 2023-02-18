@@ -84,8 +84,8 @@ struct StatisticsView: View {
                     }
                     /// Диапазон
                     if selectedTypeFilterDate == .rangeDate {
-                        DatePicker("From", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
-                        DatePicker("To", selection: $endDate, in: ...Date.now, displayedComponents: .date)
+                        DatePicker("From", selection: $selectedDatePicker, in: ...endDate, displayedComponents: .date)
+                        DatePicker("To", selection: $endDate, in: selectedDatePicker..., displayedComponents: .date)
                     }
                     
                     Section(header: Text("Total: \(startDate, formatter: formatter) - \(endDate, formatter: formatter)").font(.footnote)) {
