@@ -36,12 +36,14 @@ struct StatisticsView: View {
     @State private var startDate = Date.today().previous(.monday)
     @State private var endDate = Date.today().next(.sunday, considerToday: true)
     
+    @State private var selectedDatePicker = Date()
+    
     private var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"
         return formatter
     }()
-
+    
     
     var body: some View {
         
@@ -53,12 +55,38 @@ struct StatisticsView: View {
         NavigationView {
             VStack {
                 Form {
-                    
-//                    Picker(selection: $selectedTypeFilterDate, label: Label("Date", systemImage: "calendar")) {
-//                        ForEach(TypeFilterDate.allCases, id:\.self) { value in
-//                            Text(value.localizedName).tag(value)
-//                        }
-//                    }
+                    Picker(selection: $selectedTypeFilterDate, label:
+                            HStack {
+                        Image(systemName: "calendar")
+                            .foregroundColor(.white)
+                            .padding(.all, 5)
+                            .background(Color.red)
+                            .cornerRadius(5)
+                        Text("Date")
+                            .font(.headline)
+                    }
+                    ) {
+                        ForEach(TypeFilterDate.allCases, id:\.self) { value in
+                            Text(value.localizedName).tag(value)
+                        }
+                    }
+                    /// Конкретна дата
+                    if selectedTypeFilterDate == .exactDate {
+                        DatePicker("Select date", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
+                    }
+                    /// До дати
+                    if selectedTypeFilterDate == .toTheDate {
+                        DatePicker("Select date", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
+                    }
+                    /// Після дати
+                    if selectedTypeFilterDate == .aftertheDate {
+                        DatePicker("Select date", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
+                    }
+                    /// Диапазон
+                    if selectedTypeFilterDate == .rangeDate {
+                        DatePicker("From", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
+                        DatePicker("To", selection: $endDate, in: ...Date.now, displayedComponents: .date)
+                    }
                     
                     Section(header: Text("Total: \(startDate, formatter: formatter) - \(endDate, formatter: formatter)").font(.footnote)) {
                         Chart(data) { item in
@@ -120,82 +148,167 @@ struct StatisticsView: View {
                     }
                 }
                 
-                ToolbarItem(placement: .confirmationAction) {
-                    Menu {
-                        Button {
-                            let date = Date()
-                            let calendar = Calendar.current
-                            
-                            let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: date),
-                                                                                 month: calendar.component(.month, from: date),
-                                                                                 day: calendar.component(.day, from: date),
-                                                                                 hour: 0,
-                                                                                 minute: 0,
-                                                                                 second: 0
-                                                                                ))!
-                            
-                            let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: date),
-                                                                               month: calendar.component(.month, from: date),
-                                                                               day: calendar.component(.day, from: date),
-                                                                               hour: 23,
-                                                                               minute: 59,
-                                                                               second: 59
-                                                                              ))!
-                            
-                            startDate = startOfDate.previous(.monday)
-                            endDate = endOfDate.next(.sunday)
-                            
-                            fetchedTransaction.nsPredicate = periodPredicate(startDate: startDate, endDate: endDate)
-
-                            print("This week")
-                            
-                        } label: {
-                            Text("This week")
-                        }
-                        
-                        Button {
-                            let date = Date()
-                            let calendar = Calendar.current
-                            
-                            // Add 7 days
-                            let dateLast = Calendar.current.date(byAdding: .day, value: -7, to: date)
-                            
-                            let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: dateLast!),
-                                                                                 month: calendar.component(.month, from: dateLast!),
-                                                                                 day: calendar.component(.day, from: dateLast!),
-                                                                                 hour: 0,
-                                                                                 minute: 0,
-                                                                                 second: 0
-                                                                                ))!
-                            
-                            let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: date),
-                                                                               month: calendar.component(.month, from: date),
-                                                                               day: calendar.component(.day, from: date),
-                                                                               hour: 23,
-                                                                               minute: 59,
-                                                                               second: 59
-                                                                              ))!
-                            
-                            
-                            startDate = startOfDate.previous(.monday)
-                            endDate = endOfDate.previous(.sunday)
-                            
-                            fetchedTransaction.nsPredicate = periodPredicate(startDate: startDate, endDate: endDate)
-                            
-                            
-                            print("Last week")
-                            
-                            //
-                        } label: {
-                            Text("Last week")
-                        }
-                        
-                    } label: {
-                        Label("Options", systemImage: "calendar")
-                    }
-                }
             }
+            
+            .onChange(of: selectedTypeFilterDate, perform: { value in
+                if selectedTypeFilterDate == .today {
+                    
+                    let date = Date()
+                    let calendar = Calendar.current
+                    
+                    let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: date), month: calendar.component(.month, from: date), day: calendar.component(.day, from: date),
+                                                                         hour: 0,
+                                                                         minute: 0,
+                                                                         second: 0
+                                                                        ))!
+                    
+                    let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: date), month: calendar.component(.month, from: date), day: calendar.component(.day, from: date),
+                                                                       hour: 23,
+                                                                       minute: 59,
+                                                                       second: 59
+                                                                      ))!
+                    
+                    startDate = startOfDate
+                    endDate = endOfDate
+                    fetchedTransaction.nsPredicate = periodPredicate(startDate: startOfDate, endDate: endOfDate)
+                }
+            })
+            
+            .onChange(of: selectedDatePicker, perform: { value in
+                if selectedTypeFilterDate == .exactDate {
+                    
+                    let calendar = Calendar.current
+                    
+                    let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: selectedDatePicker), month: calendar.component(.month, from: selectedDatePicker), day: calendar.component(.day, from: selectedDatePicker),
+                                                                         hour: 0,
+                                                                         minute: 0,
+                                                                         second: 0
+                                                                        ))!
+                    
+                    let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: selectedDatePicker), month: calendar.component(.month, from: selectedDatePicker), day: calendar.component(.day, from: selectedDatePicker),
+                                                                       hour: 23,
+                                                                       minute: 59,
+                                                                       second: 59
+                                                                      ))!
+                    
+                    startDate = startOfDate
+                    endDate = endOfDate
+                    fetchedTransaction.nsPredicate = periodPredicate(startDate: startOfDate, endDate: endOfDate)
+                }
+                
+                if selectedTypeFilterDate == .toTheDate {
+                    
+                    let defaultDate = Calendar.current.date(byAdding: DateComponents(year: -5), to: Date()) ?? Date()
+                    let calendar = Calendar.current
+                    
+                    let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: defaultDate), month: calendar.component(.month, from: defaultDate), day: calendar.component(.day, from: defaultDate),
+                                                                         hour: 0,
+                                                                         minute: 0,
+                                                                         second: 0
+                                                                        ))!
+                    
+                    let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: selectedDatePicker), month: calendar.component(.month, from: selectedDatePicker), day: calendar.component(.day, from: selectedDatePicker),
+                                                                       hour: 23,
+                                                                       minute: 59,
+                                                                       second: 59
+                                                                      ))!
+                    
+                    startDate = startOfDate
+                    endDate = endOfDate
+                    fetchedTransaction.nsPredicate = periodPredicate(startDate: startOfDate, endDate: endOfDate)
+                    
+                }
+                
+                if selectedTypeFilterDate == .aftertheDate {
+                    
+                    let dateNow = Date()
+                    let calendar = Calendar.current
+                    
+                    let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: selectedDatePicker), month: calendar.component(.month, from: selectedDatePicker), day: calendar.component(.day, from: selectedDatePicker),
+                                                                         hour: 0,
+                                                                         minute: 0,
+                                                                         second: 0
+                                                                        ))!
+                    
+                    let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: dateNow), month: calendar.component(.month, from: dateNow), day: calendar.component(.day, from: dateNow),
+                                                                       hour: 23,
+                                                                       minute: 59,
+                                                                       second: 59
+                                                                      ))!
+                    
+                    startDate = startOfDate
+                    endDate = endOfDate
+                    fetchedTransaction.nsPredicate = periodPredicate(startDate: startOfDate, endDate: endOfDate)
+                    
+                }
+                
+                if selectedTypeFilterDate == .rangeDate {
+                    
+                    let calendar = Calendar.current
+                    
+                    let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: selectedDatePicker), month: calendar.component(.month, from: selectedDatePicker), day: calendar.component(.day, from: selectedDatePicker),
+                                                                         hour: 0,
+                                                                         minute: 0,
+                                                                         second: 0
+                                                                        ))!
+                    
+                    let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: endDate), month: calendar.component(.month, from: endDate), day: calendar.component(.day, from: endDate),
+                                                                       hour: 23,
+                                                                       minute: 59,
+                                                                       second: 59
+                                                                      ))!
+                    
+                    startDate = startOfDate
+                    
+                    fetchedTransaction.nsPredicate = periodPredicate(startDate: startOfDate, endDate: endOfDate)
+                    
+                }
+            })
+            
+            .onChange(of: endDate, perform: { value in
+                
+                if selectedTypeFilterDate == .rangeDate {
+                    
+                    let calendar = Calendar.current
+                    
+                    let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: selectedDatePicker), month: calendar.component(.month, from: selectedDatePicker), day: calendar.component(.day, from: selectedDatePicker),
+                                                                         hour: 0,
+                                                                         minute: 0,
+                                                                         second: 0
+                                                                        ))!
+                    
+                    let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: endDate), month: calendar.component(.month, from: endDate), day: calendar.component(.day, from: endDate),
+                                                                       hour: 23,
+                                                                       minute: 59,
+                                                                       second: 59
+                                                                      ))!
+                    
+                    startDate = startOfDate
+                    
+                    fetchedTransaction.nsPredicate = periodPredicate(startDate: startOfDate, endDate: endOfDate)
+                    
+                }
+            })
+            
             .onAppear {
+                let date = Date()
+                let calendar = Calendar.current
+                
+                let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: date), month: calendar.component(.month, from: date), day: calendar.component(.day, from: date),
+                                                                     hour: 0,
+                                                                     minute: 0,
+                                                                     second: 0
+                                                                    ))!
+                
+                let endOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: date), month: calendar.component(.month, from: date), day: calendar.component(.day, from: date),
+                                                                   hour: 23,
+                                                                   minute: 59,
+                                                                   second: 59
+                                                                  ))!
+                
+                startDate = startOfDate.previous(.monday)
+                endDate = endOfDate.next(.sunday)
+                
                 fetchedTransaction.nsPredicate = periodPredicate(startDate: startDate, endDate: endDate)
             }
         }
@@ -224,7 +337,7 @@ struct StatisticsView: View {
     private func periodPredicate(startDate: Date, endDate: Date) -> NSPredicate? {
         if startDate == Date() { return nil }
         let filterPeriod = NSPredicate(format: "dateTransaction >= %@ AND dateTransaction <= %@", startDate as NSDate, endDate as NSDate)
-
+        
         return filterPeriod
     }
     
