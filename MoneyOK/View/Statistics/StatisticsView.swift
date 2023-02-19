@@ -47,8 +47,6 @@ struct StatisticsView: View {
     }()
     
     
-    
-    
     var body: some View {
         
         let data: [MountPrice] = [
@@ -77,6 +75,7 @@ struct StatisticsView: View {
                     /// Конкретна дата
                     if selectedTypeFilterDate == .exactDate {
                         DatePicker("Select date", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
+                            
                     }
                     /// До дати
                     if selectedTypeFilterDate == .toTheDate {
