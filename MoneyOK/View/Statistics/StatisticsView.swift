@@ -46,7 +46,11 @@ struct StatisticsView: View {
         return formatter
     }()
     
-    
+    var limitRange: ClosedRange<Date> {
+            let tenDaysAgo = firstDateTransaction
+        let fiveDaysFromNow = Date.now
+            return tenDaysAgo...fiveDaysFromNow
+        }
     var body: some View {
         
         let data: [MountPrice] = [
@@ -74,21 +78,21 @@ struct StatisticsView: View {
                     }
                     /// Конкретна дата
                     if selectedTypeFilterDate == .exactDate {
-                        DatePicker("Select date", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
+                        DatePicker("Select date", selection: $selectedDatePicker, in: limitRange, displayedComponents: .date)
                             
                     }
                     /// До дати
                     if selectedTypeFilterDate == .toTheDate {
-                        DatePicker("Select date", selection: $selectedDatePicker, in: firstDateTransaction...Date.now , displayedComponents: .date)
+                        DatePicker("Select date", selection: $selectedDatePicker, in: limitRange , displayedComponents: .date)
                     }
                     /// Після дати
                     if selectedTypeFilterDate == .aftertheDate {
-                        DatePicker("Select date", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
+                        DatePicker("Select date", selection: $selectedDatePicker, in: limitRange, displayedComponents: .date)
                     }
                     /// Диапазон
                     if selectedTypeFilterDate == .rangeDate {
-                        DatePicker("From", selection: $selectedDatePicker, in: ...endDate, displayedComponents: .date)
-                        DatePicker("To", selection: $endDate, in: selectedDatePicker..., displayedComponents: .date)
+                        DatePicker("From", selection: $selectedDatePicker, in: limitRange, displayedComponents: .date)
+                        DatePicker("To", selection: $endDate, in: limitRange, displayedComponents: .date)
                     }
                     
                     Section(header: Text("Total: \(startDate, formatter: formatter) - \(endDate, formatter: formatter)").font(.footnote)) {
