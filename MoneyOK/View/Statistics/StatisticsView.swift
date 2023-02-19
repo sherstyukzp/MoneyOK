@@ -33,8 +33,8 @@ struct StatisticsView: View {
     
     @State private var selectedTypeBool = false
     
-    @State private var startDate = Date.today().previous(.monday)
-    @State private var endDate = Date.today().next(.sunday, considerToday: true)
+    @State private var startDate = Date()
+    @State private var endDate = Date()
     
     @State private var selectedDatePicker = Date()
     
@@ -43,6 +43,8 @@ struct StatisticsView: View {
         formatter.dateFormat = "dd MMM yyyy"
         return formatter
     }()
+    
+
     
     
     var body: some View {
@@ -198,7 +200,7 @@ struct StatisticsView: View {
                 
                 if selectedTypeFilterDate == .toTheDate {
                     
-                    let defaultDate = Calendar.current.date(byAdding: DateComponents(year: -5), to: Date()) ?? Date()
+                    let defaultDate = startDataTransaction()
                     let calendar = Calendar.current
                     
                     let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: defaultDate), month: calendar.component(.month, from: defaultDate), day: calendar.component(.day, from: defaultDate),
@@ -306,10 +308,12 @@ struct StatisticsView: View {
                                                                    second: 59
                                                                   ))!
                 
-                startDate = startOfDate.previous(.monday)
-                endDate = endOfDate.next(.sunday)
+                startDate = startOfDate
+                endDate = endOfDate
                 
-                fetchedTransaction.nsPredicate = periodPredicate(startDate: startDate, endDate: endDate)
+                fetchedTransaction.nsPredicate = periodPredicate(startDate: startOfDate, endDate: endOfDate)
+                
+                print(startDataTransaction())
             }
         }
         
@@ -339,6 +343,32 @@ struct StatisticsView: View {
         let filterPeriod = NSPredicate(format: "dateTransaction >= %@ AND dateTransaction <= %@", startDate as NSDate, endDate as NSDate)
         
         return filterPeriod
+    }
+    
+    private func startDataTransaction() -> Date {
+        
+        var firstDate = Date()
+        let itemFetchRequest = NSFetchRequest<TransactionEntity>(entityName: "TransactionEntity")
+        
+        let sortByDate = NSSortDescriptor.init(key: "dateTransaction", ascending: true)
+        
+        itemFetchRequest.sortDescriptors = [sortByDate]
+        itemFetchRequest.fetchLimit = 1
+        itemFetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let transactions = try viewContext.fetch(itemFetchRequest)
+            
+            for transaction in transactions {
+                firstDate = transaction.dateTransaction!
+            }
+            
+        } catch let error as NSError{
+            print("Could not fetch \(error)")
+        }
+        
+        return firstDate
+        
     }
     
 }
