@@ -33,6 +33,8 @@ struct StatisticsView: View {
     
     @State private var selectedTypeBool = false
     
+    @State private var firstDateTransaction = Date()
+    
     @State private var startDate = Date()
     @State private var endDate = Date()
     
@@ -44,14 +46,14 @@ struct StatisticsView: View {
         return formatter
     }()
     
-
+    
     
     
     var body: some View {
         
         let data: [MountPrice] = [
-            MountPrice(mount: "Expenses", value: sumTransactionTupe(type: .expenses)),
-            MountPrice(mount: "Income", value: sumTransactionTupe(type: .income))
+            MountPrice(mount: "Expenses", value: sumTransactionType(type: .expenses)),
+            MountPrice(mount: "Income", value: sumTransactionType(type: .income))
         ]
         
         NavigationView {
@@ -78,7 +80,7 @@ struct StatisticsView: View {
                     }
                     /// До дати
                     if selectedTypeFilterDate == .toTheDate {
-                        DatePicker("Select date", selection: $selectedDatePicker, in: ...Date.now, displayedComponents: .date)
+                        DatePicker("Select date", selection: $selectedDatePicker, in: firstDateTransaction...Date.now , displayedComponents: .date)
                     }
                     /// Після дати
                     if selectedTypeFilterDate == .aftertheDate {
@@ -200,10 +202,9 @@ struct StatisticsView: View {
                 
                 if selectedTypeFilterDate == .toTheDate {
                     
-                    let defaultDate = startDataTransaction()
                     let calendar = Calendar.current
                     
-                    let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: defaultDate), month: calendar.component(.month, from: defaultDate), day: calendar.component(.day, from: defaultDate),
+                    let startOfDate = calendar.date(from: DateComponents(year: calendar.component(.year, from: firstDateTransaction), month: calendar.component(.month, from: firstDateTransaction), day: calendar.component(.day, from: firstDateTransaction),
                                                                          hour: 0,
                                                                          minute: 0,
                                                                          second: 0
@@ -313,7 +314,7 @@ struct StatisticsView: View {
                 
                 fetchedTransaction.nsPredicate = periodPredicate(startDate: startOfDate, endDate: endOfDate)
                 
-                print(startDataTransaction())
+                firstDateTransaction = startDataTransaction()
             }
         }
         
@@ -324,7 +325,7 @@ struct StatisticsView: View {
     /// Розрахунок загальних витрат або дохіда
     /// - Parameter type: Тип транзакції (виьрата, дохід)
     /// - Returns: число
-    func sumTransactionTupe(type: TypeTrancaction) -> Double {
+    private func sumTransactionType(type: TypeTrancaction) -> Double {
         var result = 0.0
         switch type {
         case .expenses:
@@ -345,6 +346,8 @@ struct StatisticsView: View {
         return filterPeriod
     }
     
+    /// Визначення дати самої першої транзакції
+    /// - Returns: Дата транзакції
     private func startDataTransaction() -> Date {
         
         var firstDate = Date()
