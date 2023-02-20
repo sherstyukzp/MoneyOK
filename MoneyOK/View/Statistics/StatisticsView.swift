@@ -107,6 +107,7 @@ struct StatisticsView: View {
                                 }
                         }
                         
+                        
                         .padding(.all, 5)
                         .chartLegend(.hidden)
                         .frame(height: 250)
@@ -131,7 +132,9 @@ struct StatisticsView: View {
                     }
                     
                     Section(selectedType == .expenses ? "Expenses" : "Income") {
-                        Chart(fetchedTransaction.filter({$0.transactionToCategory?.isExpenses == selectedTypeBool})) { item in
+                        Chart(fetchedTransaction
+                            .sorted(by: { abs($0.sumTransaction) > abs($1.sumTransaction) })
+                            .filter({$0.transactionToCategory?.isExpenses == selectedTypeBool})) { item in
                             BarMark(
                                 x: .value("Amount", abs(item.sumTransaction)),
                                 y: .value("Month",  item.transactionToCategory?.nameCategory ?? "")
@@ -344,6 +347,7 @@ struct StatisticsView: View {
     
     private func periodPredicate(startDate: Date, endDate: Date) -> NSPredicate? {
         if startDate == Date() { return nil }
+        
         let filterPeriod = NSPredicate(format: "dateTransaction >= %@ AND dateTransaction <= %@", startDate as NSDate, endDate as NSDate)
         
         return filterPeriod

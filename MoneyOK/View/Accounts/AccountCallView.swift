@@ -52,6 +52,7 @@ struct AccountCallView: View {
         .contextMenu {
             // Вызов новой транзакции через кантексное меню счёта
             Button {
+                accountVM.accountItem = accountItem
                 self.isNewTransaction.toggle()
             } label: {
                 Label("New transaction", systemImage: "plus.circle")
@@ -95,8 +96,8 @@ struct AccountCallView: View {
         }
         // Свайп влево
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
-            
             Button {
+                accountVM.accountItem = accountItem
                 isNewTransaction.toggle()
             } label: {
                 Image(systemName: "plus.circle.fill")
@@ -105,8 +106,8 @@ struct AccountCallView: View {
         }
         // Свайп вправо
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-            
             Button {
+                accountVM.accountItem = accountItem
                 isNewTransaction.toggle()
             } label: {
                 Image(systemName: "minus.circle.fill")
