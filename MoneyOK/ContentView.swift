@@ -35,8 +35,6 @@ struct ContentView: View {
     
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
     
-    @State private var selectedTransaction: TransactionEntity?
-    
     @State private var activeSheet: ActiveSheet?
     
     @State private var searchText = ""
@@ -216,12 +214,23 @@ struct ContentView: View {
                 /// Кнопки створення нового рахунку та транзакції
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Menu {
+                        /// Favorite
                         if accountVM.accountSelect?.isArchive == false {
                             Button {
                                 accountVM.isFavorite(account: accountVM.accountSelect, context: viewContext)
                             } label: {
                                 Label("Favorite", systemImage: accountVM.accountSelect.isFavorite ? "heart.slash" : "heart")
                             }
+                        }
+                        /// Archive
+                        Button {
+                            accountVM.isArchive(account: accountVM.accountSelect, context: viewContext)
+                            if accountVM.accountSelect.isFavorite == true {
+                                accountVM.isFavorite(account: accountVM.accountSelect, context: viewContext)
+                            }
+                            
+                        } label: {
+                            Label(accountVM.accountSelect?.isArchive ?? false ? "Unarchive" : "Archive", systemImage: accountVM.accountSelect?.isArchive ?? false ? "archivebox.fill" : "archivebox")
                         }
                     } label: {
                         Label("", systemImage: "ellipsis.circle")
