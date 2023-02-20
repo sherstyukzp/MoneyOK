@@ -179,11 +179,12 @@ struct ContentView: View {
             
         } content: {
             
-            if (accountVM.accountSelect != nil) {
-                Text("\(sumTransactionForAccount, format: .currency(code: "USD"))")
-                    .foregroundColor(Color(accountVM.accountSelect.colorAccount ?? "swatch_gunsmoke"))
-                    .font(.system(size: 24, weight: .bold, design: .default))
-                
+            VStack {
+                if (accountVM.accountSelect != nil) {
+                    Text("\(sumTransactionForAccount, format: .currency(code: "USD"))")
+                        .foregroundColor(Color(accountVM.accountSelect.colorAccount ?? "swatch_gunsmoke"))
+                        .font(.system(size: 24, weight: .bold, design: .default))
+                    
                     List(accountVM.accountSelect.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
                         
                         NavigationLink(value: transaction)
@@ -191,41 +192,55 @@ struct ContentView: View {
                             TransactionCallView(transactionItem: transaction)
                         }
                     }
-                //.listStyle(.insetGrouped)
-                .navigationBarTitle(accountVM.accountSelect.nameAccount ?? "")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    /// Кнопки створення нового рахунку та транзакції
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        if !fetchedAccounts.isEmpty {
+                } else {
+                    NotTransactionsView()
+                }
+            }
+            
+            //.listStyle(.insetGrouped)
+            .navigationBarTitle(accountVM.accountSelect?.nameAccount ?? "")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(item: $activeSheet) { item in
+                switch item {
+                case .newAccount:
+                    AccountNewView()
+                case .settings:
+                    SettingsView()
+                case .statistics:
+                    StatisticsView()
+                case .transaction:
+                    TransactionNewView()
+                }
+            }
+            .toolbar {
+                /// Кнопки створення нового рахунку та транзакції
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Menu {
+                        if accountVM.accountSelect?.isArchive == false {
                             Button {
-                                activeSheet = .transaction
+                                accountVM.isFavorite(account: accountVM.accountSelect, context: viewContext)
                             } label: {
-                                HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                    Text("Transaction")
-                                }.fontWeight(.bold)
-                                    .foregroundColor(Color(accountVM.accountSelect.colorAccount ?? "swatch_gunsmoke"))
+                                Label("Favorite", systemImage: accountVM.accountSelect.isFavorite ? "heart.slash" : "heart")
                             }
-                            Spacer()
                         }
+                    } label: {
+                        Label("", systemImage: "ellipsis.circle")
                     }
                 }
-                
-                .sheet(item: $activeSheet) { item in
-                    switch item {
-                    case .newAccount:
-                        AccountNewView()
-                    case .settings:
-                        SettingsView()
-                    case .statistics:
-                        StatisticsView()
-                    case .transaction:
-                        TransactionNewView()
+                ToolbarItemGroup(placement: .bottomBar) {
+                    if !fetchedAccounts.isEmpty {
+                        Button {
+                            activeSheet = .transaction
+                        } label: {
+                            HStack {
+                                Image(systemName: "plus.circle.fill")
+                                Text("Transaction")
+                            }.fontWeight(.bold)
+                                .foregroundColor(Color(accountVM.accountSelect?.colorAccount ?? "swatch_gunsmoke"))
+                        }
+                        Spacer()
                     }
                 }
-            } else {
-                NotTransactionsView()
             }
             
             //.navigationSplitViewColumnWidth(min: 400, ideal: 450, max:  500)
