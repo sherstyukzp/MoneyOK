@@ -25,7 +25,7 @@ struct DetailCategorySelectionView: View {
                     HStack {
                         ZStack {
                             Circle()
-                                .fill(Color(category.colorCategory ?? "swatch_gunsmoke"))
+                                .fill(Color(category.colorCategory ?? "forArhive"))
                                 .frame(width: 32, height: 32)
                             Image(systemName: category.iconCategory ?? "plus")
                                 .foregroundColor(Color.white)
@@ -56,7 +56,7 @@ struct DetailCategorySelectionView: View {
                     HStack {
                         ZStack {
                             Circle()
-                                .fill(Color(category.colorCategory ?? "swatch_gunsmoke"))
+                                .fill(Color(category.colorCategory ?? "forArhive"))
                                 .frame(width: 32, height: 32)
                             Image(systemName: category.iconCategory ?? "plus")
                                 .foregroundColor(Color.white)

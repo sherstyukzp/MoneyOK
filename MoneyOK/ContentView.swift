@@ -14,6 +14,7 @@ struct ContentView: View {
 #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 #endif
+    @Environment(\.dismiss) var dismiss
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -262,7 +263,7 @@ struct ContentView: View {
                                 Image(systemName: "plus.circle.fill")
                                 Text("Transaction")
                             }.fontWeight(.bold)
-                                .foregroundColor(Color(accountVM.accountSelect?.colorAccount ?? "swatch_gunsmoke"))
+                                .foregroundColor(Color(accountVM.accountSelect?.colorAccount ?? "forArhive"))
                         }
                         Spacer()
                     }

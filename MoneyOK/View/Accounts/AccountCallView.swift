@@ -32,7 +32,7 @@ struct AccountCallView: View {
         HStack {
             ZStack {
                 Circle()
-                    .fill(Color((accountItem.isArchive ? "swatch_gunsmoke" : accountItem.colorAccount) ?? "swatch_gunsmoke"))
+                    .fill(Color((accountItem.isArchive ? "forArhive" : accountItem.colorAccount) ?? "forArhive"))
                     .frame(width: 36, height: 36)
                 Image(systemName: accountItem.iconAccount ?? "plus")
                     .foregroundColor(Color.white)
