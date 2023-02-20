@@ -61,6 +61,7 @@ class TransactionViewModel: ObservableObject {
     func delete(transaction: TransactionEntity, context: NSManagedObjectContext){
         context.delete(transaction)
         save(context: context)
+        cleane()
     }
     
     

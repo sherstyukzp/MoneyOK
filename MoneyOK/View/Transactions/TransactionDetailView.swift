@@ -10,7 +10,8 @@ import SwiftUI
 struct TransactionDetailView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var transactionVM: TransactionViewModel
     
     @ObservedObject var transactionItem: TransactionEntity
@@ -40,7 +41,7 @@ struct TransactionDetailView: View {
 
             }
             Section(header: Text("Note")) {
-                Text(transactionItem.noteTransaction == nil ? transactionItem.noteTransaction! : "Not note")
+                Text(transactionItem.noteTransaction ?? "Not note")
                
             }
             Section(header: Text("Image")) {
@@ -61,8 +62,6 @@ struct TransactionDetailView: View {
             Section {
                 Button(role: .destructive) {
                     showAlert.toggle()
-                    
-                    
                 } label: {
                     Text("Delete")
                 }
@@ -75,7 +74,7 @@ struct TransactionDetailView: View {
         
         .navigationBarTitle((transactionItem.transactionToCategory?.nameCategory) ?? "", displayMode: .inline)
     }
-    
+        
     // MARK: Alert
     func getAlert() -> Alert {
         return Alert(title: Text(alertTitle),
@@ -83,7 +82,7 @@ struct TransactionDetailView: View {
                      primaryButton: .destructive(Text("Yes"),
                                                  action: {
             transactionVM.delete(transaction: transactionItem, context: viewContext)
-            presentationMode.wrappedValue.dismiss() // Закрытие окна, вернуться в список транзакций
+            dismiss()
         }),
                      secondaryButton: .cancel())
     }
