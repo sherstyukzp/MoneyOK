@@ -17,7 +17,7 @@ struct NotTransactionsView: View {
                 .font(.title3)
                 .fontWeight(.bold)
                 .padding()
-            Text("To add a new transaction, click on the ''New Transaction'' button.")
+            Text("To add a new transaction, click on the ''Transaction'' button.")
                 .font(.subheadline)
                 .foregroundColor(Color.gray)
                 .multilineTextAlignment(.center)

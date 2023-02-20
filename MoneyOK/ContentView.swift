@@ -39,6 +39,11 @@ struct ContentView: View {
     
     @State private var searchText = ""
 
+    // Alert
+    @State var showAlert: Bool = false
+    @State var alertTitle: String = "Delete Account"
+    @State var alertMessage: String = "Do you really want to delete the score?"
+    
     //
     @SectionedFetchRequest(
         sectionIdentifier: \.sections,
@@ -179,20 +184,22 @@ struct ContentView: View {
             
             VStack {
                 if (accountVM.accountSelect != nil) {
-                    Text("\(sumTransactionForAccount, format: .currency(code: "USD"))")
-                        .foregroundColor(Color(accountVM.accountSelect.colorAccount ?? "swatch_gunsmoke"))
-                        .font(.system(size: 24, weight: .bold, design: .default))
-                    
-                    List(accountVM.accountSelect.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
-                        
-                        NavigationLink(value: transaction)
-                        {
-                            TransactionCallView(transactionItem: transaction)
+                    if accountVM.accountSelect.transaction.isEmpty {
+                        NotTransactionsView()
+                    } else {
+                        List(accountVM.accountSelect.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
+                            
+                            NavigationLink(value: transaction)
+                            {
+                                TransactionCallView(transactionItem: transaction)
+                            }
                         }
                     }
+                    
                 } else {
-                    NotTransactionsView()
+                    Text("Select the account")
                 }
+                
             }
             
             //.listStyle(.insetGrouped)
@@ -209,6 +216,9 @@ struct ContentView: View {
                 case .transaction:
                     TransactionNewView()
                 }
+            }
+            .alert(isPresented: $showAlert) {
+                getAlert()
             }
             .toolbar {
                 /// Кнопки створення нового рахунку та транзакції
@@ -231,6 +241,13 @@ struct ContentView: View {
                             
                         } label: {
                             Label(accountVM.accountSelect?.isArchive ?? false ? "Unarchive" : "Archive", systemImage: accountVM.accountSelect?.isArchive ?? false ? "archivebox.fill" : "archivebox")
+                        }
+                        Divider()
+                        /// Delete
+                        Button(role: .destructive) {
+                            showAlert.toggle()
+                        } label: {
+                            Label("Delete", systemImage: "trash")
                         }
                     } label: {
                         Label("", systemImage: "ellipsis.circle")
@@ -271,6 +288,18 @@ struct ContentView: View {
     private func searchPredicate(query: String) -> NSPredicate? {
         if query.isEmpty { return nil }
         return NSPredicate(format: "%K CONTAINS[cd] %@", argumentArray: [#keyPath(TransactionEntity.noteTransaction), query])
+    }
+    
+    // MARK: Alert
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle),
+                     message: Text(alertMessage),
+                     primaryButton: .destructive(Text("Yes"),
+                                                 action: {
+            accountVM.delete(account: accountVM.accountSelect, context: viewContext)
+            accountVM.accountSelect = nil
+        }),
+                     secondaryButton: .cancel())
     }
     
 }
