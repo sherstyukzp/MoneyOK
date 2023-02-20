@@ -19,26 +19,10 @@ struct DetailAccountSelectionView: View {
     var body: some View {
         Form {
             ForEach(fetchedAccount) { item in
-                HStack {
-                    ZStack {
-                        Circle()
-                            .fill(Color(item.colorAccount ?? "swatch_gunsmoke"))
-                            .frame(width: 32, height: 32)
-                        Image(systemName: item.iconAccount ?? "plus")
-                            .foregroundColor(Color.white)
-                            .font(Font.footnote)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text(item.nameAccount ?? "no name")
-                            .bold()
-                            .foregroundColor(.primary)
-                    }
-                    
-                }
+                AccountCallView(accountItem: item)
                 
                 .onTapGesture {
-                        accountVM.accountItem = item
+                        accountVM.accountSelect = item
                         dismiss()
                     }
                 

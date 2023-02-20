@@ -13,12 +13,12 @@ class AccountViewModel: ObservableObject {
     
     @Published var accountModel = AccountModel()
     
-    @Published var accountItem: AccountEntity!
+    @Published var accountSelect: AccountEntity!
     
     
     func createAccount(context: NSManagedObjectContext) {
         
-        if accountItem == nil {
+        if accountSelect == nil {
             let account = AccountEntity(context: context)
             account.idAccount = UUID()
             account.nameAccount = accountModel.nameAccount
@@ -27,11 +27,11 @@ class AccountViewModel: ObservableObject {
             account.noteAccount = accountModel.noteAccount
             account.dateOfCreation = Date()
         } else {
-            accountItem.nameAccount = accountModel.nameAccount
-            accountItem.iconAccount = accountModel.iconAccount
-            accountItem.colorAccount = accountModel.colorAccount
-            accountItem.noteAccount = accountModel.noteAccount
-            accountItem.dateOfCreation = Date()
+            accountSelect.nameAccount = accountModel.nameAccount
+            accountSelect.iconAccount = accountModel.iconAccount
+            accountSelect.colorAccount = accountModel.colorAccount
+            accountSelect.noteAccount = accountModel.noteAccount
+            accountSelect.dateOfCreation = Date()
         }
         
         save(context: context)
@@ -49,7 +49,7 @@ class AccountViewModel: ObservableObject {
     }
     
     func editAccount(account: AccountEntity){
-        accountItem = account
+        accountSelect = account
     }
     
     func delete(account: AccountEntity, context: NSManagedObjectContext){
@@ -62,7 +62,7 @@ class AccountViewModel: ObservableObject {
         accountModel.iconAccount = ""
         accountModel.colorAccount = ""
         accountModel.noteAccount = ""
-        accountItem = nil
+        accountSelect = nil
     }
     
     func save(context: NSManagedObjectContext) {

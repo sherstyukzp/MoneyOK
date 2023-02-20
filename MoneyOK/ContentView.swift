@@ -53,7 +53,7 @@ struct ContentView: View {
     
     // Сумма всех транзакций выбраного счёта
     var sumTransactionForAccount: Double {
-        accountVM.accountItem.transaction.reduce(0) { $0 + $1.sumTransaction }
+        accountVM.accountSelect.transaction.reduce(0) { $0 + $1.sumTransaction }
     }
     
     var body: some View {
@@ -62,7 +62,7 @@ struct ContentView: View {
             
             if !fetchedAccounts.isEmpty {
                 
-                List(selection: $accountVM.accountItem) {
+                List(selection: $accountVM.accountSelect) {
                     
                     // TODO: Додати як в нагадуваннях
                     
@@ -141,7 +141,7 @@ struct ContentView: View {
                         if horizontalSizeClass == .compact {
                             if !fetchedAccounts.isEmpty {
                                 Button {
-                                    accountVM.accountItem = nil
+                                    accountVM.accountSelect = nil
                                     activeSheet = .transaction
                                 } label: {
                                     HStack {
@@ -179,12 +179,12 @@ struct ContentView: View {
             
         } content: {
             
-            if (accountVM.accountItem != nil) {
+            if (accountVM.accountSelect != nil) {
                 Text("\(sumTransactionForAccount, format: .currency(code: "USD"))")
-                    .foregroundColor(Color(accountVM.accountItem.colorAccount ?? "swatch_gunsmoke"))
+                    .foregroundColor(Color(accountVM.accountSelect.colorAccount ?? "swatch_gunsmoke"))
                     .font(.system(size: 24, weight: .bold, design: .default))
                 
-                    List(accountVM.accountItem.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
+                    List(accountVM.accountSelect.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }), selection: $transactionVM.transactionItem) { transaction in
                         
                         NavigationLink(value: transaction)
                         {
@@ -192,7 +192,7 @@ struct ContentView: View {
                         }
                     }
                 //.listStyle(.insetGrouped)
-                .navigationBarTitle(accountVM.accountItem.nameAccount ?? "")
+                .navigationBarTitle(accountVM.accountSelect.nameAccount ?? "")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     /// Кнопки створення нового рахунку та транзакції
@@ -205,7 +205,7 @@ struct ContentView: View {
                                     Image(systemName: "plus.circle.fill")
                                     Text("Transaction")
                                 }.fontWeight(.bold)
-                                    .foregroundColor(Color(accountVM.accountItem.colorAccount ?? "swatch_gunsmoke"))
+                                    .foregroundColor(Color(accountVM.accountSelect.colorAccount ?? "swatch_gunsmoke"))
                             }
                             Spacer()
                         }

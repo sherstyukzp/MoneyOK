@@ -60,12 +60,7 @@ struct TransactionNewView: View {
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundColor(Color.green)
                         }
-                        // TODO: Добавить перевод
-                        //                        if typeTransactionNew == .transfer {
-                        //                            Image(systemName: "repeat.circle.fill")
-                        //                                .font(.system(size: 32, weight: .bold))
-                        //                                .foregroundColor(Color.blue)
-                        //                        }
+
                         HStack {
                             TextField("", value: $transactionVM.sumTransactionSave, format: .number)
                             Text("$")
@@ -79,25 +74,16 @@ struct TransactionNewView: View {
                     NavigationLink(destination: (
                         DetailAccountSelectionView()
                     ), label: {
-                        HStack {
-                            HStack {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color(accountVM.accountItem?.colorAccount ?? "swatch_gunsmoke"))
-                                        .frame(width: 32, height: 32)
-                                    Image(systemName: accountVM.accountItem?.iconAccount ?? "plus")
-                                        .foregroundColor(Color.white)
-                                        .font(Font.footnote)
-                                }
-                                VStack(alignment: .leading) {
-                                    Text(accountVM.accountItem?.nameAccount ?? "Not selected account")
-                                        .bold()
-                                        .foregroundColor(.primary)
-                                }
-                            }
+                        if accountVM.accountSelect == nil {
+                            Text("Not selected account")
+                                .bold()
+                                .foregroundColor(.primary)
+                        } else {
+                            AccountCallView(accountItem: accountVM.accountSelect)
                         }
                     })
                 }
+                
                 
                 // MARK: Выбор категории
                 Section(header: Text("Select a category")) {
@@ -185,7 +171,7 @@ struct TransactionNewView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
-                        accountVM.accountItem = nil
+                        accountVM.accountSelect = nil
                         dismiss()
                     } label: {
                         Text("Cancel")
@@ -196,7 +182,9 @@ struct TransactionNewView: View {
                     Button {
                         // MARK: Сохранение трензакции
                         transactionVM.imageTransactionSave = personImage
-                        transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountItem, selectedCategory: selectedCategory!, typeTransactionNew: selectedType)
+                        
+                        transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountSelect, selectedCategory: selectedCategory!, typeTransactionNew: selectedType)
+                        
                         dismiss()
                     } label: {
                         Text("Save")

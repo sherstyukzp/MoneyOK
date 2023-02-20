@@ -66,7 +66,7 @@ struct TransactionsView: View {
                         accountVM.accountModel.iconAccount = accountItem.iconAccount!
                         accountVM.accountModel.colorAccount = accountItem.colorAccount!
                         accountVM.accountModel.noteAccount = accountItem.noteAccount!
-                        accountVM.accountItem = accountItem
+                        accountVM.accountSelect = accountItem
                         self.isEditAccount.toggle()
                     }) {
                         Label("Edit Account", systemImage: "pencil")

@@ -57,7 +57,7 @@ struct AccountNewView: View {
                     TextEditor(text: $accountVM.accountModel.noteAccount)
                 }
                 
-                if accountVM.accountItem != nil {
+                if accountVM.accountSelect != nil {
                     Section(header: Text("Date of creation")) {
                         Text(accountVM.accountModel.dateOfCreationSave, style: .date)
                     }
@@ -66,7 +66,7 @@ struct AccountNewView: View {
                 
             }.dismissingKeyboard()
             
-                .navigationTitle(accountVM.accountItem == nil ? "New" : "Edit")
+                .navigationTitle(accountVM.accountSelect == nil ? "New" : "Edit")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -74,7 +74,7 @@ struct AccountNewView: View {
                             accountVM.createAccount(context: viewContext)
                             dismiss()
                         }) {
-                            Text(accountVM.accountItem == nil ? "Save" : "Update")
+                            Text(accountVM.accountSelect == nil ? "Save" : "Update")
                         }.disabled(disableForm)
                     }
                     

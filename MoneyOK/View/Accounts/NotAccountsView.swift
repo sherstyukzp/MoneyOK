@@ -31,7 +31,7 @@ struct NotAccountsView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 30.0)
                 Button {
-                    accountVM.accountItem = nil
+                    accountVM.accountSelect = nil
                     activeSheet = .newAccount
                 } label: {
                     HStack {
