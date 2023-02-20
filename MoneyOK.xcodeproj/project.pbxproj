@@ -204,6 +204,7 @@
 				057BADF427B3DA5A00127DA3 /* AccountsListView.swift */,
 				057BADF627B3DA7900127DA3 /* AccountCallView.swift */,
 				057BAE0227B3DB0600127DA3 /* AccountNewView.swift */,
+				054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -219,7 +220,6 @@
 				05D146C227B6A11100359081 /* TransactionDetailView.swift */,
 				05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */,
 				056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */,
-				054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */,
 				054BD3EA280C3D0B00032FF2 /* DetailCategorySelectionView.swift */,
 			);
 			path = Transactions;

@@ -15,29 +15,27 @@ class TransactionViewModel: ObservableObject {
     @Published var noteTransactionSave: String = ""
     @Published var dateTransactionSave: Date = Date()
     @Published var imageTransactionSave: UIImage = UIImage()
+    @Published var typeTransaction: TypeTrancaction = .expenses
     
     @Published var transactionItem: TransactionEntity!
     
     
-    func createTransaction(context: NSManagedObjectContext, selectedAccount: AccountEntity, selectedCategory: CategoryEntity, typeTransactionNew: TypeTrancaction) {
+    func createTransaction(context: NSManagedObjectContext, selectedAccount: AccountEntity, selectedCategory: CategoryEntity) {
         
         if transactionItem == nil {
             let transaction = TransactionEntity(context: context)
             
-            var sumSave = 0.0
-            if typeTransactionNew == .expenses {
-                sumSave = sumTransactionSave * -1
+            if typeTransaction == .expenses {
+                sumTransactionSave = sumTransactionSave * -1
             }
-            if typeTransactionNew == .income {
-                sumSave = sumTransactionSave
-            }
+            
 //            if typeTransactionNew == .transfer {
 //                // TODO: Добавить алгоритм перевода
 //                sumSave = sumTransactionSave
 //            }
             
             transaction.idTransaction = UUID()
-            transaction.sumTransaction = sumSave
+            transaction.sumTransaction = sumTransactionSave
             transaction.noteTransaction = noteTransactionSave
             transaction.dateTransaction = dateTransactionSave
             transaction.imageTransaction = imageTransactionSave.pngData()

@@ -9,17 +9,18 @@ import SwiftUI
 
 struct DetailCategorySelectionView: View {
     
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) var dismiss
+    
+    @EnvironmentObject var transactionVM: TransactionViewModel
+    @EnvironmentObject var categoryVM: CategoryViewModel
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.nameCategory, order: .forward)])
     private var fetchedCategory: FetchedResults<CategoryEntity>
-    
-    @Binding var selectedItem: CategoryEntity?
-    @Binding var typeTransaction: TypeTrancaction
-    
+ 
     
     var body: some View {
         Form {
-            if typeTransaction == .expenses {
+            if transactionVM.typeTransaction == .expenses {
                 ForEach(fetchedCategory.filter{$0.isExpenses == false}){ (category: CategoryEntity) in
                     HStack {
                         ZStack {
@@ -38,19 +39,19 @@ struct DetailCategorySelectionView: View {
                         }
                         
                         Spacer()
-                        if self.selectedItem == category {
+                        if categoryVM.categorySelected == category {
                             Image(systemName: "checkmark").foregroundColor(Color.blue)
                         }
                     }
                     //====
                     .onTapGesture {
-                        self.selectedItem = category
-                        self.presentationMode.wrappedValue.dismiss()
+                        categoryVM.categorySelected = category
+                        dismiss()
                     }
                 }
             }
             
-            if typeTransaction == .income {
+            if transactionVM.typeTransaction == .income {
                 ForEach(fetchedCategory.filter{$0.isExpenses == true}){ (category: CategoryEntity) in
                     HStack {
                         ZStack {
@@ -67,14 +68,14 @@ struct DetailCategorySelectionView: View {
                                 .foregroundColor(.primary)
                         }
                         Spacer()
-                        if self.selectedItem == category {
+                        if categoryVM.categorySelected == category {
                             Image(systemName: "checkmark").foregroundColor(Color.blue)
                         }
                     }
                     //====
                     .onTapGesture {
-                        self.selectedItem = category
-                        self.presentationMode.wrappedValue.dismiss()
+                        categoryVM.categorySelected = category
+                        dismiss()
                     }
                 }
             }

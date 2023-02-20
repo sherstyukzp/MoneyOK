@@ -68,7 +68,7 @@ struct CategoryNewView: View {
                 
             }.dismissingKeyboard()
             
-            .navigationTitle(categoryVM.categoryItem == nil ? "New category" : "Edit")
+            .navigationTitle(categoryVM.categorySelected == nil ? "New category" : "Edit")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -82,7 +82,7 @@ struct CategoryNewView: View {
                         categoryVM.createCategory(context: viewContext)
                         self.isNewCategory.toggle()
                     }) {
-                        Text(categoryVM.categoryItem == nil ? "Save" : "Update").bold()
+                        Text(categoryVM.categorySelected == nil ? "Save" : "Update").bold()
                     }.disabled(disableForm)
                 }
                 

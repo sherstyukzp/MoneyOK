@@ -44,7 +44,7 @@ struct CategoryCallView: View {
                 categoryVM.iconCategorySave = categoryItem.iconCategory!
                 categoryVM.colorCategorySave = categoryItem.colorCategory!
                 
-                categoryVM.categoryItem = categoryItem
+                categoryVM.categorySelected = categoryItem
                 self.isEditCategory.toggle()
             } label: {
                 Label("Edit", systemImage: "pencil")

@@ -16,12 +16,12 @@ class CategoryViewModel: ObservableObject {
     @Published var colorCategorySave = "swatch_articblue"
     @Published var isExpensesCategorySave = true
     
-    @Published var categoryItem: CategoryEntity!
+    @Published var categorySelected: CategoryEntity!
     
     
     func createCategory(context: NSManagedObjectContext) {
         
-        if categoryItem == nil {
+        if categorySelected == nil {
             let category = CategoryEntity(context: context)
             category.idCategory = UUID()
             category.nameCategory = nameCategorySave
@@ -30,10 +30,10 @@ class CategoryViewModel: ObservableObject {
             category.isExpenses = isExpensesCategorySave
             
         } else {
-            categoryItem.nameCategory = nameCategorySave
-            categoryItem.iconCategory = iconCategorySave
-            categoryItem.colorCategory = colorCategorySave
-            categoryItem.isExpenses = isExpensesCategorySave
+            categorySelected.nameCategory = nameCategorySave
+            categorySelected.iconCategory = iconCategorySave
+            categorySelected.colorCategory = colorCategorySave
+            categorySelected.isExpenses = isExpensesCategorySave
         }
         
         save(context: context)
@@ -44,7 +44,7 @@ class CategoryViewModel: ObservableObject {
     }
     
     func editCategory(category: CategoryEntity){
-        categoryItem = category
+        categorySelected = category
     }
     
     func delete(category: CategoryEntity, context: NSManagedObjectContext){

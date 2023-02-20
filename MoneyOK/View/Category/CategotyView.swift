@@ -46,7 +46,7 @@ struct CategotyView: View {
                     ToolbarItemGroup(placement: .bottomBar) {
                         Button(action: {
                             categoryVM.nameCategorySave = ""
-                            categoryVM.categoryItem = nil
+                            categoryVM.categorySelected = nil
                             self.isNewCategory.toggle()
                         }) {
                             Image(systemName: "plus.circle.fill")

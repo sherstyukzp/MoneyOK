@@ -20,8 +20,7 @@ struct DetailAccountSelectionView: View {
         Form {
             ForEach(fetchedAccount) { item in
                 AccountCallView(accountItem: item)
-                
-                .onTapGesture {
+                    .onTapGesture {
                         accountVM.accountSelect = item
                         dismiss()
                     }
