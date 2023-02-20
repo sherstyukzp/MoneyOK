@@ -15,8 +15,6 @@ struct TransactionNewView: View {
     @EnvironmentObject var transactionVM: TransactionViewModel
     @EnvironmentObject var accountVM: AccountViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
-
-    @State private var selectedCategory: CategoryEntity?
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \AccountEntity.nameAccount, ascending: true)],animation:.default)
     private var fetchedAccount: FetchedResults<AccountEntity>
@@ -32,8 +30,9 @@ struct TransactionNewView: View {
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
     var disableForm: Bool {
+        accountVM.accountSelect == nil ||
         transactionVM.sumTransactionSave == 0.0 ||
-        selectedCategory == nil
+        categoryVM.categorySelected == nil
     }
     
     var body: some View {
@@ -84,8 +83,6 @@ struct TransactionNewView: View {
                         }
                     })
                 }
-                
-                
                 // MARK: Выбор категории
                 Section(header: Text("Select a category")) {
                     if fetchedCategory.isEmpty {
@@ -174,7 +171,7 @@ struct TransactionNewView: View {
                         // MARK: Сохранение трензакции
                         transactionVM.imageTransactionSave = personImage
                         
-                        transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountSelect, selectedCategory: selectedCategory!)
+                        transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountSelect, selectedCategory: categoryVM.categorySelected)
                         
                         dismiss()
                     } label: {
