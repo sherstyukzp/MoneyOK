@@ -44,23 +44,13 @@ struct NotAccountsView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        .toolbar {
-            // Кнопка Настройки в NavigationView
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    activeSheet = .settings
-                } label: {
-                    Image(systemName: "gearshape")
-                }
-            }
-        }
         
         .sheet(item: $activeSheet) { item in
             switch item {
             case .newAccount:
                 AccountNewView()
             case .settings:
-                SettingsView()
+                Text("settings")
             case .statistics:
                 Text("statistics")
             case .transaction:

@@ -92,6 +92,8 @@ struct SideBarNavigation: View {
                 Text("Select the account")
             }
         }.navigationSplitViewStyle(.balanced)
+        
+        
     }
     
 }

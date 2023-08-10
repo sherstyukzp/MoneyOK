@@ -10,8 +10,20 @@ import CoreData
 
 
 struct ContentView: View {
+    
+    @FetchRequest(sortDescriptors:
+                    [
+                        SortDescriptor(\AccountEntity.nameAccount, order: .reverse)
+                    ])
+    private var fetchedAccounts: FetchedResults<AccountEntity>
+    
     var body: some View {
-        Navigation()
+        if fetchedAccounts.isEmpty {
+            NotAccountsView()
+        } else {
+            Navigation()
+        }
+       
     }
 }
 

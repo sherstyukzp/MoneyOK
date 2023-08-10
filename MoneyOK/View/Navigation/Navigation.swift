@@ -13,6 +13,8 @@ struct Navigation: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 #endif
     
+
+    
     var body: some View {
 #if os(iOS)
         if horizontalSizeClass == .compact {
