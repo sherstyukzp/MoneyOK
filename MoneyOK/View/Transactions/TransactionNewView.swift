@@ -159,7 +159,9 @@ struct TransactionNewView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
-                        accountVM.accountSelect = nil
+                        transactionVM.sumTransactionSave = 0
+                        transactionVM.noteTransactionSave = ""
+                        transactionVM.dateTransactionSave = Date()
                         dismiss()
                     } label: {
                         Text("Cancel")

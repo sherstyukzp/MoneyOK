@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050A714C2A85019300A13C7C /* Currency+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050A714B2A85019300A13C7C /* Currency+Enum.swift */; };
 		054BD3E9280C0C6700032FF2 /* DetailAccountSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */; };
 		054BD3EB280C3D0B00032FF2 /* DetailCategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BD3EA280C3D0B00032FF2 /* DetailCategorySelectionView.swift */; };
 		056EB66D27E8F60400A4C6DB /* StatisticsTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */; };
@@ -50,7 +51,6 @@
 		05D146C327B6A11100359081 /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D146C227B6A11100359081 /* TransactionDetailView.swift */; };
 		05DCBF1C27B9847700448716 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DCBF1B27B9847700448716 /* CategoryViewModel.swift */; };
 		05DCBF2E27B9ACBA00448716 /* TransactionAllListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */; };
-		05E3A12D299D0DF300BA7FAE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A12C299D0DF300BA7FAE /* AccountModel.swift */; };
 		05E3A12F299D162900BA7FAE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A12E299D162900BA7FAE /* MainView.swift */; };
 		05E3A131299D1D8E00BA7FAE /* ActiveSheet+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */; };
 		05E3A133299D3B9800BA7FAE /* TypeTransaction+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */; };
@@ -60,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		050A714B2A85019300A13C7C /* Currency+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency+Enum.swift"; sourceTree = "<group>"; };
 		054BD3E8280C0C6700032FF2 /* DetailAccountSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccountSelectionView.swift; sourceTree = "<group>"; };
 		054BD3EA280C3D0B00032FF2 /* DetailCategorySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategorySelectionView.swift; sourceTree = "<group>"; };
 		056EB66C27E8F60400A4C6DB /* StatisticsTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsTransactionsView.swift; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		05D146C227B6A11100359081 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
 		05DCBF1B27B9847700448716 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		05DCBF2D27B9ACBA00448716 /* TransactionAllListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionAllListView.swift; sourceTree = "<group>"; };
-		05E3A12C299D0DF300BA7FAE /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		05E3A12E299D162900BA7FAE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		05E3A130299D1D8E00BA7FAE /* ActiveSheet+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveSheet+Enum.swift"; sourceTree = "<group>"; };
 		05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypeTransaction+Enum.swift"; sourceTree = "<group>"; };
@@ -168,7 +168,6 @@
 		057BADED27B3D99700127DA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				05E3A12C299D0DF300BA7FAE /* AccountModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +288,7 @@
 				05E3A132299D3B9800BA7FAE /* TypeTransaction+Enum.swift */,
 				05E3A14029A0335800BA7FAE /* TypeFilterDate+Extention.swift */,
 				05E3A13A299FD15700BA7FAE /* Date+Extention.swift */,
+				050A714B2A85019300A13C7C /* Currency+Enum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -415,12 +415,12 @@
 				05DCBF1C27B9847700448716 /* CategoryViewModel.swift in Sources */,
 				057BADE027B3D98E00127DA3 /* MoneyOKApp.swift in Sources */,
 				057BAE0927B3DF4A00127DA3 /* AccountsView.swift in Sources */,
-				05E3A12D299D0DF300BA7FAE /* AccountModel.swift in Sources */,
 				05E3A12F299D162900BA7FAE /* MainView.swift in Sources */,
 				05E3A136299D47E300BA7FAE /* ContentView.swift in Sources */,
 				057BADF927B3DA9000127DA3 /* CategoryListView.swift in Sources */,
 				057BAE0327B3DB0600127DA3 /* AccountNewView.swift in Sources */,
 				059CD3B827BBC83E00837AD1 /* CategoryEntity+CoreDataClass.swift in Sources */,
+				050A714C2A85019300A13C7C /* Currency+Enum.swift in Sources */,
 				05E3A133299D3B9800BA7FAE /* TypeTransaction+Enum.swift in Sources */,
 				057BAE1A27B45F3B00127DA3 /* TransactionViewModel.swift in Sources */,
 			);

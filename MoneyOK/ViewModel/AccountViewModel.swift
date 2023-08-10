@@ -11,27 +11,33 @@ import CoreData
 
 class AccountViewModel: ObservableObject {
     
-    @Published var accountModel = AccountModel()
-    
     @Published var accountSelect: AccountEntity!
     
+    @Published var nameAccount = ""
+    @Published var iconAccount = "creditcard.fill"
+    @Published var colorAccount = "swatch_articblue"
+    @Published var noteAccount = ""
+    @Published var selectedCurrency: Currency = .usd
+    @Published var dateOfCreationSave = Date()
     
     func createAccount(context: NSManagedObjectContext) {
         
         if accountSelect == nil {
             let account = AccountEntity(context: context)
             account.idAccount = UUID()
-            account.nameAccount = accountModel.nameAccount
-            account.iconAccount = accountModel.iconAccount
-            account.colorAccount = accountModel.colorAccount
-            account.noteAccount = accountModel.noteAccount
+            account.nameAccount = nameAccount
+            account.iconAccount = iconAccount
+            account.colorAccount = colorAccount
+            account.noteAccount = noteAccount
+            account.currency = selectedCurrency.rawValue
             account.dateOfCreation = Date()
         } else {
-            accountSelect.nameAccount = accountModel.nameAccount
-            accountSelect.iconAccount = accountModel.iconAccount
-            accountSelect.colorAccount = accountModel.colorAccount
-            accountSelect.noteAccount = accountModel.noteAccount
-            accountSelect.dateOfCreation = Date()
+            accountSelect.nameAccount = nameAccount
+            accountSelect.iconAccount = iconAccount
+            accountSelect.colorAccount = colorAccount
+            accountSelect.noteAccount = noteAccount
+            accountSelect.currency = selectedCurrency.rawValue
+            accountSelect.dateOfCreation = dateOfCreationSave
         }
         
         save(context: context)
@@ -57,11 +63,12 @@ class AccountViewModel: ObservableObject {
         save(context: context)
     }
     
-    func clean() {
-        accountModel.nameAccount = ""
-        accountModel.iconAccount = ""
-        accountModel.colorAccount = ""
-        accountModel.noteAccount = ""
+    private func clean() {
+        nameAccount = ""
+        iconAccount = ""
+        colorAccount = ""
+        noteAccount = ""
+        selectedCurrency = .usd
         accountSelect = nil
     }
     

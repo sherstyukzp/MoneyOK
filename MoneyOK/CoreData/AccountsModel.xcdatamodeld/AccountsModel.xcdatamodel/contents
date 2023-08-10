@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AccountEntity" representedClassName="AccountEntity" syncable="YES">
         <attribute name="colorAccount" optional="YES" attributeType="String"/>
+        <attribute name="currency" optional="YES" attributeType="String"/>
         <attribute name="dateOfCreation" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="iconAccount" optional="YES" attributeType="String"/>
         <attribute name="idAccount" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="isArchive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isArchive" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="nameAccount" optional="YES" attributeType="String"/>
         <attribute name="noteAccount" optional="YES" attributeType="String"/>
-        <attribute name="orderIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="accountToTransaction" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TransactionEntity" inverseName="transactionToAccount" inverseEntity="TransactionEntity"/>
     </entity>
     <entity name="CategoryEntity" representedClassName="CategoryEntity" syncable="YES">
@@ -29,9 +29,4 @@
         <relationship name="transactionToAccount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountEntity" inverseName="accountToTransaction" inverseEntity="AccountEntity"/>
         <relationship name="transactionToCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryEntity" inverseName="categoryToTransaction" inverseEntity="CategoryEntity"/>
     </entity>
-    <elements>
-        <element name="AccountEntity" positionX="-345.125" positionY="-74.86328125" width="128" height="193"/>
-        <element name="CategoryEntity" positionX="95.5" positionY="-18.6484375" width="128" height="133"/>
-        <element name="TransactionEntity" positionX="-157.4296875" positionY="-22.29296875" width="128" height="148"/>
-    </elements>
 </model>

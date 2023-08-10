@@ -24,7 +24,7 @@ extension AccountEntity {
     @NSManaged public var isArchive: Bool
     @NSManaged public var isFavorite: Bool
     @NSManaged public var noteAccount: String?
-    @NSManaged public var orderIndex: Int64
+    @NSManaged public var currency: String?
     @NSManaged public var accountToTransaction: Set<TransactionEntity>?
     
     public var transaction: [TransactionEntity] {

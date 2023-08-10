@@ -28,7 +28,6 @@ struct AccountCallView: View {
     }
     
     var body: some View {
-        
         HStack {
             ZStack {
                 Circle()
@@ -44,9 +43,13 @@ struct AccountCallView: View {
                     .foregroundColor(accountItem.isArchive ? .gray : .primary)
                     .font(.headline)
                     .fontWeight(.bold)
-                Text("Balance: \(sumTransaction, format: .currency(code: "USD"))")
-                    .font(Font.footnote)
-                    .foregroundColor(Color.gray)
+                HStack {
+                    Text("Balance:")
+                    Text("\(sumTransaction, format: .currency(code: "\(accountItem.currency ?? "")"))")
+                        .bold()
+                }
+                .font(Font.footnote)
+                .foregroundColor(Color.gray)
             }
         }
         .contextMenu {
@@ -68,10 +71,10 @@ struct AccountCallView: View {
             }
             
             Button {
-                accountVM.accountModel.nameAccount = accountItem.nameAccount!
-                accountVM.accountModel.iconAccount = accountItem.iconAccount!
-                accountVM.accountModel.colorAccount = accountItem.colorAccount!
-                accountVM.accountModel.noteAccount = accountItem.noteAccount!
+                accountVM.nameAccount = accountItem.nameAccount!
+                accountVM.iconAccount = accountItem.iconAccount!
+                accountVM.colorAccount = accountItem.colorAccount!
+                accountVM.noteAccount = accountItem.noteAccount!
                 accountVM.accountSelect = accountItem
                 self.isEditAccount.toggle()
             } label: {
@@ -102,7 +105,7 @@ struct AccountCallView: View {
             } label: {
                 Image(systemName: "plus.circle.fill")
             }.tint(.green)
-
+            
         }
         // Свайп вправо
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {

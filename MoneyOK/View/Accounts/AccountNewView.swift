@@ -18,9 +18,9 @@ struct AccountNewView: View {
     
     // MARK: - Проверка введённых данных, если данные введены то кнопка сохранить доступна
     var disableForm: Bool {
-        accountVM.accountModel.nameAccount.isEmpty ||
-        accountVM.accountModel.iconAccount.isEmpty ||
-        accountVM.accountModel.colorAccount.isEmpty
+        accountVM.nameAccount.isEmpty ||
+        accountVM.iconAccount.isEmpty ||
+        accountVM.colorAccount.isEmpty
     }
     
     var body: some View {
@@ -30,36 +30,44 @@ struct AccountNewView: View {
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(Color(accountVM.accountModel.colorAccount.isEmpty ? "swatch_articblue" : accountVM.accountModel.colorAccount))
+                                .fill(Color(accountVM.colorAccount.isEmpty ? "swatch_articblue" : accountVM.colorAccount))
                                 .frame(width: 90, height: 90)
                                 .shadow(radius: 10)
                                 .padding()
-                            Image(systemName: accountVM.accountModel.iconAccount.isEmpty ? "creditcard.fill" : accountVM.accountModel.iconAccount)
+                            Image(systemName: accountVM.iconAccount.isEmpty ? "creditcard.fill" : accountVM.iconAccount)
                                 .font(Font.largeTitle)
                                 .foregroundColor(Color.white)
                         }
-                        
-                        TextField("Name account", text: $accountVM.accountModel.nameAccount)
-                            .padding()
+                        HStack {
+                            TextField("Name account", text: $accountVM.nameAccount)
+                            Picker("", selection: $accountVM.selectedCurrency) {
+                                ForEach(Currency.allCases, id: \.self) { currency in
+                                    Text(currency.localizedName)
+                                        .tag(currency)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                        }.padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10.0)
                             .padding(.bottom)
+                        
                     }
                 }
                 Section(header: Text("Color")) {
-                    ColorSwatchView(selection: $accountVM.accountModel.colorAccount)
+                    ColorSwatchView(selection: $accountVM.colorAccount)
                 }
                 Section(header: Text("Icon")) {
-                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountVM.accountModel.iconAccount, category: .accounts , axis: .vertical, haptic: true).frame(height: 300)
+                    SFSymbolsPicker(isPresented: $isPresentedIcon, icon: $accountVM.iconAccount, category: .accounts , axis: .vertical, haptic: true).frame(height: 300)
                 }
                 
                 Section(header: Text("Note")) {
-                    TextEditor(text: $accountVM.accountModel.noteAccount)
+                    TextEditor(text: $accountVM.noteAccount)
                 }
                 
                 if accountVM.accountSelect != nil {
                     Section(header: Text("Date of creation")) {
-                        Text(accountVM.accountModel.dateOfCreationSave, style: .date)
+                        Text(accountVM.dateOfCreationSave, style: .date)
                     }
                 }
                 

@@ -62,10 +62,10 @@ struct TransactionsView: View {
                     
                     // Редактирование счёта из меню
                     Button(action: {
-                        accountVM.accountModel.nameAccount = accountItem.nameAccount!
-                        accountVM.accountModel.iconAccount = accountItem.iconAccount!
-                        accountVM.accountModel.colorAccount = accountItem.colorAccount!
-                        accountVM.accountModel.noteAccount = accountItem.noteAccount!
+                        accountVM.nameAccount = accountItem.nameAccount!
+                        accountVM.iconAccount = accountItem.iconAccount!
+                        accountVM.colorAccount = accountItem.colorAccount!
+                        accountVM.noteAccount = accountItem.noteAccount!
                         accountVM.accountSelect = accountItem
                         self.isEditAccount.toggle()
                     }) {

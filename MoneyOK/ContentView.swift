@@ -71,7 +71,6 @@ struct ContentView: View {
                     // TODO: Додати як в нагадуваннях
                     
                     if searchText.isEmpty {
-                        
                         if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
                             Section("Favorites") {
                                 ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { account in
@@ -145,7 +144,7 @@ struct ContentView: View {
                         if horizontalSizeClass == .compact {
                             if !fetchedAccounts.isEmpty {
                                 Button {
-                                    accountVM.accountSelect = nil
+                                    
                                     activeSheet = .transaction
                                 } label: {
                                     HStack {
@@ -182,7 +181,6 @@ struct ContentView: View {
             }
             
         } content: {
-            
             VStack {
                 if (accountVM.accountSelect != nil) {
                     if accountVM.accountSelect.transaction.isEmpty {
