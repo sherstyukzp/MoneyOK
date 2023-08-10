@@ -40,6 +40,7 @@ struct AccountNewView: View {
                         }
                         HStack {
                             TextField("Name account", text: $accountVM.nameAccount)
+                                .padding(4)
                             Picker("", selection: $accountVM.selectedCurrency) {
                                 ForEach(Currency.allCases, id: \.self) { currency in
                                     Text(currency.localizedName)
@@ -47,11 +48,10 @@ struct AccountNewView: View {
                                 }
                             }
                             .pickerStyle(.menu)
-                        }.padding()
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(10.0)
-                            .padding(.bottom)
-                        
+                        }
+                        .padding(8)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(10.0)
                     }
                 }
                 Section(header: Text("Color")) {
@@ -63,6 +63,7 @@ struct AccountNewView: View {
                 
                 Section(header: Text("Note")) {
                     TextEditor(text: $accountVM.noteAccount)
+                        .frame(height: 80)
                 }
                 
                 if accountVM.accountSelect != nil {
@@ -74,7 +75,7 @@ struct AccountNewView: View {
                 
             }.dismissingKeyboard()
             
-                .navigationTitle(accountVM.accountSelect == nil ? "New" : "Edit")
+                .navigationTitle(accountVM.accountSelect == nil ? "New account" : "Edit account")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

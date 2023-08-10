@@ -63,7 +63,9 @@ struct TransactionNewView: View {
 
                         HStack {
                             TextField("", value: $transactionVM.sumTransactionSave, format: .number)
-                            Text("$")
+                            if accountVM.accountSelect != nil {
+                                Text(accountVM.accountSelect.currency ?? "")
+                            }
                         }
                         .font(Font.system(size: 32, weight: .bold))
                         .keyboardType(.decimalPad)
@@ -120,7 +122,7 @@ struct TransactionNewView: View {
                 Section("Advanced") {
                     VStack {
                         DatePicker("Time", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
-                            .environment(\.locale, Locale.init(identifier: "us"))
+                            .environment(\.locale, Locale.init(identifier: String(Locale.preferredLanguages[0].prefix(2))))
                     }
                     HStack {
                         Text("Note")

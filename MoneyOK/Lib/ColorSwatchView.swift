@@ -29,24 +29,24 @@ struct ColorSwatchView: View {
         ]
 
         let columns = [
-            GridItem(.adaptive(minimum: 60))
+            GridItem(.adaptive(minimum: 40))
         ]
 
-        LazyVGrid(columns: columns, spacing: 10) {
+        LazyVGrid(columns: columns, spacing: 2) {
             ForEach(swatches, id: \.self){ swatch in
                 ZStack {
                     Circle()
                         .fill(Color(swatch))
-                        .frame(width: 50, height: 50)
+                        .frame(width: 40, height: 40)
                         .onTapGesture(perform: {
                             selection = swatch
                         })
-                        .padding(10)
+                        .padding(5)
 
                     if selection == swatch {
                         Circle()
-                            .stroke(Color(swatch), lineWidth: 5)
-                            .frame(width: 60, height: 60)
+                            .stroke(Color(swatch), lineWidth: 4)
+                            .frame(width: 50, height: 50)
                     }
                 }
             }
