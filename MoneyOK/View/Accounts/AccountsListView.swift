@@ -10,8 +10,6 @@ import CoreData
 
 struct AccountsListView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
     @FetchRequest(sortDescriptors:
                     [
                         SortDescriptor(\AccountEntity.nameAccount, order: .reverse)
@@ -25,19 +23,18 @@ struct AccountsListView: View {
     
     private var fetchedTransaction: FetchedResults<TransactionEntity>
     
+    @EnvironmentObject var accountVM: AccountViewModel
     
     @State private var searchText = ""
     
     var body: some View {
         
-        List {
+        List(selection: $accountVM.accountSelect) {
             if searchText.isEmpty {
-                
                 if !(fetchedAccounts.filter{$0.isFavorite == true}).isEmpty {
                     Section("Favorites") {
                         ForEach(fetchedAccounts.filter{$0.isFavorite == true && $0.isArchive == false}) { (account: AccountEntity) in
-                            NavigationLink(value: account)
-                            {
+                            NavigationLink(destination: TransactionsView(accountItem: account)) {
                                 AccountCallView(accountItem: account)
                             }
                         }
@@ -46,8 +43,7 @@ struct AccountsListView: View {
                 
                 Section(fetchedAccounts.count <= 1 ? "Account" : "Accounts") {
                     ForEach(fetchedAccounts.filter{$0.isFavorite == false && $0.isArchive == false}) { (account: AccountEntity) in
-                        NavigationLink(value: account)
-                        {
+                        NavigationLink(destination: TransactionsView(accountItem: account)) {
                             AccountCallView(accountItem: account)
                         }
                     }
@@ -55,8 +51,7 @@ struct AccountsListView: View {
                 if !(fetchedAccounts.filter{$0.isArchive == true}).isEmpty {
                     Section("Archive") {
                         ForEach(fetchedAccounts.filter{$0.isArchive == true}) { (account: AccountEntity) in
-                            NavigationLink(value: account)
-                            {
+                            NavigationLink(destination: TransactionsView(accountItem: account)) {
                                 AccountCallView(accountItem: account)
                             }
                         }
@@ -74,19 +69,18 @@ struct AccountsListView: View {
                             {
                                 TransactionCallView(transactionItem: account)
                             }
+                            
                         }
                     }
                 }
             }
         }
-        
+        .listStyle(.insetGrouped)
         .searchable(text: $searchText, placement: .sidebar)
         .onChange(of: searchText) { newValue in
             fetchedTransaction.nsPredicate = searchPredicate(query: newValue)
         }
-        
     }
-    
     
     /// Пошук по назві транзакції
     /// - Parameter query: Запит
@@ -96,8 +90,6 @@ struct AccountsListView: View {
         return NSPredicate(format: "%K BEGINSWITH[cd] %@",
                            #keyPath(TransactionEntity.transactionToCategory.nameCategory), query)
     }
-    
-    
 }
 
 struct AccountsListView_Previews: PreviewProvider {

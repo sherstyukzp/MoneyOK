@@ -9,24 +9,21 @@ import SwiftUI
 
 struct TransactionsListView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
     @ObservedObject var accountItem: AccountEntity
     
     var body: some View {
-        List {
-            ForEach(self.accountItem.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }) , id: \.self) { item in
-                NavigationLink(destination:
-                                TransactionDetailView(transactionItem: item))
-                {
+        
+        if accountItem.transaction.isEmpty {
+            NotTransactionsView()
+        } else {
+            List {
+                ForEach(self.accountItem.transaction.sorted(by: { $0.dateTransaction! > $1.dateTransaction! }) , id: \.self) { item in
                     TransactionCallView(transactionItem: item)
                 }
             }
         }
-    
+        
     }
-    
-
 }
 
 struct TransactionsListView_Previews: PreviewProvider {

@@ -63,7 +63,7 @@ class AccountViewModel: ObservableObject {
         save(context: context)
     }
     
-    private func clean() {
+    func clean() {
         nameAccount = ""
         iconAccount = ""
         colorAccount = ""
