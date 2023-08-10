@@ -9,8 +9,6 @@ import SwiftUI
 
 struct AccountCallView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
     @EnvironmentObject var accountVM: AccountViewModel
     @ObservedObject var accountItem: AccountEntity
     
@@ -64,7 +62,7 @@ struct AccountCallView: View {
             Divider()
             if accountItem.isArchive == false {
                 Button {
-                    accountVM.isFavorite(account: accountItem, context: viewContext)
+                    accountVM.isFavorite(account: accountItem)
                 } label: {
                     Label("Favorite", systemImage: accountItem.isFavorite ? "heart.slash" : "heart")
                 }
@@ -82,9 +80,9 @@ struct AccountCallView: View {
             }
             
             Button {
-                accountVM.isArchive(account: accountItem, context: viewContext)
+                accountVM.isArchive(account: accountItem)
                 if accountItem.isFavorite == true {
-                    accountVM.isFavorite(account: accountItem, context: viewContext)
+                    accountVM.isFavorite(account: accountItem)
                 }
                 
             } label: {
@@ -121,7 +119,7 @@ struct AccountCallView: View {
             AccountNewView()
         }
         .sheet(isPresented: $isNewTransaction) {
-            TransactionNewView()
+            TransactionNewView(accountItem: accountItem)
         }
         .alert(isPresented: $showAlert) {
             getAlert()
@@ -136,7 +134,7 @@ struct AccountCallView: View {
                      message: Text(alertMessage),
                      primaryButton: .destructive(Text("Yes"),
                                                  action: {
-            accountVM.delete(account: accountItem, context: viewContext)
+            accountVM.delete(account: accountItem)
         }),
                      secondaryButton: .cancel())
     }

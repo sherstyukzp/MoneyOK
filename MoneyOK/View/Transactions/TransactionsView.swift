@@ -10,8 +10,8 @@ import SwiftUI
 
 struct TransactionsView: View {
     
+    @EnvironmentObject var accountVM: AccountViewModel
     @ObservedObject var accountItem: AccountEntity
-    
     @State private var isStatistics = false
     @State private var isNewTransaction = false
     
@@ -51,20 +51,21 @@ struct TransactionsView: View {
                         }
                     }
                     // Отображение название счёта и остаток по счёту
-//                    ToolbarItem(placement: .principal) {
-//                        VStack {
-//                            Text(accountItem.nameAccount ?? "")
-//                                .font(.headline)
-//                                .foregroundColor(Color(accountItem.colorAccount ?? ""))
-//                            Text("\(sumTransactionForAccount, format: .currency(code: "\(accountItem.currency ?? "")"))")
-//                                .font(.footnote)
-//                        }
-//                    }
+                    ToolbarItem(placement: .principal) {
+                        VStack {
+                            Text(accountItem.nameAccount ?? "")
+                                .font(.headline)
+                                .foregroundColor(Color(accountItem.colorAccount ?? ""))
+                            Text("\(sumTransactionForAccount, format: .currency(code: "\(accountItem.currency ?? "")"))")
+                                .font(.footnote)
+                        }
+                    }
                     // Кнопка добавления новой транзакции в текущем счёте
                     ToolbarItemGroup(placement: .bottomBar) {
                         HStack {
                             Button {
-                                self.isNewTransaction.toggle()
+                                accountVM.accountSelect = accountItem // костиль для планшета
+                                isNewTransaction.toggle()
                             } label: {
                                 HStack {
                                     Image(systemName: "plus.circle.fill")
@@ -75,11 +76,10 @@ struct TransactionsView: View {
                         }
                     }
                 }
-                
         }
         
         .sheet(isPresented: $isNewTransaction) {
-            TransactionNewView()
+            TransactionNewView(accountItem: accountItem)
         }
         .sheet(isPresented: $isStatistics) {
             StatisticsTransactionsView(accountItem: accountItem)

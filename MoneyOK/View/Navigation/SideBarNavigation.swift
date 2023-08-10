@@ -54,16 +54,6 @@ struct SideBarNavigation: View {
                     }
                     /// Кнопки створення нового рахунку та транзакції
                     ToolbarItemGroup(placement: .bottomBar) {
-                        if !fetchedAccounts.isEmpty && horizontalSizeClass == .compact  {
-                            Button {
-                                activeSheet = .transaction
-                            } label: {
-                                HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                    Text("Transaction")
-                                }.fontWeight(.bold)
-                            }
-                        }
                         Spacer()
                         Button {
                             accountVM.clean()
@@ -82,7 +72,7 @@ struct SideBarNavigation: View {
                     case .statistics:
                         StatisticsView()
                     case .transaction:
-                        TransactionNewView()
+                        Text("transaction")
                     }
                 }
         } detail: {

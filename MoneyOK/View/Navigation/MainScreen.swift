@@ -80,7 +80,7 @@ struct MainScreen: View {
             case .statistics:
                 StatisticsView()
             case .transaction:
-                TransactionNewView()
+                TransactionNewView(accountItem: AccountEntity())
             }
         }
         

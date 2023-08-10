@@ -11,6 +11,8 @@ import CoreData
 
 class AccountViewModel: ObservableObject {
     
+    private let viewContext = PersistenceController.shared.viewContext
+    
     @Published var accountSelect: AccountEntity!
     
     @Published var nameAccount = ""
@@ -20,10 +22,10 @@ class AccountViewModel: ObservableObject {
     @Published var selectedCurrency: Currency = .usd
     @Published var dateOfCreationSave = Date()
     
-    func createAccount(context: NSManagedObjectContext) {
+    func createAccount() {
         
         if accountSelect == nil {
-            let account = AccountEntity(context: context)
+            let account = AccountEntity(context: viewContext)
             account.idAccount = UUID()
             account.nameAccount = nameAccount
             account.iconAccount = iconAccount
@@ -40,27 +42,31 @@ class AccountViewModel: ObservableObject {
             accountSelect.dateOfCreation = dateOfCreationSave
         }
         
-        save(context: context)
+        save()
         clean()
     }
     
-    func isFavorite(account: AccountEntity, context: NSManagedObjectContext) {
+    func isFavorite(account: AccountEntity) {
         account.isFavorite.toggle()
-        save(context: context)
+        save()
+        clean()
     }
     
-    func isArchive(account: AccountEntity, context: NSManagedObjectContext) {
+    func isArchive(account: AccountEntity) {
         account.isArchive.toggle()
-        save(context: context)
+        save()
+        clean()
     }
     
     func editAccount(account: AccountEntity){
         accountSelect = account
+        clean()
     }
     
-    func delete(account: AccountEntity, context: NSManagedObjectContext){
-        context.delete(account)
-        save(context: context)
+    func delete(account: AccountEntity){
+        viewContext.delete(account)
+        save()
+        clean()
     }
     
     func clean() {
@@ -72,9 +78,9 @@ class AccountViewModel: ObservableObject {
         accountSelect = nil
     }
     
-    func save(context: NSManagedObjectContext) {
+    func save() {
         do {
-            try context.save()
+            try viewContext.save()
         } catch {
             print("🆘 Ошибка сохранения Счёта \(error.localizedDescription)")
         }

@@ -12,6 +12,8 @@ struct TransactionNewView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     
+    @ObservedObject var accountItem: AccountEntity
+    
     @EnvironmentObject var transactionVM: TransactionViewModel
     @EnvironmentObject var accountVM: AccountViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
@@ -201,6 +203,6 @@ struct TransactionNewView: View {
 
 struct TransactionNewView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionNewView()
+        TransactionNewView(accountItem: AccountEntity())
     }
 }

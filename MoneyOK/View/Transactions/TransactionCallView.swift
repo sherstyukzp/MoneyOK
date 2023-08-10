@@ -19,7 +19,6 @@ struct TransactionCallView: View {
     @State var alertTitle: String = "Deleting a transaction"
     @State var alertMessage: String = "Are you sure you want to delete the transaction?"
     
-    @State var showDetails: Bool = false
     
     var body: some View {
         
@@ -45,21 +44,10 @@ struct TransactionCallView: View {
                 
             }
             Spacer()
-            Text("\(transactionItem.sumTransaction, format: .currency(code: "USD"))")
+            Text("\(transactionItem.sumTransaction, format: .currency(code: "\(transactionItem.transactionToAccount?.currency ?? "")"))")
                 .bold()
                 .foregroundColor(Color (transactionItem.sumTransaction < 0 ? .red : .green))
-            
-            Button {
-                showDetails.toggle()
-            } label: {
-                Image(systemName: "info.circle")
-            }
-
         }
-//        
-//        .navigationDestination(isPresented: $showDetails) {
-//        TransactionDetailView(transactionItem: transactionItem)
-//        }
             
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             Button(role: .destructive) {

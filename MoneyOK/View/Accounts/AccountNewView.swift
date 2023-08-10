@@ -80,7 +80,7 @@ struct AccountNewView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            accountVM.createAccount(context: viewContext)
+                            accountVM.createAccount()
                             dismiss()
                         }) {
                             Text(accountVM.accountSelect == nil ? "Save" : "Update")
