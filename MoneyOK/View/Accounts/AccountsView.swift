@@ -12,6 +12,8 @@ struct AccountsView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.nameAccount, order: .forward)])
     private var fetchedAccount: FetchedResults<AccountEntity>
     
+
+    
     var body: some View {
         if fetchedAccount.isEmpty {
             NotAccountsView()
@@ -19,7 +21,6 @@ struct AccountsView: View {
         else {
             AccountsListView()
         }
-        
     }
 }
 
