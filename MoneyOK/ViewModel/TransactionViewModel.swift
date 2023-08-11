@@ -11,6 +11,8 @@ import UIKit
 
 class TransactionViewModel: ObservableObject {
     
+    private let viewContext = PersistenceController.shared.viewContext
+    
     @Published var sumTransactionSave: Double = 0.0
     @Published var noteTransactionSave: String = ""
     @Published var dateTransactionSave: Date = Date()
@@ -20,10 +22,10 @@ class TransactionViewModel: ObservableObject {
     @Published var transactionItem: TransactionEntity!
     
     
-    func createTransaction(context: NSManagedObjectContext, selectedAccount: AccountEntity, selectedCategory: CategoryEntity) {
+    func createTransaction(selectedAccount: AccountEntity, selectedCategory: CategoryEntity) {
         
         if transactionItem == nil {
-            let transaction = TransactionEntity(context: context)
+            let transaction = TransactionEntity(context: viewContext)
             
             if typeTransaction == .expenses {
                 sumTransactionSave = sumTransactionSave * -1
@@ -51,21 +53,21 @@ class TransactionViewModel: ObservableObject {
             transactionItem.transactionToCategory = selectedCategory
         }
         
-        save(context: context)
+        save()
         cleane()
     }
     
     
-    func delete(transaction: TransactionEntity, context: NSManagedObjectContext){
-        context.delete(transaction)
-        save(context: context)
+    func delete(transaction: TransactionEntity){
+        viewContext.delete(transaction)
+        save()
         cleane()
     }
     
     
-    func save(context: NSManagedObjectContext) {
+    func save() {
         do {
-            try context.save()
+            try viewContext.save()
         } catch {
             print("🆘 Ошибка сохранения Транзакции \(error.localizedDescription)")
         }

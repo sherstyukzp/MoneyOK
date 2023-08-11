@@ -51,7 +51,7 @@ struct AccountsListView: View {
     
     var body: some View {
         
-        List(selection: $accountVM.accountSelect) {
+        List {
             if searchText.isEmpty {
                 //                        LazyVGrid(columns: numberColumns, spacing: 10) {
                 //                                    ForEach(data, id: \.self) { number in

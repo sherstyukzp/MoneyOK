@@ -9,8 +9,6 @@ import SwiftUI
 
 struct TransactionCallView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
     @EnvironmentObject var transactionVM: TransactionViewModel
     @ObservedObject var transactionItem: TransactionEntity
     
@@ -21,7 +19,6 @@ struct TransactionCallView: View {
     
     
     var body: some View {
-        
         HStack {
             ZStack {
                 Circle()
@@ -49,29 +46,27 @@ struct TransactionCallView: View {
                 .foregroundColor(Color (transactionItem.sumTransaction < 0 ? .red : .green))
         }
             
-        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-            Button(role: .destructive) {
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            Button {
+                transactionVM.transactionItem = transactionItem
                 showAlert.toggle()
             } label: {
                 Label("Delete", systemImage: "trash")
-            }
+            }.tint(.red)
+
         }
         
-        .alert(isPresented: $showAlert) {
-            getAlert()
+        .alert(alertTitle, isPresented: $showAlert) {
+            Button("No", role: .cancel, action: {})
+            Button("Yes", role: .destructive, action: {
+                transactionVM.delete(transaction: transactionItem)
+            })
+        } message: {
+            Text(alertMessage)
         }
+
     }
-    
-    // MARK: Alert
-    func getAlert() -> Alert {
-        return Alert(title: Text(alertTitle),
-                     message: Text(alertMessage),
-                     primaryButton: .destructive(Text("Yes"),
-                                                 action: {
-            transactionVM.delete(transaction: transactionItem, context: viewContext)
-        }),
-                     secondaryButton: .cancel())
-    }
+
 }
 
 struct TransactionCallView_Previews: PreviewProvider {

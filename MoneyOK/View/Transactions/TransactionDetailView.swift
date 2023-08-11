@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TransactionDetailView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var transactionVM: TransactionViewModel
@@ -57,8 +56,6 @@ struct TransactionDetailView: View {
                 zoomed.toggle()
             }
             
-            
-            
             Section {
                 Button(role: .destructive) {
                     showAlert.toggle()
@@ -81,7 +78,7 @@ struct TransactionDetailView: View {
                      message: Text(alertMessage),
                      primaryButton: .destructive(Text("Yes"),
                                                  action: {
-            transactionVM.delete(transaction: transactionItem, context: viewContext)
+            transactionVM.delete(transaction: transactionItem)
             dismiss()
         }),
                      secondaryButton: .cancel())

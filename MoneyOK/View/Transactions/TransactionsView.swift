@@ -24,7 +24,13 @@ struct TransactionsView: View {
     
     var body: some View {
         NavigationStack {
-            TransactionsListView(accountItem: accountItem)
+            Group {
+                if accountItem.transaction.isEmpty {
+                    NotTransactionsView()
+                } else {
+                    TransactionsListView(accountItem: accountItem)
+                }
+            }
                 .navigationTitle(accountItem.nameAccount ?? "")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

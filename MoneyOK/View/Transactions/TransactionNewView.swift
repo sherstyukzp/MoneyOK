@@ -10,7 +10,6 @@ import SwiftUI
 struct TransactionNewView: View {
     
     @Environment(\.dismiss) var dismiss
-    @Environment(\.managedObjectContext) private var viewContext
     
     @ObservedObject var accountItem: AccountEntity
     
@@ -177,7 +176,7 @@ struct TransactionNewView: View {
                         // MARK: Сохранение трензакции
                         transactionVM.imageTransactionSave = personImage
                         
-                        transactionVM.createTransaction(context: viewContext, selectedAccount: accountVM.accountSelect, selectedCategory: categoryVM.categorySelected)
+                        transactionVM.createTransaction(selectedAccount: accountVM.accountSelect, selectedCategory: categoryVM.categorySelected)
                         
                         dismiss()
                     } label: {
