@@ -49,6 +49,7 @@ struct AccountCallView: View {
                 .font(Font.footnote)
                 .foregroundColor(Color.gray)
             }
+            Spacer()
         }
         .contextMenu {
             // Вызов новой транзакции через кантексное меню счёта
