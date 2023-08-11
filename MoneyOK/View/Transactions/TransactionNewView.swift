@@ -98,7 +98,7 @@ struct TransactionNewView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
-                                    Text("New Category").bold()
+                                    Text("New category").bold()
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding(6)

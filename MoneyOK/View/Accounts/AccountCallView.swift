@@ -17,8 +17,6 @@ struct AccountCallView: View {
     
     // Alert
     @State var showAlert: Bool = false
-    @State var alertTitle: String = "Удаление счёта"
-    @State var alertMessage: String = "Вы действительно хотите удалить счёт?"
     
     // Сумма всех транзакций выбраного счёта
     var sumTransaction: Double {
@@ -131,8 +129,8 @@ struct AccountCallView: View {
     
     // MARK: Alert
     func getAlert() -> Alert {
-        return Alert(title: Text(alertTitle),
-                     message: Text(alertMessage),
+        return Alert(title: Text("Deleting the account"),
+                     message: Text("Are you sure you want to delete the account?"),
                      primaryButton: .destructive(Text("Yes"),
                                                  action: {
             accountVM.delete(account: accountItem)

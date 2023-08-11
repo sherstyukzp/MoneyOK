@@ -14,7 +14,7 @@ struct TransactionCallView: View {
     
     // Alert
     @State var showAlert: Bool = false
-    @State var alertTitle: String = "Deleting a transaction"
+    
     @State var alertMessage: String = "Are you sure you want to delete the transaction?"
     
     
@@ -56,13 +56,13 @@ struct TransactionCallView: View {
 
         }
         
-        .alert(alertTitle, isPresented: $showAlert) {
+        .alert("Deleting a transaction", isPresented: $showAlert) {
             Button("No", role: .cancel, action: {})
             Button("Yes", role: .destructive, action: {
                 transactionVM.delete(transaction: transactionItem)
             })
         } message: {
-            Text(alertMessage)
+            Text("Are you sure you want to delete the transaction?")
         }
 
     }

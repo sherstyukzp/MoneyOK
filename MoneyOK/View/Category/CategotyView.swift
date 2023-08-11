@@ -29,7 +29,7 @@ struct CategotyView: View {
                     .font(.title3)
                     .fontWeight(.bold)
                     .padding()
-                Text("To add a new category, click on the '' New Category '' button.")
+                Text("To add a New category, click on the '' New category '' button.")
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
                     .multilineTextAlignment(.center)

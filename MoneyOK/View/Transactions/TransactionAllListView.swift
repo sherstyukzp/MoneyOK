@@ -70,22 +70,11 @@ struct TransactionAllListView: View {
     var body: some View {
         VStack {
             if fetchedTransaction.isEmpty {
-                Image(systemName: "tray.2.fill")
-                    .font(.system(size: 80))
-                    .foregroundColor(.gray)
-                Text("No transactions!")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .padding()
-                Text("To add a new transaction, select the account and create a transaction.")
-                    .font(.subheadline)
-                    .foregroundColor(Color.gray)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 30.0)
+                NotTransactionsView()
             } else {
                 List {
                     ForEach(transactions) { section in
-                        Section(header: Text(section.id.capitalized)) {
+                        Section {
                             ForEach(section) { item in
                                 
                                 NavigationLink(destination:
@@ -95,35 +84,46 @@ struct TransactionAllListView: View {
                                 }
                                 
                             }
+                        } header: {
+                            Text(section.id.capitalized)
                         }
                         
                     }
                 }.listStyle(SidebarListStyle())
                 
-                Text("Total \(fetchedTransaction.count) transactions")
-                Text("In total \(sumTransaction, format: .currency(code: Locale.current.currencyCode ?? "USD"))")
+                VStack {
+                    HStack {
+                        Text("Total")
+                        Text("\(fetchedTransaction.count)")
+                        Text("transactions")
+                    }
+                    HStack {
+                        Text("In total")
+                        Text("\(sumTransaction)")
+                    }
+                }
+                
+                
+                    
             }
             
         }
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Menu {
-                    if !fetchedTransaction.isEmpty {
+            if !fetchedTransaction.isEmpty {
+                ToolbarItem(placement: .primaryAction) {
+                    Menu {
                         // Экспорт транзакций
-                        Button{
+                        Button {
                             shareButton()
                         } label: {
                             Label("Export CSV", systemImage: "square.and.arrow.up")
                         }
                     }
-                    
+                label: {
+                    Label("Menu", systemImage: "ellipsis.circle")
                 }
-            label: {
-                Label("Menu", systemImage: "ellipsis.circle")
+                }
             }
-                
-            }
-            
         }
         
         .navigationTitle("All Transactions")

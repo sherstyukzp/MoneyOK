@@ -69,7 +69,7 @@ struct AccountsListView: View {
                         }
                     } header: {
                         HStack {
-                            Image(systemName: "star.fill")
+                            Image(systemName: "star")
                             Text("Favorites")
                         }
                     }
@@ -83,8 +83,8 @@ struct AccountsListView: View {
                     }
                 } header: {
                     HStack {
-                        Image(systemName: "creditcard.fill")
-                        Text(fetchedAccounts.count <= 1 ? "Account" : "Accounts")
+                        Image(systemName: "creditcard")
+                        Text(fetchedAccounts.count > 1 ? "Accounts" : "Account")
                     }
                     
                 }
@@ -97,7 +97,7 @@ struct AccountsListView: View {
                         }
                     } header: {
                         HStack {
-                            Image(systemName: "archivebox.fill")
+                            Image(systemName: "archivebox")
                             Text("Archive")
                         }
                         
@@ -109,7 +109,10 @@ struct AccountsListView: View {
                     Text("Not result") // TODO: Зробити прикольне вікно що немає результату
                 } else {
                     VStack {
-                        Text("Total found: \(fetchedTransaction.count)")
+                        HStack{
+                            Text("Total found:")
+                            Text("\(fetchedTransaction.count)")
+                        }
                         ForEach(fetchedTransaction, id: \.self) { account in
                             NavigationLink(value: account)
                             {

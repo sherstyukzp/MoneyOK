@@ -1,0 +1,92 @@
+"New account" = "New account";
+"New transaction" = "New transaction";
+"New category" = "New category";
+
+"Favorites" = "Favorites";
+"Accounts" = "Accounts";
+"Account" = "Account";
+"Transaction" = "Transaction";
+"Archive" = "Archive";
+"Statistics" = "Statistics";
+"Settings" = "Settings";
+"Category" = "Category";
+
+"All Transactions" = "All Transactions";
+
+"Not result" = "Not result";
+"Total found:" = "Total found:";
+"Balance:" = "Balance:";
+"Yes" = "Yes";
+"No" = "No";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Delete" = "Delete";
+"Edit" = "Edit";
+
+"Advanced" = "Advanced";
+"Time" = "Time";
+"Color" = "Color";
+"Icon" = "Icon";
+"Note" = "Note";
+"Date of creation" = "Date of creation";
+"Add image" = "Add image";
+"Remove image" = "Remove image";
+"Not image" = "Not image";
+
+"No transactions!" = "No transactions!";
+"To add a new transaction, click on the ''Transaction'' button." = "To add a new transaction, click on the ''Transaction'' button.";
+
+"No accounts!" = "No accounts!";
+"To add a new account, click on the button below." = "To add a new account, click on the button below.";
+
+"No category!" = "No category!";
+"To add a New category, click on the '' New category '' button." = "To add a New category, click on the '' New category '' button.";
+
+
+"Select the account" = "Select the account";
+
+"Not selected category" = "Not selected category";
+
+"Total" = "Total";
+"transactions" = "transactions";
+"In total" = "In total";
+
+"Transaction categories" = "Transaction categories";
+
+"Category Management" = "Category Management";
+"Transaction Management" = "Transaction Management";
+"Write to us" = "Write to us";
+
+"Date" = "Date";
+"Select date" = "Select date";
+"From" = "From";
+"To" = "To";
+"Select the type" = "Select the type";
+"Expenses" = "Expenses";
+"Income" = "Income";
+
+"Today" = "Today";
+"Exact date" = "Exact date";
+"To the date" = "To the date";
+"After the date" = "After the date";
+"Range" = "Range";
+
+"Name account" = "Name account";
+"Sum" = "Sum";
+"Select an account" = "Select an account";
+"Select a category" = "Select a category";
+"Not selected account" = "Not selected account";
+"Deleting a transaction" = "Deleting a transaction";
+"Are you sure you want to delete the transaction?" = "Are you sure you want to delete the transaction?";
+"Deleting the account" = "Deleting the account";
+"Are you sure you want to delete the account?" = "Are you sure you want to delete the account?";
+
+"Edit account" = "Edit account";
+"Update" = "Update";
+
+"Image" = "Image";
+
+
+
+
+
