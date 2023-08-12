@@ -10,7 +10,7 @@ import SwiftUI
 struct PanelView: View {
     @State var colorIcon: Color = .blue
     @State var nameIcon: String = "calendar"
-    @State var namePanel: String = "Today Expense"
+    @State var namePanel: String = "Today Expenses"
     @State var cost: String = "1000"
     
     var body: some View {
