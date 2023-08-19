@@ -80,7 +80,7 @@ struct DetailCategorySelectionView: View {
                 }
             }
         }
-        .navigationTitle("Select a caregory")
+        .navigationTitle(Text("Select a category"))
     }
 }
 

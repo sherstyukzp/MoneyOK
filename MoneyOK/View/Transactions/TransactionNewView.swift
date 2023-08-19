@@ -37,120 +37,123 @@ struct TransactionNewView: View {
     }
     
     var body: some View {
-        NavigationView {
-            Form {
+        NavigationStack {
+            VStack {
                 Picker("", selection: $transactionVM.typeTransaction) {
                     ForEach(TypeTrancaction.allCases, id:\.self) { value in
                         Text(value.localizedName).tag(value)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                .padding(4)
                 .onChange(of: transactionVM.typeTransaction) { newValue in
                     categoryVM.categorySelected = nil
                 }
                 
-                Section("Sum") {
-                    HStack(alignment: .center) {
-                        if transactionVM.typeTransaction == .expenses {
-                            Image(systemName: "minus.circle.fill")
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundColor(Color.red)
-                        }
-                        if transactionVM.typeTransaction == .income {
-                            Image(systemName: "plus.circle.fill")
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundColor(Color.green)
-                        }
-
-                        HStack {
-                            TextField("", value: $transactionVM.sumTransactionSave, format: .number)
-                            if accountVM.accountSelect != nil {
-                                Text(accountVM.accountSelect.currency ?? "")
+                Form {
+                    Section("Sum") {
+                        HStack(alignment: .center) {
+                            if transactionVM.typeTransaction == .expenses {
+                                Image(systemName: "minus.circle.fill")
+                                    .font(.system(size: 32, weight: .bold))
+                                    .foregroundColor(Color.red)
                             }
-                        }
-                        .font(Font.system(size: 32, weight: .bold))
-                        .keyboardType(.decimalPad)
-                    }
-                }
-                // MARK: Выбор счетов
-                Section(header: Text("Select an account")) {
-                    NavigationLink(destination: (
-                        DetailAccountSelectionView()
-                    ), label: {
-                        if accountVM.accountSelect == nil {
-                            Text("Not selected account")
-                                .bold()
-                                .foregroundColor(.primary)
-                        } else {
-                            AccountCallView(accountItem: accountVM.accountSelect)
-                        }
-                    })
-                }
-                // MARK: Выбор категории
-                Section(header: Text("Select a category")) {
-                    if fetchedCategory.isEmpty {
-                        HStack {
-                            Button {
-                                categoryVM.nameCategorySave = ""
-                                categoryVM.categorySelected = nil
-                                self.isNewCategory.toggle()
-                                
-                            } label: {
-                                HStack {
-                                    Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
-                                    Text("New category").bold()
+                            if transactionVM.typeTransaction == .income {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.system(size: 32, weight: .bold))
+                                    .foregroundColor(Color.green)
+                            }
+                            
+                            HStack {
+                                TextField("", value: $transactionVM.sumTransactionSave, format: .number)
+                                if accountVM.accountSelect != nil {
+                                    Text(accountVM.accountSelect.currency ?? "")
                                 }
-                                .frame(maxWidth: .infinity)
-                                .padding(6)
-                            }.buttonStyle(.borderedProminent)
+                            }
+                            .font(Font.system(size: 32, weight: .bold))
+                            .keyboardType(.decimalPad)
                         }
-                        .frame(maxWidth: .infinity)
-                    } else {
+                    }
+                    // MARK: Выбор счетов
+                    Section(header: Text("Select an account")) {
                         NavigationLink(destination: (
-                            DetailCategorySelectionView()
+                            DetailAccountSelectionView()
                         ), label: {
-                            if categoryVM.categorySelected == nil {
-                                Text("Not selected category")
+                            if accountVM.accountSelect == nil {
+                                Text("Not selected account")
                                     .bold()
                                     .foregroundColor(.primary)
                             } else {
-                                CategoryCallView(categoryItem: categoryVM.categorySelected)
+                                AccountCallView(accountItem: accountVM.accountSelect)
                             }
                         })
                     }
-                }
-                
-                Section("Advanced") {
-                    VStack {
-                        DatePicker("Time", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
-                            .environment(\.locale, Locale.init(identifier: String(Locale.preferredLanguages[0].prefix(2))))
-                    }
-                    HStack {
-                        Text("Note")
-                        TextEditor(text: $transactionVM.noteTransactionSave)
+                    // MARK: Выбор категории
+                    Section(header: Text("Select a category")) {
+                        if fetchedCategory.isEmpty {
+                            HStack {
+                                Button {
+                                    categoryVM.nameCategorySave = ""
+                                    categoryVM.categorySelected = nil
+                                    self.isNewCategory.toggle()
+                                    
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "plus.circle.fill").font(.system(size: 22, weight: .bold))
+                                        Text("New category").bold()
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .padding(6)
+                                }.buttonStyle(.borderedProminent)
+                            }
+                            .frame(maxWidth: .infinity)
+                        } else {
+                            NavigationLink(destination: (
+                                DetailCategorySelectionView()
+                            ), label: {
+                                if categoryVM.categorySelected == nil {
+                                    Text("Not selected category")
+                                        .bold()
+                                        .foregroundColor(.primary)
+                                } else {
+                                    CategoryCallView(categoryItem: categoryVM.categorySelected)
+                                }
+                            })
+                        }
                     }
                     
-                    Button {
-                        if personImage.pngData() == nil {
-                            self.imagePicker.toggle()
+                    Section("Advanced") {
+                        VStack {
+                            DatePicker("Time", selection: $transactionVM.dateTransactionSave, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
+                                .environment(\.locale, Locale.init(identifier: String(Locale.preferredLanguages[0].prefix(2))))
                         }
-                        else {
-                            personImage = UIImage()
+                        HStack {
+                            Text("Note")
+                            TextEditor(text: $transactionVM.noteTransactionSave)
                         }
                         
-                    } label: {
-                        HStack {
+                        Button {
                             if personImage.pngData() == nil {
-                                Text("Add image")
-                            } else {
-                                Text("Remove image")
-                                    .foregroundColor(Color.red)
+                                self.imagePicker.toggle()
+                            }
+                            else {
+                                personImage = UIImage()
                             }
                             
-                            Spacer()
-                            Image(uiImage: personImage)
-                                .resizable()
-                                .frame(width: 30, height: 30)
+                        } label: {
+                            HStack {
+                                if personImage.pngData() == nil {
+                                    Text("Add image")
+                                } else {
+                                    Text("Remove image")
+                                        .foregroundColor(Color.red)
+                                }
+                                
+                                Spacer()
+                                Image(uiImage: personImage)
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                            }
                         }
                     }
                 }
@@ -191,11 +194,8 @@ struct TransactionNewView: View {
             .sheet(isPresented: $isNewCategory) {
                 CategoryNewView(isNewCategory: $isNewCategory)
             }
-            
         }
     }
-    
-    
 }
 
 

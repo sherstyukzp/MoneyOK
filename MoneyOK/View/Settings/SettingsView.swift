@@ -14,30 +14,43 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section (header: HeaderSettingView(imageIcon: "slider.horizontal.3", text: "Management")) {
+                Section {
                     NavigationLink("Category Management") {
                         CategotyView()
                     }
                     NavigationLink("Transaction Management") {
                         TransactionAllListView()
                     }
-                }
-                
-                
-                Section(header: HeaderSettingView(imageIcon: "rosette", text: "Other applications"),
-                        footer: Text("We also have other applications that you have to enjoy")) {
-                    Link("PomodOK", destination: URL(string: "https://apps.apple.com/us/app/pomodok/id1553058624")!).foregroundColor(Color.blue)
-                    Link("CoordinateConverter", destination: URL(string: "https://apps.apple.com/us/app/coordinateconverter/id1604393688")!).foregroundColor(Color.blue)
-                }
-                
-                Section(header: HeaderSettingView(imageIcon: "text.bubble", text: "Communication with us"),
-                        footer: Text("Click on the button and select a convenient way to communicate with us.")) {
+                } header: {
                     HStack {
-                        NavigationLink(destination: SendUseView()) {
-                            Text("Write to us")
-                        }
+                        Image(systemName: "slider.horizontal.3")
+                        Text("Management")
                     }
                 }
+                Section {
+                    Link("PomodOK", destination: URL(string: "https://apps.apple.com/us/app/pomodok/id1553058624")!).foregroundColor(Color.blue)
+                    Link("CoordinateConverter", destination: URL(string: "https://apps.apple.com/us/app/coordinateconverter/id1604393688")!).foregroundColor(Color.blue)
+                } header: {
+                    HStack {
+                        Image(systemName: "rosette")
+                        Text("Other applications")
+                    }
+                } footer: {
+                    Text("We also have other applications that you have to enjoy")
+                }
+                Section {
+                    NavigationLink(destination: SendUseView()) {
+                        Text("Write to us")
+                    }
+                } header: {
+                    HStack {
+                        Image(systemName: "text.bubble")
+                        Text("Communication with us")
+                    }
+                } footer: {
+                    Text("Click on the button and select a convenient way to communicate with us.")
+                }
+                
             }
             .navigationBarTitle(Text("Settings"))
             .toolbar {

@@ -22,11 +22,11 @@ struct CategoryListView: View {
         VStack {
             Picker(selection: $typeTrancaction, label: Text("Transaction categories")) {
                 ForEach(types, id: \.rawValue) {
-                    Text($0.rawValue).tag(Optional<TypeTrancaction>.some($0))
+                    Text($0.localizedName).tag(Optional<TypeTrancaction>.some($0))
                 }
             }
-            .padding(.horizontal)
             .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal)
             
             List {
                 if typeTrancaction == .expenses {
@@ -41,12 +41,8 @@ struct CategoryListView: View {
                         
                     }
                 }
-                
             }
         }
-        
-        
-        
     }
 }
 

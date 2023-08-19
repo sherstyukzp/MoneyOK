@@ -1,7 +1,6 @@
 "New account" = "Новий рахунок";
 "New transaction" = "Нова транзакція";
 "New category" = "Нова категорія";
-
 "Favorites" = "Обрані";
 "Accounts" = "Рахунки";
 "Account" = "Рахунок";
@@ -10,9 +9,7 @@
 "Statistics" = "Статистика";
 "Settings" = "Налаштування";
 "Category" = "Категорія";
-
 "All Transactions" = "Всі транзакції";
-
 "Not result" = "Немає результатів";
 "Total found:" = "Загалом знайдено:";
 "Balance:" = "Баланс:";
@@ -22,7 +19,6 @@
 "Save" = "Зберегти";
 "Delete" = "Видалити";
 "Edit" = "Редагувати";
-
 "Advanced" = "Розширені налаштування";
 "Time" = "Час";
 "Color" = "Колір";
@@ -32,30 +28,21 @@
 "Add image" = "Додати зображення";
 "Remove image" = "Видалити зображення";
 "Not image" = "Відсутнє зображення";
-
 "No transactions!" = "Немає транзакцій!";
 "To add a new transaction, click on the ''Transaction'' button." = "Для додавання нової транзакції натисніть кнопку ''Транзакція''.";
-
 "No accounts!" = "Немає рахунків!";
 "To add a new account, click on the button below." = "Для додавання нового рахунку натисніть кнопку нижче.";
-
 "No category!" = "Немає категорій!";
 "To add a New category, click on the '' New category '' button." = "Для додавання нової категорії натисніть кнопку ''Нова категорія''.";
-
 "Select the account" = "Оберіть рахунок";
-
 "Not selected category" = "Категорія не обрана";
-
 "Total" = "Всього";
 "transactions" = "транзакцій";
 "In total" = "Всього";
-
 "Transaction categories" = "Категорії транзакцій";
-
 "Category Management" = "Управління категоріями";
 "Transaction Management" = "Управління транзакціями";
 "Write to us" = "Напишіть нам";
-
 "Date" = "Дата";
 "Select date" = "Оберіть дату";
 "From" = "З";
@@ -63,23 +50,28 @@
 "Select the type" = "Оберіть тип";
 "Expenses" = "Витрати";
 "Income" = "Дохід";
-
 "Today" = "Сьогодні";
 "Exact date" = "Точна дата";
 "To the date" = "До дати";
 "After the date" = "Після дати";
 "Range" = "Діапазон";
-
 "Name account" = "Назва рахунку";
 "Sum" = "Сума";
-"Select an account" = "Оберіть обліковий запис";
+"Select an account" = "Оберіть рахунок";
 "Select a category" = "Оберіть категорію";
 "Not selected account" = "Рахунок не обрано";
 "Deleting a transaction" = "Видалення транзакції";
 "Are you sure you want to delete the transaction?" = "Ви впевнені, що хочете видалити цю транзакцію?";
 "Deleting the account" = "Видалення рахунку";
 "Are you sure you want to delete the account?" = "Ви впевнені, що хочете видалити цей рахунок?";
-
 "Edit account" = "Редагування рахунку";
 "Update" = "Оновити";
 "Image" = "Зображення";
+"Other applications" = "Інші додатки";
+"Management" = "Управління";
+"We also have other applications that you have to enjoy" = "У нас також є інші додатки, якими ви зможете насолодитися";
+"Write to us" = "Напишіть нам";
+"Communication with us" = "Зв'язок з нами";
+"Click on the button and select a convenient way to communicate with us." = "Натисніть на кнопку та оберіть зручний спосіб зв'язку з нами.";
+"Select a method" = "Виберіть спосіб";
+"Choose one of the ways to communicate with us. We will be happy to receive a message from you." = "Виберіть один із способів зв'язку з нами. Ми будемо раді отримати від вас повідомлення.";
